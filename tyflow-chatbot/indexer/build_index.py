@@ -8,10 +8,10 @@ from pathlib import Path
 from typing import List, Dict
 from dotenv import load_dotenv
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Qdrant
-from langchain.docstore.document import Document
+from langchain_core.documents import Document
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 
@@ -20,7 +20,7 @@ load_dotenv()
 
 
 class TyFlowIndexer:
-    def __init__(self, data_dir="data/operators", collection_name="tyflow_operators"):
+    def __init__(self, data_dir="../data", collection_name="tyflow_all"):
         self.data_dir = Path(data_dir)
         self.collection_name = collection_name
 
@@ -30,11 +30,9 @@ class TyFlowIndexer:
             openai_api_key=os.getenv("OPENAI_API_KEY")
         )
 
-        # Initialize Qdrant client (local storage)
+        # Initialize Qdrant path (client will be created by from_documents)
         self.qdrant_path = Path("./qdrant_storage")
         self.qdrant_path.mkdir(exist_ok=True)
-
-        self.client = QdrantClient(path=str(self.qdrant_path))
 
         # Initialize text splitter
         self.text_splitter = RecursiveCharacterTextSplitter(
@@ -45,15 +43,18 @@ class TyFlowIndexer:
         )
 
     def load_documents(self) -> List[Document]:
-        """Load all JSON files from data directory"""
+        """Load all JSON files from data directory (including subdirectories)"""
         documents = []
 
         print(f"\n📂 Loading documents from {self.data_dir}")
-        json_files = list(self.data_dir.glob("*.json"))
+        # Recursively find all JSON files in subdirectories
+        json_files = list(self.data_dir.glob("**/*.json"))
 
         if not json_files:
             print(f"  ⚠ Warning: No JSON files found in {self.data_dir}")
             return []
+
+        print(f"  Found {len(json_files)} JSON files")
 
         for json_file in json_files:
             print(f"  Loading {json_file.name}...")
@@ -110,25 +111,15 @@ class TyFlowIndexer:
         return chunks
 
     def create_collection(self, vector_size=1536):
-        """Create Qdrant collection if it doesn't exist"""
-        collections = self.client.get_collections().collections
-        collection_names = [c.name for c in collections]
-
-        if self.collection_name in collection_names:
-            print(f"\n🗑️  Deleting existing collection '{self.collection_name}'")
-            self.client.delete_collection(self.collection_name)
-
-        print(f"📦 Creating collection '{self.collection_name}'")
-        self.client.create_collection(
-            collection_name=self.collection_name,
-            vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE)
-        )
+        """Create Qdrant collection - not needed, from_documents handles it"""
+        pass
 
     def index_documents(self, chunks: List[Document]):
         """Embed and store chunks in Qdrant"""
         print(f"\n🔢 Embedding and indexing {len(chunks)} chunks...")
+        print(f"   ⏱️  This will take 10-15 minutes...")
 
-        # Create vectorstore
+        # Create vectorstore (will create its own client)
         vectorstore = Qdrant.from_documents(
             chunks,
             self.embeddings,
@@ -187,6 +178,7 @@ class TyFlowIndexer:
 
 
 if __name__ == "__main__":
-    indexer = TyFlowIndexer(data_dir="../data/operators")
+    # Index all categories
+    indexer = TyFlowIndexer(data_dir="../data", collection_name="tyflow_all")
     success = indexer.run_indexing()
     exit(0 if success else 1)
