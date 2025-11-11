@@ -1,0 +1,55 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_AI/tyDiffusion/MAXScript",
+  "title": "MAXScript access to tyDiffusion",
+  "category": "AI",
+  "operator": "MAXScript access to tyDiffusion",
+  "sections": [
+    {
+      "heading": "MAXScript access to tyDiffusion",
+      "level": "h2",
+      "anchor": "maxscript-access-to-tydiffusion",
+      "content": "MAXScript access totyDiffusion’s features is available through global functions. These functions give users full control overtyDiffusion’s generators and UI.",
+      "params": []
+    },
+    {
+      "heading": "General functions",
+      "level": "h3",
+      "anchor": "general-functions",
+      "content": "tyDiffusion_UI(): opens thetyDiffusionUI.tyDiffusion_generateImage(): generates an image usingtyDiffusion’s current settings. Equivalent to pressing “generate image” button intyDiffusionUI.tyDiffusion_generateAnimation(): generates an animation usingtyDiffusion’s current settings. Equivalent to pressing “generate animation” button intyDiffusionUI.tyDiffusion_generatePreprocessor {name}: generates the result of the specified ControlNet preprocessor. Equivalent to pressing a preprocessor’s “â” button in thetyDiffusionUI. Example:\n\ntyDiffusion_UI(): opens thetyDiffusionUI.\n\ntyDiffusion_generateImage(): generates an image usingtyDiffusion’s current settings. Equivalent to pressing “generate image” button intyDiffusionUI.\n\ntyDiffusion_generateAnimation(): generates an animation usingtyDiffusion’s current settings. Equivalent to pressing “generate animation” button intyDiffusionUI.\n\ntyDiffusion_generatePreprocessor {name}: generates the result of the specified ControlNet preprocessor. Equivalent to pressing a preprocessor’s “â” button in thetyDiffusionUI. Example:\n\ntyDiffusion_generatePreprocessor \"depth\"\n\ntyDiffusion_restartEngine(): manually restartstyDiffusion’sComfyUIengine.",
+      "params": [
+        "tyDiffusion_generatePreprocessor {name}",
+        "tyDiffusion_restartEngine()",
+        "tyDiffusion_generateAnimation()",
+        "tyDiffusion_generateImage()",
+        "tyDiffusion_UI()"
+      ]
+    },
+    {
+      "heading": "Settings functions",
+      "level": "h3",
+      "anchor": "settings-functions",
+      "content": "The names of alltyDiffusionsettings can be found in thetyDiffusionSettings.xmlfile, in thetyDiffusionroot folder (default location: C:\\ProgramData\\tyFlow\\tyDiffusion\\tyDiffusionSettings.xml). The settings in that file are stored in standard XML format. For example, if you wanted to find the name of the setting that contains the weight value of the Depth ControlNet, you would see the following entry under the<controlNetSettings>category:<controlNetDepthWeight type=“double” value=“1.000000” />. From that entry you can see the name of the setting is “controlNetDepthWeight”, and since it is adoubletype, its value can be retrieved using thetyDiffusion_getFloatfunction (MAXScript uses floats instead of doubles, but the two can be interchanged in this case).\n\ntyDiffusion_getInteger {settingName}: returns the value of the specified integer setting.tyDiffusion_setInteger {settingName} {value}: assigns the specified integer value to the specified integer setting.tyDiffusion_getFloat {settingName}: returns the value of the specified float setting.tyDiffusion_setFloat {settingName} {value}: assigns the specified float value to the specified float setting.tyDiffusion_getString {settingName}: returns the value of the specified string setting.tyDiffusion_setString {settingName} {value}: assigns the specified string value to the specified string setting.tyDiffusion_holdSettings(): saves alltyDiffusionsettings for restoration at a later time.tyDiffusion_restoreSettings(): restores alltyDiffusionsettings that were previously held.\n\ntyDiffusion_getInteger {settingName}: returns the value of the specified integer setting.\n\ntyDiffusion_setInteger {settingName} {value}: assigns the specified integer value to the specified integer setting.\n\ntyDiffusion_getFloat {settingName}: returns the value of the specified float setting.\n\ntyDiffusion_setFloat {settingName} {value}: assigns the specified float value to the specified float setting.\n\ntyDiffusion_getString {settingName}: returns the value of the specified string setting.\n\ntyDiffusion_setString {settingName} {value}: assigns the specified string value to the specified string setting.\n\ntyDiffusion_holdSettings(): saves alltyDiffusionsettings for restoration at a later time.\n\ntyDiffusion_restoreSettings(): restores alltyDiffusionsettings that were previously held.\n\nBy callingtyDiffusion_holdSettings()before making changes to various individual settings, you can quickly revert all those changes at a later time by callingtyDiffusion_restoreSettings()without having to revert each change individually.",
+      "params": [
+        "tyDiffusion_getInteger {settingName}",
+        "tyDiffusion_holdSettings()",
+        "tyDiffusion_setFloat {settingName} {value}",
+        "tyDiffusion_restoreSettings()",
+        "tyDiffusion_getFloat {settingName}",
+        "tyDiffusion_setString {settingName} {value}",
+        "tyDiffusion_setInteger {settingName} {value}",
+        "tyDiffusion_getString {settingName}"
+      ]
+    },
+    {
+      "heading": "IO functions",
+      "level": "h3",
+      "anchor": "io-functions",
+      "content": "tyDiffusion_saveImage {viewIndex} {filename}: saves the last image generated bytyDiffusionin the specified viewport to the specified PNG file.tyDiffusion_loadPreset {filename} {[optional] includeMatchingSettings} {[optional] excludeMatchingSettings}: loads a specifiedtyDiffusionXML preset file. If the optional “includeMatchingSettings” argument is assigned, only settings matching the specified string will be loaded. If the optional “excludeMatchingSettings” argument is assigned, settings matching the specified string will not be loaded. Example:\n\ntyDiffusion_saveImage {viewIndex} {filename}: saves the last image generated bytyDiffusionin the specified viewport to the specified PNG file.\n\ntyDiffusion_loadPreset {filename} {[optional] includeMatchingSettings} {[optional] excludeMatchingSettings}: loads a specifiedtyDiffusionXML preset file. If the optional “includeMatchingSettings” argument is assigned, only settings matching the specified string will be loaded. If the optional “excludeMatchingSettings” argument is assigned, settings matching the specified string will not be loaded. Example:\n\ntyDiffusion_loadPreset @\"myPresetFilename.xml\"\ntyDiffusion_loadPreset @\"myPresetFilename.xml\" includeMatchingSettings:\"controlNet\" --only loads ControlNet settings\ntyDiffusion_loadPreset @\"myPresetFilename.xml\" excludeMatchingSettings:\"controlNet\" --loads all settings except ControlNet settings\ntyDiffusion_loadPreset @\"myPresetFilename.xml\" includeMatchingSettings:\"controlNet\" excludeMatchingSettings:\"weight\" --only loads ControlNet settings that don't include the string \"weight\".\n\ntyDiffusion_savePreset {filename}: saves atyDiffusionpreset file to the specified XML file.",
+      "params": [
+        "tyDiffusion_savePreset {filename}",
+        "tyDiffusion_saveImage {viewIndex} {filename}"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:53Z"
+}

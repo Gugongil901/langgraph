@@ -1,0 +1,30 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_AI/tyDiffusion/models",
+  "title": "Models Tab",
+  "category": "AI",
+  "operator": "Models Tab",
+  "sections": [
+    {
+      "heading": "Models Tab",
+      "level": "h2",
+      "anchor": "models-tab",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Browse Tab",
+      "level": "h3",
+      "anchor": "browse-tab",
+      "content": "The Browse tab gives users access totyDiffusion’s natively-supported model library.\n\nThe model library features a hand-picked selection of diffusion models, ControlNet models, LoRAs, etc. If you would like to use a model that is not available in the model library, it can still be used bytyDiffusion(as long as it isSD 1.5orSD XLcompatible) - simply place it in the proper model folder (as defined in: ‘Setup tab’ > ‘Paths tab’).\n\nAll models in thetyDiffusionmodel library (as well as their corresponding license text) can be found in thetyDiffusion HuggingFace repo",
+      "params": []
+    },
+    {
+      "heading": "Queue tab",
+      "level": "h3",
+      "anchor": "queue-tab",
+      "content": "The Queue tab displays queued/downloading/completed/errored items in the download queue. You can modify the queue from the [>>] menu.\n\nPlease see theAI FAQpage, for information about troubleshooting downloads.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:58Z"
+}

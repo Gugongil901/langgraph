@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_AI/tyDiffusion",
+  "title": "tyDiffusion",
+  "category": "AI",
+  "operator": "tyDiffusion",
+  "sections": [
+    {
+      "heading": "tyDiffusion",
+      "level": "h2",
+      "anchor": "tydiffusion",
+      "content": "tyDiffusionis an advanced implementation ofStable Diffusion(usingComfyUI) in 3ds Max. It can be used to generate AI images and animations using a variety of ControlNets, LoRAs, prompt styles and other techniques, right in the viewport. BecausetyDiffusioncan directly relay viewport information (color, depth, etc) to its AI engine, users can more carefully art direct generated outputs in lockstep with their 3D scene. In that sense,tyDiffusioncan be used as a full scene renderer, not just a random image generator.\n\nDue to issues with 3ds Max’s viewport API (in 3ds Max 2022 and below),tyDiffusionis only available in 3ds Max 2023+.\n\nClick a category to the left for more information about usingtyDiffusion’s features, or visit theAI FAQfor answers to common questions abouttyDiffusion.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:48Z"
+}

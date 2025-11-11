@@ -1,0 +1,28 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_spacewarps/tySpacewarp",
+  "title": "tySpacewarpObject",
+  "category": "Other_Misc",
+  "operator": "tySpacewarpObject",
+  "sections": [
+    {
+      "heading": "tySpacewarpObject",
+      "level": "h2",
+      "anchor": "tyspacewarp-object",
+      "content": "ThetySpacewarpobject can be used to converttyFlowforce helpers (ex:tyVortex) into spacewarps that are compatible with 3rd party plugins (ex: PhoenixFD).",
+      "params": []
+    },
+    {
+      "heading": "Input force",
+      "level": "h4",
+      "anchor": "input-force",
+      "content": "Force object: the inputtyFlowforce helper which will be converted into a regular spacewarp.Strength mult: a multiplier which will be applied to the resulting force calculations.\n\nForce object: the inputtyFlowforce helper which will be converted into a regular spacewarp.\n\nStrength mult: a multiplier which will be applied to the resulting force calculations.\n\nShow icon: controls whether or not to display thetySpacewarpicon in the viewport.Icon size: controls the size of the viewport icon.\n\nShow icon: controls whether or not to display thetySpacewarpicon in the viewport.\n\nIcon size: controls the size of the viewport icon.",
+      "params": [
+        "Force object",
+        "Strength mult",
+        "Show icon",
+        "Icon size"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:10:09Z"
+}

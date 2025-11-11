@@ -1,0 +1,44 @@
+{
+  "url": "https://docs.tyflow.com/faq/rendering",
+  "title": "FAQ: Rendering",
+  "category": "FAQ",
+  "operator": "FAQ: Rendering",
+  "sections": [
+    {
+      "heading": "FAQ: Rendering",
+      "level": "h2",
+      "anchor": "faq-rendering",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "â¢  Which renderers are compatible with tyFlow?",
+      "level": "h3",
+      "anchor": "nbsp-which-renderers-are-compatible-with-tyflow",
+      "content": "Particles in an event with a Mesh operator set to “Trimesh” mode should be compatible with all 3ds Max renderers. This is because “Trimesh” mode effectively converts those particles into editable meshes (a default 3ds Max data type), which are then passed to the renderer when thetyFlowobject is rendered.\n\ntyFlowalso has special settings which allow you to render particles as instances within VRay. Particles set to render as VRay instances will not be compatible with other renderers.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why aren’t my particles rendering?",
+      "level": "h3",
+      "anchor": "nbsp-why-aren-t-my-particles-rendering",
+      "content": "In order for particles to be rendered, a flow normally requires two things: at least one Shape operator and applicable Mesh operators. The Shape operator is used to assign meshes to particles. Shapes assigned to particles will carry over into other events, as shapes are particle properties and not event-specific. The Mesh operator is required to telltyFlowwhich events to render. Each event that the user wants to render will require its own Mesh operator, because the mesh type assigned to a particle within a Mesh operator is event-specific.\n\nIf you are using a point renderer to render particles (like Thinkbox’sKrakatoa) the events in your flow only require a Mesh operator set to “Vertex Cloud” mode. This will cause particles to be generated as a mesh of isolated vertices, rather than full pieces of geometry with faces/UVWs/etc. Krakatoa will then translate those vertices into rendered pixels, when geometry rendering is enabled in its settings.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why aren’t my particles rendering with motion blur?",
+      "level": "h3",
+      "anchor": "nbsp-why-aren-t-my-particles-rendering-with-motion-blur",
+      "content": "Please consult theMotion Blur FAQpage for more information about rendering with motion blur.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why does my simulation reset each time I render?",
+      "level": "h3",
+      "anchor": "nbsp-why-does-my-simulation-reset-each-time-i-render",
+      "content": "If your flow contains dependent objects with render-only settings, rendering will trigger a simulation reset. For example, if you are distributing particles on a surface that has render-only iterations assigned to a Meshsmooth/Turbosmooth modifier, the input mesh will change when rendering begins which will therefore trigger a simulation reset as well.\n\nTo track down the cause of a simulation reset, you can enable “Print sim reset info” in atyFlowobject’s Debugging rollout. Each time the simulation is reset, the cause of the reset will be printed in the MAXScript Listener - you can use this information to track down which operator/parameter is triggering a simulation reset.\n\nIf you are unable to track down the cause of a reset, you can prevent a simulation from automatically resetting by switching simulation reset mode to manual from thetyFloweditor right-click menu. In this mode, a simulation will only reset when the user manually refreshes it.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:27Z"
+}

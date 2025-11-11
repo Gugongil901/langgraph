@@ -1,0 +1,184 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_utilities/tyPreview",
+  "title": "tyPreviewUtility",
+  "category": "Other_Misc",
+  "operator": "tyPreviewUtility",
+  "sections": [
+    {
+      "heading": "tyPreviewUtility",
+      "level": "h2",
+      "anchor": "typreview-utility",
+      "content": "ThetyPreviewutility is a feature-rich replacement for 3ds Max’s built-in animation preview tool.\n\nThetyPreviewutility has many features not available in the built-in animation preview tool. Its image processing core is multithreaded, all of its settings are saved locally to each camera/viewport, it has settings for precise output resolution control, pathname symbols, text overlays, a full MAXScript API, and it can export h264-encoded video directly to an mp4 file.\n\nWhen 3ds Max loads,tyPreviewwill automatically register itself to appropriate preview menus within Max. It also registers a macroscript (under category:tyFlow) that can be assigned to a custom menu or keyboard shortcut. The macroscript opens thetyPreviewUI. To findtyPreviewin the 3ds Max 2020 hotkey editor, simply type “tyPreview” into the action search box.\n\nScroll further down for important information about exportingaudioinside an mp4.",
+      "params": []
+    },
+    {
+      "heading": "Camera",
+      "level": "h4",
+      "anchor": "camera",
+      "content": "Camera list: this dropdown controls which camera will be previewed. Any changes made to the controls in the UI will be saved to the camera currently selected in this list. Selecting a different camera in this list will load that camera’s settings into the UI.\n\nAll max scene object cameras (legacy camera, physical, etc) are available for preview in this list at all times. However, only currently visible built-in viewports (top, front, back, perspective, etc) are available for preview at a given time. If you wish to preview from a built-in viewport, make sure that viewport is assigned to one of the view panels first.",
+      "params": [
+        "Camera list"
+      ]
+    },
+    {
+      "heading": "Frame Range",
+      "level": "h4",
+      "anchor": "frame-range",
+      "content": "Active time segment: all frames of the active time segment will be previewed.Custom Range: a custom range of frames will be previewed.Frame List: a range of frames parsed from a user-editable textbox will be previewed.\n\nActive time segment: all frames of the active time segment will be previewed.\n\nCustom Range: a custom range of frames will be previewed.\n\nFrame List: a range of frames parsed from a user-editable textbox will be previewed.\n\nSeparate groups of frames with commas, and denote ranges of frames with dashes. Ex: “10, 20, 30-50, 75-120, 125”\n\nReverse: controls whether the preview will be made in reverse.Nth: controls the number of frame steps between previewed frames. A value of 1 is regular playback, 2 is every other frame, etc.FPS multiplier: applies a multiplier to the current scene frames per second that allows you to implicitly increase playblast FPS.\n\nReverse: controls whether the preview will be made in reverse.\n\nNth: controls the number of frame steps between previewed frames. A value of 1 is regular playback, 2 is every other frame, etc.\n\nFPS multiplier: applies a multiplier to the current scene frames per second that allows you to implicitly increase playblast FPS.\n\nApplying an FPS multiplier is an easy way to playblast scenes for slow motion effects without having to change scene frame range settings or adjust any animation keys. For example, if you have animation keyframes from frame 0-10 in a 30fps scene but you want to playblast an image sequence at 300 FPS (allowing you to slow down the footage 10x in an external editing application without the need for frame blending), then you’d simply set the FPS multiplier to 10 andtyPreviewwould export 10 times as many frames over the specified frame range by exporting frames at subframe intervals (so instead of exporting frame 0, 1, 2, 3…10, it would export frames 0, 0.1, 0.2, 0.3…10). To avoid decimal places in filenames, the effective frame range will be the specified frame range multiplied by the FPS multiplier. So, for example, a sequence of frames 50-75 with an FPS multiplier of 10 would be exported as frames 500-750.",
+      "params": [
+        "Frame List",
+        "Nth",
+        "Active time segment",
+        "Custom Range",
+        "FPS multiplier",
+        "Reverse"
+      ]
+    },
+    {
+      "heading": "Display Filter",
+      "level": "h4",
+      "anchor": "display-filter",
+      "content": "Object classes: these checkboxes control which viewport objects and elements will be visible in the preview.",
+      "params": [
+        "Object classes"
+      ]
+    },
+    {
+      "heading": "Resolution",
+      "level": "h4",
+      "anchor": "resolution",
+      "content": "Percent of render resolution: the preview output resolution will be a percentage of the current render resolution.Custom resolution: the preview output resolution will be an explicity-defined width and height.Fixed aspect ratio: controls whether the custom resolution width/height values will be constrained to a particular aspect ratio.\n\nPercent of render resolution: the preview output resolution will be a percentage of the current render resolution.\n\nCustom resolution: the preview output resolution will be an explicity-defined width and height.\n\nFixed aspect ratio: controls whether the custom resolution width/height values will be constrained to a particular aspect ratio.\n\nThe 3ds Max SDK does not give low-level access to viewport resolution control, sotyPreviewnative resolution is limited to the size of a maximized viewport (on a 2K display this is roughly 1650x850 pixels). Any output resolution higher than the size of a maximized viewport will be upscaled using a bilinear filtering algorithm.",
+      "params": [
+        "Percent of render resolution",
+        "Fixed aspect ratio",
+        "Custom resolution"
+      ]
+    },
+    {
+      "heading": "Apperance",
+      "level": "h4",
+      "anchor": "apperance",
+      "content": "Mode: this dropdown controls the preview rendering mode.Style: this dropdown controls the preview rendering style.1 light/2 lights/scene lights: controls whether default light(s) or existing scene lights will be used as a light source.UV Checker/Fast Shader/Override mtl/None: controls which material override will be used for the viewport.\n\nMode: this dropdown controls the preview rendering mode.\n\nStyle: this dropdown controls the preview rendering style.\n\n1 light/2 lights/scene lights: controls whether default light(s) or existing scene lights will be used as a light source.\n\nUV Checker/Fast Shader/Override mtl/None: controls which material override will be used for the viewport.\n\nIn order to use the “override mtl” option, an override must have already been assigned to the viewport by the user.\n\nEdged faces: when enabled, edged faces will be visible in the preview.Anti-aliasing: when enabled, 8X anti-aliasing will be enabled for the preview.Multi-pass effect: when enabled, applicable multi-pass effects (DOF or motion blur) of legacy cameras will be enabled for the preview.Ambient Occlusion: when enabled (with progressive refinement), ambient occlusion will be computed.Shadows: when enabled, shadows will be visible.Prog. Refinement: when enabled, Nitrous progressive refinement will be enabled for the preview.Iterations: controls the number of progressive refinement iterations to calculate for each frame.Time (seconds): controls the amount of time to progressively refine the viewport each frame.\n\nEdged faces: when enabled, edged faces will be visible in the preview.\n\nAnti-aliasing: when enabled, 8X anti-aliasing will be enabled for the preview.\n\nMulti-pass effect: when enabled, applicable multi-pass effects (DOF or motion blur) of legacy cameras will be enabled for the preview.\n\nAmbient Occlusion: when enabled (with progressive refinement), ambient occlusion will be computed.\n\nShadows: when enabled, shadows will be visible.\n\nProg. Refinement: when enabled, Nitrous progressive refinement will be enabled for the preview.\n\nIterations: controls the number of progressive refinement iterations to calculate for each frame.\n\nTime (seconds): controls the amount of time to progressively refine the viewport each frame.\n\nUse iterations mode for ensuring a certain level of progressive refinement quality is maintained per frame, regardless of how long the frame takes to render. Use time mode when you want to ensure the time taken to progressively refine frames stays under a certain threshold. Quality is not ensured in time mode, and total time is not limited in iterations mode.\n\nAlpha channelcontrols whether the preview will save alpha channel values.\n\nAlpha channel export will only work when exporting image sequences using a format that supports an alpha channel (exr, png, tif).\n\nSafe frames: controls whether safe frames will be visible in the preview.Textures: controls whether textures will be visible in the preview.Transparency: controls whether material tranparency will be visible in the preview.\n\nSafe frames: controls whether safe frames will be visible in the preview.\n\nTextures: controls whether textures will be visible in the preview.\n\nTransparency: controls whether material tranparency will be visible in the preview.",
+      "params": [
+        "Iterations",
+        "Multi-pass effect",
+        "Style",
+        "Anti-aliasing",
+        "Edged faces",
+        "Ambient Occlusion",
+        "Time (seconds)",
+        "Textures",
+        "UV Checker/Fast Shader/Override mtl/None",
+        "1 light/2 lights/scene lights",
+        "Safe frames",
+        "Mode",
+        "Prog. Refinement",
+        "Transparency",
+        "Shadows"
+      ]
+    },
+    {
+      "heading": "Overlay",
+      "level": "h4",
+      "anchor": "overlay",
+      "content": "Frame number: when enabled, the current frame number will be overlayed onto each frame.Camera name: when enabled, the current camera name will be overlayed onto each frame.Scene file path: when enabled, the file’s path will be overlayed onto each frame.Scene file name: when enabled, the file’s name will be overlayed onto each frame.MAXScript string: when enabled, a user-defined MAXScript string will be overlayed onto each frame.\n\nFrame number: when enabled, the current frame number will be overlayed onto each frame.\n\nCamera name: when enabled, the current camera name will be overlayed onto each frame.\n\nScene file path: when enabled, the file’s path will be overlayed onto each frame.\n\nScene file name: when enabled, the file’s name will be overlayed onto each frame.\n\nMAXScript string: when enabled, a user-defined MAXScript string will be overlayed onto each frame.\n\nThe user-defined MAXScript string must evaluate to a MAXScript String object (ex: “localtime as string”). Multi-line strings are supported.",
+      "params": [
+        "MAXScript string",
+        "Camera name",
+        "Frame number",
+        "Scene file path",
+        "Scene file name"
+      ]
+    },
+    {
+      "heading": "Output",
+      "level": "h4",
+      "anchor": "output",
+      "content": "tyPreviewuses multiple threads to process images and save files. While viewport DIB capture is single-threaded,tyPreview’sgamma correction, RGB to YUV converter (mp4) and bilinear upscaling algorithms are multi-threaded.tyPreviewalso uses multiple threads to write the resulting files to disk. If you notice stuttering while exporting previews at large resolutions, that’s because the multi-threaded file write function has a limiter in place which restricts the number of writer threads that can work together simultaneously. The stuttering is caused by the preview algorithm waiting for the latest batch of writes to complete before updating the time slider (in other words, stuttering is caused by disk writes happening slower than viewport updates). Stuttering is not a sign that your preview is slowing down, but instead that it’s going so fast your disk cannot keep up.\n\n$version: controls the version number which will be assigned to ‘$version’ symbols within output path names.Increment version after preview: when enabled, the version number will be incremented by 1 after each successfully completed preview. Canceled/failed previews will not trigger an increment.MP4: when selected, the preview output will be saved to an h264-encoded mp4 file.\n\n$version: controls the version number which will be assigned to ‘$version’ symbols within output path names.\n\nIncrement version after preview: when enabled, the version number will be incremented by 1 after each successfully completed preview. Canceled/failed previews will not trigger an increment.\n\nMP4: when selected, the preview output will be saved to an h264-encoded mp4 file.\n\nNo mp4 encoder settings are exposed in thetyPreviewUI. The hard-coded mp4 encoder settings are designed to achieve a reasonable bitrate while reducing artifacts in exports.\n\nMP4 path: the output path where mp4 files will be saved.Image Sequence: when selected, the preview output will be saved to a sequence of image files.\n\nMP4 path: the output path where mp4 files will be saved.\n\nImage Sequence: when selected, the preview output will be saved to a sequence of image files.\n\nThe available image-sequence filetypes are jpg, png, tif and exr. No image encoder settings are exposed in thetyPreviewUI. All hard-coded image encoder settings are set to ensure maximum output quality, and alpha channel output (where applicable).\n\nImage sequence path: the output path where images will be saved.\n\nPath values can contain various symbols to denote built-in path variables. Click the “?” button beside each path box to see the list of available symbols. The textbox below the editable path inputs contains the resulting fully-parsed output path.",
+      "params": [
+        "Increment version after preview",
+        "MP4 path",
+        "Image sequence path",
+        "Image Sequence",
+        "MP4",
+        "$version"
+      ]
+    },
+    {
+      "heading": "Exporting Audio",
+      "level": "h3",
+      "anchor": "exporting-audio",
+      "content": "tyPreviewnow has the ability to includeaudioin its mp4 output. However, due to the fact that I have not found any open-source AAC encoders/muxers with a permissive-enough license for me to include them withintyFlowitself, audio export requires the user to pointtyPreviewto an installed version offfmpeg.exe.FFmpegis a free media transcoding/multiplexing program that can be used to pack and encode media together into a single mp4 file. Sinceffmpeg’s license does not allow it to be bundled inside commercial, closed-source software, the user must install it manually in order fortyPreviewto be able to use it to encode audio. Luckily, the install process is extremely simple: simply visitffmpeg.organd download theffmpeg executable(not the source code) for Windows. Onceffmpeg.exeis located on your drive, use the […] menu in thetyPreviewwindow to telltyPreviewwhereffmpeg.exeis located (under the “Audio” submenu of the […] button next to the mp4 output path). Once the location offfmpeg.exeis specified,tyPreviewwill do the rest. The location only needs to be specified once, and it will be remembered the next time you open 3ds Max.",
+      "params": []
+    },
+    {
+      "heading": "MAXScript access",
+      "level": "h3",
+      "anchor": "maxscript-access",
+      "content": "tyPreviewWindow(): this function loads thetyPreviewUI.\n\nThetyPreviewutility can also be executed purely through MAXScript, without having to open the UI.\n\ntyPreview(): this function executes atyPreviewexport, using settings for the currently active viewport.\n\nFortyPreviewcustomization, thetyPreviewMAXScript API gives you full control over alltyPreviewsettings. All of these settings can be called as arguments for the basetyPreview()MAXScript function. For example, instead of “tyPreview()”, you might call “tyPreview frameRange_reverse:true displayFilter_geometry:false appearance_alpha:true”.\n\nThe “tyPreviewWindow()” function can also be called with all of the same function arguments available to the “tyPreview()” function. Instead of immediately executing a preview with those arguments, it will adjust controls in the UI to match your inputs.\n\nAll of thetyPreviewfunction arguments correspond to settings already described in the documentation above, so while they will be listed below, redundant descriptions for them are not included.",
+      "params": [
+        "tyPreviewWindow()",
+        "tyPreview()"
+      ]
+    },
+    {
+      "heading": "tyPreview function arguments:",
+      "level": "h4",
+      "anchor": "typreview-function-arguments",
+      "content": "camera_name:(name of target camera node)camera_node(target camera node)\n\nIfcamera_nodeis specified,tyPreviewwill attempt to preview from that camera. Ifcamera_nameis specified,tyPreviewwill attempt to preview from the camera with that name. If neither is specified,tyPreviewwill preview from the camera of the current active viewport. Export settings will be taken from whichever camera is ultimately chosen. Those settings can be overridden using the function arguments listed below.\n\nframeRange_list: string (ex: “10, 20, 30-50, 75-120, 125”)frameRange_reverse: true|falseframeRange_nth: integerframeInterpolation_mode: integerframeInterpolation_count: integerframeInterpolation_smoothingMode: integerframeInterpolation_lowVRAM: true|falsedisplayFilter_geometry: true|falsedisplayFilter_shapes: true|falsedisplayFilter_lights: true|falsedisplayFilter_cameras: true|falsedisplayFilter_helpers: true|falsedisplayFilter_spacewarps: true|falsedisplayFilter_particles: true|falsedisplayFilter_bones: true|falsedisplayFilter_grid: true|falsedisplayFilter_background: true|falsedisplayFilter_selection: true|falsedisplayFilter_statistics: true|falseresolution_width: integerresolution_height: integerappearance_mode: integer (0-based index of modes listed intyPreviewUI)appearance_style: integer (0-based index of styles listed intyPreviewUI)appearance_lights: integer (0 = one_default; 1 = scene; 2 = two_default)appearance_override: integer (0 = none; 1 = uv_checker; 2 = fast_shader)appearance_edgedFaces: true|falseappearance_alpha: true|falseappearance_antiAliasing: true|falseappearance_safeFrames: true|falseappearance_multipass: true|falseappearance_textures: true|falseappearance_transparency: true|falseappearance_ao: true|falseappearance_shadows: true|falseappearance_progressiveRefinement: true|falseappearance_progressiveRefinement_type: integer (0 = iterations; 1 = time)appearance_progressiveRefinement_iterations: integerappearance_progressiveRefinement_time: floatappearance_tyDiffusion: true|falseappearance_tyDiffusion_reseed: true|falseoverlay_frame: true|falseoverlay_camera: true|falseoverlay_sceneFile: true|falseoverlay_scenePath: true|falseoverlay_maxscript: true|falseoverlay_maxscript_script: stringoutput_version: integeroutput_type: integer (0 = mp4; 1 = images)output_framerate: float\n\nframeRange_nth: integer\n\nframeInterpolation_mode: integer\n\nframeInterpolation_count: integer\n\nframeInterpolation_smoothingMode: integer\n\nframeInterpolation_lowVRAM: true|false\n\ndisplayFilter_geometry: true|false\n\ndisplayFilter_shapes: true|false\n\ndisplayFilter_lights: true|false\n\ndisplayFilter_cameras: true|false\n\ndisplayFilter_helpers: true|false\n\ndisplayFilter_spacewarps: true|false\n\ndisplayFilter_particles: true|false\n\ndisplayFilter_bones: true|false\n\ndisplayFilter_grid: true|false\n\ndisplayFilter_background: true|false\n\ndisplayFilter_selection: true|false\n\ndisplayFilter_statistics: true|false\n\nresolution_width: integer\n\nresolution_height: integer\n\nappearance_mode: integer (0-based index of modes listed intyPreviewUI)\n\nappearance_style: integer (0-based index of styles listed intyPreviewUI)\n\nappearance_lights: integer (0 = one_default; 1 = scene; 2 = two_default)\n\nappearance_override: integer (0 = none; 1 = uv_checker; 2 = fast_shader)\n\nappearance_edgedFaces: true|false\n\nappearance_alpha: true|false\n\nappearance_antiAliasing: true|false\n\nappearance_safeFrames: true|false\n\nappearance_multipass: true|false\n\nappearance_textures: true|false\n\nappearance_transparency: true|false\n\nappearance_ao: true|false\n\nappearance_shadows: true|false\n\nappearance_progressiveRefinement: true|false\n\nappearance_progressiveRefinement_type: integer (0 = iterations; 1 = time)\n\nappearance_progressiveRefinement_iterations: integer\n\nappearance_progressiveRefinement_time: float\n\nappearance_tyDiffusion: true|false\n\nappearance_tyDiffusion_reseed: true|false\n\noverlay_frame: true|false\n\noverlay_camera: true|false\n\noverlay_sceneFile: true|false\n\noverlay_scenePath: true|false\n\noverlay_maxscript: true|false\n\noverlay_maxscript_script: string\n\noutput_version: integer\n\noutput_type: integer (0 = mp4; 1 = images)\n\noutput_framerate: float\n\noutput_type:1must be specified for image sequence export.\n\noutput_filename: string",
+      "params": [
+        "camera_name",
+        "appearance_progressiveRefinement_type",
+        "displayFilter_particles",
+        "appearance_progressiveRefinement_iterations",
+        "displayFilter_shapes",
+        "appearance_tyDiffusion_reseed",
+        "output_filename",
+        "appearance_textures",
+        "frameInterpolation_smoothingMode",
+        "appearance_tyDiffusion",
+        "frameRange_nth",
+        "overlay_scenePath",
+        "output_framerate",
+        "overlay_sceneFile",
+        "displayFilter_geometry",
+        "frameInterpolation_mode",
+        "appearance_transparency",
+        "appearance_override",
+        "overlay_maxscript",
+        "appearance_safeFrames",
+        "displayFilter_selection",
+        "output_type",
+        "displayFilter_grid",
+        "appearance_ao",
+        "appearance_progressiveRefinement",
+        "overlay_maxscript_script",
+        "displayFilter_cameras",
+        "frameInterpolation_count",
+        "frameInterpolation_lowVRAM",
+        "appearance_edgedFaces",
+        "displayFilter_lights",
+        "overlay_camera",
+        "appearance_mode",
+        "appearance_style",
+        "appearance_alpha",
+        "appearance_progressiveRefinement_time",
+        "output_version",
+        "frameRange_list",
+        "appearance_multipass",
+        "overlay_frame",
+        "resolution_width",
+        "displayFilter_spacewarps",
+        "appearance_antiAliasing",
+        "displayFilter_bones",
+        "appearance_shadows",
+        "displayFilter_statistics",
+        "displayFilter_helpers",
+        "appearance_lights",
+        "displayFilter_background",
+        "resolution_height"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:10:36Z"
+}

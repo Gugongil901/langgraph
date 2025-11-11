@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/feedback/bugs",
+  "title": "Bugs",
+  "category": "Other_Misc",
+  "operator": "Bugs",
+  "sections": [
+    {
+      "heading": "Bugs",
+      "level": "h2",
+      "anchor": "bugs",
+      "content": "Have you found atyFlowbug? Please report a description of it tosupport@tyflow.com, along with the steps required to reproduce it, or a description of what you were doing when it occurred.\n\nIf the bug caused 3ds Max to crash and an Autodesk crash report window popped up afterwards, please click the “View Details” button on the crash report window, find where “3dsmax_minidump.dmp” is saved on your machine (the usual location is [C:\\Users\\[username]\\AppData\\Local\\Temp]), and include that file in your email. Minidump files can be loaded by Visual Studio and contain a stack trace which can often show exactly where in tyFlow’s codebase the crash occurred.\n\nSome nefarious bugs can be difficult to reproduce, or only show up in very complicated scene setups. Sometimes they may cause 3ds Max to crash right to the desktop, without even triggering the crash report window. In that case, it is recommended to turn on file logging for the problematic flow (an option in the ‘Debugging’ rollout of anytyFlowobject). If the bug occurs while the simulation is running, the log will show when the simulation was interrupted and it may be easier to track down the problem. For that reason, including the log file with your bug report will be very helpful.If you run into a situation where a scene file crashes while loading, or you are otherwise unable to turn on file logging through the ‘Debugging’ rollout for whatever reason, you can manually force log files to be written by creating the file:c:\\forcelog.tyfon your local hard drive. WhenevertyFlowbegins a simulation, it checks to see if that file exists and if it does, it forces log file output.\n\nThe default location thattyFlowwill save its log isc:\\tyFlow.log. IftyFlowis unable to write directly to that location (for example, if UAC permissions prevent it from doing so), it will instead write it’s log to%temp%\\tyFlow.log.\n\nEnabling file logging will affect the speed of simulations. It is best to keep it disabled unless you are trying to debug a specific problem.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:10:42Z"
+}

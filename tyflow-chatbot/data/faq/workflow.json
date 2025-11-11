@@ -1,0 +1,30 @@
+{
+  "url": "https://docs.tyflow.com/faq/workflow",
+  "title": "FAQ: Workflow",
+  "category": "FAQ",
+  "operator": "FAQ: Workflow",
+  "sections": [
+    {
+      "heading": "FAQ: Workflow",
+      "level": "h2",
+      "anchor": "faq-workflow",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why is my simulation taking so long?",
+      "level": "h3",
+      "anchor": "nbsp-why-is-my-simulation-taking-so-long",
+      "content": "Despite the multi-threaded nature oftyFlow, a complex flow can still take a long time to simulate. To help troubleshoot why a simulation is taking so long, you can turn ontyFlow’ssimulation profiler by enabling “Print simulation details” within atyFlowobject’s “Debugging” rollout. The profiler will print the total execution time for each step of the simulation to the MAXScript listener, allowing you to quickly identify simulation bottlenecks. More information about using the profiler can be foundhere.",
+      "params": []
+    },
+    {
+      "heading": "â¢  How can I speed up my simulation?",
+      "level": "h3",
+      "anchor": "nbsp-how-can-i-speed-up-my-simulation",
+      "content": "This question is scene-specific, but some general guidelines can be used to optimize every flow:\n\nKeep simulation time steps as low as possible. Only increase time steps when more simulation accuracy is required.Keep input geometry as low-res as possible. Even thoughtyFlowcan handle hi-res input geometry with relative ease, a lot of time may still be wasted parsing unnecessarily hi-res meshes.Setup your flows with lower particle counts, only increasing the number of particles when you’re ready to export/render.Use Birth Flow operators to chain multiple flows together, allowing for some flows to generate the initial state of the simulation (requiring only one computation of that state), while other flows (that are continually updated) work from that initial state.Use PRT partitions to export huge numbers of particles into multiple passes simultaneously, across multiple machines, rather than trying to export all particles at once.\n\nKeep simulation time steps as low as possible. Only increase time steps when more simulation accuracy is required.\n\nKeep input geometry as low-res as possible. Even thoughtyFlowcan handle hi-res input geometry with relative ease, a lot of time may still be wasted parsing unnecessarily hi-res meshes.\n\nSetup your flows with lower particle counts, only increasing the number of particles when you’re ready to export/render.\n\nUse Birth Flow operators to chain multiple flows together, allowing for some flows to generate the initial state of the simulation (requiring only one computation of that state), while other flows (that are continually updated) work from that initial state.\n\nUse PRT partitions to export huge numbers of particles into multiple passes simultaneously, across multiple machines, rather than trying to export all particles at once.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:45Z"
+}

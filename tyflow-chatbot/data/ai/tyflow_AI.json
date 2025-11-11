@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_AI",
+  "title": "tyFlowAI",
+  "category": "AI",
+  "operator": "tyFlowAI",
+  "sections": [
+    {
+      "heading": "tyFlowAI",
+      "level": "h2",
+      "anchor": "tyflow-ai",
+      "content": "Click a category in the sidebar for more information about various features.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:46Z"
+}

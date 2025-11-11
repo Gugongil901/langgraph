@@ -1,0 +1,188 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_maxscript",
+  "title": "MAXScript",
+  "category": "Other_Misc",
+  "operator": "MAXScript",
+  "sections": [
+    {
+      "heading": "MAXScript",
+      "level": "h2",
+      "anchor": "maxscript",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "tyFlow Info",
+      "level": "h3",
+      "anchor": "tyflow-info",
+      "content": "tyFlow_version(): returns the version number of the currently installedtyFlowDLO file.tyFlow_found_in_scene(): returns information about the number of active tyFlow classes (objects, modifiers, etc) in the scene.tyFlow_print_scene_load_time {print per-node timings}: prints the amount of time eachtyFlowclass took to load, during scene load. Passing “true” as the function argument will print a longer, per-node timing breakdown. Timings are sorted from longest to shortest (duration in seconds) and grouped by class.\n\ntyFlow_version(): returns the version number of the currently installedtyFlowDLO file.\n\ntyFlow_found_in_scene(): returns information about the number of active tyFlow classes (objects, modifiers, etc) in the scene.\n\ntyFlow_print_scene_load_time {print per-node timings}: prints the amount of time eachtyFlowclass took to load, during scene load. Passing “true” as the function argument will print a longer, per-node timing breakdown. Timings are sorted from longest to shortest (duration in seconds) and grouped by class.",
+      "params": [
+        "tyFlow_version()",
+        "tyFlow_found_in_scene()"
+      ]
+    },
+    {
+      "heading": "tyFlow License",
+      "level": "h3",
+      "anchor": "tyflow-license",
+      "content": "tyFlow_activate_license(): attempts to activate a tyFlow PRO license (tyFlow.cfg must already exist and contain a valid license key or server address).tyFlow_deactivate_license(): attempts to deactivates an activated tyFlow PRO license.tyFlow_license_activated(): returns 1 if a tyFlow PRO license is currently activated, or 0 if not.\n\ntyFlow_activate_license(): attempts to activate a tyFlow PRO license (tyFlow.cfg must already exist and contain a valid license key or server address).\n\ntyFlow_deactivate_license(): attempts to deactivates an activated tyFlow PRO license.\n\ntyFlow_license_activated(): returns 1 if a tyFlow PRO license is currently activated, or 0 if not.",
+      "params": [
+        "tyFlow_license_activated()",
+        "tyFlow_activate_license()",
+        "tyFlow_deactivate_license()"
+      ]
+    },
+    {
+      "heading": "MAXScript Editor Access",
+      "level": "h3",
+      "anchor": "maxscript-editor-access",
+      "content": "[obj].editor_open(): opens thetyFloweditor GUI.[obj].editor_close(): closes thetyFloweditor GUI (if it is open).[obj].editor_pan {x} {y}: pans the editor by the specified x/y values.[obj].editor_resetPan(): resets the editor window pan value.[obj].editor_zoom {zoom}: zooms the editor window by the specified value (negative values zoom out, positive values zoom in).[obj].editor_resetZoom(): resets the editor window zoom value.\n\n[obj].editor_open(): opens thetyFloweditor GUI.\n\n[obj].editor_close(): closes thetyFloweditor GUI (if it is open).\n\n[obj].editor_pan {x} {y}: pans the editor by the specified x/y values.\n\n[obj].editor_resetPan(): resets the editor window pan value.\n\n[obj].editor_zoom {zoom}: zooms the editor window by the specified value (negative values zoom out, positive values zoom in).\n\n[obj].editor_resetZoom(): resets the editor window zoom value.",
+      "params": [
+        "[obj].editor_resetPan()",
+        "[obj].editor_pan {x} {y}",
+        "[obj].editor_close()",
+        "[obj].editor_resetZoom()",
+        "[obj].editor_zoom {zoom}",
+        "[obj].editor_open()"
+      ]
+    },
+    {
+      "heading": "MAXScript Simulation",
+      "level": "h3",
+      "anchor": "maxscript-simulation",
+      "content": "[obj].reset_simulation(): resets thetyFlowsimulation and clears the cache.",
+      "params": [
+        "[obj].reset_simulation()"
+      ]
+    },
+    {
+      "heading": "MAXScript Event/Operator Access",
+      "level": "h3",
+      "anchor": "maxscript-event-operator-access",
+      "content": "tyFlowevents and operators can be created and manipulated using MAXScript.",
+      "params": []
+    },
+    {
+      "heading": "Events",
+      "level": "h4",
+      "anchor": "events",
+      "content": "[obj].addEvent(): creates (and returns) a new event, centered in thetyFloweditor GUI.[event].getEnabled() / [event].setEnabled {value}: gets or sets the enabled state of an event.[event].getWidth() / [event].setWidth {value}: gets or sets the width of an event in the editor GUI.[event].getName() / [event].setName {value}: gets or sets the name of an event.[event].getPosition() / [event].setPosition {position}: gets or sets the position of an event in the editor GUI.[event].addOperator {type} {where}: creates (and returns) a new operator in the event, of the specified type and at the specified 0-based position in the event’s operator list (use -1 for end-of-list position).[event].remove(): removes the event from the flow.\n\n[obj].addEvent(): creates (and returns) a new event, centered in thetyFloweditor GUI.\n\n[event].getEnabled() / [event].setEnabled {value}: gets or sets the enabled state of an event.\n\n[event].getWidth() / [event].setWidth {value}: gets or sets the width of an event in the editor GUI.\n\n[event].getName() / [event].setName {value}: gets or sets the name of an event.\n\n[event].getPosition() / [event].setPosition {position}: gets or sets the position of an event in the editor GUI.\n\n[event].addOperator {type} {where}: creates (and returns) a new operator in the event, of the specified type and at the specified 0-based position in the event’s operator list (use -1 for end-of-list position).\n\n[event].remove(): removes the event from the flow.",
+      "params": [
+        "[obj].addEvent()",
+        "[event].remove()",
+        "[event].addOperator {type} {where}",
+        "[event].getEnabled() / [event].setEnabled {value}",
+        "[event].getName() / [event].setName {value}",
+        "[event].getWidth() / [event].setWidth {value}"
+      ]
+    },
+    {
+      "heading": "Operators",
+      "level": "h4",
+      "anchor": "operators",
+      "content": "[operator].getEnabled() / [operator].setEnabled {value}: gets or sets the enabled state of an operator.[operator].getName() / [operator].setName {value}: gets or sets the name of an operator.[operator].connect {event}: connects the operator to the specified event.[operator].disconnect(): disconnects the operator from any event it is connected to.[operator].remove(): removes the operator from its event.\n\n[operator].getEnabled() / [operator].setEnabled {value}: gets or sets the enabled state of an operator.\n\n[operator].getName() / [operator].setName {value}: gets or sets the name of an operator.\n\n[operator].connect {event}: connects the operator to the specified event.\n\n[operator].disconnect(): disconnects the operator from any event it is connected to.\n\n[operator].remove(): removes the operator from its event.",
+      "params": [
+        "[operator].getName() / [operator].setName {value}",
+        "[operator].disconnect()",
+        "[operator].connect {event}",
+        "[operator].remove()"
+      ]
+    },
+    {
+      "heading": "Example",
+      "level": "h4",
+      "anchor": "example",
+      "content": "The following MAXScript example shows how to create events and operators, connect them together, modify their properties, etc:\n\n(\n\ttf = tyflow()\n\tev1 = tf.addEvent()\n\tev1.setName \"Birth\"\n\tev1.addOperator \"Birth\" -1\n\tsnd = ev1.addOperator \"Send Out\" -1\n\tev2 = tf.addEvent()\n\tev2.setPosition (ev2.getPosition() + [230, 120])\n\tfrc = ev2.addOperator \"Force\" -1\n\tfrc.gravityStrength = -1\n\tsnd.connect ev2\n\tev2.addOperator \"Display\" -1\n\ttf.reset_simulation()\n\ttf.editor_open()\n\ttf.editor_pan -150 -50\n)",
+      "params": []
+    },
+    {
+      "heading": "MAXScript Particle Access",
+      "level": "h3",
+      "anchor": "maxscript-particle-access",
+      "content": "BothtyFlowandtyCacheobjects have MAXScript interfaces which can be used to read particle data.",
+      "params": []
+    },
+    {
+      "heading": "Preparing particles",
+      "level": "h4",
+      "anchor": "preparing-particles",
+      "content": "[obj].updateParticles {frame}: prepares particle data for MAXScript access at a particular frame.\n\nTheupdateParticlesfunction of atyFlowortyCacheobjectMUSTbe called prior to accessing particle data.\n\n[obj].numParticles(): returns the number of particles at the prepared frame.",
+      "params": [
+        "[obj].numParticles()",
+        "[obj].updateParticles {frame}"
+      ]
+    },
+    {
+      "heading": "Individual particle data",
+      "level": "h4",
+      "anchor": "individual-particle-data",
+      "content": "Data for individual particles can be accessed with their index. Valid particle indices (fortyFlow/tyCacheobjects with at least 1 particle) range from1to[obj].numParticles().\n\nParticle indices are 1-based,not0-based!\n\nFor optimized particle access, use the “getAllXXX” functions to receive an array filled with all particle data for a particular property. Getting and iterating that array will be much faster than repeated calls to the property access functions for each particle by their index.\n\n[obj].getParticleID {index}: returns the unqiue ID for the specified particle index.[obj].getAllParticleIDs(): returns an array of all particle IDs for the prepared frame.[obj].getParticleAge {index}: returns the age (in frames) for the specified particle index.[obj].getAllParticleAges(): returns an array of all particle ages (in frames) for the prepared frame.[obj].getParticleTM {index}: returns the transform for the specified particle index.[obj].getAllParticleTMs(): returns an array of all particle transforms for the prepared frame.[obj].getParticlePosition {index}: returns the position for the specified particle index.[obj].getAllParticlePositions(): returns an array of all particle positions for the prepared frame.[obj].getParticleScale {index}: returns the scale for the specified particle index.[obj].getAllParticleScales(): returns an array of all particle scales for the prepared frame.[obj].getParticleVelocity {index}: returns the velocity (in units per frame) for the specified particle index.[obj].getAllParticleVelocities(): returns an array of all particle velocities for the prepared frame.[obj].getParticleShapeMesh {index}: returns the trimesh for the specified particle index.[obj].getAllParticleShapeMeshes(): returns an array of all particle trimeshes for the prepared frame.[obj].getParticleMass {index}: returns the mass value for the specified particle index.[obj].getAllParticleMasses(): returns an array of all paricle mass values for the prepared frame.[obj].getParticleMatID {index}: returns the material ID override for the specified particle index.[obj].getAllParticleMatIDs(): returns an array of all particle material ID overrides for the prepared frame.\n\n[obj].getParticleID {index}: returns the unqiue ID for the specified particle index.\n\n[obj].getAllParticleIDs(): returns an array of all particle IDs for the prepared frame.\n\n[obj].getParticleAge {index}: returns the age (in frames) for the specified particle index.\n\n[obj].getAllParticleAges(): returns an array of all particle ages (in frames) for the prepared frame.\n\n[obj].getParticleTM {index}: returns the transform for the specified particle index.\n\n[obj].getAllParticleTMs(): returns an array of all particle transforms for the prepared frame.\n\n[obj].getParticlePosition {index}: returns the position for the specified particle index.\n\n[obj].getAllParticlePositions(): returns an array of all particle positions for the prepared frame.\n\n[obj].getParticleScale {index}: returns the scale for the specified particle index.\n\n[obj].getAllParticleScales(): returns an array of all particle scales for the prepared frame.\n\n[obj].getParticleVelocity {index}: returns the velocity (in units per frame) for the specified particle index.\n\n[obj].getAllParticleVelocities(): returns an array of all particle velocities for the prepared frame.\n\n[obj].getParticleShapeMesh {index}: returns the trimesh for the specified particle index.\n\n[obj].getAllParticleShapeMeshes(): returns an array of all particle trimeshes for the prepared frame.\n\n[obj].getParticleMass {index}: returns the mass value for the specified particle index.\n\n[obj].getAllParticleMasses(): returns an array of all paricle mass values for the prepared frame.\n\n[obj].getParticleMatID {index}: returns the material ID override for the specified particle index.\n\n[obj].getAllParticleMatIDs(): returns an array of all particle material ID overrides for the prepared frame.\n\nA material ID override value of 0 means no override is assigned to the particle.\n\n[obj].getParticleInstanceID {index}: returns the instance ID for the specified particle index.[obj].getAllParticleInstanceIDs(): returns an array of all particle instance IDs for the prepared frame.[obj].getParticleSimGroups {index}: returns the simulation group bitflags for the specified particle index.[obj].getAllParticleSimGroups(): returns an array of all particle simulation group bitflags IDs for the prepared frame.[obj].getParticleExportGroups {index}: returns the export group bitflags for the specified particle index.[obj].getAllParticleExportGroups(): returns an array of all particle export group bitflags IDs for the prepared frame.[obj].getParticleUVWChannels {index}: returns the mapping channel override indices for the specified particle index.[obj].getAllParticleUVWChannels(): returns an array of all particle mapping channel override indices for the prepared frame.[obj].getParticleUVW {index | channel}: returns the mapping channel override value for the specified particle index.[obj].getAllParticleUVWs {channel}: returns an array of all particle mapping channel override values for the prepared frame.\n\n[obj].getParticleInstanceID {index}: returns the instance ID for the specified particle index.\n\n[obj].getAllParticleInstanceIDs(): returns an array of all particle instance IDs for the prepared frame.\n\n[obj].getParticleSimGroups {index}: returns the simulation group bitflags for the specified particle index.\n\n[obj].getAllParticleSimGroups(): returns an array of all particle simulation group bitflags IDs for the prepared frame.\n\n[obj].getParticleExportGroups {index}: returns the export group bitflags for the specified particle index.\n\n[obj].getAllParticleExportGroups(): returns an array of all particle export group bitflags IDs for the prepared frame.\n\n[obj].getParticleUVWChannels {index}: returns the mapping channel override indices for the specified particle index.\n\n[obj].getAllParticleUVWChannels(): returns an array of all particle mapping channel override indices for the prepared frame.\n\n[obj].getParticleUVW {index | channel}: returns the mapping channel override value for the specified particle index.\n\n[obj].getAllParticleUVWs {channel}: returns an array of all particle mapping channel override values for the prepared frame.\n\nHere is an example script, showing how to access individual particle transforms at frame 15, for atyFlowobject named “tyFlow001”:tf = $tyFlow001tf.updateParticles 15numParticles = tf.numParticles()tms = tf.getAllParticleTMs()for j in 1 to numParticles do(tm = tms[j])",
+      "params": [
+        "[obj].getAllParticleShapeMeshes()",
+        "[obj].getAllParticleUVWs {channel}",
+        "[obj].getParticleID {index}",
+        "[obj].getAllParticleScales()",
+        "[obj].getAllParticleTMs()",
+        "[obj].getParticleMatID {index}",
+        "[obj].getParticleVelocity {index}",
+        "[obj].getParticleUVWChannels {index}",
+        "[obj].getParticleAge {index}",
+        "[obj].getAllParticleIDs()",
+        "[obj].getAllParticleVelocities()",
+        "[obj].getAllParticleMatIDs()",
+        "[obj].getParticleScale {index}",
+        "[obj].getParticleMass {index}",
+        "[obj].getParticleExportGroups {index}",
+        "[obj].getParticleUVW {index | channel}",
+        "[obj].getAllParticleInstanceIDs()",
+        "[obj].getAllParticleSimGroups()",
+        "[obj].getParticleTM {index}",
+        "[obj].getAllParticleExportGroups()",
+        "[obj].getAllParticleAges()",
+        "[obj].getParticlePosition {index}",
+        "[obj].getAllParticleMasses()",
+        "[obj].getAllParticleUVWChannels()",
+        "[obj].getParticleShapeMesh {index}",
+        "[obj].getAllParticlePositions()",
+        "[obj].getParticleInstanceID {index}",
+        "[obj].getParticleSimGroups {index}"
+      ]
+    },
+    {
+      "heading": "MAXScript Volume Access",
+      "level": "h3",
+      "anchor": "maxscript-volume-access",
+      "content": "tyFlowobjects have a MAXScript interface which can be used to read volume data.",
+      "params": []
+    },
+    {
+      "heading": "Preparing volumes",
+      "level": "h4",
+      "anchor": "preparing-volumes",
+      "content": "[obj].updateVolumes(): prepares volume data for MAXScript access.\n\nTheupdateVolumesfunction of atyFlowobjectMUSTbe called prior to accessing volume data.",
+      "params": [
+        "[obj].updateVolumes()"
+      ]
+    },
+    {
+      "heading": "Volume data access",
+      "level": "h4",
+      "anchor": "volume-data-access",
+      "content": "[obj].getVolumeScalar {position} {type}: samples a scalar (float) value within a volume, at the specified position in world-space. “Type” specifies the type of scalar: 0=density/smoke, 1=fuel, 2=temperature.[obj].getVolumeVector {position} {type}: samples a vector value within a volume, at the specified position in world-space. “Type” specifies the type of vector: 0=color, 1=velocity.[obj].convertVolumeTemperature {temperature} {units}: converts a normalized volume temperature value (returned by the getVolumeScalar function) to a temperature value in the specified temperature units: 1=celcius, 2=fahrenheit, 3=kelvin.\n\n[obj].getVolumeScalar {position} {type}: samples a scalar (float) value within a volume, at the specified position in world-space. “Type” specifies the type of scalar: 0=density/smoke, 1=fuel, 2=temperature.\n\n[obj].getVolumeVector {position} {type}: samples a vector value within a volume, at the specified position in world-space. “Type” specifies the type of vector: 0=color, 1=velocity.\n\n[obj].convertVolumeTemperature {temperature} {units}: converts a normalized volume temperature value (returned by the getVolumeScalar function) to a temperature value in the specified temperature units: 1=celcius, 2=fahrenheit, 3=kelvin.",
+      "params": [
+        "[obj].getVolumeScalar {position} {type}",
+        "[obj].getVolumeVector {position} {type}"
+      ]
+    },
+    {
+      "heading": "Cleaning up volumes",
+      "level": "h4",
+      "anchor": "cleaning-up-volumes",
+      "content": "[obj].releaseVolumes(): clears volume data that was cached in the last call to updateVolumes().",
+      "params": [
+        "[obj].releaseVolumes()"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:55Z"
+}

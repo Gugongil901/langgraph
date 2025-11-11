@@ -1,0 +1,35 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_helpers/tyBind",
+  "title": "tyBindHelper",
+  "category": "Other_Misc",
+  "operator": "tyBindHelper",
+  "sections": [
+    {
+      "heading": "tyBindHelper",
+      "level": "h2",
+      "anchor": "tybind-helper",
+      "content": "ThetyBindhelper can be used to specify PhysX Bind relationships between actor objects imported into a flow using an Actor operator.\n\ntyBindhelpers are useful in situations where you wish to maximize control over the way PhysX Binds between two particles will operate. For example, if you want to rig a particle-based vehicle, you can usetyBindhelpers to define exactly how each tire is connected to the chasis of the vehicle, which axis of each wheel bind may rotate, etc. Similarly, they can be used to define rotation limits on joints for a ragdoll character…or any other situation where you want full, manual control over PhysX bind movement properties.\n\nActor operators can be used to import tyActor helper data. ThetyBindhelper should be added to the appropriate tyActor helper object list in order to be properly imported into a flow.\n\nBy default,tyBindhelpers create rigid PhysX binds between particles in a relevant tyActor setup. By adding atyBindSettingsmodifier to thetyBindobject, you can control the settings of the PhysX bindings. In order to easily change the settings of more than onetyBindhelper at a time, simply instance thetyBindSettingsmodifier between all of the helpers whose settings you would like to keep identical.",
+      "params": []
+    },
+    {
+      "heading": "Bind Objects",
+      "level": "h4",
+      "anchor": "bind-objects",
+      "content": "Object A/B: these controls specify which two members of the tyActor object list will be bound together with a PhysX Bind.",
+      "params": [
+        "Object A/B"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Show icon: controls whether the helper’s icon will be draw in the viewport.Show connections: controls whether a line between object A and B will be drawn in the viewport.\n\nShow icon: controls whether the helper’s icon will be draw in the viewport.\n\nShow connections: controls whether a line between object A and B will be drawn in the viewport.",
+      "params": [
+        "Show icon",
+        "Show connections"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:25Z"
+}

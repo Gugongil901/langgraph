@@ -1,0 +1,183 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_splines/tySplines",
+  "title": "tySplinesObject",
+  "category": "Other_Misc",
+  "operator": "tySplinesObject",
+  "sections": [
+    {
+      "heading": "tySplinesObject",
+      "level": "h2",
+      "anchor": "tysplines-object",
+      "content": "ThetySplinesobject takes input particles sent from aSpline Pathsoperator and converts them into native 3ds max splines.\n\nYou must select atySplinesobject within aSpline Pathsoperator inside of an active flow in order to feed atySplinesobject its data. AtySplinesobject contains a cache of data for fast playback, but does not save that cache to disk. Thus, its parent flow must always exist in the scene with it, in order for it to work.\n\nMultiple operators within the same flow can send particles to the sametySplinesobject, but you should not send particles from multiple flow objects into the sametySplinesobject, or else the resulting splines will not display correctly.",
+      "params": []
+    },
+    {
+      "heading": "Spline Paths Rollout",
+      "level": "h3",
+      "anchor": "spline-paths-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Spline Path Settings",
+      "level": "h4",
+      "anchor": "spline-path-settings",
+      "content": "Linear/Smooth: controls the interpolation method used to generate spline.World space: controls the coordinate system to generate splines in. Turning this off will generate splines whose position is relative to the position of thetySplinesobject in the world.Show knots: controls whether or not to display each spline’s knots in the viewport.\n\nLinear/Smooth: controls the interpolation method used to generate spline.\n\nWorld space: controls the coordinate system to generate splines in. Turning this off will generate splines whose position is relative to the position of thetySplinesobject in the world.\n\nShow knots: controls whether or not to display each spline’s knots in the viewport.",
+      "params": [
+        "Show knots",
+        "World space",
+        "Linear/Smooth"
+      ]
+    },
+    {
+      "heading": "Spline generation",
+      "level": "h4",
+      "anchor": "spline-generation",
+      "content": "Dist thresh: controls the minimum step size between points on a particle’s trajectory in order for them to form a spline segment.Max dist: controls the maximum distance between two sibling particles in order for them to be conjoined with a spline segment.Max age: controls the maximum age of particle trajectory points in order for them to be adding to a spline segment.Time step: controls the minimum time step between particle positions in order for them to form a spline segment.\n\nDist thresh: controls the minimum step size between points on a particle’s trajectory in order for them to form a spline segment.\n\nMax dist: controls the maximum distance between two sibling particles in order for them to be conjoined with a spline segment.\n\nMax age: controls the maximum age of particle trajectory points in order for them to be adding to a spline segment.\n\nTime step: controls the minimum time step between particle positions in order for them to form a spline segment.",
+      "params": [
+        "Max age",
+        "Time step",
+        "Max dist",
+        "Dist thresh"
+      ]
+    },
+    {
+      "heading": "Spline Welding",
+      "level": "h4",
+      "anchor": "spline-welding",
+      "content": "Knot sorting has a performance cost, but keeping knots in order can help keep weld order deterministic between frames where knot count changes.\n\nWeld bindings: controls whether or not to weld spline segments corresponding to connected bindings between particles together, end-to-end.Sort bindings: sorts groups of binds by ID, for consistent spline ordering.Cluster by ID: when enabled, only bindings with the same ID will be welded together.Weld knots: controls whether or not to weld resulting splines segments together, based on whether or not their endpoints are coincident.Sort knots: sorts the candidate knots prior to welding, for consistent spline ordering.Cluster knots: when enabled, clustering data transferred from a Spline Paths operator will control which spline knots will be welded together.Only knots with matching cluster values will be welded.Tolerance: the weld distance tolerance. Spline endpoints whose distance is below this value will be welded together.Close loops: when enabled, all subsplines will be closed (their first and last knot will be connected).\n\nWeld bindings: controls whether or not to weld spline segments corresponding to connected bindings between particles together, end-to-end.\n\nSort bindings: sorts groups of binds by ID, for consistent spline ordering.\n\nCluster by ID: when enabled, only bindings with the same ID will be welded together.\n\nWeld knots: controls whether or not to weld resulting splines segments together, based on whether or not their endpoints are coincident.\n\nSort knots: sorts the candidate knots prior to welding, for consistent spline ordering.\n\nCluster knots: when enabled, clustering data transferred from a Spline Paths operator will control which spline knots will be welded together.Only knots with matching cluster values will be welded.\n\nTolerance: the weld distance tolerance. Spline endpoints whose distance is below this value will be welded together.\n\nClose loops: when enabled, all subsplines will be closed (their first and last knot will be connected).",
+      "params": [
+        "Weld bindings",
+        "Cluster by ID",
+        "Close loops",
+        "Cluster knots",
+        "Sort knots",
+        "Tolerance",
+        "Weld knots",
+        "Sort bindings"
+      ]
+    },
+    {
+      "heading": "Post Processing",
+      "level": "h4",
+      "anchor": "post-processing",
+      "content": "Sort splines by knot ID: when enabled, splines will be internally sorted by the ID value of the particle which corresponds to their first knot.Optimize splines by angle: controls whether spline knot counts will be reduced based on relative angles between spline segments.Tolerance: the tolerance angle for performing knot reductions. Spline segments whose relative angle is less than this value will have their adjacent knot removed.\n\nSort splines by knot ID: when enabled, splines will be internally sorted by the ID value of the particle which corresponds to their first knot.\n\nOptimize splines by angle: controls whether spline knot counts will be reduced based on relative angles between spline segments.",
+      "params": [
+        "Optimize splines by angle",
+        "Sort splines by knot ID"
+      ]
+    },
+    {
+      "heading": "Tolerance: the tolerance angle for performing knot reductions. Spline segments whose relative angle is less than this value will have their adjacent knot removed.",
+      "level": "h2",
+      "anchor": "tolerance-the-tolerance-angle-for-performing-knot-reductions-spline-segments-whose-relative-angle-is-less-than-this-value-will-have-their-adjacent-knot-removed",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Display Rollout",
+      "level": "h3",
+      "anchor": "display-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Display splines in viewport: controls whether or not to generate splines in the viewport.Show icon: controls whether or not to display thetySplinesicon in the viewport.Icon size: controls the size of the viewport icon.Show name: displays the name of thetySplinesobject next to its icon in the viewport.\n\nDisplay splines in viewport: controls whether or not to generate splines in the viewport.\n\nShow icon: controls whether or not to display thetySplinesicon in the viewport.\n\nIcon size: controls the size of the viewport icon.\n\nShow name: displays the name of thetySplinesobject next to its icon in the viewport.",
+      "params": [
+        "Show icon",
+        "Icon size",
+        "Display splines in viewport",
+        "Show name"
+      ]
+    },
+    {
+      "heading": "Trajectory Splines Rollout",
+      "level": "h3",
+      "anchor": "trajectory-splines-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Trajectory splines",
+      "level": "h4",
+      "anchor": "trajectory-splines",
+      "content": "Max length: specifies the maximum total length a trajectory spline can be, starting from its originating particle.Delete if particle deleted: trajectory splines whose originating particle is deleted will not generate the leftover trail that is within the trajectory/sibling max age limit.Interpolate first knot: on subframes, the first knot of the trajectory spline will be linearly interpolated between whole frames.Interpolate last knot: on subframes, the last knot of the trajectory spline will be linearly interpolated between whole frames.Interpolate middle knots: on subframes, the middle knots of the trajectory spline will be linearly interpolated between whole frames.\n\nMax length: specifies the maximum total length a trajectory spline can be, starting from its originating particle.\n\nDelete if particle deleted: trajectory splines whose originating particle is deleted will not generate the leftover trail that is within the trajectory/sibling max age limit.\n\nInterpolate first knot: on subframes, the first knot of the trajectory spline will be linearly interpolated between whole frames.\n\nInterpolate last knot: on subframes, the last knot of the trajectory spline will be linearly interpolated between whole frames.\n\nInterpolate middle knots: on subframes, the middle knots of the trajectory spline will be linearly interpolated between whole frames.\n\nIn some situations, you may not want all/any trajectory knots to be linearly interpolated between subframes. For example, due to the linear nature of interpolations, you may see apparent jittering in tySplines objects that are retimed to slow down, if source particles move in smooth arcing motions (due to the linear movement of knots from the previous whole frame’s position to the next whole frame’s position). In these cases, disabling “interpolate middle knots” will prevent such jittering from occurring.",
+      "params": [
+        "Interpolate middle knots",
+        "Interpolate last knot",
+        "Max length",
+        "Interpolate first knot",
+        "Delete if particle deleted"
+      ]
+    },
+    {
+      "heading": "Neighbor Splines Rollout",
+      "level": "h3",
+      "anchor": "neighbor-splines-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Neighbor splines",
+      "level": "h4",
+      "anchor": "neighbor-splines",
+      "content": "Max dist: controls the maximum distance between two particles in order for them to be conjoined with a spline segment.Max neighbors: controls the maximum number of spline segments a particular particle can have, connecting it to its neighbors.Sort by ID/distance: controls the method used to sort neighbors within the distance threshold for any particular particle, if the number of neighbors is larger than the value of “Max neighbors”.Neighbor Simulation groups: controls which particle simulation groups will be considered for the neighbor collection.\n\nMax dist: controls the maximum distance between two particles in order for them to be conjoined with a spline segment.\n\nMax neighbors: controls the maximum number of spline segments a particular particle can have, connecting it to its neighbors.\n\nSort by ID/distance: controls the method used to sort neighbors within the distance threshold for any particular particle, if the number of neighbors is larger than the value of “Max neighbors”.\n\nNeighbor Simulation groups: controls which particle simulation groups will be considered for the neighbor collection.",
+      "params": [
+        "Sort by ID/distance",
+        "Max dist",
+        "Max neighbors",
+        "Neighbor Simulation groups"
+      ]
+    },
+    {
+      "heading": "Sibling Splines Rollout",
+      "level": "h3",
+      "anchor": "sibling-splines-rollout",
+      "content": "Must be adjacent: when enabled, only input particles which are adjacent siblings (siblings born one after the other, in order) will be connected with spline segments.",
+      "params": [
+        "Must be adjacent"
+      ]
+    },
+    {
+      "heading": "Retimer Rollout",
+      "level": "h3",
+      "anchor": "retimer-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Retimer",
+      "level": "h4",
+      "anchor": "retimer",
+      "content": "Enable spline retimer: controls whether or not to enable spline animation retiming.Retime type: controls whether the retimer affects playback frame or speed.\n\nEnable spline retimer: controls whether or not to enable spline animation retiming.\n\nRetime type: controls whether the retimer affects playback frame or speed.\n\nFrame: controls the current frame of the input spline data to display.\n\nSpeed %: the percent value that controls playback speed.Ref Frame: the reference frame that the speed multiplier will be relative to.\n\nSpeed %: the percent value that controls playback speed.\n\nRef Frame: the reference frame that the speed multiplier will be relative to.",
+      "params": [
+        "Frame",
+        "Retime type",
+        "Ref Frame",
+        "Enable spline retimer",
+        "Speed %"
+      ]
+    },
+    {
+      "heading": "Tools Rollout",
+      "level": "h3",
+      "anchor": "tools-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Internal Cache",
+      "level": "h4",
+      "anchor": "internal-cache",
+      "content": "Clear Cache: clears the cached data contained within thetySplineobject. The flow from which the data originated will need to be resimulated in order to refresh the data.Only keep current frame: controls whether to keep data for past frames in memory, or only keep the current frame in memory. Turning this on will conserve RAM but will prevent playback of prior frames without refreshing the entire simulation. This setting is useful when rendering frames in a sequential manner on a machine with limited RAM.\n\nClear Cache: clears the cached data contained within thetySplineobject. The flow from which the data originated will need to be resimulated in order to refresh the data.\n\nOnly keep current frame: controls whether to keep data for past frames in memory, or only keep the current frame in memory. Turning this on will conserve RAM but will prevent playback of prior frames without refreshing the entire simulation. This setting is useful when rendering frames in a sequential manner on a machine with limited RAM.",
+      "params": [
+        "Clear Cache",
+        "Only keep current frame"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:10:20Z"
+}

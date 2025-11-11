@@ -1,0 +1,30 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_helpers/tyIcon",
+  "title": "tyIconHelper",
+  "category": "Other_Misc",
+  "operator": "tyIconHelper",
+  "sections": [
+    {
+      "heading": "tyIconHelper",
+      "level": "h2",
+      "anchor": "tyicon-helper",
+      "content": "ThetyIconhelper can be used by varioustyFlowoperators to control the position or direction of particles.",
+      "params": []
+    },
+    {
+      "heading": "Parameters",
+      "level": "h4",
+      "anchor": "parameters",
+      "content": "Logo size: controls the size of thetyIconlogo in the viewport.Icon type: controls the icon shape type.Length/Diameter: controls the length or diameter of the icon, depending on the icon shape type.Width: controls the width of the icon, depending on the icon shape type.Height: controls the height of the icon, depending on the icon shape type.Show logo/icon: controls which aspect of the icon are drawn in the viewport.\n\nLogo size: controls the size of thetyIconlogo in the viewport.\n\nIcon type: controls the icon shape type.\n\nLength/Diameter: controls the length or diameter of the icon, depending on the icon shape type.\n\nWidth: controls the width of the icon, depending on the icon shape type.\n\nHeight: controls the height of the icon, depending on the icon shape type.\n\nShow logo/icon: controls which aspect of the icon are drawn in the viewport.",
+      "params": [
+        "Height",
+        "Length/Diameter",
+        "Icon type",
+        "Show logo/icon",
+        "Width",
+        "Logo size"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:30Z"
+}

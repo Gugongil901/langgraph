@@ -1,0 +1,65 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_helpers/tyVortex",
+  "title": "tyVortexHelper",
+  "category": "Other_Misc",
+  "operator": "tyVortexHelper",
+  "sections": [
+    {
+      "heading": "tyVortexHelper",
+      "level": "h2",
+      "anchor": "tyvortex-helper",
+      "content": "ThetyVortexhelper can be used as an alternative to 3ds Max’sVortexspacewarp, within a flow. It applies circular forces to particles along an axis.",
+      "params": []
+    },
+    {
+      "heading": "Pull force",
+      "level": "h4",
+      "anchor": "pull-force",
+      "content": "The pull force is a force which pulls particles towards the central axis of the vortex.\n\nPull force: controls the strength of the pull force.Distance: particles within this distance will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nPull force: controls the strength of the pull force.\n\nDistance: particles within this distance will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.",
+      "params": [
+        "Distance",
+        "Falloff",
+        "Pull force"
+      ]
+    },
+    {
+      "heading": "Follow force",
+      "level": "h4",
+      "anchor": "follow-force",
+      "content": "The follow force is a force which pulls particles along the central axis of the vortex.\n\nFollow force: controls the strength of the follow force.Distance: particles within this distance will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nFollow force: controls the strength of the follow force.\n\nDistance: particles within this distance will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.",
+      "params": [
+        "Distance",
+        "Falloff",
+        "Follow force"
+      ]
+    },
+    {
+      "heading": "Swirl force",
+      "level": "h4",
+      "anchor": "swirl-force",
+      "content": "The swirl force is a force which moves particles around the central axis of the vortex.\n\nSwirl force: controls the strength of the follow force.Distance: particles within this distance will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.CW/CCW: controls the direction of the vortex (clockwise or counter-clockwise).\n\nSwirl force: controls the strength of the follow force.\n\nDistance: particles within this distance will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nCW/CCW: controls the direction of the vortex (clockwise or counter-clockwise).",
+      "params": [
+        "Distance",
+        "Falloff",
+        "CW/CCW",
+        "Swirl force"
+      ]
+    },
+    {
+      "heading": "Force affect",
+      "level": "h4",
+      "anchor": "force-affect",
+      "content": "Affect above: when enabled, particles above the force icon will be affected.Distance: particles within this distance above the icon will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.Affect below: when enabled, particles below the force icon will be affected.Distance: particles within this distance below the icon will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nAffect above: when enabled, particles above the force icon will be affected.\n\nDistance: particles within this distance above the icon will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nAffect below: when enabled, particles below the force icon will be affected.\n\nDistance: particles within this distance below the icon will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nForce relative to distance: controls whether the force applied to particles will be relative to their distance to the vortex.Force relative to axis: controls whether forces applied to particles will be constrained to ensure that particle trajectories remain tangential to the central axis of the vortex. Turning this on will help ensure particles move in a perfect circle around the central axis regardless of their velocity, rather than being flung away, especially when “Force relative to distance” is turned on.Icon size: controls the size of thetyVortexicon.\n\nForce relative to distance: controls whether the force applied to particles will be relative to their distance to the vortex.\n\nForce relative to axis: controls whether forces applied to particles will be constrained to ensure that particle trajectories remain tangential to the central axis of the vortex. Turning this on will help ensure particles move in a perfect circle around the central axis regardless of their velocity, rather than being flung away, especially when “Force relative to distance” is turned on.\n\nIcon size: controls the size of thetyVortexicon.",
+      "params": [
+        "Distance",
+        "Affect below",
+        "Force relative to distance",
+        "Falloff",
+        "Force relative to axis",
+        "Icon size",
+        "Affect above"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:40Z"
+}

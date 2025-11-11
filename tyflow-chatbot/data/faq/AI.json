@@ -1,0 +1,149 @@
+{
+  "url": "https://docs.tyflow.com/faq/AI",
+  "title": "FAQ: AI (tyDiffusion)",
+  "category": "FAQ",
+  "operator": "FAQ: AI (tyDiffusion)",
+  "sections": [
+    {
+      "heading": "FAQ: AI (tyDiffusion)",
+      "level": "h2",
+      "anchor": "faq-ai-tydiffusion",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Installation",
+      "level": "h3",
+      "anchor": "installation",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "â¢  Do I need a tyFlow PRO license to use tyDiffusion with GPU acceleration?",
+      "level": "h4",
+      "anchor": "nbsp-do-i-need-a-tyflow-pro-license-to-use-tydiffusion-with-gpu-acceleration",
+      "content": "No, a license is not required to usetyDiffusion’s GPU accelerated functionality.tyDiffusioninterfaces withComfyUIto generate images/animations, and doesn’t place any constraints onComfyUI’s abilities if atyFlow PROlicense is not found. In general, atyFlow PROlicense is only required to unlocktyFlow’sinternalCPU/GPU acceleration - and sinceComfyUIis an external application accessed only through a common API, no extrinsic restrictions are placed on its performance.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Do I need a GPU to use tyDiffusion?",
+      "level": "h4",
+      "anchor": "nbsp-do-i-need-a-gpu-to-use-tydiffusion",
+      "content": "tyDiffusionworks best on aNVIDIA GPUwithat least 8GB of VRAM(12GB+ of VRAM is recommended for image generation, and 24GB+ of VRAM is recommended for animation generation). Because AI models tend to be quite large, a lot of VRAM is required to load them onto a GPU. SD 1.5 checkpoints are usually around 2GB in size, and SD XL checkpoints are usually around 6GB in size. Combine the size of those requisite checkpoints with the size of any ControlNet models being used, IP-Adapters, AnimateDiff, etc, and VRAM usage requirements can quickly skyrocket.\n\nIf your GPU has less than 8-12GB of VRAM, you can try enabling the low VRAM command line arguments forComfyUI(tyDiffusionUI > ‘Setup’ tab > ‘Engine’ tab > ‘Advanced’ tab > ‘Additional command line args’), or you can even enable CPU-only mode in the same location (althoughtyDiffusionwill run unbearably slow without proper GPU acceleration).\n\nIf you are using anAMDGPU, you can enable DirectML in the advanced engine settings (tyDiffusionUI > ‘Setup’ tab > ‘Engine’ tab > ‘Advanced’ tab), although DirectML will run slower on an AMD GPU than PyTorch will run on a NVIDIA GPU.",
+      "params": []
+    },
+    {
+      "heading": "â¢  How can I ensure the version of Python included with tyDiffusion does not interfere with an existing version of Python on my machine?",
+      "level": "h4",
+      "anchor": "nbsp-how-can-i-ensure-the-version-of-python-included-with-tydiffusion-does-not-interfere-with-an-existing-version-of-python-on-my-machine",
+      "content": "The embedded version of Python 3.10 installed bytyDiffusionruns in an isolated environment and uses local system variable assignments. The installation of its modules and system variables should not affect existing installations of Python on a user’s machine.",
+      "params": []
+    },
+    {
+      "heading": "â¢  I already have ComfyUI installed on my system. Do I need to install it again for tyDiffusion?",
+      "level": "h4",
+      "anchor": "nbsp-i-already-have-comfyui-installed-on-my-system-do-i-need-to-install-it-again-for-tydiffusion",
+      "content": "WhiletyDiffusioninterfaces withComfyUIusing its standard web API, the version ofComfyUIinstalled bytyDiffusionincludes a variety of custom nodes that have been forked from their original repositories, and tweaked in various ways. For this reason it is not possible to generate images with an alternativeComfyUIinstallation usingtyDiffusion, even though both installations may rely on the same web API syntax.\n\nHowever,tyDiffusiondoes include the ability to specify alternative model paths - so you can point it to shared model folders used by otherComfyUIinstallations, avoiding the need to store redundant/duplicate checkpoints/models/etc on a machine.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Do I need to reinstall tyDiffusion each time I update tyFlow?",
+      "level": "h4",
+      "anchor": "nbsp-do-i-need-to-reinstall-tydiffusion-each-time-i-update-tyflow",
+      "content": "No. Unless you are specifically instructed to reinstalltyDiffusionafter atyFlowupdate (either in thetyDiffusionUI, or in thetyFlowversion history release notes), you don’t need to re-installtyDiffusionafter updatingtyFlowto a newer build.",
+      "params": []
+    },
+    {
+      "heading": "â¢  How can I re-install tyDiffusion?",
+      "level": "h4",
+      "anchor": "nbsp-how-can-i-re-install-tydiffusion",
+      "content": "Simply running the one-click installer again is enough to completely re-installtyDiffusion,ComfyUIand all of the various other tools included with it. You don’t need to uninstalltyDiffusionprior to running the one-click installer again.",
+      "params": []
+    },
+    {
+      "heading": "â¢  How do I uninstall tyDiffusion?",
+      "level": "h4",
+      "anchor": "nbsp-how-do-i-uninstall-tydiffusion",
+      "content": "EverythingtyDiffusioninstalls goes into its root folder and external model paths. The default root folder is:C:\\ProgramData\\tyFlow\\tyDiffusion(and the default external model paths are inside the root folder). Deleting the root folder (and external model paths, if you changed them from their defaults) is enough to completely uninstall and removetyDiffusionfrom your system.",
+      "params": []
+    },
+    {
+      "heading": "â¢  My company does not allow us to install or use software with AI-based features. How can I remove these features from tyFlow?",
+      "level": "h4",
+      "anchor": "nbsp-my-company-does-not-allow-us-to-install-or-use-software-with-ai-based-features-how-can-i-remove-these-features-from-tyflow",
+      "content": "tyFlow(ie, the actual .dlo file you install in order to use and runtyFlow) does not itself contain any AI models, algorithms, generators, etc. Those features are only unlocked when you manually complete thetyDiffusioninstallation from thetyDiffusionUI. That installation process downloads and installs a Python-based AI pipeline on your machine, whichtyDiffusionthen interfaces with using a common API in order to generate images/animations. So, without manually completing thetyDiffusioninstallation process, no actual AI tools will be present on the machine or available to the end user.\n\nFurthermore, you can completely restrict a machine from accessing any AI features withintyFlowby defining the following system environment variable:TYFLOW_NO_AI=1. If a user attempts to install or usetyDiffusionwhen that environment variable is present, a popup notification will alert them to the fact that all oftyFlow’s AI features are disabled, due to the presence of that environment variable on the system.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Is it safe to run ComfyUI on my machine? If tyDiffusion downloads and executes 3rd party code in order to perform its operations, how do I know it does not contain malware?",
+      "level": "h4",
+      "anchor": "nbsp-is-it-safe-to-run-comfyui-on-my-machine-if-tydiffusion-downloads-and-executes-3rd-party-code-in-order-to-perform-its-operations-how-do-i-know-it-does-not-contain-malware",
+      "content": "There is always a risk that comes with executing 3rd party code downloaded from the internet onto a local machine. During its installation process,tyDiffusiondraws from many different sources to acquire the huge number of Python modules required to runComfyUI, and it is practically impossible to vet every single line of code in every single module, in order to ensure that no malware has been injected into it by bad actors.\n\nHowever, several important steps have been taken in order to minimize risks to users oftyDiffusion:\n\nDuring the installation process,ComfyUIand all of the custom nodes thattyDiffusionuses are downloaded from open-source repositories that have been forked from their official sources. These repositories can all be found on thetyDiffusion GitHub page. Because these repositories have been forked and are only synced manually, they are immune to zero-day exploits that might be added in the future to their original counterparts. In other words, if malicious code is added to the officialComfyUIrepository (foundhere), or any other official custom node repository, users who installtyDiffusionafter that point will not be exposed to those exploits because thetyDiffusioninstaller does not pull from those official repositories, but instead from forked repositories that are not automatically synced to their official counterparts.All requirements.txt files (used by Python’s “pip” module to install external Python packages) in the varioustyDiffusionrepositories only pull packages from official, trusted Python repositories, avoiding the exploit discoveredhere.AI models that can be downloaded from thetyDiffusionmodel library have all been hand-picked for quality, and are all stored in controlledtyDiffusionHuggingFace datasets. Thesafetensorformat is also the preferred format for all models in thetyDiffusionmodel library, with only a few trusted exceptions.\n\nDuring the installation process,ComfyUIand all of the custom nodes thattyDiffusionuses are downloaded from open-source repositories that have been forked from their official sources. These repositories can all be found on thetyDiffusion GitHub page. Because these repositories have been forked and are only synced manually, they are immune to zero-day exploits that might be added in the future to their original counterparts. In other words, if malicious code is added to the officialComfyUIrepository (foundhere), or any other official custom node repository, users who installtyDiffusionafter that point will not be exposed to those exploits because thetyDiffusioninstaller does not pull from those official repositories, but instead from forked repositories that are not automatically synced to their official counterparts.\n\nAll requirements.txt files (used by Python’s “pip” module to install external Python packages) in the varioustyDiffusionrepositories only pull packages from official, trusted Python repositories, avoiding the exploit discoveredhere.\n\nAI models that can be downloaded from thetyDiffusionmodel library have all been hand-picked for quality, and are all stored in controlledtyDiffusionHuggingFace datasets. Thesafetensorformat is also the preferred format for all models in thetyDiffusionmodel library, with only a few trusted exceptions.\n\nOnce again, it is not possible to completely eliminate the threat of malicious code across the hundreds of 3rd party Python modules required to runComfyUI, but users should feel somewhat at-ease knowing that these steps have been taken in order to minimize many of the potential risks involved. Furthermore, users should always run their own virus scan or threat protection software locally in order to further alleviate risks involved with executing any/all software.",
+      "params": []
+    },
+    {
+      "heading": "â¢  I get an error during installation, or the console window closes before installation is finished, or the console window opens and then closes immediately during installation or image generation, etc. How can I debug these errors?",
+      "level": "h4",
+      "anchor": "nbsp-i-get-an-error-during-installation-or-the-console-window-closes-before-installation-is-finished-or-the-console-window-opens-and-then-closes-immediately-during-installation-or-image-generation-etc-how-can-i-debug-these-errors",
+      "content": "Due to that fact thattyDiffusionrunsComfyUIas a separate process, it can sometimes be tough to track down problems that occur on some machines during installation or image generation, especially because errors usually cause the console window to close immediately (so any error messages that may get printed to the console log disappear from view). IntyFlow v1.112, an option was added in the advanced engine settings (tyDiffusionUI > ‘Setup’ tab > ‘Engine’ tab > ‘Advanced’ tab) to enable “install/engine file logging”. By enabling this setting and then running the installer or engine again, everything printed to the console window will also be printed to corresponding log files on disk - if an error occurs the console window may still close immediately, but its contents will be saved to a log file (which can then be sent to[email protected]for further debugging assistance).\n\nIf you are unable to access thetyDiffusionUI for some reason (ex: the ComfyUI console windows closes immediately after opening the tyDiffusion UI and 3ds Max becomes unresponsive, preventing you from being able to enable file logging mode), you can also take these steps to further debug the cause of the problem:\n\nNavigate to thetyDiffusionroot folder in Windows explorer (the default root folder is: C:\\ProgramData\\tyFlow\\tyDiffusion)Hold SHIFT and right-click in the folder, then select “Open PowerShell window here”Type “cmd” (no quotes) and hit ENTER.Type “run_ComfyUI.bat” (no quotes) and hit ENTER.ComfyUI will attempt to intialize and (presumably) fail again - but instead of the console window closing immediately like it does within 3ds Max, the error which is causing the problem should remain visible. If the error is not something you understand how to fix on your own, please send a screenshot of the error message to[email protected].\n\nNavigate to thetyDiffusionroot folder in Windows explorer (the default root folder is: C:\\ProgramData\\tyFlow\\tyDiffusion)\n\nHold SHIFT and right-click in the folder, then select “Open PowerShell window here”\n\nType “cmd” (no quotes) and hit ENTER.\n\nType “run_ComfyUI.bat” (no quotes) and hit ENTER.\n\nComfyUI will attempt to intialize and (presumably) fail again - but instead of the console window closing immediately like it does within 3ds Max, the error which is causing the problem should remain visible. If the error is not something you understand how to fix on your own, please send a screenshot of the error message to[email protected].\n\nIf 3ds Max becomes unresponsive while performing atyDiffusiontask, holding SHIFT+ESC on the keyboard can usually return control to the user.\n\nEither way, there are a few issues which can cause the installer or engine to fail during launch:\n\nFolder permissions preventing 3ds Max from modifying files in thetyDiffusiontarget directory may interfere with the installer/engine. The simplest fix is to simply run 3ds Max as Administrator. If that’s not a possibility, you can either set a different folder as thetyDiffusionroot directory (from withintyDiffusion’s UI), or modify the target folder’s permissions to allow 3ds Max (running in non-Administrator mode) to read/write/modify the folder’s contents without restrictions.If you click your mouse within the console window at any point during its execution, execution of the batch commands will be paused (which will stall the installer/engine). A sign that you may have accidentally clicked within the window is the appearance of a large block character in the window where you clicked the mouse. You can fix this problem immediately by clicking anywhere in the window again (to ensure the window is in focus) and pressing “Enter” on your keyboard to resume execution.If you prematurely close the console window before it’s finished executing its commands, the installation process will fail. Make sure you don’t close the console window while it’s running.\n\nFolder permissions preventing 3ds Max from modifying files in thetyDiffusiontarget directory may interfere with the installer/engine. The simplest fix is to simply run 3ds Max as Administrator. If that’s not a possibility, you can either set a different folder as thetyDiffusionroot directory (from withintyDiffusion’s UI), or modify the target folder’s permissions to allow 3ds Max (running in non-Administrator mode) to read/write/modify the folder’s contents without restrictions.\n\nIf you click your mouse within the console window at any point during its execution, execution of the batch commands will be paused (which will stall the installer/engine). A sign that you may have accidentally clicked within the window is the appearance of a large block character in the window where you clicked the mouse. You can fix this problem immediately by clicking anywhere in the window again (to ensure the window is in focus) and pressing “Enter” on your keyboard to resume execution.\n\nIf you prematurely close the console window before it’s finished executing its commands, the installation process will fail. Make sure you don’t close the console window while it’s running.",
+      "params": []
+    },
+    {
+      "heading": "â¢  When I try to download models from tyDiffusion’s model library, the download manager shows an error saying the URL is invalid or cannot be reached. What do I do?",
+      "level": "h4",
+      "anchor": "nbsp-when-i-try-to-download-models-from-tydiffusion-s-model-library-the-download-manager-shows-an-error-saying-the-url-is-invalid-or-cannot-be-reached-what-do-i-do",
+      "content": "tyDiffusionuses very standard cURL commands to download models through its model library and download manager, so if a download fails there are really only two potential causes:\n\nThe URL itself if offline. This would entail that eitherHuggingFaceis offline, or the specified model has been removed from HuggingFace. You can validate whether or not this is the case by navigating to thetyDiffusion HuggingFace repositoryand checking to see if the desired file is present in the corresponding dataset.Something on your machine is preventing 3ds Max from connecting to the internet. This could be a firewall blocking 3ds Max from connecting to the internet, or a VPN/proxy used by your machine that is not configured to allow connections from 3ds Max to go through it.\n\nThe URL itself if offline. This would entail that eitherHuggingFaceis offline, or the specified model has been removed from HuggingFace. You can validate whether or not this is the case by navigating to thetyDiffusion HuggingFace repositoryand checking to see if the desired file is present in the corresponding dataset.\n\nSomething on your machine is preventing 3ds Max from connecting to the internet. This could be a firewall blocking 3ds Max from connecting to the internet, or a VPN/proxy used by your machine that is not configured to allow connections from 3ds Max to go through it.\n\nThe first case is much less likely than the second. In the second case, if you are unable to configure your machine to allow an internet connection to go through 3ds Max, you can manually download all desired files from the HuggingFace repo linked above and place them in the corresponding external model paths defined withintyDiffusion’s UI.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why are models that I’ve downloaded not appearing in the tyDiffusion UI and/or shown as missing?",
+      "level": "h4",
+      "anchor": "nbsp-why-are-models-that-i-ve-downloaded-not-appearing-in-the-tydiffusion-ui-and-or-shown-as-missing",
+      "content": "There are a few reasons whytyDiffusionmay not be able to find models you’ve downloaded:\n\nModels needs to be placed in the appropriate model path. Model paths can be defined in the ‘Setup’ tab > ‘Paths’ > tab. If you download models usingtyDiffusion’s download manager, models will be placed in the proper paths automatically.Models need appropriate read permissions. If a model file or folder has read permissions disabled for the current Windows user,tyDiffusion/ComfyUIwill not be able to see or load it. Running 3ds Max as Administrator may fix this issue if read permissions are only disabled for non-Admin users, but it is possible to disable read permissions for Admin users as well - so if you find thattyDiffusioncan’t see your model even if you’re running 3ds Max as Administrator, that could explain why.tyDiffusiontellsComfyUIwhere models are by modifying the following yaml file:[tyDiffusion root]\\Engines\\ComfyUI\\ComfyUI\\extra_model_paths.yaml(ComfyUIloads this file during startup). IftyDiffusionis unable to create or modify that file (due to it missing appropriate read/write permissions, for example), thenComfyUImay not be able to find the models thattyDiffusiontells it to use. Check the read/write permissions of that file and check the contents of that file using a text editor to ensure it contains your customtyDiffusionmodel paths.\n\nModels needs to be placed in the appropriate model path. Model paths can be defined in the ‘Setup’ tab > ‘Paths’ > tab. If you download models usingtyDiffusion’s download manager, models will be placed in the proper paths automatically.\n\nModels need appropriate read permissions. If a model file or folder has read permissions disabled for the current Windows user,tyDiffusion/ComfyUIwill not be able to see or load it. Running 3ds Max as Administrator may fix this issue if read permissions are only disabled for non-Admin users, but it is possible to disable read permissions for Admin users as well - so if you find thattyDiffusioncan’t see your model even if you’re running 3ds Max as Administrator, that could explain why.\n\ntyDiffusiontellsComfyUIwhere models are by modifying the following yaml file:[tyDiffusion root]\\Engines\\ComfyUI\\ComfyUI\\extra_model_paths.yaml(ComfyUIloads this file during startup). IftyDiffusionis unable to create or modify that file (due to it missing appropriate read/write permissions, for example), thenComfyUImay not be able to find the models thattyDiffusiontells it to use. Check the read/write permissions of that file and check the contents of that file using a text editor to ensure it contains your customtyDiffusionmodel paths.\n\ntyDiffusionmodifies that yaml file each timeComfyUIis started, so users should not modify if themselves, otherwise their changes will be overwritten.\n\nWhenComfyUIis started bytyDiffusion, its console window will display messages during startup to confirm various user settings. Custom paths loaded byComfyUIwill be printed with the following format: “Adding extra search path [path type] [path]“. Double-check thatComfyUIis displaying your custom paths in that manner, during startup, to ensure it’s trying to load your models from the correct place. It’s also a good idea to check that no other errors are displayed during startup, to ensure nothing else is preventingComfyUIfrom loading properly.",
+      "params": []
+    },
+    {
+      "heading": "Generation",
+      "level": "h3",
+      "anchor": "generation",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why isn’t the Depth ControlNet affecting images/animations I generate?",
+      "level": "h4",
+      "anchor": "nbsp-why-isn-t-the-depth-controlnet-affecting-images-animations-i-generate",
+      "content": "During initial tests oftyDiffusionit was discovered that some machines have issues relaying viewport depth information through 3ds Max’s Nitrous API. The cause of the issue is unknown (potentially related to certain GPU hardware and/or GPU drivers), but the effect of the issue is that some users may find thattyDiffusion’s Depth ControlNet does not function properly when the ControlNet source is set to “viewport depth”. The current workaround/solution to this problem is to set the Depth ControlNet source to something other than “viewport depth” (ex: set it to “viewport color” instead) and enable one of the depth preprocessors in the ControlNet’s preprocessor menu (ex: “depth-anything”). This will generate depth information from the viewport’s color buffer using a trained AI model, which is not as accurate as using the depth buffer directly, but can still produce acceptable results.\n\nThe cause of this issue was recently discovered - if you have anti-aliasing enabled in the viewporttyDiffusionwill not be able to extract the depth buffer from the view. This issue is solved intyFlow v1.113+. If you are using an older build oftyFlow, disable viewport anti-aliasing to restore depth buffer access.",
+      "params": []
+    },
+    {
+      "heading": "â¢  When I try to use the IP-Adapter ControlNet, the ComfyUI console window displays an error about a missing clip_vision model. How do I fix this?",
+      "level": "h4",
+      "anchor": "nbsp-when-i-try-to-use-the-ip-adapter-controlnet-the-comfyui-console-window-displays-an-error-about-a-missing-clip-vision-model-how-do-i-fix-this",
+      "content": "tyDiffusion’s IP-Adapter module expects “clip_g.pth” to be present in the following directory: [External ControlNet models]\\preprocessors\\clip_vision (where [External ControlNet models] is the path defined in ‘Setup tab’ > ‘Paths tab’). ThetyDiffusiondownload manager will automatically place “clip_g.pth” in that directory if you download the IP-Adapter ControlNet models from the model library - however, if you manually downloaded your ControlNet models or moved your models/folders around, it may not be able to find that file. By restoring “clip_g.pth” to that directory, theComfyUIclip_vision error will no longer occur. If “clip_g.pth” is not present on your machine, it can be download from thetyDiffusion HuggingFace repo.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why aren’t the Pose ControlNets affecting images/animations I generate?",
+      "level": "h4",
+      "anchor": "nbsp-why-aren-t-the-pose-controlnets-affecting-images-animations-i-generate",
+      "content": "The Pose ControlNets (OpenPose/DensePose) are fairly sensitive to the type of inputs you provide them. The corresponding preprocessor models were trained on photographs of humans (or animals, if you’re using the animal model), so if you provide inputs which do not resemble photographic representations of humanoids/animals, they may not detect any poses therein. If you are posing characters rigged with Character Studio Bipeds, you can change the Source mode to “Biped to OpenPose” for a perfect conversion from Biped skeleton to OpenPose skeleton - this results in more accurate pose-dependent image/animation generation.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why aren’t the motion LoRAs I’m using having an effect on my AnimateDiff animations?",
+      "level": "h4",
+      "anchor": "nbsp-why-aren-t-the-motion-loras-i-m-using-having-an-effect-on-my-animatediff-animations",
+      "content": "AnimateDiff motion LoRAs are only supported by v2 of the AnimateDiff motion module. Make sure you’ve selected v2 of the module if you’re using motion LoRAs.",
+      "params": []
+    },
+    {
+      "heading": "â¢  Why do my generated animations look worse than my generated images, even though all of my other settings are the same?",
+      "level": "h4",
+      "anchor": "nbsp-why-do-my-generated-animations-look-worse-than-my-generated-images-even-though-all-of-my-other-settings-are-the-same",
+      "content": "Animations generated with AnimateDiff may differ greatly in quality from images generated with the same overall settings, due to the way in which AnimateDiff motion modules affect output. AnimateDiff motion modules were trained on much lower quality images than base SD models, and use various methods to improve temporal consistency that may have a big impact on overall output image quality. ControlNets may also behave somewhat differently when AnimateDiff is enabled. The best way to improve the quality of animations generated with AnimateDiff is to enable an upscaler to boost their detail and resolution (‘Hires fix’ works well in this regard, but may require a lot of time and VRAM to run).",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:05Z"
+}

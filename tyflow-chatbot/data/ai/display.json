@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_AI/tyDiffusion/display",
+  "title": "Display Tab",
+  "category": "AI",
+  "operator": "Display Tab",
+  "sections": [
+    {
+      "heading": "Display Tab",
+      "level": "h2",
+      "anchor": "display-tab",
+      "content": "The Display tab provides ways to activate/deactivate viewports withtyDiffusion. When a viewport is activated, it will be used bytyDiffusionto display the results of its generative processes. Once activated, a series oftyDiffusionicons will also be displayed at the top of the viewport, giving users quick access to varioustyDiffusionfunctions (hover your mouse over an icon to see a tooltip description of its function). Activating a viewport will also enable its safe-frame display, so its aspect ratio will be dependent on 3ds Max’s render resolution, not its overall size on screen.\n\ntyDiffusionwill automatically activate the currently active viewport during generation, if no other view is activated at that time. However, if you want to activate multiple viewports, you must do so from the Display tab (tyDiffusionwill only auto-activate the active viewport if no other viewport is currently activated - the auto-activation function will not activate multiple viewports).",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:00Z"
+}

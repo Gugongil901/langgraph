@@ -1,0 +1,27 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_helpers/tyProp",
+  "title": "tyPropHelper",
+  "category": "Other_Misc",
+  "operator": "tyPropHelper",
+  "sections": [
+    {
+      "heading": "tyPropHelper",
+      "level": "h2",
+      "anchor": "typrop-helper",
+      "content": "ThetyProphelper can be used to randomize actor props within a crowd simulation. By adding atyPropto yourtyActorobject (and attaching it to your input character’s hierarchy, in place of the actual prop you want to randomize),tyFlowwill choose a random object from its prop list for each instance of the actor in the flow, effectively randomizing props between multiple actors.",
+      "params": []
+    },
+    {
+      "heading": "Parameters",
+      "level": "h4",
+      "anchor": "parameters",
+      "content": "Prop list: the list of input props which will be assigned, at random, to instances of the parenttyActorobject, in place of thetyPropobject.Show icon: controls whether thetyPropicon is displayed in the viewport.Icon size: controls the size of thetyPropicon.\n\nProp list: the list of input props which will be assigned, at random, to instances of the parenttyActorobject, in place of thetyPropobject.\n\nShow icon: controls whether thetyPropicon is displayed in the viewport.\n\nIcon size: controls the size of thetyPropicon.",
+      "params": [
+        "Prop list",
+        "Icon size",
+        "Show icon"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:33Z"
+}

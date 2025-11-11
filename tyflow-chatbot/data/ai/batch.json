@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_AI/tyDiffusion/batch",
+  "title": "Batch Tab",
+  "category": "AI",
+  "operator": "Batch Tab",
+  "sections": [
+    {
+      "heading": "Batch Tab",
+      "level": "h2",
+      "anchor": "batch-tab",
+      "content": "The Batch tab can be used to automatically processtyDiffusionXML preset files in succession. By clicking the [>>] button to add/remove files (followed by clicking the “Generate batch” button once all files are added), you can automate the process of generating the result from each file. So, for example, you could perform a batch process on a group of preset files configured to generate length, upscaled animations, allowing you to step away from your computer while the generation takes place (and avoiding the need to manually load/generate the result from each file individually).",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:05Z"
+}

@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_objects",
+  "title": "tyFlowObjects",
+  "category": "Other_Misc",
+  "operator": "tyFlowObjects",
+  "sections": [
+    {
+      "heading": "tyFlowObjects",
+      "level": "h2",
+      "anchor": "tyflow-objects",
+      "content": "Click a category in the sidebar for more information about various features.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:58Z"
+}

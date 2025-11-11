@@ -1,0 +1,68 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_helpers/tyActor",
+  "title": "tyActorHelper",
+  "category": "Other_Misc",
+  "operator": "tyActorHelper",
+  "sections": [
+    {
+      "heading": "tyActorHelper",
+      "level": "h2",
+      "anchor": "tyactor-helper",
+      "content": "ThetyActorhelper can be used to transfer character rigs intotyFlowfor use in crowd simulations, in a way that maintains skinning weights, object hierarchies, and keyframed animation of the input objects.\n\ntyActorscan import skinned meshes, for transfer into a flow. However, any modifiers addedon topof a Skin modifier will be ignored. So, make sure you place any modifiers that you want to affect the mesh under any Skin modifiers (Skin/tyParticleSkin) on the object.",
+      "params": []
+    },
+    {
+      "heading": "Parameters",
+      "level": "h4",
+      "anchor": "parameters",
+      "content": "Actor rig objects: All objects added to this list will be added to the actor, and processed bytyFlow.Simple interpolation: when enabled, subframe data will be interpolated from whole-frame data.\n\nActor rig objects: All objects added to this list will be added to the actor, and processed bytyFlow.\n\nSimple interpolation: when enabled, subframe data will be interpolated from whole-frame data.\n\nIn a lot of actor setups, actor particles will need to process subframe transform data from source tyActors. For example, if an actor particle is animated at 1.25x normal speed, it will need transform data from source tyActor objects that isn’t necessary aligned to whole frames on the timeline (it will need to know tyActor object transform data at frame 1.25 instead of 1.0, for example). Transform data is always cached internally, but if each actor requests different subframe data then the internal cache will have no benefit - even though transform data will get cached for each requested subframe, a situation could easily arise where no two actors request data for the same subframe, meaning the cache won’t actually speed up transform queries. Enabling “simple interpolation” will interpolate whole-frame data when subframe data is requested, meaning the transform cache will get used often (resulting in much faster transform queries).\n\nThe downside to enabling “simple interpolation” is that if actual subframe data doesn’t match interpolated subframe data (if the tyActor source objects contain purposeful sub-frame keyframes, for example), then “simple interpolation” could reduce the fidelity of the tyActor animation output. In most cases, “simple interpolation” will not affect animation fidelity and should be left on.\n\nPreserve normals: when enabled, existing surface normals will be preserved during the operation.Convert native HI-IK to actor IK: when enabled, IK chain handle objects added to the object list will be imported as actor IK.\n\nPreserve normals: when enabled, existing surface normals will be preserved during the operation.\n\nConvert native HI-IK to actor IK: when enabled, IK chain handle objects added to the object list will be imported as actor IK.\n\nActor IK can collide with IK colliders added to an Actor operator.\n\nImport particle nodes: when enabled, nodes which expose the tyParticleInterface (tyFlow/tyCache nodes) will pass their particles directly to the tyActor helper for import.Show icon: controls whether thetyActoricon is displayed in the viewport.Icon size: controls the size of thetyActoricon.Show name: controls whether thetyActorobject’s name will be displayed in the viewport.\n\nImport particle nodes: when enabled, nodes which expose the tyParticleInterface (tyFlow/tyCache nodes) will pass their particles directly to the tyActor helper for import.\n\nShow icon: controls whether thetyActoricon is displayed in the viewport.\n\nIcon size: controls the size of thetyActoricon.\n\nShow name: controls whether thetyActorobject’s name will be displayed in the viewport.",
+      "params": [
+        "Import particle nodes",
+        "Convert native HI-IK to actor IK",
+        "Show icon",
+        "Preserve normals",
+        "Actor rig objects",
+        "Simple interpolation",
+        "Icon size",
+        "Show name"
+      ]
+    },
+    {
+      "heading": "Animation",
+      "level": "h4",
+      "anchor": "animation",
+      "content": "Animation sequences: a list of sequences added to thetyActorobject, for use in the corresponding flow.Sequence name: takes string input for the name of a particular animation sequence being added.Start: the starting frame of the sequence.End: the ending frame of the sequence.Non-skin deformations: controls whether non-skin deformations are to be considered during sequence playback by the corresponding flow (morpher/bend/twist/etc: anything that transforms vertices over time). Turning this on allows users to assign any vertex animation onto the resulting actor particles, not simply skin deformations.\n\nAnimation sequences: a list of sequences added to thetyActorobject, for use in the corresponding flow.\n\nSequence name: takes string input for the name of a particular animation sequence being added.\n\nStart: the starting frame of the sequence.\n\nEnd: the ending frame of the sequence.\n\nNon-skin deformations: controls whether non-skin deformations are to be considered during sequence playback by the corresponding flow (morpher/bend/twist/etc: anything that transforms vertices over time). Turning this on allows users to assign any vertex animation onto the resulting actor particles, not simply skin deformations.",
+      "params": [
+        "Non-skin deformations",
+        "Animation sequences",
+        "Start",
+        "Sequence name",
+        "End"
+      ]
+    },
+    {
+      "heading": "Triggers",
+      "level": "h4",
+      "anchor": "triggers",
+      "content": "Triggers are objects that the oriented bounding boxes of the rig objects can intersect with. If an intersection occurs during the animation clip, corresponding rig particles’ custom data channel will be modified to hold the ‘triggered’ value. When no intersection occurs, the rig particles’ custom data channel will be modified to hold the ‘untriggered’ value.\n\nTriggers: the list of trigger objects that thetyActorwill use.\n\nTrigger object: the scene object used to perform the intersection test against the rig objects.Channel: the name of the custom data float channel to apply the triggered/untriggered values to.Untriggered: the value that will be assigned to corresponding rig particles when no intersection is occurring.Triggered: the value that will be assigned to corresponding rig particles when an intersection is occurring.\n\nTrigger object: the scene object used to perform the intersection test against the rig objects.\n\nChannel: the name of the custom data float channel to apply the triggered/untriggered values to.\n\nUntriggered: the value that will be assigned to corresponding rig particles when no intersection is occurring.\n\nTriggered: the value that will be assigned to corresponding rig particles when an intersection is occurring.",
+      "params": [
+        "Triggered",
+        "Channel",
+        "Trigger object",
+        "Triggers",
+        "Untriggered"
+      ]
+    },
+    {
+      "heading": "Misc",
+      "level": "h4",
+      "anchor": "misc",
+      "content": "Force biped “in place” mode: this is a workaround to solve the problematic “In Place” mode of character studio bipeds, which does not stay enabled in certain circumstances. This setting will force “In Place” mode to be enabled, prior to rig evaluation bytyFlow.Include unused particles: by default, particles referenced by atyParticleSkinmodifier processed bytyActorswill be culled if no vertices are weighted to them. Enabling this setting prevents the particle culling from occurring. All particles referenced by atyParticleSkinwill be imported, even if no skinned vertices are weighted to them.\n\nForce biped “in place” mode: this is a workaround to solve the problematic “In Place” mode of character studio bipeds, which does not stay enabled in certain circumstances. This setting will force “In Place” mode to be enabled, prior to rig evaluation bytyFlow.\n\nInclude unused particles: by default, particles referenced by atyParticleSkinmodifier processed bytyActorswill be culled if no vertices are weighted to them. Enabling this setting prevents the particle culling from occurring. All particles referenced by atyParticleSkinwill be imported, even if no skinned vertices are weighted to them.",
+      "params": [
+        "Force biped “in place” mode",
+        "Include unused particles"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:09:20Z"
+}
