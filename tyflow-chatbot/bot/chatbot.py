@@ -1,16 +1,17 @@
 """
 POC Chatbot for tyFlow documentation
-Uses LangGraph for retrieval + Claude for answer generation
+Uses LangGraph for retrieval + OpenAI ChatGPT for answer generation
 """
 import os
+import ssl
+import httpx
 from pathlib import Path
 from typing import TypedDict, Annotated
 from dotenv import load_dotenv
 
-from langchain_openai import OpenAIEmbeddings
-from langchain_anthropic import ChatAnthropic
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import Qdrant
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from qdrant_client import QdrantClient
 
 from langgraph.graph import StateGraph, END
@@ -18,6 +19,9 @@ from langgraph.graph.message import add_messages
 
 
 load_dotenv()
+
+# Create custom HTTP client with disabled SSL verification for testing
+http_client = httpx.Client(verify=False)
 
 
 # Define the state
@@ -29,14 +33,15 @@ class ChatState(TypedDict):
 
 
 class TyFlowChatbot:
-    def __init__(self, collection_name="tyflow_operators", qdrant_path="./qdrant_storage"):
+    def __init__(self, collection_name="tyflow_all", qdrant_path="../indexer/qdrant_storage"):
         self.collection_name = collection_name
         self.qdrant_path = Path(qdrant_path)
 
-        # Initialize embeddings
+        # Initialize embeddings with custom HTTP client
         self.embeddings = OpenAIEmbeddings(
             model="text-embedding-3-small",
-            openai_api_key=os.getenv("OPENAI_API_KEY")
+            openai_api_key=os.getenv("OPENAI_API_KEY"),
+            http_client=http_client
         )
 
         # Initialize Qdrant vectorstore
@@ -47,11 +52,12 @@ class TyFlowChatbot:
             embeddings=self.embeddings
         )
 
-        # Initialize Claude
-        self.llm = ChatAnthropic(
-            model="claude-3-5-sonnet-20241022",
+        # Initialize OpenAI ChatGPT with custom HTTP client
+        self.llm = ChatOpenAI(
+            model="gpt-4-turbo-preview",
             temperature=0,
-            anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
+            openai_api_key=os.getenv("OPENAI_API_KEY"),
+            http_client=http_client
         )
 
         # Create answer prompt
@@ -186,20 +192,20 @@ Answer in Korean:"""),
 def main():
     """Run POC test"""
     print("=" * 60)
-    print("🤖 tyFlow Documentation Chatbot POC")
+    print("🤖 tyFlow Documentation Chatbot POC (OpenAI)")
     print("=" * 60)
 
-    # Check for API keys
+    # Check for API key
     if not os.getenv("OPENAI_API_KEY"):
         print("\n❌ Error: OPENAI_API_KEY not found")
-        return False
-
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        print("\n❌ Error: ANTHROPIC_API_KEY not found")
+        print("Please set OPENAI_API_KEY in .env file")
         return False
 
     # Initialize chatbot
-    chatbot = TyFlowChatbot(qdrant_path="../indexer/qdrant_storage")
+    chatbot = TyFlowChatbot(
+        collection_name="tyflow_all",
+        qdrant_path="../indexer/qdrant_storage"
+    )
 
     # Test questions
     test_questions = [
