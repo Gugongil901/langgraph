@@ -1,0 +1,45 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/prt_update",
+  "title": "PRT Updateoperator",
+  "category": "Operators",
+  "operator": "PRT Updateoperator",
+  "sections": [
+    {
+      "heading": "PRT Updateoperator",
+      "level": "h2",
+      "anchor": "prt-update-operator",
+      "content": "The PRT Update operator allows you to update particle properties based on matching particles within a PRTLoader object.",
+      "params": []
+    },
+    {
+      "heading": "PRT Update",
+      "level": "h4",
+      "anchor": "prt-update",
+      "content": "PRT object: the PRTLoader object whose particles will be referenced.",
+      "params": [
+        "PRT object"
+      ]
+    },
+    {
+      "heading": "Input Channels",
+      "level": "h4",
+      "anchor": "input-channels",
+      "content": "Channels: controls which particle data channels to copy from the input PRTLoader object’s particles.\n\nUpdate as custom floats/vectors: unrecognized channels (channels with names that don’t match any of the channels in the default channels list) will be updated as custom particle properties (floats/vectors, depending on data type).",
+      "params": [
+        "Channels",
+        "Update as custom floats/vectors"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "Flip rotation: flips the w-component of quaternions loaded from PRT data.Delete if not found: if a particle does not have a matching particle in the input PRTLoader object, it will be deleted.\n\nFlip rotation: flips the w-component of quaternions loaded from PRT data.\n\nDelete if not found: if a particle does not have a matching particle in the input PRTLoader object, it will be deleted.",
+      "params": [
+        "Flip rotation",
+        "Delete if not found"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:59Z"
+}

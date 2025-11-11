@@ -1,0 +1,81 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/angle_bind",
+  "title": "Angle Bindoperator",
+  "category": "Operators",
+  "operator": "Angle Bindoperator",
+  "sections": [
+    {
+      "heading": "Angle Bindoperator",
+      "level": "h2",
+      "anchor": "angle-bind-operator",
+      "content": "The Angle Bind operator allows you create binds between adjacent pairs of existing binds which attempt to maintain their angular offset.\n\nUnlike the Particle Bind operator, this operator does not create bindings between neighboring particles. Instead, it creates binds between theexisting, adjacent bindsof a particle. This operator should be appliedafterregular binds are initialized.\n\nExisting, adjacent bindsare two binds which are connected by a single particle between them. Think of the angle binds generated between them as binds which turn those adjacent binds into a triangle. The adjacent binds are like the top left and right sides of the triangle, and the angle bind is the base of the triangle. The shared particle between the adjacent binds is like the tip of the triangle, and the other two particles at the ends of the adjacent binds are the two points at the base of the triangle. An angle bind attempts to maintain the shape of this implicit triangle created from the existing, adjacent binds.\n\nBindings are not solved by this operator, only created. Bindings are solved by the global particle bind solver at the end of each simulation step. Bindings created by this operator will persist between events.",
+      "params": []
+    },
+    {
+      "heading": "Angle Bind Rollout",
+      "level": "h3",
+      "anchor": "angle-bind-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Input binds",
+      "level": "h4",
+      "anchor": "input-binds",
+      "content": "Filter by ID: existing, adjacent binds will be filtered by ID.ID: existing, adjacent binds must have this ID in order to generate an angle bind.Filter by angle: existing, adjacent binds will be filtered by angle.Angle: two existing, adjacent binds must have at least this large of a relative angle between them, in order to generate an angle bind.\n\nFilter by ID: existing, adjacent binds will be filtered by ID.\n\nID: existing, adjacent binds must have this ID in order to generate an angle bind.\n\nFilter by angle: existing, adjacent binds will be filtered by angle.\n\nAngle: two existing, adjacent binds must have at least this large of a relative angle between them, in order to generate an angle bind.",
+      "params": [
+        "Filter by ID",
+        "ID",
+        "Filter by angle",
+        "Angle"
+      ]
+    },
+    {
+      "heading": "Angle bind settings",
+      "level": "h4",
+      "anchor": "angle-bind-settings",
+      "content": "Binding ID: the ID to assign to created bindings.Angle stiffness: the stiffness value to assign to the part of the angle bind which attempts to maintain the angle between the existing, adjacent binds.Area stiffness: the stiffness value to assign to the part of the angle bind which attempts to maintain the area of the implicit triangle formed by the existing, adjacent binds.Variation %: the per-particle percentage of variation to apply.Invertible: if disabled, the angle bind will attempt to prevent the implicit triangle formed by the existing, adjacent binds from becoming inverted.\n\nBinding ID: the ID to assign to created bindings.\n\nAngle stiffness: the stiffness value to assign to the part of the angle bind which attempts to maintain the angle between the existing, adjacent binds.\n\nArea stiffness: the stiffness value to assign to the part of the angle bind which attempts to maintain the area of the implicit triangle formed by the existing, adjacent binds.\n\nInvertible: if disabled, the angle bind will attempt to prevent the implicit triangle formed by the existing, adjacent binds from becoming inverted.\n\nAs of tyFlow v0.16083, disabling “invertible” may cause angle binds to become unstable in certain setups. The cause of this instability is still unknown, and will hopefully be improved in future releases.\n\nStiffness affects inertia: controls whether the stiffness value of bindings will affect inertia of bound particles.\n\n“Inertia” is the tendency for an object to resist outside forces. When “stiffness affects inertia” is enabled, binding stiffness will affect how much energy will be transferred between the attached particles. Enabling this setting can help dissipate unwanted energy transfer between particles. This setting has no effect on particles whose bindings have a stiffness value of 1.\n\nSimple: bindings are solved in a straight-forward manner. Their stiffness is mostly dependent on bind solver step count.Constrained: bindings are solved in a way that makes their stiffness somewhat independent of bind solver step count, at a small performance cost. This setting has no effect on bindings whose stiffness value is 1.\n\nSimple: bindings are solved in a straight-forward manner. Their stiffness is mostly dependent on bind solver step count.\n\nConstrained: bindings are solved in a way that makes their stiffness somewhat independent of bind solver step count, at a small performance cost. This setting has no effect on bindings whose stiffness value is 1.\n\nAngle Bias: the post-initialization multiplier to apply to the rest length of the part of the angle bind which attempts to maintain the angle between existing, adjacent binds.Area Bias: the post-initialization multiplier to apply to the rest length of the part of the angle bind which attempts to maintain the area of the implicit triangle formed by the existing, adjacent binds.\n\nAngle Bias: the post-initialization multiplier to apply to the rest length of the part of the angle bind which attempts to maintain the angle between existing, adjacent binds.\n\nArea Bias: the post-initialization multiplier to apply to the rest length of the part of the angle bind which attempts to maintain the area of the implicit triangle formed by the existing, adjacent binds.",
+      "params": [
+        "Angle Bias",
+        "Stiffness affects inertia",
+        "Area stiffness",
+        "Angle stiffness",
+        "Area Bias",
+        "Invertible",
+        "Binding ID",
+        "Simple",
+        "Constrained"
+      ]
+    },
+    {
+      "heading": "Initial Angle",
+      "level": "h4",
+      "anchor": "initial-angle",
+      "content": "From current: the current angle between the existing, adjacent binds will be used as the target angle of the angle binds.Flat: an angle of 180 degrees will be used as the target angle of the angle binds.\n\nFrom current: the current angle between the existing, adjacent binds will be used as the target angle of the angle binds.\n\nFlat: an angle of 180 degrees will be used as the target angle of the angle binds.\n\nChoose “flat” when you want the existing, adjacent binds to form a straight line (ex: you are simulating a stiff cord and want to ignore initial angular offsets between existing, adjacent binds).",
+      "params": [
+        "Flat",
+        "From current"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Show bindings: displays bindings as lines in the viewport.Show info: displays binding info (particle ID #1, particle ID #2, stiffness and rest length) in the viewport.\n\nShow bindings: displays bindings as lines in the viewport.\n\nShow info: displays binding info (particle ID #1, particle ID #2, stiffness and rest length) in the viewport.",
+      "params": [
+        "Show bindings",
+        "Show info"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:38Z"
+}

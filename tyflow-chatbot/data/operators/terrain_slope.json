@@ -1,0 +1,24 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/terrain_slope/terrain_slope",
+  "title": "Terrain Slopeoperator",
+  "category": "Operators",
+  "operator": "Terrain Slopeoperator",
+  "sections": [
+    {
+      "heading": "Terrain Slopeoperator",
+      "level": "h2",
+      "anchor": "terrain-slope-operator",
+      "content": "The Terrain Slope operator can be used to add a slope (height gradient) to a terrain.\n\nGrid names: terrain grids with matching names will be modified.Operation: controls how slope values will modify existing terrain height values.Gradient: controls the slope type. Radial gradients create a circular slope, linear gradients create a slope that rises/falls along a single axis.Gradient curve: the curve allows you to control the interpolation of the slope (a 0-1 multiplier on the height value) from the beginning of the slope to the end.Height: controls the overall height of the slope in world units.Offset X/Y: allows you to offset the center of the slope along a particular axis.Scale X/Y: allows you to control the overall scale of the slope, relative to the size of the grid.\n\nGrid names: terrain grids with matching names will be modified.\n\nOperation: controls how slope values will modify existing terrain height values.\n\nGradient: controls the slope type. Radial gradients create a circular slope, linear gradients create a slope that rises/falls along a single axis.\n\nGradient curve: the curve allows you to control the interpolation of the slope (a 0-1 multiplier on the height value) from the beginning of the slope to the end.\n\nHeight: controls the overall height of the slope in world units.\n\nOffset X/Y: allows you to offset the center of the slope along a particular axis.\n\nScale X/Y: allows you to control the overall scale of the slope, relative to the size of the grid.",
+      "params": [
+        "Offset X/Y",
+        "Scale X/Y",
+        "Height",
+        "Grid names",
+        "Gradient",
+        "Gradient curve",
+        "Operation"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:55:22Z"
+}

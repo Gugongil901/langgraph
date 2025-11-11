@@ -1,0 +1,98 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/vdb_modify",
+  "title": "VDB Modifyoperator",
+  "category": "Operators",
+  "operator": "VDB Modifyoperator",
+  "sections": [
+    {
+      "heading": "VDB Modifyoperator",
+      "level": "h2",
+      "anchor": "vdb-modify-operator",
+      "content": "The VDB Modify operator can be used to mathematically transform voxels in a VDB.\n\nThe VDB Modify operator is at the heart of all VDB operations withintyFlow. It can be used to initialize various grid types (velocity, uvw), composite voxel values together, transfer surface properties, etc. Understanding how this operator works, and harnessing its abilities, is the key to effectively working with VDBs withintyFlow.",
+      "params": []
+    },
+    {
+      "heading": "Modify Grid Rollout",
+      "level": "h3",
+      "anchor": "modify-grid-rollout",
+      "content": "Grid type: controls which VDB grid the operator will modify.\n\nUVW/Velocity grids contain vector values (ex: a single cell might contain a value like [2.1, 0.125, 41.93]) and Density grids contain scalar values (ex: a single cell might contain a value like: 1.213).\n\nSDF/Density/Velocity/UVW grid name: the names of the source VDB grids.",
+      "params": [
+        "UVW/Velocity grids contain vector values (ex",
+        "Grid type",
+        "SDF/Density/Velocity/UVW grid name"
+      ]
+    },
+    {
+      "heading": "If Missing",
+      "level": "h4",
+      "anchor": "if-missing",
+      "content": "Initialize from density/SDF: controls which existing grid to intialize any missing grid types from.Keep grid sparse: when enabled, intializations from SDF grids will not fill in internal cells with dense data. For example, if you convert a sphere object to an SDF grid and then initialize a density grid from that SDF with this setting enabled, the grid cells inside the sphere may be much larger (ie, more sparse) than the surface cells. This conserves memory but may not be ideal in situations where you want a dense grid layout inside objects (ex: if you want to render fog or some other volumetric surface).\n\nInitialize from density/SDF: controls which existing grid to intialize any missing grid types from.\n\nKeep grid sparse: when enabled, intializations from SDF grids will not fill in internal cells with dense data. For example, if you convert a sphere object to an SDF grid and then initialize a density grid from that SDF with this setting enabled, the grid cells inside the sphere may be much larger (ie, more sparse) than the surface cells. This conserves memory but may not be ideal in situations where you want a dense grid layout inside objects (ex: if you want to render fog or some other volumetric surface).",
+      "params": [
+        "Keep grid sparse",
+        "Initialize from density/SDF"
+      ]
+    },
+    {
+      "heading": "Vector/Scale Operation Rollouts",
+      "level": "h3",
+      "anchor": "vector-scale-operation-rollouts",
+      "content": "The operation dropdown in these rollouts controls how the existing VDB data in the selected grid will be changed by input values.\n\nFor each cell in the source grid:\n\nAdd: input values will be added to existing values.\n\nCross: existing values will be set to the cross product of existing values and input values.\n\nDivide: existing values will be divided by input values.\n\nMin: the existing value will be changed to the minimum of the input/existing values.\n\nMax: the existing value will be changed to the maximum of the input/existing values.\n\nModify: the existing values will only be affected by changes made in the “modify output” rollout.\n\nMultiply: existing values will be multiplied by input values.\n\nRemove Divergence: existing values will be modified to remove any divergence between them.\n\nSet: existing values will be set to input values.\n\nSubtract: input values will be subtracted from existing values.\n\nTangent: existing values will be set to the tangent of existing and input values.",
+      "params": [
+        "Tangent",
+        "Cross",
+        "Set",
+        "Max",
+        "For each cell in the source grid",
+        "Modify",
+        "Min",
+        "Divide",
+        "Remove Divergence",
+        "Add",
+        "Multiply",
+        "Subtract"
+      ]
+    },
+    {
+      "heading": "Input Scalars/Vectors Rollouts",
+      "level": "h3",
+      "anchor": "input-scalars-vectors-rollouts",
+      "content": "The value type dropdown in these rollouts controls which input values will be used to change the existing grid values. For example, if you choose to modify a Density grid with Noise, the existing value of each cell will be changed (according to the operation type) with a noise function evaluated for the world-space position of each cell.\n\nDepending on which value type is chosen, additional rollouts may appear which require further input (ex: a “Distance to Surface” value type will require the user to select surface(s) as input).",
+      "params": []
+    },
+    {
+      "heading": "Modify Input/Output Scalars Rollouts",
+      "level": "h3",
+      "anchor": "modify-input-output-scalars-rollouts",
+      "content": "These rollouts allow you to adjust input scalars before any operations, and output scalars after any operations. Output scalars are simply the values assigned to the grid after the specified operation is completed.\n\nRetarget: the retarget option allows you to take existing values in the input/output grid and rescale them to fit some min/max threshold.\n\nFor example, if a cell in the input grid has a value of 0.25f, and you retargetfrom0-1 andto0-100, the resulting value for that cell will be 25.\n\nRetarget with curve: by enabling this setting, you can retarget using a specified curve as the interpolation method instead of a basic linear interpolation. This allows you to bias retargeted values in a non-linear manner.Clamp: enables cell value clamping, so that resulting values do not outstep a specified minimum/maximum amount.Exponent: raises cell values to a specified power.Multiplier: multiplies cell values by a specified amount.Offset: adds a specified, constant amount to cell values.\n\nRetarget with curve: by enabling this setting, you can retarget using a specified curve as the interpolation method instead of a basic linear interpolation. This allows you to bias retargeted values in a non-linear manner.\n\nClamp: enables cell value clamping, so that resulting values do not outstep a specified minimum/maximum amount.\n\nExponent: raises cell values to a specified power.\n\nMultiplier: multiplies cell values by a specified amount.\n\nOffset: adds a specified, constant amount to cell values.\n\nThe clamp, exponent, multiplier and offset operations are performed in that order.\n\nInterpolation: linearly interpolates existing grid values towards the resulting output values by the specified amount.",
+      "params": [
+        "Multiplier",
+        "Retarget with curve",
+        "Retarget",
+        "Offset",
+        "Clamp",
+        "Exponent",
+        "Interpolation"
+      ]
+    },
+    {
+      "heading": "Modify Input/Output Vectors Rollouts",
+      "level": "h3",
+      "anchor": "modify-input-output-vectors-rollouts",
+      "content": "These rollouts allow you to adjust input vectors before any operations, and output vectors after any operations. Output scalars are simply the values assigned to the grid after the specified operation is completed.\n\nNormalize: all cells values will be retarged so that their magnitude lies within the range of 0-1.Clamp magnitude: all cell values will have their magnitude clamped to be within the specified min/max threshold.Multiplier: multiplies cell values by a specified amount.Interpolation: linearly interpolates existing cell values towards the resulting output values by the specified amount.\n\nNormalize: all cells values will be retarged so that their magnitude lies within the range of 0-1.\n\nClamp magnitude: all cell values will have their magnitude clamped to be within the specified min/max threshold.\n\nMultiplier: multiplies cell values by a specified amount.\n\nInterpolation: linearly interpolates existing cell values towards the resulting output values by the specified amount.",
+      "params": [
+        "Interpolation",
+        "Clamp magnitude",
+        "Normalize",
+        "Multiplier"
+      ]
+    },
+    {
+      "heading": "Info Rollout",
+      "level": "h3",
+      "anchor": "info-rollout",
+      "content": "By enabling vector analysis in this rollout, you can view important information about grid cell values, allowing you to make more informed decisions about how to modify them. For example, if you want to retarget scalar values, being able to see the existing min/max values of the grid will allow you to set more precise from/to retarget thresholds.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:42Z"
+}

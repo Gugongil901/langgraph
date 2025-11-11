@@ -1,0 +1,68 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/display_data",
+  "title": "Display Dataoperator",
+  "category": "Operators",
+  "operator": "Display Dataoperator",
+  "sections": [
+    {
+      "heading": "Display Dataoperator",
+      "level": "h2",
+      "anchor": "display-data-operator",
+      "content": "The Display Data operator allows you to see various particle properties in the viewport.",
+      "params": []
+    },
+    {
+      "heading": "Display On",
+      "level": "h4",
+      "anchor": "display-on",
+      "content": "All Particles: all particles within the display limits will display their selected data.Specific particle: only the particle with an ID that matches a specific value will have its selected data displayed.ID: the ID to match.\n\nAll Particles: all particles within the display limits will display their selected data.\n\nSpecific particle: only the particle with an ID that matches a specific value will have its selected data displayed.\n\nID: the ID to match.",
+      "params": [
+        "ID",
+        "Specific particle",
+        "All Particles"
+      ]
+    },
+    {
+      "heading": "Limits",
+      "level": "h4",
+      "anchor": "limits",
+      "content": "Displaying particle data can be slow, because the Display Data operator uses 3ds Max’s legacy text drawing methods. Imposing limits on the total number of particles whose data will be displayed can help to increase performance.\n\nStart index: the starting index of particles within the event to display.Max Particles: the number of particles after the starting index whose data will be displayed.\n\nStart index: the starting index of particles within the event to display.\n\nMax Particles: the number of particles after the starting index whose data will be displayed.\n\nIf the total number of particles in the event is less than(starting index + max particles), the display index will loop back to the beginning of the particle list. So if an event has 10 particles inside it, and the start index is set to 9 and max particles is 5, the operator will draw particles # 9, 10, 1, 2, 3.\n\nEvery Nth: displays data for every Nth particle, skipping particles in between.Float value range: when enabled, only float values within the specified min/max range (for all applicable properties) will be displayed.\n\nEvery Nth: displays data for every Nth particle, skipping particles in between.\n\nFloat value range: when enabled, only float values within the specified min/max range (for all applicable properties) will be displayed.",
+      "params": [
+        "Every Nth",
+        "Max Particles",
+        "Start index",
+        "Float value range"
+      ]
+    },
+    {
+      "heading": "Formatting",
+      "level": "h4",
+      "anchor": "formatting",
+      "content": "Label data types: displays the data type prior to the data valueMax decimals: the maximum number of decimal places to display for floating point values.\n\nLabel data types: displays the data type prior to the data value\n\nMax decimals: the maximum number of decimal places to display for floating point values.\n\nTrailing zeros are automatically removed from floating point values.\n\nLine offset: offsets the viewport-space location of the display text by the specificed number of lines. Negative values shift the text up, and positive values shift it down.",
+      "params": [
+        "Max decimals",
+        "Line offset",
+        "Label data types"
+      ]
+    },
+    {
+      "heading": "Data types",
+      "level": "h4",
+      "anchor": "data-types",
+      "content": "[Types]: the various type of data to draw in the view for each applicable particle.",
+      "params": [
+        "[Types]"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:15Z"
+}

@@ -1,0 +1,84 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/vdb_copy_out",
+  "title": "VDB Copy Outoperator",
+  "category": "Operators",
+  "operator": "VDB Copy Outoperator",
+  "sections": [
+    {
+      "heading": "VDB Copy Outoperator",
+      "level": "h2",
+      "anchor": "vdb-copy-out-operator",
+      "content": "The VDB Copy Out operator can be used to copy out VDB data to another event.\n\nUnlike particles, VDBs are not sent directly from one event to another. Instead, you can use the VDB Copy Out operator to copy VDB data from one event to another. The operation you choose for the merge algorithm determines how the data will be merged with existing data in the output event. Using the VDB Copy Out operator you can create flows of VDB data that make it easier to tune specific aspects of particular grids. For example, you could copy out a velocity grid into multiple events, for fine tuning different types of velocity input, then merge them back together with multiple VDB Copy Out operators that all connect to the same event. This workflow allows you to split up grid operations so you don’t have to do everything inside one giant event.",
+      "params": []
+    },
+    {
+      "heading": "VDB Copy Out Rollout",
+      "level": "h3",
+      "anchor": "vdb-copy-out-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Copy out grids",
+      "level": "h4",
+      "anchor": "copy-out-grids",
+      "content": "Grid type: controls which grid type(s) will be copied out to another event.Grid names: grids with matching names (of the specified grid type) will be copied.\n\nGrid type: controls which grid type(s) will be copied out to another event.\n\nGrid names: grids with matching names (of the specified grid type) will be copied.",
+      "params": [
+        "Grid names",
+        "Grid type"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Operation: controls which boolean operation will be used to merge the grid data into the VDB of the output event.Affect: When operation not set to ‘set’ or ‘add’ mode, you can choose whether all downstream grids will be affected, or only those with a matching name.Morph step: controls how much the existing VDB SDF in the output event will be morphed towards the output SDF.\n\nOperation: controls which boolean operation will be used to merge the grid data into the VDB of the output event.\n\nAffect: When operation not set to ‘set’ or ‘add’ mode, you can choose whether all downstream grids will be affected, or only those with a matching name.\n\nMorph step: controls how much the existing VDB SDF in the output event will be morphed towards the output SDF.\n\nOnly SDF grids support morphing.\n\nClear source grids: when enabled, any grids that are copied out to another event will be cleared in the current event.",
+      "params": [
+        "Clear source grids",
+        "Morph step",
+        "Operation",
+        "Affect"
+      ]
+    },
+    {
+      "heading": "Target event VDB",
+      "level": "h4",
+      "anchor": "target-event-vdb",
+      "content": "Resample if uninitialized: if the target event VDB has not yet been initialized, enabling this setting allows you to specify the target VDB voxel size. If this setting is disabled, the target VDB’s voxel size (if uninitialized) will be made to match the voxel size of the source VDB.\n\nIf the VDB in the target event is already initialized, its voxel size will not be modified and any data copied to the target VDB will be resampled to match its existing voxel size.\n\nVoxel size: the desired voxel size of the target VDB.",
+      "params": [
+        "Voxel size",
+        "Resample if uninitialized"
+      ]
+    },
+    {
+      "heading": "Filtering Rollout",
+      "level": "h3",
+      "anchor": "filtering-rollout",
+      "content": "Use the filtering options to control which grid(s) will be copied out to the next event.",
+      "params": []
+    },
+    {
+      "heading": "Filtering",
+      "level": "h4",
+      "anchor": "filtering",
+      "content": "Floating: when enabled, grids whose cells are all above the specified ground height will be copied out.Ground height: the specified ground height used by the floating filter.\n\nFloating: when enabled, grids whose cells are all above the specified ground height will be copied out.\n\nGround height: the specified ground height used by the floating filter.",
+      "params": [
+        "Floating",
+        "Ground height"
+      ]
+    },
+    {
+      "heading": "Intersection filtering",
+      "level": "h4",
+      "anchor": "intersection-filtering",
+      "content": "No intersection filtering: all applicable grids with matching names will be copied out.Grid MUST intersect object: only applicable grids with matching names whose cell(s) intersect an object in the filter objects list will be copied out.Grid must NOT intersect object: only applicable grids with matching names whose cell(s) do not intersect an object in the filter objects list will be copied out.Object list: the list of objects used to perform the intersection tests.\n\nNo intersection filtering: all applicable grids with matching names will be copied out.\n\nGrid MUST intersect object: only applicable grids with matching names whose cell(s) intersect an object in the filter objects list will be copied out.\n\nGrid must NOT intersect object: only applicable grids with matching names whose cell(s) do not intersect an object in the filter objects list will be copied out.\n\nObject list: the list of objects used to perform the intersection tests.",
+      "params": [
+        "Grid MUST intersect object",
+        "No intersection filtering",
+        "Object list",
+        "Grid must NOT intersect object"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:30Z"
+}

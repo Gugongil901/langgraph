@@ -1,0 +1,118 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/actor",
+  "title": "Actoroperator",
+  "category": "Operators",
+  "operator": "Actoroperator",
+  "sections": [
+    {
+      "heading": "Actoroperator",
+      "level": "h2",
+      "anchor": "actor-operator",
+      "content": "The Actor operator convertstyActorobjects into hierarchies of actor particles and actor rig particles.",
+      "params": []
+    },
+    {
+      "heading": "Actor",
+      "level": "h4",
+      "anchor": "actor",
+      "content": "Input object list: the list of inputtyActorobjects, and their distribution properties.\n\nSelect an existing item in the actor list to modify its properties.\n\nFrequency: the distribution frequency of a particular actor in the list.\n\nAs particles enter the operator, the actor they are assigned depends on the frequency values of shapes in the list. For example, if one actor has a frequency of 10%, and a second actor has a frequency of 90%, there will be a 10% chance that particles will be assigned the first actor, and a 90% chance that particles will be assigned the second actor.You do not need to ensure that all actor frequencies add up to 100%. Their values will be normalized automatically if they do not all add up to 100%.\n\nOverride scale: controls whether to override the scale of particles which are assigned the actor.Scale %: the scale override.Variation %: the per-particle percentage of variation to apply.\n\nOverride scale: controls whether to override the scale of particles which are assigned the actor.\n\nScale %: the scale override.\n\nSkinned mesh ID: sets the actor’s skinned mesh ID value.\n\nThe actor skinned mesh ID value can be used to determine which actor skinned meshes will be exported by an Export Particles operator in tyCache export mode.\n\nInput tyActor object: thetyActorobject that will be used to initialize the actor.",
+      "params": [
+        "Scale %",
+        "Input object list",
+        "Skinned mesh ID",
+        "Frequency",
+        "Override scale",
+        "Input tyActor object"
+      ]
+    },
+    {
+      "heading": "Settings Rollout",
+      "level": "h3",
+      "anchor": "settings-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Distribution",
+      "level": "h4",
+      "anchor": "distribution-1",
+      "content": "Random by frequency: each particle will choose an actor from the list randomly, taking into consideration each list entry’s frequency parameter.Index from custom float value: each particle will choose an actor from the list, using a custom data float value as an index to the listbox’s entry array.Channel: the custom data float channel to retrieve the index value.Save index: the chosen actor index for each particle will be saved to a custom data float channel.Channel: the custom data float channel to save the index value.\n\nRandom by frequency: each particle will choose an actor from the list randomly, taking into consideration each list entry’s frequency parameter.\n\nIndex from custom float value: each particle will choose an actor from the list, using a custom data float value as an index to the listbox’s entry array.\n\nChannel: the custom data float channel to retrieve the index value.\n\nSave index: the chosen actor index for each particle will be saved to a custom data float channel.\n\nChannel: the custom data float channel to save the index value.",
+      "params": [
+        "Channel",
+        "Random by frequency",
+        "Save index",
+        "Index from custom float value"
+      ]
+    },
+    {
+      "heading": "Mesh",
+      "level": "h4",
+      "anchor": "mesh",
+      "content": "Generate skinned meshes: controls whethertyFlowwill generate skinned meshes corresponding to inputtyActorobjects which contain skin modifiers.At rendertime only: when enabled, actor skinned meshes will only be generated at rendertime.\n\nGenerate skinned meshes: controls whethertyFlowwill generate skinned meshes corresponding to inputtyActorobjects which contain skin modifiers.\n\nAt rendertime only: when enabled, actor skinned meshes will only be generated at rendertime.",
+      "params": [
+        "Generate skinned meshes",
+        "At rendertime only"
+      ]
+    },
+    {
+      "heading": "Initialization",
+      "level": "h4",
+      "anchor": "initialization",
+      "content": "Exclude from animation: flags actor rig particles, so that they will be excluded by their parent actor particle’s animation playback.",
+      "params": [
+        "Exclude from animation"
+      ]
+    },
+    {
+      "heading": "Material",
+      "level": "h4",
+      "anchor": "material",
+      "content": "Inherit instance material from objects: particle render instance materials will be derived from the respective actor objects in the scene.Inherit material ID overrides: material ID overrides will be inherited from actor particles.\n\nInherit instance material from objects: particle render instance materials will be derived from the respective actor objects in the scene.\n\nInherit material ID overrides: material ID overrides will be inherited from actor particles.",
+      "params": [
+        "Inherit instance material from objects",
+        "Inherit material ID overrides"
+      ]
+    },
+    {
+      "heading": "Test TRUE",
+      "level": "h4",
+      "anchor": "test-true",
+      "content": "Actor root particles: actor root particles will satisfy the test condition.Actor rig particles: actor rig particles will satisfy the test condition.\n\nActor root particles: actor root particles will satisfy the test condition.\n\nActor rig particles: actor rig particles will satisfy the test condition.",
+      "params": [
+        "Actor root particles",
+        "Actor rig particles"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "IK Colliders Rollout",
+      "level": "h3",
+      "anchor": "ik-colliders-rollout",
+      "content": "Enable IK collisions: when enabled, rig particles imported as actor IK will collider with objects added to the IK colliders list.IK colliders: the list of collision objects to be processed by the actor IK solver.\n\nEnable IK collisions: when enabled, rig particles imported as actor IK will collider with objects added to the IK colliders list.\n\nIK colliders: the list of collision objects to be processed by the actor IK solver.",
+      "params": [
+        "IK colliders",
+        "Enable IK collisions"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "By normals: if the direction to the closest point on the surface points in the same direction of the closest surface normal, the actor IK effector is considered to be inside (and therefore colliding with) the collider.By raycast: if the ray cast in the specified direction from the effector position hits a face on an IK collider, the actor IK effector is considered to be inside (and therefore colliding with) the collider.X/Y/Z: the specified raycast direction vector.\n\nBy normals: if the direction to the closest point on the surface points in the same direction of the closest surface normal, the actor IK effector is considered to be inside (and therefore colliding with) the collider.\n\nBy raycast: if the ray cast in the specified direction from the effector position hits a face on an IK collider, the actor IK effector is considered to be inside (and therefore colliding with) the collider.\n\nX/Y/Z: the specified raycast direction vector.",
+      "params": [
+        "X/Y/Z",
+        "By raycast",
+        "By normals"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:53:19Z"
+}

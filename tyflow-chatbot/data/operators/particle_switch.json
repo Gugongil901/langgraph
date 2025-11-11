@@ -1,0 +1,50 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/particle_switch",
+  "title": "Particle Switchoperator",
+  "category": "Operators",
+  "operator": "Particle Switchoperator",
+  "sections": [
+    {
+      "heading": "Particle Switchoperator",
+      "level": "h2",
+      "anchor": "particle-switch-operator",
+      "content": "The Particle Switch operator gives you control over which particles will be affected by the particle bind solver.\n\nIf a particle has bindings attached to it, but you don’t want that particle to be affected by the bind solver (for example, you want that particle to stay attached to a static object), you should always be sure tode-activatethat particle with a Particle Switch operator. When you de-activate a particle, the particle bind solver will treat it as though it has infinite mass, which will allow attached bindings to react to it properly. If you do not de-activate particles properly, your bindings may experience undesirable stretching artifacts.",
+      "params": []
+    },
+    {
+      "heading": "Switch",
+      "level": "h4",
+      "anchor": "switch",
+      "content": "Activate bindings: activates particle bindings, causing the bind solver to treat them normally.De-activate bindings: de-activates particle bindings, causing the bind solver to treat them as though they have infinite mass.Put particles to sleep: forces particles to sleep at the current frame.Activate wobble: activates the wobble solver for relevant particles.De-activate wobble: de-activates the wobble solver for affected particles.\n\nActivate bindings: activates particle bindings, causing the bind solver to treat them normally.\n\nDe-activate bindings: de-activates particle bindings, causing the bind solver to treat them as though they have infinite mass.\n\nPut particles to sleep: forces particles to sleep at the current frame.\n\nActivate wobble: activates the wobble solver for relevant particles.\n\nDe-activate wobble: de-activates the wobble solver for affected particles.",
+      "params": [
+        "De-activate wobble",
+        "Put particles to sleep",
+        "Activate bindings",
+        "Activate wobble",
+        "De-activate bindings"
+      ]
+    },
+    {
+      "heading": "Dynamic activation",
+      "level": "h4",
+      "anchor": "dynamic-activation",
+      "content": "Switch on bind overstretch: causes particles to activate only if attached bindings stretch past a certain point.Stretch %: the threshold stretch percentage that will cause attached particles to activate.Any: activates particles if any of their bindings stretch past the stretch threshold.All: only activates particles if all of their bindings stretch past the stretch threshold.\n\nSwitch on bind overstretch: causes particles to activate only if attached bindings stretch past a certain point.\n\nStretch %: the threshold stretch percentage that will cause attached particles to activate.\n\nAny: activates particles if any of their bindings stretch past the stretch threshold.\n\nAll: only activates particles if all of their bindings stretch past the stretch threshold.",
+      "params": [
+        "Any",
+        "All",
+        "Switch on bind overstretch",
+        "Stretch %"
+      ]
+    },
+    {
+      "heading": "Force awake",
+      "level": "h4",
+      "anchor": "force-awake",
+      "content": "Min Frames: the minimum number of frames a particle will be forced awake after activation, to prevent premature re-sleeping if the particle’s velocity remains under the sleep velocity threshold defined in the Particle Bind Solver settings.",
+      "params": [
+        "Min Frames"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:57Z"
+}

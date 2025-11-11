@@ -1,0 +1,25 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/instance_node",
+  "title": "Instance Nodeoperator",
+  "category": "Operators",
+  "operator": "Instance Nodeoperator",
+  "sections": [
+    {
+      "heading": "Instance Nodeoperator",
+      "level": "h2",
+      "anchor": "instance-node-operator",
+      "content": "The Instance Node operator can be used to assign a render-only node to particles.\n\nThis is an operator not currently supported by any renderers, so it essentially has no functionality. The reason for its addition is so that renderers can support it in the future, enabling users to scatter any arbitrary objects with particles, not just meshes. In the meantime, users can use the Export Particles (Objects mode) “auto-export on render” option for equivalent functionality.",
+      "params": []
+    },
+    {
+      "heading": "Instance Node",
+      "level": "h4",
+      "anchor": "instance-node",
+      "content": "Node: the instance node to assign to particles.",
+      "params": [
+        "Node"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:53:34Z"
+}

@@ -1,0 +1,39 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_burst",
+  "title": "Birth Burstoperator",
+  "category": "Operators",
+  "operator": "Birth Burstoperator",
+  "sections": [
+    {
+      "heading": "Birth Burstoperator",
+      "level": "h2",
+      "anchor": "birth-burst-operator",
+      "content": "The Birth Burst operator allows you to define multiple unique birth events, aka “bursts”.\n\nThe Birth Burst operator is a more efficient alternative to creating multiple unique birth operators in order to birth distinct groups of particles.",
+      "params": []
+    },
+    {
+      "heading": "Particle Birth Bursts",
+      "level": "h4",
+      "anchor": "particle-birth-bursts",
+      "content": "Birth burst list: the list of all active birth bursts.",
+      "params": [
+        "Birth burst list"
+      ]
+    },
+    {
+      "heading": "Burst Settings",
+      "level": "h4",
+      "anchor": "burst-settings",
+      "content": "Start/End: controls the time range in which the selected burst will birth new particles.\n\nCount: controls the total number of particles the burst will create over the time range.\n\nCount: controls the number of particles the burst will create per frame over the time range.\n\nSimulation groups: controls which particle simulation groups will be assigned to the particles in the burst.\n\nExport groups: controls which particle export groups will be assigned to the particles in the burst.\n\nValue: the custom float value to assign to the particles in the burst.Channel: the custom float data channel the value will be assigned to.\n\nValue: the custom float value to assign to the particles in the burst.\n\nChannel: the custom float data channel the value will be assigned to.",
+      "params": [
+        "Export groups",
+        "Channel",
+        "Count",
+        "Value",
+        "Simulation groups",
+        "Start/End"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:48:45Z"
+}

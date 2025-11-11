@@ -1,0 +1,57 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_forestPack",
+  "title": "Birth ForestPackoperator",
+  "category": "Operators",
+  "operator": "Birth ForestPackoperator",
+  "sections": [
+    {
+      "heading": "Birth ForestPackoperator",
+      "level": "h2",
+      "anchor": "birth-forestpack-operator",
+      "content": "The Birth ForestPack operator allows you to convert the scattered instances of a ForestPack object into particles.\n\nThe Birth ForestPack operator currently only supports static instances - ForestPack instance animation is not supported.",
+      "params": []
+    },
+    {
+      "heading": "Source ForestPack object",
+      "level": "h4",
+      "anchor": "source-forestpack-object",
+      "content": "ForestPack object: the ForestPack object in the scene that will be used to perform the particle conversion.\n\nOnly ForestPack 7.0+ objects are supported.",
+      "params": [
+        "ForestPack object"
+      ]
+    },
+    {
+      "heading": "Channels",
+      "level": "h4",
+      "anchor": "channels",
+      "content": "Transform: when enabled, birthed particles will get their transform from the transform of ForestPack instances.Shape: when enabled, birthed particles will get their shape mesh from the mesh assigned ForestPack instances.Material: when enabled, birthed particles will get their instanced material override from the material assigned to ForestPack instances.\n\nTransform: when enabled, birthed particles will get their transform from the transform of ForestPack instances.\n\nShape: when enabled, birthed particles will get their shape mesh from the mesh assigned ForestPack instances.\n\nMaterial: when enabled, birthed particles will get their instanced material override from the material assigned to ForestPack instances.\n\nColor mult: when enabled, the color mult floating value assigned to ForestPack instances will be applied to the specified custom float channel.Color: when enabled, the color vector value assigned to ForestPack instances will be applied to the specified custom vector channel.Tint UVW: when enabled, the tint UVW vector value assigned to ForestPack instances will be applied to the specified custom vector channel.\n\nColor mult: when enabled, the color mult floating value assigned to ForestPack instances will be applied to the specified custom float channel.\n\nColor: when enabled, the color vector value assigned to ForestPack instances will be applied to the specified custom vector channel.\n\nTint UVW: when enabled, the tint UVW vector value assigned to ForestPack instances will be applied to the specified custom vector channel.",
+      "params": [
+        "Material",
+        "Transform",
+        "Color",
+        "Shape",
+        "Tint UVW",
+        "Color mult"
+      ]
+    },
+    {
+      "heading": "Particle birth",
+      "level": "h4",
+      "anchor": "particle-birth",
+      "content": "Start: controls the frame on which the particles will be birthed.",
+      "params": [
+        "Start"
+      ]
+    },
+    {
+      "heading": "Mesh cache",
+      "level": "h4",
+      "anchor": "mesh-cache",
+      "content": "Enable: when enabled, ForestPack instance meshes will be internally cached in the operator, leading to faster simulation re-initialization.\n\nForestPack doesn’t offer an easy way to determine whether or not an instanced mesh has been changed by the user, so when mesh cache is enabled, changes to ForestPack instanced meshes may not automatically update meshes cached in the operator. To force an update in the simulation when a ForectPack instanced mesh is changed, press the “clear” button or disable the mesh cache entirely.",
+      "params": [
+        "Enable"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:48:53Z"
+}

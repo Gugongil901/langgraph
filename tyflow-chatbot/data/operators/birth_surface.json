@@ -1,0 +1,72 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_surface",
+  "title": "Birth Surfaceoperator",
+  "category": "Operators",
+  "operator": "Birth Surfaceoperator",
+  "sections": [
+    {
+      "heading": "Birth Surfaceoperator",
+      "level": "h2",
+      "anchor": "birth-surface-operator",
+      "content": "The Birth Surface operator can be used to birth new particles on specific input mesh features, such as vertices, face centers, etc.\n\nInstead of scattering particles randomly on surface features, particles will be sequentially birthed on surface features in the order that the features are indexed. For example, when birthing particles on surface vertices, particle 1 will birth at the location of vertex 1, particle 2 will birth at the location of vertex 2, etc.",
+      "params": []
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Object list: the list of input objects whose surfaces will be used to birth particles.",
+      "params": [
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Particle birth",
+      "level": "h4",
+      "anchor": "particle-birth",
+      "content": "Surface feature type: the surface feature on which particles will be birthed.Start/End: controls the time range in which to birth new particles.Enable every nth: when enabled, particles will be birthed at regular frame intervals, instead of at every frame.Nth value: the interval value at which to birth particles.Random order: when enabled, the order that the particles will be birthed across the specified surface features will be randomized.Split elements: controls whether the internal spawn parent value of particles will be incremented depending on which element of a surface the particle is birthed on.\n\nSurface feature type: the surface feature on which particles will be birthed.\n\nStart/End: controls the time range in which to birth new particles.\n\nEnable every nth: when enabled, particles will be birthed at regular frame intervals, instead of at every frame.\n\nNth value: the interval value at which to birth particles.\n\nRandom order: when enabled, the order that the particles will be birthed across the specified surface features will be randomized.\n\nSplit elements: controls whether the internal spawn parent value of particles will be incremented depending on which element of a surface the particle is birthed on.\n\nWhen a particle is birthed on a surface, its internal spawn parent value is set to the index of that surface in the object list, relative to the starting birthID of particles in the event. This means that all particles on the same surface are considered siblings of each other. Their sibling relationship can have an effect on whether they will consider each other binding candidates, among other things.Sometimes you may not want all particles birthed on surface features to be siblings with each other. For example, if your input object is a shape with multiple spline sub-elements, you would not want particles birthed on separate sub-elements to be siblings of each other. By enabling “split elements”, the spawn parent value of birthed particles will not only be incremented for each object in the input list, but also for each sub element of each object. This will create proper sibling relationships between particles birthed on sub-elements of input surfaces, and make it easier to do things like convert input sub-element splines into separate constraint networks.\n\nEmit on substeps: controls whether particles will be birthed on sub steps of the simulation, or only on whole frames.Inherit matID: controls whether the material ID property of the underlying surface will be copied to the appropriate particle data channel.\n\nEmit on substeps: controls whether particles will be birthed on sub steps of the simulation, or only on whole frames.\n\nInherit matID: controls whether the material ID property of the underlying surface will be copied to the appropriate particle data channel.",
+      "params": [
+        "Enable every nth",
+        "Surface feature type",
+        "Nth value",
+        "Emit on substeps",
+        "Random order",
+        "Inherit matID",
+        "Start/End",
+        "Split elements"
+      ]
+    },
+    {
+      "heading": "Edges",
+      "level": "h4",
+      "anchor": "edges",
+      "content": "Edge center: when enabled, particles will be generated on edge centers.Edge vertex: when enabled, particles will be generated on the first vertex of edges.Align to edge: when enabled, the Z-axis of particles will be aligned to the vector between edge vertices.Scale to edge length: when enabled, the Z-axis of particles will be scaled to the length between edge vertices.\n\nEdge center: when enabled, particles will be generated on edge centers.\n\nEdge vertex: when enabled, particles will be generated on the first vertex of edges.\n\nAlign to edge: when enabled, the Z-axis of particles will be aligned to the vector between edge vertices.\n\nScale to edge length: when enabled, the Z-axis of particles will be scaled to the length between edge vertices.",
+      "params": [
+        "Scale to edge length",
+        "Align to edge",
+        "Edge center",
+        "Edge vertex"
+      ]
+    },
+    {
+      "heading": "Birth index tracking",
+      "level": "h4",
+      "anchor": "birth-index-tracking",
+      "content": "Save birth index: controls whether the 0-based index of the surface in the input object list that a particle was birthed on is saved to a particle’s custom data channel.\n\nThe birth index value will be affected by whether or not “split elements” is enabled.\n\nChannel: sets the data channel the birth index will be saved to.",
+      "params": [
+        "Channel",
+        "Save birth index"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:11Z"
+}

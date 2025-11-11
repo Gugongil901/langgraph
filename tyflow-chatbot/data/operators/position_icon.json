@@ -1,0 +1,59 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/position_icon",
+  "title": "Position Iconoperator",
+  "category": "Operators",
+  "operator": "Position Iconoperator",
+  "sections": [
+    {
+      "heading": "Position Iconoperator",
+      "level": "h2",
+      "anchor": "position-icon-operator",
+      "content": "The Position Icon operator allows you to position particles in the scene relative to atyIconobject.",
+      "params": []
+    },
+    {
+      "heading": "Icons",
+      "level": "h4",
+      "anchor": "icons",
+      "content": "Icon object list: the list oftyIconobjects which will be used to position particles in the scene.",
+      "params": [
+        "Icon object list"
+      ]
+    },
+    {
+      "heading": "Location",
+      "level": "h4",
+      "anchor": "location",
+      "content": "Location type: the location on thetyIconobjects where particles will be placed.Inherit icon motion: controls whether particles will inherit the velocity of theirtyIcon.Multiplier %: the amount of velocity particles will inherit.Variation %: the per-particle percentage of variation to apply.Divergence: the angle of divergence applied to inherited velocity vectors.\n\nLocation type: the location on thetyIconobjects where particles will be placed.\n\nInherit icon motion: controls whether particles will inherit the velocity of theirtyIcon.\n\nMultiplier %: the amount of velocity particles will inherit.\n\nDivergence: the angle of divergence applied to inherited velocity vectors.",
+      "params": [
+        "Multiplier %",
+        "Location type",
+        "Inherit icon motion",
+        "Divergence"
+      ]
+    },
+    {
+      "heading": "Texture",
+      "level": "h4",
+      "anchor": "texture",
+      "content": "Density by texture: controls whether particle densities on atyIconwill be controlled by a texture map.Texmap: the texture map which will control particle densities.Tries: the number of attempts to make, while searching for a valid location on thetyIcon(based on the texture map), before stopping the search.Position as UVW: the position of the particle in world-space will be used as the UVW value used to sample the density texture.\n\nDensity by texture: controls whether particle densities on atyIconwill be controlled by a texture map.\n\nTexmap: the texture map which will control particle densities.\n\nTries: the number of attempts to make, while searching for a valid location on thetyIcon(based on the texture map), before stopping the search.\n\nPosition as UVW: the position of the particle in world-space will be used as the UVW value used to sample the density texture.\n\nIf “position as UVW” is disabled, implicit UVWs will be assigned totyIcons, with corner-to-corner UVW values ranging from 0.0 to 1.0. If location type is set to “volume”, the implicit UVWs will be 3-dimensional to account for thetyIcon’sdepth.\n\nDelete if invalid: controls whether particles that cannot find a valid location on thetyIconare deleted.",
+      "params": [
+        "Delete if invalid",
+        "Tries",
+        "Texmap",
+        "Position as UVW",
+        "Density by texture"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:19Z"
+}

@@ -1,0 +1,38 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/particle_groups",
+  "title": "Particle Groupsoperator",
+  "category": "Operators",
+  "operator": "Particle Groupsoperator",
+  "sections": [
+    {
+      "heading": "Particle Groupsoperator",
+      "level": "h2",
+      "anchor": "particle-groups-operator",
+      "content": "The Particle Groups operator can be used to set simulation/export groups on particles. The group settings can then be used to filter particles from simulation/export.\n\nA particle group is a set of assignable bit flags. Two groups overlap if they share one or more of the same flags. Groups with no flags will overlap with other flagless groups, but if a group has no flags it will not overlap with a group that has one or more flags set. If two groups overlap, they pass the group filter test.For example, a group set to[1]will overlap with a group set to[1][2]. But a group set to[1]will not overlap with a group set to[2].Understanding this principle makes it very easy to filter particles later in a simulation, or intyFlow’svarious export functions. For example, in a Particle Physics operator you could use groups to ensure that only certain particles will exert forces on each other. Groups can be utilized all throughouttyFlowand play an important role in overall flow organization.",
+      "params": []
+    },
+    {
+      "heading": "Simulation groups",
+      "level": "h4",
+      "anchor": "simulation-groups",
+      "content": "Simulation groups can be utilized within simulations themselves, and have no effect on particles that are exported using the various export functions.\n\nChange: controls whether this operator will modify existing particle simulation groups.Simulation groups: controls which particle simulation groups will be assigned to particles.Set/Add/Remove: controls which operation will be used to assign simulation groups.\n\nChange: controls whether this operator will modify existing particle simulation groups.\n\nSimulation groups: controls which particle simulation groups will be assigned to particles.\n\nSet/Add/Remove: controls which operation will be used to assign simulation groups.",
+      "params": [
+        "Set/Add/Remove",
+        "Simulation groups",
+        "Change"
+      ]
+    },
+    {
+      "heading": "Export groups",
+      "level": "h4",
+      "anchor": "export-groups",
+      "content": "Export groups can be utilized within particle export functions, and have no direct effect on simulations.\n\nChange: controls whether this operator will modify existing particle export groups.Export groups: controls which particle export groups will be assigned to particles.Set/Add/Remove: controls which operation will be used to assign export groups.\n\nChange: controls whether this operator will modify existing particle export groups.\n\nExport groups: controls which particle export groups will be assigned to particles.\n\nSet/Add/Remove: controls which operation will be used to assign export groups.",
+      "params": [
+        "Set/Add/Remove",
+        "Export groups",
+        "Change"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:06Z"
+}

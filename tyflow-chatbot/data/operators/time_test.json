@@ -1,0 +1,47 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/time_test",
+  "title": "Time Testoperator",
+  "category": "Operators",
+  "operator": "Time Testoperator",
+  "sections": [
+    {
+      "heading": "Time Testoperator",
+      "level": "h2",
+      "anchor": "time-test-operator",
+      "content": "The Time Test operator tests if particles satisfy a time-based condition.",
+      "params": []
+    },
+    {
+      "heading": "Test Type",
+      "level": "h4",
+      "anchor": "test-type",
+      "content": "Time type: the type of time test to conduct.\n\nParticle Age: a particle’s total age will be tested.\n\nEvent Age: a particle’s age within its event will be tested.\n\nFrame: the current frame of the simulation will be tested.\n\nTest TRUE if age is: various conditions that will be used in the test.",
+      "params": [
+        "Particle Age",
+        "Time type",
+        "Frame",
+        "Event Age",
+        "Test TRUE if age is"
+      ]
+    },
+    {
+      "heading": "Test Value",
+      "level": "h4",
+      "anchor": "test-value",
+      "content": "Value: the test value.",
+      "params": [
+        "Value"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:02Z"
+}

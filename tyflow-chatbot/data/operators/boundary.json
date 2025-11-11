@@ -1,0 +1,46 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/boundary",
+  "title": "Boundaryoperator",
+  "category": "Operators",
+  "operator": "Boundaryoperator",
+  "sections": [
+    {
+      "heading": "Boundaryoperator",
+      "level": "h2",
+      "anchor": "boundary-operator",
+      "content": "The Boundary operator allows you to constrain particles to atyIconvolume. Particles outside the volume can be set to loop within the boundary of the icon, be deleted, or test TRUE to satisfy the output condition.",
+      "params": []
+    },
+    {
+      "heading": "Icon",
+      "level": "h4",
+      "anchor": "icon",
+      "content": "Icon object: the icon object to use as the boundary.",
+      "params": [
+        "Icon object"
+      ]
+    },
+    {
+      "heading": "Boundary Test",
+      "level": "h4",
+      "anchor": "boundary-test",
+      "content": "Inside: particles will be tested to see if they are inside the boundary.Outside: particles will be tested to see if they are outside the boundary.\n\nInside: particles will be tested to see if they are inside the boundary.\n\nOutside: particles will be tested to see if they are outside the boundary.",
+      "params": [
+        "Outside",
+        "Inside"
+      ]
+    },
+    {
+      "heading": "Boundary Action",
+      "level": "h4",
+      "anchor": "boundary-action",
+      "content": "Loop: particles that pass the boundary test will loop to the opposite side of the boundary.Delete: particles that pass the boundary test will be deleted.Test TRUE::particles that pass the boundary test will satisfy the output condition.\n\nLoop: particles that pass the boundary test will loop to the opposite side of the boundary.\n\nDelete: particles that pass the boundary test will be deleted.\n\nTest TRUE::particles that pass the boundary test will satisfy the output condition.",
+      "params": [
+        "Delete",
+        "Test TRUE",
+        "Loop"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:31Z"
+}

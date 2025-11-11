@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/cloth_collect",
+  "title": "Cloth Collectoperator",
+  "category": "Operators",
+  "operator": "Cloth Collectoperator",
+  "sections": [
+    {
+      "heading": "Cloth Collectoperator",
+      "level": "h2",
+      "anchor": "cloth-collect-operator",
+      "content": "The Cloth Collect operator allows you to collect particles of a cloth mesh that have been spread out into separate events, back into the current event.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:44Z"
+}

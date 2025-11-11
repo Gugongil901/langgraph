@@ -1,0 +1,44 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/repair",
+  "title": "Repairoperator",
+  "category": "Operators",
+  "operator": "Repairoperator",
+  "sections": [
+    {
+      "heading": "Repairoperator",
+      "level": "h2",
+      "anchor": "repair-operator",
+      "content": "The Repair operator allows you to repair various particle properties.",
+      "params": []
+    },
+    {
+      "heading": "Implicit normals",
+      "level": "h3",
+      "anchor": "implicit-normals",
+      "content": "Flip implicit normals: when selected, the order of all face vertices will be reversed, which will effectively flip all non-explicit mesh normals.",
+      "params": [
+        "Flip implicit normals"
+      ]
+    },
+    {
+      "heading": "Explicit normals",
+      "level": "h3",
+      "anchor": "explicit-normals",
+      "content": "Flip explicit normals: when selected, any assigned explicit vertex normals will be flipped.Remove explicit normals: when selected, any assigned explicit vertex normals will be removed.\n\nFlip explicit normals: when selected, any assigned explicit vertex normals will be flipped.\n\nRemove explicit normals: when selected, any assigned explicit vertex normals will be removed.",
+      "params": [
+        "Flip explicit normals",
+        "Remove explicit normals"
+      ]
+    },
+    {
+      "heading": "Transforms",
+      "level": "h3",
+      "anchor": "transforms",
+      "content": "Reset particle transforms: when enabled, all affected particles will have their transform reset to an identity matrix (with their original position and relative shape mesh scale/orientation preserved).\n\nResetting the transforms of particles will un-instance their meshes (beacuse a unique new mesh must be generated for each particle in order for each particle’s mesh to be re-oriented relative to their reset transform).",
+      "params": [
+        "Reset particle transforms"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:51Z"
+}

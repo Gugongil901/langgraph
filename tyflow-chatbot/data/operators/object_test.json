@@ -1,0 +1,58 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/object_test",
+  "title": "Object Testoperator",
+  "category": "Operators",
+  "operator": "Object Testoperator",
+  "sections": [
+    {
+      "heading": "Object Testoperator",
+      "level": "h2",
+      "anchor": "object-test-operator",
+      "content": "The Object Test operator can be used to test particle positions against the positions of objects in the scene.",
+      "params": []
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Input object list: the list of input objects to use for the tests.\n\nParticles will conduct their tests against the closest object in the list of objects.",
+      "params": [
+        "Input object list"
+      ]
+    },
+    {
+      "heading": "Test TRUE If",
+      "level": "h4",
+      "anchor": "test-true-if",
+      "content": "Particles above the object in world-space along the Z-axis will satisfy the test condition.\n\nParticles below the object in world-space along the Z-axis will satisfy the test condition.\n\nParticles above the object in object-space along the object’s Z-axis will satisfy the test condition.\n\nParticles below the object in object-space along the object’s Z-axis will satisfy the test condition.\n\nOffset: the amount of offset that will be applied along the applicable Z-Axis, prior to the test.\n\nA distance test will be performed between particles and input objects.\n\nAxial X/Y/Z: the distance will be measured between the particle and the object’s X/Y/Z axis.Planar X/Y/Z: the distance will be measured between the particle and the plane whose normal is the object’s X/Y/Z axis.Radial XYZ: the distance will be measured between the particle and the object’s position.Less Than: distances which are less than the test value will satisfy the test condition.Greater Than: distances which are greater than the test value will satisfy the test condition.Distance: the distance test value.\n\nAxial X/Y/Z: the distance will be measured between the particle and the object’s X/Y/Z axis.\n\nPlanar X/Y/Z: the distance will be measured between the particle and the plane whose normal is the object’s X/Y/Z axis.\n\nRadial XYZ: the distance will be measured between the particle and the object’s position.\n\nLess Than: distances which are less than the test value will satisfy the test condition.\n\nGreater Than: distances which are greater than the test value will satisfy the test condition.\n\nDistance: the distance test value.",
+      "params": [
+        "Less Than",
+        "Planar X/Y/Z",
+        "Distance",
+        "Offset",
+        "Greater Than",
+        "Radial XYZ",
+        "Axial X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Built-in Noise",
+      "level": "h4",
+      "anchor": "built-in-noise",
+      "content": "Noise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Noise mode"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:53:47Z"
+}

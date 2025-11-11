@@ -1,0 +1,89 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/move_to_target",
+  "title": "Move to Targetoperator",
+  "category": "Operators",
+  "operator": "Move to Targetoperator",
+  "sections": [
+    {
+      "heading": "Move to Targetoperator",
+      "level": "h2",
+      "anchor": "move-to-target-operator",
+      "content": "The Move to Target operator allows you to move a particle to its target particle’s position or to a point on its shape mesh surface.\n\nUnlike the Find Target operator, which moves particles over time by modifying their velocities, the Move to Target operator can be used to move particles instantaneously.",
+      "params": []
+    },
+    {
+      "heading": "Target",
+      "level": "h4",
+      "anchor": "target",
+      "content": "Channel: the channel containing the target particle ID.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Move location",
+      "level": "h4",
+      "anchor": "move-location",
+      "content": "Target particle position: the target particle’s absolute location in space will be the target point.Closest point on the target shape mesh: the closest point on the target particle’s shape mesh will become the target point.\n\nTarget particle position: the target particle’s absolute location in space will be the target point.\n\nClosest point on the target shape mesh: the closest point on the target particle’s shape mesh will become the target point.\n\nIf location is set to “closest point on the target shape mesh” and the target particle has no shape mesh, the location mode will revert to “target particle position”.\n\nTarget shape mesh vertex pos by index: the target point will be the vertex on the target particle’s shape mesh defined by the vertex index stored in the given custom data float channel.Target shape mesh random vertex pos: the target point will be a random vertex location on the target particle’s shape mesh.\n\nTarget shape mesh vertex pos by index: the target point will be the vertex on the target particle’s shape mesh defined by the vertex index stored in the given custom data float channel.\n\nTarget shape mesh random vertex pos: the target point will be a random vertex location on the target particle’s shape mesh.",
+      "params": [
+        "Target shape mesh vertex pos by index",
+        "Target shape mesh random vertex pos",
+        "Target particle position",
+        "Closest point on the target shape mesh"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Value: the value used to linearly interpolate between a particle’s current location and the target location.Variation %: the per-particle percentage of variation to apply.\n\nValue: the value used to linearly interpolate between a particle’s current location and the target location.",
+      "params": [
+        "Value"
+      ]
+    },
+    {
+      "heading": "Offset",
+      "level": "h4",
+      "anchor": "offset",
+      "content": "Offset: the normal-aligned offset to apply to the target location, prior to interpolation.Variation %: the per-particle percentage of variation to apply.\n\nOffset: the normal-aligned offset to apply to the target location, prior to interpolation.",
+      "params": [
+        "Offset"
+      ]
+    },
+    {
+      "heading": "Sample",
+      "level": "h4",
+      "anchor": "sample",
+      "content": "Sample: controls which sampler will be used for closest point determinations.",
+      "params": [
+        "Sample"
+      ]
+    },
+    {
+      "heading": "Vertex Index",
+      "level": "h4",
+      "anchor": "vertex-index",
+      "content": "Channel: the custom float data channel to retrieve the target vertex index value from.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:21Z"
+}

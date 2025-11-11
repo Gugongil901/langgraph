@@ -1,0 +1,91 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/position_displace",
+  "title": "Position Displaceoperator",
+  "category": "Operators",
+  "operator": "Position Displaceoperator",
+  "sections": [
+    {
+      "heading": "Position Displaceoperator",
+      "level": "h2",
+      "anchor": "position-displace-operator",
+      "content": "The Position Displace operator allows you to move particles along object surface normals relative to the values of a texmap.",
+      "params": []
+    },
+    {
+      "heading": "Mode",
+      "level": "h4",
+      "anchor": "mode",
+      "content": "UVW Space: when enabled, particles will sample UVWs from the nearest point to the input objects and those UVWs will be used to sample the texmap.World space: when enabled, the particle’s position will be the UVW coordinate used to sample the texmap.\n\nUVW Space: when enabled, particles will sample UVWs from the nearest point to the input objects and those UVWs will be used to sample the texmap.\n\nWorld space: when enabled, the particle’s position will be the UVW coordinate used to sample the texmap.",
+      "params": [
+        "UVW Space",
+        "World space"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Objects: the UVW coordinates of the object in this list nearest to a given particle will be used to sample the selected texmap values.",
+      "params": [
+        "Objects"
+      ]
+    },
+    {
+      "heading": "Sample",
+      "level": "h4",
+      "anchor": "sample",
+      "content": "Sample: controls which surface sampler will be used for UVW coordinate retrieval.",
+      "params": [
+        "Sample"
+      ]
+    },
+    {
+      "heading": "Texture",
+      "level": "h4",
+      "anchor": "texture",
+      "content": "Texmap: the texmap to sample colors from.",
+      "params": [
+        "Texmap"
+      ]
+    },
+    {
+      "heading": "Displacement",
+      "level": "h4",
+      "anchor": "displacement",
+      "content": "2D: the texmap will be sampled in 2D using the surface normal of the nearest point to the input objects as the vector of displacement.3D: the texmap will be sampled in 3D using the value returned by the texmap as the vector of displacement.Center: when enabled, this allows you to set the base “water level” of the displacement. Texture values above this threshold will result in positive displacement, and texture values below this threadhold will result in negative displacement.Amount: the amount to displace a particle along the nearest surface normal, multiplied by the texture value.Variation %: the per-particle percentage of variation to apply.Values are in VRay tangent space: when enabled, values are treated as VRay tangent space values (0.5-based and divided by two). Enable this setting when using a PhoenixFD Ocean Texture as the displacement texmap.\n\n2D: the texmap will be sampled in 2D using the surface normal of the nearest point to the input objects as the vector of displacement.\n\n3D: the texmap will be sampled in 3D using the value returned by the texmap as the vector of displacement.\n\nCenter: when enabled, this allows you to set the base “water level” of the displacement. Texture values above this threshold will result in positive displacement, and texture values below this threadhold will result in negative displacement.\n\nAmount: the amount to displace a particle along the nearest surface normal, multiplied by the texture value.\n\nValues are in VRay tangent space: when enabled, values are treated as VRay tangent space values (0.5-based and divided by two). Enable this setting when using a PhoenixFD Ocean Texture as the displacement texmap.",
+      "params": [
+        "Values are in VRay tangent space",
+        "Amount",
+        "3D",
+        "Center",
+        "2D"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Normal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.",
+      "params": [
+        "Normal interpolation"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:14Z"
+}

@@ -1,0 +1,80 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/shell",
+  "title": "Shelloperator",
+  "category": "Operators",
+  "operator": "Shelloperator",
+  "sections": [
+    {
+      "heading": "Shelloperator",
+      "level": "h2",
+      "anchor": "shell-operator",
+      "content": "The Shell operator allows you to give thickness to the faces of particle meshes, similar to how a normal Shell modifier works.",
+      "params": []
+    },
+    {
+      "heading": "Shell",
+      "level": "h4",
+      "anchor": "shell",
+      "content": "Outer amount: the distance to extrude faces along their normal.Inner amount: the distance to extrude faces along the opposite direction of their normal.Variation %: the per-particle percentage of variation to apply.Relative to surface area: the outer/inner amounts will be relative to the overall surface area of the particle divided by the set area.Area: the set area to use in relative mode.Clamp multiplier: clamps the area multiplier to a max value of 1, so that particles with a larger area than the specified relative area value won’t be extruded further than the specified inner/outer amounts.\n\nOuter amount: the distance to extrude faces along their normal.\n\nInner amount: the distance to extrude faces along the opposite direction of their normal.\n\nRelative to surface area: the outer/inner amounts will be relative to the overall surface area of the particle divided by the set area.\n\nArea: the set area to use in relative mode.\n\nClamp multiplier: clamps the area multiplier to a max value of 1, so that particles with a larger area than the specified relative area value won’t be extruded further than the specified inner/outer amounts.\n\nOpen edges only: controls whether only elements with open elements are extruded.Along vertex normals: extrudes faces along individual vertex normals.Along average normals: extrudes all faces along the averaged normal direction of the whole mesh.Specify X/Y/Z: extrudes faces in a specified direction.\n\nOpen edges only: controls whether only elements with open elements are extruded.\n\nAlong vertex normals: extrudes faces along individual vertex normals.\n\nAlong average normals: extrudes all faces along the averaged normal direction of the whole mesh.\n\nSpecify X/Y/Z: extrudes faces in a specified direction.\n\nNone/Outer/Inner: controls which faces will be beveled.Amount %: the amount of bevel to apply to the shell faces.Variation %: the per-particle percentage of variation to apply.Center Pivots: moves the mesh particle offset to its center.\n\nNone/Outer/Inner: controls which faces will be beveled.\n\nAmount %: the amount of bevel to apply to the shell faces.\n\nCenter Pivots: moves the mesh particle offset to its center.",
+      "params": [
+        "Outer amount",
+        "Area",
+        "Along vertex normals",
+        "Clamp multiplier",
+        "Center Pivots",
+        "Inner amount",
+        "None/Outer/Inner",
+        "Amount %",
+        "Specify X/Y/Z",
+        "Along average normals",
+        "Open edges only",
+        "Relative to surface area"
+      ]
+    },
+    {
+      "heading": "MatID",
+      "level": "h4",
+      "anchor": "matid",
+      "content": "Outer MatID Enabled: controls whether outer faces are given a material ID override.Outer MatID: the override ID to assigned to outer faces.Inner MatID Enabled: controls whether inner faces are given a material ID override.Inner MatID: the override ID to assigned to inner faces.Edge MatID Enabled: controls whether edge faces are given a material ID override.Edge MatID: the override ID to assigned to edge faces.\n\nOuter MatID Enabled: controls whether outer faces are given a material ID override.\n\nOuter MatID: the override ID to assigned to outer faces.\n\nInner MatID Enabled: controls whether inner faces are given a material ID override.\n\nInner MatID: the override ID to assigned to inner faces.\n\nEdge MatID Enabled: controls whether edge faces are given a material ID override.\n\nEdge MatID: the override ID to assigned to edge faces.",
+      "params": [
+        "Inner MatID",
+        "Outer MatID",
+        "Outer MatID Enabled",
+        "Inner MatID Enabled",
+        "Edge MatID",
+        "Edge MatID Enabled"
+      ]
+    },
+    {
+      "heading": "Selection",
+      "level": "h4",
+      "anchor": "selection",
+      "content": "Select outer faces: flags outer faces for selection.Select inner faces: flags inner faces for selection.Select edge faces: flags edge faces for selection.\n\nSelect outer faces: flags outer faces for selection.\n\nSelect inner faces: flags inner faces for selection.\n\nSelect edge faces: flags edge faces for selection.",
+      "params": [
+        "Select inner faces",
+        "Select outer faces",
+        "Select edge faces"
+      ]
+    },
+    {
+      "heading": "UVs",
+      "level": "h4",
+      "anchor": "uvs",
+      "content": "Generate edge UVs: controls whether UVs will be automatically generated for edge faces.Size: the size of edge UVs.\n\nGenerate edge UVs: controls whether UVs will be automatically generated for edge faces.\n\nSize: the size of edge UVs.",
+      "params": [
+        "Generate edge UVs",
+        "Size"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:59Z"
+}

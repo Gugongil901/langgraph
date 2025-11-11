@@ -1,0 +1,97 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/fuse",
+  "title": "Fuseoperator",
+  "category": "Operators",
+  "operator": "Fuseoperator",
+  "sections": [
+    {
+      "heading": "Fuseoperator",
+      "level": "h2",
+      "anchor": "fuse-operator",
+      "content": "The Fuse operator uses approximated k-means clustering to fuse neighbor particles within a certain radius together (by deleting all particles except for the particle at the center of each fusion sphere).",
+      "params": []
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Fuse if position in radius: a particle will be fused with another particle if its position is inside the first particle’s fuse radius.Fuse if radii overlap: a particle will be fused with another particle if its fuse radius overlaps the first particle’s fuse radius.Fuse if convex hulls overlap: a particle will be fused with another particle if the convex hulls of the two particles overlap.\n\nFuse if position in radius: a particle will be fused with another particle if its position is inside the first particle’s fuse radius.\n\nFuse if radii overlap: a particle will be fused with another particle if its fuse radius overlaps the first particle’s fuse radius.\n\nFuse if convex hulls overlap: a particle will be fused with another particle if the convex hulls of the two particles overlap.\n\nConvex hull overlap mode requires particles to have shape meshes assigned to them.",
+      "params": [
+        "Fuse if position in radius",
+        "Fuse if convex hulls overlap",
+        "Fuse if radii overlap"
+      ]
+    },
+    {
+      "heading": "Radius",
+      "level": "h4",
+      "anchor": "radius",
+      "content": "Radius type: the particle property from which to derive the base radius value.Radius: the absolute radius value.Multiplier: the multiplier to apply to shape/scale radius values.\n\nRadius type: the particle property from which to derive the base radius value.\n\nRadius: the absolute radius value.\n\nMultiplier: the multiplier to apply to shape/scale radius values.\n\nSort fusions by radii: when enabled, particles will be fused with respect to their radii - for any two given particles, the larger particle will remain after a fusion occurs.",
+      "params": [
+        "Sort fusions by radii",
+        "Multiplier",
+        "Radius",
+        "Radius type"
+      ]
+    },
+    {
+      "heading": "Dynamic fusion",
+      "level": "h4",
+      "anchor": "dynamic-fusion",
+      "content": "Fuse affects volume: when enabled, the remaining particle will have its volume increased by the volume of the fused particle.Fuse affects position: when enabled, the remaining particle will be moved proportionally towards the fused particle.Fuse affects velocity: when enabled, the remaining particle will have its velocity shifted towards the fused particle.\n\nFuse affects volume: when enabled, the remaining particle will have its volume increased by the volume of the fused particle.\n\nFuse affects position: when enabled, the remaining particle will be moved proportionally towards the fused particle.\n\nFuse affects velocity: when enabled, the remaining particle will have its velocity shifted towards the fused particle.",
+      "params": [
+        "Fuse affects volume",
+        "Fuse affects position",
+        "Fuse affects velocity"
+      ]
+    },
+    {
+      "heading": "Clusters",
+      "level": "h4",
+      "anchor": "clusters",
+      "content": "Enable clustering: when enabled, only particles of the same/different cluster will be fused, depending on selected cluster mode.Cluster channel: the custom data float channel from which to retrieve the cluster info.Mode: the clustering mode.\n\nEnable clustering: when enabled, only particles of the same/different cluster will be fused, depending on selected cluster mode.\n\nCluster channel: the custom data float channel from which to retrieve the cluster info.\n\nMode: the clustering mode.",
+      "params": [
+        "Enable clustering",
+        "Mode",
+        "Cluster channel"
+      ]
+    },
+    {
+      "heading": "Convex Hulls",
+      "level": "h4",
+      "anchor": "convex-hulls",
+      "content": "Scale: a scale multiplier applied to the hulls used in the convex hull overlap test.",
+      "params": [
+        "Scale"
+      ]
+    },
+    {
+      "heading": "Local Offsets",
+      "level": "h4",
+      "anchor": "local-offsets",
+      "content": "X/Y/Z: position offsets in each particle’s local transform space used to control the position of each particle’s fusion sphere location.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Display fuse spheres: displays the fuse spheres in the viewport.",
+      "params": [
+        "Display fuse spheres"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:31Z"
+}

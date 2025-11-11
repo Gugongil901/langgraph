@@ -1,0 +1,81 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/script",
+  "title": "Scriptoperator",
+  "category": "Operators",
+  "operator": "Scriptoperator",
+  "sections": [
+    {
+      "heading": "Scriptoperator",
+      "level": "h2",
+      "anchor": "script-operator",
+      "content": "The Script operator provides advanced control over particles, using C#.\n\ntyFlow’sscript operator is fast. Combined with its multithreading capabilities, it performs nearly as fast as native c++ code, and is suitable for very complex tasks.\n\nAn exhaustive API of alltyFlow-related C# functions and parameters can be found within each Script operator’s editor window, by clicking the “API” button. Users may also reference other C# libraries accessible from Max.NET, like the Math library, for common functions. An internal “Mathf” library has also been added, which is a float-based alternative to the default “Math” library (ex: “Mathf.Sin(…)” returns a float where “Math.Sin(…)” would return a double). Using the “Mathf” library avoids the need to continually cast doubles to floats.",
+      "params": []
+    },
+    {
+      "heading": "Timing Rollout",
+      "level": "h3",
+      "anchor": "timing-rollout",
+      "content": "Allow static evaluation: when enabled, an otherwise static flow that includes a Script operator will remain static.\n\nNormally it’s possible to create a static flow (a flow which only evaluates during particle birth) if no operators in the flow adjust the velocity/spin of particles. Without velocity/spin, once particles are born they will remain unchanged…thus, tyFlow can avoid repeatedly evaluating them. Static flows are great for scattering setups where you don’t need particles to continually update. However, the presence of a Script operator in a flow normally prevents it from being static, because prior to script evaluation in the simulation pipeline, tyFlow has no way of determining whether a user’s script will change particle properties over time (so it must assume the flow is never static). By enabling the “allow static evaluation” function, you can override this behavior and tell tyFlow not to worry about evaluating the Script operator if the rest of the flow is static as well. When enabled, it means the Script operator will only be evaluated during the non-static interval of the simulation, listed at the bottom of the editor window.\n\nEvaluate operator after PhysX: when enabled, the Script operator will be evaluated after all PhysX calculations have been evaluated (by default, operators evaluate before PhysX evaluates).",
+      "params": [
+        "Allow static evaluation",
+        "Evaluate operator after PhysX"
+      ]
+    },
+    {
+      "heading": "Script Rollout",
+      "level": "h3",
+      "anchor": "script-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Script-Accessible Objects",
+      "level": "h4",
+      "anchor": "script-accessible-objects",
+      "content": "Script-accessible objects are scene objects that you wish to access directly from within a script.\n\nScene objects that you wish to access directly from within a script must be registered with the script operator by adding them to the script-accessible object list. Once an object is added to the accessible object list, it can be accessed from within a script using its script-accessible name (displayed in square brackets within the object list). For example, a sphere object added to the list might be displayed as “[obj001] Sphere001”, which can then be accessed within the script by the name:obj001.tyCollectionsthat are added to the list will be imported as a generic list (array) of objects, whose elements can be individually accessed by using regular array operators (ex:objs001[0], objs001[1], etc).",
+      "params": []
+    },
+    {
+      "heading": "Script-Accessible Texmaps",
+      "level": "h4",
+      "anchor": "script-accessible-texmaps",
+      "content": "Script-accessible texmaps are scene texmaps that you wish to access directly from within a script.\n\nScene texmaps that you wish to access directly from within a script must be registered with the script operator by adding them to the script-accessible texmap list. Once a texmap is added to the accessible texmap list, it can be accessed from within a script using its script-accessible name (displayed in square brackets within the texmap list). For example, a bitmap texture added to the list might be displayed as “[tex001] Map #1”, which can then be accessed within the script by the name:tex001.",
+      "params": []
+    },
+    {
+      "heading": "Additional C# Assemblies",
+      "level": "h4",
+      "anchor": "additional-c-assemblies",
+      "content": "Assemblies listed here (full paths separated with a semicolon) will be loaded by the C# compiler and their API (if they are loaded successfully) will be accessible within C# scripts.\n\nAssemblies in the 3ds Max root directory can be referenced using the $MaxRoot symbol. Ex: “$MaxRoot\\ManagedServices.dll”. If you have trouble loading an assembly not bundled with 3ds Max, try adding it to 3ds Max’s C# assembly folder ($MaxRoot\\bin\\assemblies) before importing.",
+      "params": []
+    },
+    {
+      "heading": "While loops",
+      "level": "h4",
+      "anchor": "while-loops",
+      "content": "Enable ‘Shift+ESC’ infinite loop protection: when enabled, any ‘while’ loop present in the script code can be exited during runtime by holding Shift+ESC.\n\nIf your script (accidentally) contains a while-loop that never breaks (exits), it will freeze Max once it executes. By enabling ‘Shift+ESC’ protection, you can force tyFlow to exit out of any script’s while loop by holding Shift+ESC on the keyboard.",
+      "params": [
+        "Enable ‘Shift+ESC’ infinite loop protection"
+      ]
+    },
+    {
+      "heading": "Optimization",
+      "level": "h4",
+      "anchor": "optimization",
+      "content": "Cache custom data keys: enables a compile-time optimization which caches custom data channel strings (which are converted into hashmap keys) for faster custom data access.\n\nBy default, every time a custom data channel is accessed by its channel name,tyFlowmust convert the string to a hash and then do a hashmap lookup to find the value of that channel for a particular particle. Doing such queries on huge numbers of particles can be very slow. Keeping this optimization enabled will greatly speed up all custom data access, as it manually moves hashmap lookups outside of all particle iteration loops, caching the resulting values for later use.\n\nThis should only be disabled for testing purposes.",
+      "params": [
+        "Cache custom data keys"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Enable marker/line/tm drawing: enables the drawing of script-based viewport elements (lines, markers, etc). Toggling this setting allows you to choose whether script-based viewport elements will be drawn, without having to modify a script directly (thereby avoiding a simulation reset).",
+      "params": [
+        "Enable marker/line/tm drawing"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:13Z"
+}

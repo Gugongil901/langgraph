@@ -1,0 +1,212 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/spawn",
+  "title": "Spawnoperator",
+  "category": "Operators",
+  "operator": "Spawnoperator",
+  "sections": [
+    {
+      "heading": "Spawnoperator",
+      "level": "h2",
+      "anchor": "spawn-operator",
+      "content": "The Spawn operator spawns new particles from existing particles.",
+      "params": []
+    },
+    {
+      "heading": "Spawn Rollout",
+      "level": "h3",
+      "anchor": "spawn-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Spawn",
+      "level": "h4",
+      "anchor": "spawn",
+      "content": "Spawns child particles at a rate per time step.\n\nSpawns child particles at a rate per frame over time.\n\nSpawns child particles at a rate per second over time.\n\nRate: the spawn rate per second.\n\nThe rate per frame can be calculated as (rate / framerate).\n\nVariation %: the per-particle percentage of variation to apply.Simulate substeps: controls whether particle positions will be interpolated along their velocity by a random value, to simulate substep spawning.\n\nSimulate substeps: controls whether particle positions will be interpolated along their velocity by a random value, to simulate substep spawning.\n\nSpawns child particles along the trajectories of their parents, at defined spatial increments.\n\nStep Size: the distance a parent particle must travel before spawning a child particle.\n\nIf a parent particle travels a distance greater than the step size value over a particular step of the simulation, the distance traveled will be properly subdivided such that child particles will be spawned at equal distance intervals.\n\nVariation %: the per-particle percentage of variation to apply.Step size relative to property: when enabled, the step size for each particle will be relative to the selected property.\n\nStep size relative to property: when enabled, the step size for each particle will be relative to the selected property.\n\nWhen “step size relative to property” is enabled, the method of calculating the step size is: [(absolute step size) * (relative property)]. So whatever relative property is chosen will also be multiplied by the absolute step size value, allowing you to scale the step size up or down even if relative mode is enabled.\n\nSpawns child particles at the vertex locations of a parent particle’s shape mesh.\n\nSpawns child particles inside voxels within the overall volume of a parent particle’s shape mesh.\n\nVoxel size: the size of individual voxels, in which particles will be spawned.Accuracy: controls the accuracy of the raycaster used to compute information about whether a particle is inside or outside of a shape mesh’s volume.\n\nVoxel size: the size of individual voxels, in which particles will be spawned.\n\nAccuracy: controls the accuracy of the raycaster used to compute information about whether a particle is inside or outside of a shape mesh’s volume.\n\nIf a parent particle’s shape mesh is not closed, or is self-intersecting, increasing the accuracy value can improve results and reduce artifacts.\n\nMin surface distance: particles within this distance from the parent particle’s shape mesh will be culled.\n\nSpawns child particles if their parent was marked by a Collision operator as having colliding with a surface at the end of the previous time step.\n\nSpawns child particles at contact reports reported by the PhysX solver located on a parent particle’s PhysX hull.\n\nSimulation groups: controls which particle simulation groups value the PhysX contacts must satisfy, in order to spawn particles.\n\nBy filtering desired simulation groups, you can control which types of PhysX contacts will spawn particles.\n\nDelete parent: controls whether the parent is deleted after children are spawned.\n\nSpawn %: the percentage of parent particles that will spawn child particles.Offspring: the number of child particles a particular parent particle will spawn, per time step.Variation %: the per-particle percentage of variation to apply.Relative to property: controls whether offspring counts will be relative to a particle property.Property: the property type which the offspring counts will be relative to.*Threshold: the target threshold that particle property will be compared to, when assigning offspring counts.Exponent: the exponent that particle property ratios will be raised to. Larger exponent values will increase the offspring count disparity between large and small property values.Invert: controls whether the resulting property ratio will be inverted.\n\nSpawn %: the percentage of parent particles that will spawn child particles.\n\nOffspring: the number of child particles a particular parent particle will spawn, per time step.\n\nRelative to property: controls whether offspring counts will be relative to a particle property.\n\nProperty: the property type which the offspring counts will be relative to.\n\n*Threshold: the target threshold that particle property will be compared to, when assigning offspring counts.\n\nExponent: the exponent that particle property ratios will be raised to. Larger exponent values will increase the offspring count disparity between large and small property values.\n\nInvert: controls whether the resulting property ratio will be inverted.",
+      "params": [
+        "Simulate substeps",
+        "Delete parent",
+        "Invert",
+        "Step size relative to property",
+        "Rate",
+        "Step Size",
+        "Voxel size",
+        "Offspring",
+        "Simulation groups",
+        "Accuracy",
+        "Exponent",
+        "Variation %",
+        "Property",
+        "*Threshold",
+        "Spawn %",
+        "Min surface distance",
+        "Relative to property"
+      ]
+    },
+    {
+      "heading": "Age",
+      "level": "h4",
+      "anchor": "age",
+      "content": "Restart particle age: controls whether spawned particles will have their age reset, or instead inherit the age of their parent.",
+      "params": [
+        "Restart particle age"
+      ]
+    },
+    {
+      "heading": "Custom float property",
+      "level": "h4",
+      "anchor": "custom-float-property",
+      "content": "Mark spawned particles: when enabled, newly spawned particles will have the specified value assigned to their specified custom data float channel.Channel: the channel to assign the custom float property value.Value: the custom float property value.\n\nMark spawned particles: when enabled, newly spawned particles will have the specified value assigned to their specified custom data float channel.\n\nChannel: the channel to assign the custom float property value.\n\nValue: the custom float property value.\n\nBy marking spawned particles, you can also filter them out from spawning particles themselves using operator filters. This allows you to easily avoid exponential generation of new particles without having to move spawned particles to another event.",
+      "params": [
+        "Channel",
+        "Mark spawned particles",
+        "Value"
+      ]
+    },
+    {
+      "heading": "Parent/child info",
+      "level": "h4",
+      "anchor": "parent-child-info",
+      "content": "Remember parent: controls whether the particle will internally remember which particle is its parent.",
+      "params": [
+        "Remember parent"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Position Rollout",
+      "level": "h3",
+      "anchor": "position-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Position",
+      "level": "h4",
+      "anchor": "position",
+      "content": "Parent particle position: spawned particles will be located at the position of their parent.Parent shape surface: spawned particles will be located at a random position on their parent particle’s shape surface.Mat ID enabled: controls whether particles will only be spawned on faces with a specific material ID.Mat ID: the specific material ID of faces particles will be spawned on.Offset: the distance from the parent particle’s shape surface, along its face normals, to offset spawned particles.Variation %: the per-particle percentage of variation to apply.Align to Surface: controls whether particles will be aligned to the surface of their parent.Avoid overlapping faces: when enabled, particles will attempt to avoid spawning on faces which overlap (ex: interior faces of adjacent mesh elements).Threshold: determines the maximum allowed distance between overlapping faces for the overlap test.Accuracy: controls the accuracy of the raycaster used to compute whether a particle is located on an overlapping face.\n\nParent particle position: spawned particles will be located at the position of their parent.\n\nParent shape surface: spawned particles will be located at a random position on their parent particle’s shape surface.\n\nMat ID enabled: controls whether particles will only be spawned on faces with a specific material ID.\n\nMat ID: the specific material ID of faces particles will be spawned on.\n\nOffset: the distance from the parent particle’s shape surface, along its face normals, to offset spawned particles.\n\nAlign to Surface: controls whether particles will be aligned to the surface of their parent.\n\nAvoid overlapping faces: when enabled, particles will attempt to avoid spawning on faces which overlap (ex: interior faces of adjacent mesh elements).\n\nThreshold: determines the maximum allowed distance between overlapping faces for the overlap test.\n\nAccuracy: controls the accuracy of the raycaster used to compute whether a particle is located on an overlapping face.",
+      "params": [
+        "Avoid overlapping faces",
+        "Parent particle position",
+        "Mat ID enabled",
+        "Mat ID",
+        "Offset",
+        "Accuracy",
+        "Parent shape surface",
+        "Threshold",
+        "Align to Surface"
+      ]
+    },
+    {
+      "heading": "Inherited Properties Rollout",
+      "level": "h3",
+      "anchor": "inherited-properties-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Custom properties",
+      "level": "h4",
+      "anchor": "custom-properties",
+      "content": "Inherit custom properties: when enabled, spawned particles will inherit custom float/vector/TM properties of their parent.",
+      "params": [
+        "Inherit custom properties"
+      ]
+    },
+    {
+      "heading": "Mapping",
+      "level": "h4",
+      "anchor": "mapping",
+      "content": "Inherit UVW overrides: when enabled, spawned particles will inherit UVW overrides of their parent.",
+      "params": [
+        "Inherit UVW overrides"
+      ]
+    },
+    {
+      "heading": "Material ID",
+      "level": "h4",
+      "anchor": "material-id",
+      "content": "Inherit material ID: when enabled, spawned particles will inherit material ID overrides of their parent.",
+      "params": [
+        "Inherit material ID"
+      ]
+    },
+    {
+      "heading": "Scale",
+      "level": "h4",
+      "anchor": "scale",
+      "content": "Inherited %: controls how much scale child particles will inherit from their parent.Variation %: the per-particle percentage of variation to apply.\n\nInherited %: controls how much scale child particles will inherit from their parent.",
+      "params": [
+        "Inherited %"
+      ]
+    },
+    {
+      "heading": "Shape",
+      "level": "h4",
+      "anchor": "shape",
+      "content": "Inherit shape mesh: when enabled, spawned particles will inherit shape mesh of their parent.",
+      "params": [
+        "Inherit shape mesh"
+      ]
+    },
+    {
+      "heading": "Spin",
+      "level": "h4",
+      "anchor": "spin",
+      "content": "Inherited %: controls how much spin child particles will inherit from their parent.Variation %: the per-particle percentage of variation to apply.Divergence: controls how much child particle spin vectors will diverge from that of their parent.\n\nInherited %: controls how much spin child particles will inherit from their parent.\n\nDivergence: controls how much child particle spin vectors will diverge from that of their parent.",
+      "params": [
+        "Divergence",
+        "Inherited %"
+      ]
+    },
+    {
+      "heading": "Velocity",
+      "level": "h4",
+      "anchor": "velocity",
+      "content": "Inherited %: controls how much velocity child particles will inherit from their parent.Variation %: the per-particle percentage of variation to apply.Divergence: controls how much child particle velocity vectors will diverge from that of their parent.Noise amount: controls the amount of noise variation that will be applied to child particle velocity vectors.Noise scale: controls the scale of the noise variation applied to child particle velocity vectors.\n\nInherited %: controls how much velocity child particles will inherit from their parent.\n\nDivergence: controls how much child particle velocity vectors will diverge from that of their parent.\n\nNoise amount: controls the amount of noise variation that will be applied to child particle velocity vectors.\n\nNoise scale: controls the scale of the noise variation applied to child particle velocity vectors.",
+      "params": [
+        "Noise amount",
+        "Noise scale",
+        "Divergence",
+        "Inherited %"
+      ]
+    },
+    {
+      "heading": "Limits and Filters Rollout",
+      "level": "h3",
+      "anchor": "limits-and-filters-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Particle Filter",
+      "level": "h4",
+      "anchor": "particle-filter",
+      "content": "Min volume: parent particles with a shape mesh volume below this value will not spawn children.Min velocity: parent particles with a velocity magnitude below this value will not spawn children.Min impulse: parent particles with PhysX contacts whose impulse is below this threshold will not spawn children.\n\nMin volume: parent particles with a shape mesh volume below this value will not spawn children.\n\nMin velocity: parent particles with a velocity magnitude below this value will not spawn children.\n\nMin impulse: parent particles with PhysX contacts whose impulse is below this threshold will not spawn children.",
+      "params": [
+        "Min volume",
+        "Min velocity",
+        "Min impulse"
+      ]
+    },
+    {
+      "heading": "Spawn Limits (per step)",
+      "level": "h4",
+      "anchor": "spawn-limits-per-step",
+      "content": "Per particle: limits the total number of children that an individual particle can spawn, per time step.Total: limits the total number of children that can be spawned, per time step.\n\nPer particle: limits the total number of children that an individual particle can spawn, per time step.\n\nTotal: limits the total number of children that can be spawned, per time step.",
+      "params": [
+        "Total",
+        "Per particle"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:26Z"
+}

@@ -1,0 +1,115 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/spin",
+  "title": "Spinoperator",
+  "category": "Operators",
+  "operator": "Spinoperator",
+  "sections": [
+    {
+      "heading": "Spinoperator",
+      "level": "h2",
+      "anchor": "spin-operator",
+      "content": "The Spin operator allows you to add spin motion to particles.",
+      "params": []
+    },
+    {
+      "heading": "Mode",
+      "level": "h4",
+      "anchor": "mode",
+      "content": "Set spin: assigns the specified value to the spin value of particles.Add to spin: adds the specified value to the existing spin value of particles.\n\nSet spin: assigns the specified value to the spin value of particles.\n\nAdd to spin: adds the specified value to the existing spin value of particles.",
+      "params": [
+        "Add to spin",
+        "Set spin"
+      ]
+    },
+    {
+      "heading": "Units",
+      "level": "h4",
+      "anchor": "units",
+      "content": "Per frame: spin values are specified in degrees per frame.Per second: spin values are specified in degrees per second.\n\nPer frame: spin values are specified in degrees per frame.\n\nPer second: spin values are specified in degrees per second.",
+      "params": [
+        "Per second",
+        "Per frame"
+      ]
+    },
+    {
+      "heading": "Spin Rate",
+      "level": "h4",
+      "anchor": "spin-rate",
+      "content": "Spin magnitude type: the method used to derive the magnitude of the spin vector.\n\nBy Value: the magnitude will be set to an absolute value.\n\nInherit Previous: the magnitude will be set to the particle’s current spin magnitude.\n\nVerlet: the magnitude will be set by measuring the change in rotation between the current frame and the previous frame.\n\nSpin rate: the rate, in degrees per second, to spin particles.\n\nRelative to radius: the spin magnitude will be relative to a particle’s radius.Radius: the threshold radius value.Relative to velocity: the spin magnitude will be relative to a particle’s velocity.Velocity: the threshold velocity value.\n\nRelative to radius: the spin magnitude will be relative to a particle’s radius.\n\nRadius: the threshold radius value.\n\nRelative to velocity: the spin magnitude will be relative to a particle’s velocity.\n\nVelocity: the threshold velocity value.\n\nThe relative property multiplier will adjust values based on the ratio between the value of a particle property and the specified threshold value.\n\nProperty type: the particle property to which the threshold value will be compared.Threshold: the target value to which the selected property value of a particle will be compared.Min multiplier: the minimum value of the resulting multiplier.Max multiplier: the maximum value of the resulting multiplier.Exponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nProperty type: the particle property to which the threshold value will be compared.\n\nThreshold: the target value to which the selected property value of a particle will be compared.\n\nMin multiplier: the minimum value of the resulting multiplier.\n\nMax multiplier: the maximum value of the resulting multiplier.\n\nExponent: the exponent to which the ratio between the particle property and the selected property will be raised.",
+      "params": [
+        "Min multiplier",
+        "Relative to velocity",
+        "Relative to radius",
+        "Radius",
+        "Max multiplier",
+        "Spin magnitude type",
+        "By Value",
+        "Verlet",
+        "Spin rate",
+        "Velocity",
+        "Inherit Previous",
+        "Threshold",
+        "Exponent",
+        "Property type"
+      ]
+    },
+    {
+      "heading": "Spin Axis",
+      "level": "h4",
+      "anchor": "spin-axis",
+      "content": "Spin axis type: the method used to derive the axis of the spin vector.\n\nRandom 3D: the spin axis will be a random 3D vector.\n\nWorld Space: the spin axis will be a user-defined vector in world-space coordinate.\n\nInherit Previous: the spin axis will be set to the particle’s current spin axis.\n\nTravel direction: the spin axis will be aligned to the particle’s travel direction.\n\nTowards/Away Object: the spin axis will be aligned towards/away the closest input object, depending on the sign of the magnitude.\n\nTowards/Away Target: the spin axis will be aligned towards/away the target’s specified z-axis, depending on the sign of the magnitude.\n\nParticle/world space: the source of the target’s z-axis coordinate. In particle space mode, the particle’s local z-axis will be used. In world space mode, the world z-axis will be used.\n\nVerlet: the spin axis will be aligned to the change in rotation between the current frame and the previous frame.\n\nX/Y/Z: the values of the user-defined spin axis vector.Allow mirror: controls whether some particles will spin in the opposite direction.Divergence: the degrees of random divergence to apply to the resulting axis vector.\n\nX/Y/Z: the values of the user-defined spin axis vector.\n\nAllow mirror: controls whether some particles will spin in the opposite direction.\n\nDivergence: the degrees of random divergence to apply to the resulting axis vector.",
+      "params": [
+        "Particle/world space",
+        "Towards/Away Target",
+        "X/Y/Z",
+        "Allow mirror",
+        "Spin axis type",
+        "Towards/Away Object",
+        "World Space",
+        "Verlet",
+        "Random 3D",
+        "Divergence",
+        "Inherit Previous",
+        "Travel direction"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Input object list: the list of scene objects to use for towards/away spinning.",
+      "params": [
+        "Input object list"
+      ]
+    },
+    {
+      "heading": "Proximity Influence",
+      "level": "h4",
+      "anchor": "proximity-influence",
+      "content": "Distance: particles within this distance will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nDistance: particles within this distance will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.",
+      "params": [
+        "Falloff",
+        "Distance"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Normal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.",
+      "params": [
+        "Normal interpolation"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:46Z"
+}

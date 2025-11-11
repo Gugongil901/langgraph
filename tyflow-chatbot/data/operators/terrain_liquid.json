@@ -1,0 +1,69 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/terrain_liquid/terrain_liquid",
+  "title": "Terrain Liquidoperator",
+  "category": "Operators",
+  "operator": "Terrain Liquidoperator",
+  "sections": [
+    {
+      "heading": "Terrain Liquidoperator",
+      "level": "h2",
+      "anchor": "terrain-liquid-operator",
+      "content": "The Terrain Liquid operator can be used to simulate liquid over a terrain.\n\nCollider grid names: the list of terrain grids to be used as colliders for the liquid simulation.Liquid grid suffix: liquid grids created by the operator will be rename to the name of their source grid, plus this suffix.\n\nCollider grid names: the list of terrain grids to be used as colliders for the liquid simulation.\n\nLiquid grid suffix: liquid grids created by the operator will be rename to the name of their source grid, plus this suffix.",
+      "params": [
+        "Liquid grid suffix",
+        "Collider grid names"
+      ]
+    },
+    {
+      "heading": "Liquid simulation",
+      "level": "h4",
+      "anchor": "liquid-simulation",
+      "content": "Resolution independent: when enabled, the liquid simulation will be initialized with parameters relative to a set resolution of 1024x1024 (the simulation itself will still run at full resolution, but inputs will be relative to the set resolution, resulting in a fairly resolution-independent consistency).Pre-roll iterations: when enabled, the simulation will run for the specified number of iterations on the first frame.Iterations per step: controls how many iterations the internal liquid simulation loop will run for, each time step. Increasing this value will cause the liquid to move faster.Evaporation rate: controls how much liquid will evaporate from the simulation each time step.Flow speed: controls how fast liquid can travel between grid cells.Initial liquid height/depth: controls how liquid will be initialized at the start of the simulation.\n\nResolution independent: when enabled, the liquid simulation will be initialized with parameters relative to a set resolution of 1024x1024 (the simulation itself will still run at full resolution, but inputs will be relative to the set resolution, resulting in a fairly resolution-independent consistency).\n\nPre-roll iterations: when enabled, the simulation will run for the specified number of iterations on the first frame.\n\nIterations per step: controls how many iterations the internal liquid simulation loop will run for, each time step. Increasing this value will cause the liquid to move faster.\n\nEvaporation rate: controls how much liquid will evaporate from the simulation each time step.\n\nFlow speed: controls how fast liquid can travel between grid cells.\n\nInitial liquid height/depth: controls how liquid will be initialized at the start of the simulation.",
+      "params": [
+        "Resolution independent",
+        "Iterations per step",
+        "Flow speed",
+        "Evaporation rate",
+        "Pre-roll iterations",
+        "Initial liquid height/depth"
+      ]
+    },
+    {
+      "heading": "Terrain",
+      "level": "h4",
+      "anchor": "terrain",
+      "content": "Border mode: controls how liquid will react to the borders of a terrain grid.",
+      "params": [
+        "Border mode"
+      ]
+    },
+    {
+      "heading": "Mask",
+      "level": "h4",
+      "anchor": "mask",
+      "content": "Generate liquid mask: when enabled, liquid generated on the surface of a terrain will contribute to the color of the specified color channel.",
+      "params": [
+        "Generate liquid mask"
+      ]
+    },
+    {
+      "heading": "Rain",
+      "level": "h3",
+      "anchor": "rain",
+      "content": "Enable rain: when enabled, random point disturbances (simulating single drops of rain ) will be generated over the liquid surface.",
+      "params": [
+        "Enable rain"
+      ]
+    },
+    {
+      "heading": "Ripples",
+      "level": "h3",
+      "anchor": "ripples",
+      "content": "Mask/slope ripples: when enabled, liquid covering a specified mask or traveling downhill will be disturbed by the specified amount, simulating the generation of ripples.",
+      "params": [
+        "Mask/slope ripples"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:55:10Z"
+}

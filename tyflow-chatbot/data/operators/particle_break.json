@@ -1,0 +1,76 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/particle_break",
+  "title": "Particle Breakoperator",
+  "category": "Operators",
+  "operator": "Particle Breakoperator",
+  "sections": [
+    {
+      "heading": "Particle Breakoperator",
+      "level": "h2",
+      "anchor": "particle-break-operator",
+      "content": "The Particle Break operator can be used to break bindings between particles.",
+      "params": []
+    },
+    {
+      "heading": "Particle Break Rollout",
+      "level": "h3",
+      "anchor": "particle-break-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Break binding",
+      "level": "h4",
+      "anchor": "break-binding",
+      "content": "None: disables bind breaking.All: breaks all bindings of the event’s applicable particles.Random (per step): the “breaks/frame” setting controls how many bindings will be broken per time step, across all applicable event particles.Random (per particle): the “breaks/frame” setting controls how many bindings will be broken per-particle.Breaks/frame: the maximum number of bindings to break per frame.\n\nNone: disables bind breaking.\n\nAll: breaks all bindings of the event’s applicable particles.\n\nRandom (per step): the “breaks/frame” setting controls how many bindings will be broken per time step, across all applicable event particles.\n\nRandom (per particle): the “breaks/frame” setting controls how many bindings will be broken per-particle.\n\nBreaks/frame: the maximum number of bindings to break per frame.\n\nAmount %: the percentage of bindings to break.Variation %: the per-particle percentage of variation to apply.\n\nAmount %: the percentage of bindings to break.\n\nTreat breaks as tears: when enabled, cloth bindings that are broken will tear adjacent cloth faces apart. When disabled, cloth bindings that are broken will be treated like regular bindings that are broken: they will no longer be processed by the particle bind solver and will have an effective stiffness of 0.\n\nWhen “treat breaks as tears” is enabled, tearing must be enabled in the preceding Cloth Bind operator(s) in order for the Particle Break operator to have an effect on cloth binds.",
+      "params": [
+        "Breaks/frame",
+        "Treat breaks as tears",
+        "All",
+        "Amount %",
+        "None",
+        "Random (per step)",
+        "Random (per particle)"
+      ]
+    },
+    {
+      "heading": "Filter",
+      "level": "h4",
+      "anchor": "filter",
+      "content": "Filter By ID: controls whether only bindings with a matching ID will be broken.ID: the ID to match.\n\nFilter By ID: controls whether only bindings with a matching ID will be broken.\n\nID: the ID to match.",
+      "params": [
+        "ID",
+        "Filter By ID"
+      ]
+    },
+    {
+      "heading": "Test TRUE When",
+      "level": "h4",
+      "anchor": "test-true-when",
+      "content": "Break any bindings: particles will satisfy the test condition when any of their bindings are broken.Break all bindings: particles will only satisfy the test condition when all of their bindings are broken.\n\nBreak any bindings: particles will satisfy the test condition when any of their bindings are broken.\n\nBreak all bindings: particles will only satisfy the test condition when all of their bindings are broken.",
+      "params": [
+        "Break any bindings",
+        "Break all bindings"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Slicing Rollout",
+      "level": "h3",
+      "anchor": "slicing-rollout",
+      "content": "The Slicing rollout controls whichtySlicerobjects will be used to slice particle/cloth bindings.\n\nInput object list: thetySlicerobjects to use for bind slicing.",
+      "params": [
+        "Input object list"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:52Z"
+}

@@ -1,0 +1,92 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/element_fracture",
+  "title": "Element Fractureoperator",
+  "category": "Operators",
+  "operator": "Element Fractureoperator",
+  "sections": [
+    {
+      "heading": "Element Fractureoperator",
+      "level": "h2",
+      "anchor": "element-fracture-operator",
+      "content": "The Element Fracture operator allows you to fracture particle mesh elements.\n\nEach fracture mesh will be turned into a new particle.",
+      "params": []
+    },
+    {
+      "heading": "Element Fracture Rollout",
+      "level": "h3",
+      "anchor": "element-fracture-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Elements to Extract",
+      "level": "h4",
+      "anchor": "elements-to-extract",
+      "content": "Percent %: the percentage of shape mesh elements to extract.Variation %: the per-particle percentage of variation to apply.\n\nPercent %: the percentage of shape mesh elements to extract.",
+      "params": [
+        "Percent %"
+      ]
+    },
+    {
+      "heading": "Element Meshes",
+      "level": "h4",
+      "anchor": "element-meshes",
+      "content": "Center Pivots: moves the fractured shape mesh particle offset to its center.",
+      "params": [
+        "Center Pivots"
+      ]
+    },
+    {
+      "heading": "Misc",
+      "level": "h4",
+      "anchor": "misc",
+      "content": "Reset age of remaining particles: resets the age of the source particles whose elements were fractured (if some elements remain due to filter/percent settings).",
+      "params": [
+        "Reset age of remaining particles"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.Seed by time: the seed value will be incremented with the current time in ticks.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Filtering Rollout",
+      "level": "h3",
+      "anchor": "filtering-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Filtering",
+      "level": "h4",
+      "anchor": "filtering",
+      "content": "Floating: when enabled, only elements whose mesh resides above the specified ground height will be extracted.Ground height: only elements whose mesh resides above this value will be extracted.Largest N: when enabled, only elements after the specified number of meshes (sorted by surface area) will be extracted.N: the number of meshes (from all extracted elements, sorted by surface area) to retain.Surface area: when enabled, only elements whose surface area is within the specified range will be extracted.Min/Max: the minimum/maximum surface area values within which an element’s surface area must fall in order to be extracted.\n\nFloating: when enabled, only elements whose mesh resides above the specified ground height will be extracted.\n\nGround height: only elements whose mesh resides above this value will be extracted.\n\nLargest N: when enabled, only elements after the specified number of meshes (sorted by surface area) will be extracted.\n\nN: the number of meshes (from all extracted elements, sorted by surface area) to retain.\n\nSurface area: when enabled, only elements whose surface area is within the specified range will be extracted.\n\nMin/Max: the minimum/maximum surface area values within which an element’s surface area must fall in order to be extracted.",
+      "params": [
+        "Min/Max",
+        "Ground height",
+        "Surface area",
+        "Largest N",
+        "Floating",
+        "N"
+      ]
+    },
+    {
+      "heading": "Intersection filtering",
+      "level": "h4",
+      "anchor": "intersection-filtering",
+      "content": "No intersection filtering: all applicable particles will be extracted.Grid MUST intersect object: only applicable particles whose mesh faces intersect an object in the filter objects list will be extracted.Grid must NOT intersect object: only applicable particles whose mesh faces do not intersect an object in the filter objects list will be extracted.Object list: the list of objects used to perform the intersection tests.\n\nNo intersection filtering: all applicable particles will be extracted.\n\nGrid MUST intersect object: only applicable particles whose mesh faces intersect an object in the filter objects list will be extracted.\n\nGrid must NOT intersect object: only applicable particles whose mesh faces do not intersect an object in the filter objects list will be extracted.\n\nObject list: the list of objects used to perform the intersection tests.\n\nIntersection tests are performed by casting rays from particle mesh vertices outwards towards objects in the objects list. An intersection is identified when one or more vertices of a particle mesh is found inside one or more of the intersection test objects. If an object intersects the faces of a particle mesh but no particle mesh vertices are inside of it, it will fail the intersection test. So, make sure that any particles you wish to identify with an intersection test have one of more of their vertices inside of the test objects.",
+      "params": [
+        "Grid MUST intersect object",
+        "No intersection filtering",
+        "Object list",
+        "Grid must NOT intersect object"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:26Z"
+}

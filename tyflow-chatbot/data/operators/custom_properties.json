@@ -1,0 +1,88 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/custom_properties",
+  "title": "Custom Propertiesoperator",
+  "category": "Operators",
+  "operator": "Custom Propertiesoperator",
+  "sections": [
+    {
+      "heading": "Custom Propertiesoperator",
+      "level": "h2",
+      "anchor": "custom-properties-operator",
+      "content": "The Custom Properties operator provides direct access to each particle’s custom data channels.",
+      "params": []
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Operation list: the desired operation to perform on custom data.\n\nSET (save to channel): Saves the selected particle properties to the selected data channels.\n\nGET (load from channel): Applies data from the selected channels to the selected particle properties.",
+      "params": [
+        "SET (save to channel)",
+        "Operation list",
+        "GET (load from channel)"
+      ]
+    },
+    {
+      "heading": "Data Source",
+      "level": "h4",
+      "anchor": "data-source",
+      "content": "Value Source: controls whether the values will be the particle’s own or the particle’s target.Channel Source: controls whether the custom data channel will be the particle’s own or the particle’s target.Target channel: the name of the custom data channel from which to read the particle’s target ID.\n\nValue Source: controls whether the values will be the particle’s own or the particle’s target.\n\nChannel Source: controls whether the custom data channel will be the particle’s own or the particle’s target.\n\nTarget channel: the name of the custom data channel from which to read the particle’s target ID.\n\nThe data source options allow you to choose how data flows within the operator. With the introduction of particle targets, it is now possible to read data from a particle and then assign the data to a custom data channel of its target, or vice versa. So, for example, if you wanted a particle to adopt the scale of its target particle, you would have the target particle save its scale to a data channel, and then read that data into the scale value of the source particle. By default this cross-particle data sharing is disabled within the Custom Properties operator, but can be enabled using these settings.",
+      "params": [
+        "Target channel",
+        "Value Source",
+        "Channel Source"
+      ]
+    },
+    {
+      "heading": "Custom Float",
+      "level": "h4",
+      "anchor": "custom-float",
+      "content": "Custom float values are individual numerical values composed of single floats.\n\nProperty list: the particle property to save/load.Map channel: the map channel used to extract X/Y/Z UVW property values.Value: the absolute float value to save/load.Variation %: the per-particle percentage of variation to apply.Channel: the custom data channel to save/load values to/from.Target: the target channel to use for relevant target-related properties.Multiplier: a multiplier applied to the value.\n\nProperty list: the particle property to save/load.\n\nMap channel: the map channel used to extract X/Y/Z UVW property values.\n\nValue: the absolute float value to save/load.\n\nChannel: the custom data channel to save/load values to/from.\n\nTarget: the target channel to use for relevant target-related properties.\n\nMultiplier: a multiplier applied to the value.\n\nNormal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.\n\nDon’t GET if value is 0.0: when in GET mode, value assignments to particle channels will be skipped if the custom float property value is 0.0.\n\nThe default value of all custom float property channels is 0.0. In some situations, you might only want to assign non-zero values to particles. For example, imagine you use a tyProperties modifier to assign a value of 1000.0 to the “mass” custom float property channel of an input object. If you use the Custom Properties operator to assign that value to the mass property of particles, all particles whose input objects don’t have that tyProperties modifier in their modifier stack will be given a mass value of 0.0, which is undesirable (perhaps they already have default mass values assigned, in that instance). By using this setting you can avoid overwriting existing property values with 0.0.",
+      "params": [
+        "Property list",
+        "Multiplier",
+        "Normal interpolation",
+        "Channel",
+        "Value",
+        "Don’t GET if value is 0.0",
+        "Target",
+        "Map channel"
+      ]
+    },
+    {
+      "heading": "Custom vector",
+      "level": "h4",
+      "anchor": "custom-vector",
+      "content": "Custom vector values are Point3 values, composed of x/y/z floats.\n\nProperty list: the particle property to save/load.X/Y/Z: the absolute x/y/z values to save/load.Channel: the custom data channel to save/load values to/from.Target: the target channel to use for relevant target-related properties.Multiplier: a multiplier applied to the value.\n\nProperty list: the particle property to save/load.\n\nX/Y/Z: the absolute x/y/z values to save/load.\n\nChannel: the custom data channel to save/load values to/from.\n\nTarget: the target channel to use for relevant target-related properties.\n\nMultiplier: a multiplier applied to the value.\n\nNormal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.",
+      "params": [
+        "Property list",
+        "Multiplier",
+        "Normal interpolation",
+        "Channel",
+        "X/Y/Z",
+        "Target"
+      ]
+    },
+    {
+      "heading": "Custom TM",
+      "level": "h4",
+      "anchor": "custom-tm",
+      "content": "Custom TM values are Matrix3 values, composed of 4 rows of Point3 values, each composed of x/y/z floats.\n\nProperty list: the particle property to save/load.Channel: the custom data channel to save/load values to/from.\n\nProperty list: the particle property to save/load.\n\nChannel: the custom data channel to save/load values to/from.\n\nNormal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.",
+      "params": [
+        "Property list",
+        "Channel",
+        "Normal interpolation"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.Seed by time: the seed value will be incremented with the current time in ticks.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:03Z"
+}

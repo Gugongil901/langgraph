@@ -1,0 +1,25 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/restore",
+  "title": "Restoreoperator",
+  "category": "Operators",
+  "operator": "Restoreoperator",
+  "sections": [
+    {
+      "heading": "Restoreoperator",
+      "level": "h2",
+      "anchor": "restore-operator",
+      "content": "The Restore operator allows you to restore particle properties to their original values at event entry.\n\nIn many situations it is desirable to restore particle properties to their initial values over time, prior to evaluating other operators in an event. Previously, users would need to use Custom Properties operators to achieve this - by saving a particle’s property on event entry with one Custom Properties operator, and then restoring it over time with another Custom Properties operator. The Restore operator acts as a condensed version of this setup - properties are automatically stored by the operator when a particle enters an event, and can then be restored later without the need for multiple operators working in tandem.",
+      "params": []
+    },
+    {
+      "heading": "Restore",
+      "level": "h4",
+      "anchor": "restore",
+      "content": "[Properties]: controls which particle properties will be restored over time.",
+      "params": [
+        "[Properties]"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:34Z"
+}

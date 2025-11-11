@@ -1,0 +1,53 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/vdb_display",
+  "title": "VDB Displayoperator",
+  "category": "Operators",
+  "operator": "VDB Displayoperator",
+  "sections": [
+    {
+      "heading": "VDB Displayoperator",
+      "level": "h2",
+      "anchor": "vdb-display-operator",
+      "content": "The VDB Display operator can be used to display VDB data in the viewport.",
+      "params": []
+    },
+    {
+      "heading": "Grid names",
+      "level": "h4",
+      "anchor": "grid-names",
+      "content": "Density/Velocity/UVW grid name: the names of the source VDB grids.",
+      "params": [
+        "Density/Velocity/UVW grid name"
+      ]
+    },
+    {
+      "heading": "VDB Display",
+      "level": "h4",
+      "anchor": "vdb-display",
+      "content": "Point Type: controls the size of display points.Cache with simulation: when enabled, display data (vectors, points, etc) will be computed and stored with every frame of the simulation.\n\nPoint Type: controls the size of display points.\n\nCache with simulation: when enabled, display data (vectors, points, etc) will be computed and stored with every frame of the simulation.\n\nDue to the amount of data contained in a VDB grid (often times, many millions of voxels), storing all relevant display data can be both computationally and memory expensive. Thus, the ability to exclude VDB display data from thetyFlowcache has been added. However, since VDB data is not cached on a per-frame basis either, when “cache with simulation” is disabled, only data for the most recent frame of the simulation will be displayed. So if you need per-frame visualization data you can enable this setting, but be mindful that it may eat up a lot of memory and slow down the simulation.\n\nDensity volume: when enabled, the Viewport Volume Display API (available in 3ds Max 2023+) will be used to display VDB grids as volumes in the viewport.Range: the min/max range of values used to clamp density values for proper volume display.Density points: when enabled, a specified maximum number of density voxels will be displayed as grayscale points.Density Values: when enabled, a specified maximum number of density voxels will display their voxel value in the viewport.UVW points: when enabled, a specified maximum number of UVW voxels will be displayed as colorized points.Is RGB Value: when enabled, the UVW voxel values will be treated as 0-255 RGB values, therefore affecting how they are colored.Velocity vectors: when enabled, a specified maximum number of velocity voxels will be displayed as colorized lines.\n\nDensity volume: when enabled, the Viewport Volume Display API (available in 3ds Max 2023+) will be used to display VDB grids as volumes in the viewport.\n\nRange: the min/max range of values used to clamp density values for proper volume display.\n\nDensity points: when enabled, a specified maximum number of density voxels will be displayed as grayscale points.\n\nDensity Values: when enabled, a specified maximum number of density voxels will display their voxel value in the viewport.\n\nUVW points: when enabled, a specified maximum number of UVW voxels will be displayed as colorized points.\n\nIs RGB Value: when enabled, the UVW voxel values will be treated as 0-255 RGB values, therefore affecting how they are colored.\n\nVelocity vectors: when enabled, a specified maximum number of velocity voxels will be displayed as colorized lines.",
+      "params": [
+        "Density points",
+        "Range",
+        "Density volume",
+        "Is RGB Value",
+        "UVW points",
+        "Density Values",
+        "Velocity vectors",
+        "Point Type",
+        "Cache with simulation"
+      ]
+    },
+    {
+      "heading": "Cross Section",
+      "level": "h4",
+      "anchor": "cross-section",
+      "content": "In large, complex grids…displaying all relevant grid information in the viewport can be too messy. However, by enabling the cross section settings, you can view a single slice of the grid at a time.\n\nLimit display to cross section: enabled cross section display mode.X/Y/Z: controls which axis of the VDB the cross section will be taken from.Cell index: controls which cell index of the specified axis the cross section will be taken from.\n\nLimit display to cross section: enabled cross section display mode.\n\nX/Y/Z: controls which axis of the VDB the cross section will be taken from.\n\nCell index: controls which cell index of the specified axis the cross section will be taken from.",
+      "params": [
+        "X/Y/Z",
+        "Limit display to cross section",
+        "Cell index"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:32Z"
+}

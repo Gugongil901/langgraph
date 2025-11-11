@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/delete",
+  "title": "Deleteoperator",
+  "category": "Operators",
+  "operator": "Deleteoperator",
+  "sections": [
+    {
+      "heading": "Deleteoperator",
+      "level": "h2",
+      "anchor": "delete-operator",
+      "content": "The Delete operator allows you to delete particles from the simulation.\n\nThe Delete operator has no unique parameters. Deletion is instead controlled by parameters in the operator’s Timing rollout.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:29Z"
+}

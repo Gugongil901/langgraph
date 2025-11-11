@@ -1,0 +1,324 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/cloth_bind",
+  "title": "Cloth Bindoperator",
+  "category": "Operators",
+  "operator": "Cloth Bindoperator",
+  "sections": [
+    {
+      "heading": "Cloth Bindoperator",
+      "level": "h2",
+      "anchor": "cloth-bind-operator",
+      "content": "The Cloth Bind operator allows you to convert particle shape meshes into dynamic cloth meshes.",
+      "params": []
+    },
+    {
+      "heading": "Operation Rollout",
+      "level": "h3",
+      "anchor": "operation-rollout",
+      "content": "Operation: the cloth conversion operation to perform.\n\nShape to cloth: converts a particle shape mesh into a dynamic cloth mesh.\n\nCloth to shape: converts a dynamic cloth mesh into a particle shape mesh.",
+      "params": [
+        "Shape to cloth",
+        "Cloth to shape",
+        "Operation"
+      ]
+    },
+    {
+      "heading": "Basic Cloth Settings Rollout",
+      "level": "h3",
+      "anchor": "basic-cloth-settings-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Activation",
+      "level": "h4",
+      "anchor": "activation",
+      "content": "Activate all: all new dynamic cloth particles will be activated.Activate by material ID: all new dynamic cloth particles with a matching material ID will be activated.De-activate by material ID: all new dynamic cloth particles will be activated, excluding those with a matching material ID.Material ID: the target material ID to match.Include border vertices: vertices that border faces with differing material IDs will be included as long as one of the material IDs matches the target ID.\n\nActivate all: all new dynamic cloth particles will be activated.\n\nActivate by material ID: all new dynamic cloth particles with a matching material ID will be activated.\n\nDe-activate by material ID: all new dynamic cloth particles will be activated, excluding those with a matching material ID.\n\nMaterial ID: the target material ID to match.\n\nInclude border vertices: vertices that border faces with differing material IDs will be included as long as one of the material IDs matches the target ID.\n\nActivated particles are particles with normal mass. Their position will be affected by the bind solver.De-activated particles are particles with infinite mass. Their position will not be changed by the bind solver.",
+      "params": [
+        "Material ID",
+        "De-activate by material ID",
+        "Include border vertices",
+        "Activate all",
+        "Activate by material ID"
+      ]
+    },
+    {
+      "heading": "Cloth Particles",
+      "level": "h4",
+      "anchor": "cloth-particles",
+      "content": "Inherit mesh UVWs: causes the new cloth vertex particles to inherit the UVW coordinates of the originating mesh.Save vertex index: saves the cloth mesh vertex index to a custom float data channel in corresponding rig particles.Channel: the custom float data channel to save cloth mesh vertex indices.\n\nInherit mesh UVWs: causes the new cloth vertex particles to inherit the UVW coordinates of the originating mesh.\n\nSave vertex index: saves the cloth mesh vertex index to a custom float data channel in corresponding rig particles.\n\nChannel: the custom float data channel to save cloth mesh vertex indices.",
+      "params": [
+        "Channel",
+        "Save vertex index",
+        "Inherit mesh UVWs"
+      ]
+    },
+    {
+      "heading": "Send Out",
+      "level": "h4",
+      "anchor": "send-out",
+      "content": "Activated/de-activated particles: choose which particles will satisfy the operator test condition.",
+      "params": [
+        "Activated/de-activated particles"
+      ]
+    },
+    {
+      "heading": "Solver Rollout",
+      "level": "h3",
+      "anchor": "solver-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Particles",
+      "level": "h4",
+      "anchor": "particles",
+      "content": "Mass: the mass override for new cloth particles.Mass per-particle: each particle will be assigned the mass override value.Mass per-cloth: each particle will be assigned the mass override value divided by the total vertex count of the cloth mesh.\n\nMass: the mass override for new cloth particles.\n\nMass per-particle: each particle will be assigned the mass override value.\n\nMass per-cloth: each particle will be assigned the mass override value divided by the total vertex count of the cloth mesh.\n\nThe mass per-cloth setting allows you to keep overall cloth masses independent of cloth vertex count, so if you subdivide your input cloth mesh at a later point in time, the overall mass ratio between the cloth as a whole, and other particles, will stay the same.",
+      "params": [
+        "Mass per-particle",
+        "Mass",
+        "Mass per-cloth"
+      ]
+    },
+    {
+      "heading": "Binding Stiffness",
+      "level": "h4",
+      "anchor": "binding-stiffness",
+      "content": "Stretch/Shear/Bend/Volume stiffness: stiffness values for various bindings.Stretch/Shear/Bend/Volume texmaps: the texmaps whose intensity values will be used as a multiplier for the various stiffness values.\n\nStretch/Shear/Bend/Volume stiffness: stiffness values for various bindings.\n\nStretch/Shear/Bend/Volume texmaps: the texmaps whose intensity values will be used as a multiplier for the various stiffness values.\n\nTexmap values are determined by sampling the texmap using the vertices of the input cloth mesh. Since each binding is formed by connecting two vertices, the highest of either texmap value will be used as the multiplier.\n\nStretch bindings: these bindings are formed between vertices that share a visible edge in the source mesh. They help cloth resist stretching.Shear bindings: these bindings are formed between vertices that share an invisible edge in the source mesh. They also form diagonally between neighbor vertices that span invisible edges. They help cloth resist shearing.Bend bindings: these bindings are formed between any two vertices that are separated by a third vertex between them. They help cloth resist bending.Volume bindings: these bindings are formed by casting rays form vertices in the opposite direction of vertex normals, through the interior of a mesh to the other side. They take the shape of internal struts within the mesh and can help cloth maintain overall volume.\n\nSimple: bindings are solved in a straight-forward manner. Their stiffness is mostly dependent on bind solver step count.Constrained: bindings are solved in a way that makes their stiffness somewhat independent of bind solver step count, at a small performance cost. This setting has no effect on bindings whose stiffness value is 1.\n\nSimple: bindings are solved in a straight-forward manner. Their stiffness is mostly dependent on bind solver step count.\n\nConstrained: bindings are solved in a way that makes their stiffness somewhat independent of bind solver step count, at a small performance cost. This setting has no effect on bindings whose stiffness value is 1.",
+      "params": [
+        "Stretch/Shear/Bend/Volume texmaps",
+        "Stretch/Shear/Bend/Volume stiffness",
+        "Stretch bindings",
+        "Simple",
+        "Constrained"
+      ]
+    },
+    {
+      "heading": "Binding Properties",
+      "level": "h4",
+      "anchor": "binding-properties",
+      "content": "ID: the ID value to assign to bindings.Damping: the amount of post-solve damping to apply to cloth bindings.Length bias: the post-initialization multiplier to apply to binding rest lengths.Length bias texmap: the texmap whose intensity values will be used as a multiplier for the length bias value.\n\nID: the ID value to assign to bindings.\n\nDamping: the amount of post-solve damping to apply to cloth bindings.\n\nLength bias: the post-initialization multiplier to apply to binding rest lengths.\n\nLength bias texmap: the texmap whose intensity values will be used as a multiplier for the length bias value.\n\nTexmap values are determined by sampling the texmap using the vertices of the input cloth mesh. Since each binding is formed by connecting two vertices, the highest of either texmap value will be used as the multiplier.\n\nSince the default bias value is 1.0, the bias texmap multiplier will inversely linearly interpolate values towards 1.0 (for example, an RGB value of [255,255,255] will result in a bias of [length bias spinner value], whereas an RGB value of [0,0,0] will result in bias of [1.0]).",
+      "params": [
+        "Damping",
+        "ID",
+        "Length bias texmap",
+        "Length bias"
+      ]
+    },
+    {
+      "heading": "Tets",
+      "level": "h4",
+      "anchor": "tets",
+      "content": "Weld tets: welds individual tet cloth meshes together into a single larger combined cloth mesh where adjacent tets share edges.\n\nWhen “weld tets” is enabled, you no longer need to use an extra Particle Bind operator to keep tets connected, and the overall processing power required to simulate the tets will be lower due to the reduced particle/bind count that comes as a result of the weld function. Also, optimal input meshes when using this mode should be single particles with meshes composed of multiple tets, instead of multiple particles with meshes composed of single tets.\n\nInter-cloth welding: when enabled, all new tet cloth meshes in the event will be potentially welded together. When disabled, only separate tets of the same cloth mesh will be welded together.Fix inverted tets: when simulating cloth composed of tet meshes, the tets can sometimes become inverted (flipping inside out) while undergoing deformations. Enabling this setting will add forces to the simulation at the end of each bind solver which which will attempt to prevent/correct tet inversion.\n\nInter-cloth welding: when enabled, all new tet cloth meshes in the event will be potentially welded together. When disabled, only separate tets of the same cloth mesh will be welded together.\n\nFix inverted tets: when simulating cloth composed of tet meshes, the tets can sometimes become inverted (flipping inside out) while undergoing deformations. Enabling this setting will add forces to the simulation at the end of each bind solver which which will attempt to prevent/correct tet inversion.",
+      "params": [
+        "Fix inverted tets",
+        "Weld tets",
+        "Inter-cloth welding"
+      ]
+    },
+    {
+      "heading": "Collisions Rollout",
+      "level": "h3",
+      "anchor": "collisions-rollout",
+      "content": "Enable CUDA collision solver: when enabled, the cloth will be added to the CUDA collision solver, which evaluates at the end of every time step for applicable cloths.Thickness: the desired base thickness of the cloth. Other cloths within this distance will generate repulsion forces.Friction: the desired friction of the cloth. The actual friction value between any two cloth meshes is the average of their friction values.Self-collisions: when enabled, the cloth will collide with itself.Self-thickness: the desired thickness of the cloth, when colliding with itself.\n\nEnable CUDA collision solver: when enabled, the cloth will be added to the CUDA collision solver, which evaluates at the end of every time step for applicable cloths.\n\nThickness: the desired base thickness of the cloth. Other cloths within this distance will generate repulsion forces.\n\nFriction: the desired friction of the cloth. The actual friction value between any two cloth meshes is the average of their friction values.\n\nSelf-collisions: when enabled, the cloth will collide with itself.\n\nSelf-thickness: the desired thickness of the cloth, when colliding with itself.\n\nIf the base thickness value of a self-colliding cloth is larger than the distance between adjacent triangles in the cloth mesh, the cloth will repel itself in an unwanted manner. Keeping the self-thickness value lower than the minimum distance between adjacent triangles in a cloth mesh can help to prevent this.\n\nInter-cloth collisions: when enabled, cloth will collide with other cloth meshes.Object collisions: when enabled, cloth will collide with objects added to a Collision operator in the same event.\n\nInter-cloth collisions: when enabled, cloth will collide with other cloth meshes.\n\nObject collisions: when enabled, cloth will collide with objects added to a Collision operator in the same event.\n\nThickness/friction values for object colliders will be taken directly from the Collision operator itself. However, it’s important to note that only the “absolute radius” value of a Collision operator will be used as the thickness value for colliding object meshes.",
+      "params": [
+        "Self-collisions",
+        "Friction",
+        "Object collisions",
+        "Thickness",
+        "Enable CUDA collision solver",
+        "Self-thickness",
+        "Inter-cloth collisions"
+      ]
+    },
+    {
+      "heading": "Inter-triangle collisions",
+      "level": "h4",
+      "anchor": "inter-triangle-collisions",
+      "content": "Only collide if particle sim groups are:: when enabled, inter-triangle collision pair filtering will be governed by the simulation groups assigned to the underlying particles driving the cloth faces.Match type: controls how simulation groups assigned to particles of colliding triangle pairs will determine whether the pair of colliding triangles will be filtered from the collision solver.\n\nOnly collide if particle sim groups are:: when enabled, inter-triangle collision pair filtering will be governed by the simulation groups assigned to the underlying particles driving the cloth faces.\n\nMatch type: controls how simulation groups assigned to particles of colliding triangle pairs will determine whether the pair of colliding triangles will be filtered from the collision solver.",
+      "params": [
+        "Match type",
+        "Only collide if particle sim groups are"
+      ]
+    },
+    {
+      "heading": "Pre-processing",
+      "level": "h4",
+      "anchor": "pre-processing",
+      "content": "Prevent coincident edges/faces: when enabled, open edges of regular input meshes (and surface vertices of tet meshes), will be shrunk slightly inward (by the threshold amount), to avoid perfect overlap between faces of adjacent mesh or tet elements. This tiny adjustment can help the CCCS perform collision resolution on areas that would otherwise not be possible (ie, areas that would otherwise generate CCCS errors).Threshold: the amount of shrink open edges and tet mesh vertices inward. This value should be kept very small.\n\nPrevent coincident edges/faces: when enabled, open edges of regular input meshes (and surface vertices of tet meshes), will be shrunk slightly inward (by the threshold amount), to avoid perfect overlap between faces of adjacent mesh or tet elements. This tiny adjustment can help the CCCS perform collision resolution on areas that would otherwise not be possible (ie, areas that would otherwise generate CCCS errors).\n\nThreshold: the amount of shrink open edges and tet mesh vertices inward. This value should be kept very small.",
+      "params": [
+        "Threshold",
+        "Prevent coincident edges/faces"
+      ]
+    },
+    {
+      "heading": "Tearing Rollout",
+      "level": "h3",
+      "anchor": "tearing-rollout",
+      "content": "Enable cloth tearing: enables cloth tearing.\n\nTearing must be enabled in order fortySlicers(added within the Particle Break operator) to work on cloth.\n\nA particle’s weakness is its propensity to tear. Weaker particles will cause their attached bindings to tear with less overstretch. Stronger particles require more overstretch before tears will occur. Every time a tear occurs, a progressive weakness multiplier is applied to the attached particles’ weakness values. The value of the weakness multiplier can have a large impact on the overall look of the tear. Initial weakness values can be controlled with a texture map, in order to specify where the weakest areas of a cloth are. This gives users more control over tearing behavior.\n\nTears caused bytySlicerobjects are excluded from tear limits.",
+      "params": [
+        "Enable cloth tearing"
+      ]
+    },
+    {
+      "heading": "Stretch",
+      "level": "h4",
+      "anchor": "stretch",
+      "content": "Maximum %: the maximum percentage of stretch a binding may undergo before it will tear, prior to weakness calculations.Variation %: the per-particle percentage of variation to apply.\n\nMaximum %: the maximum percentage of stretch a binding may undergo before it will tear, prior to weakness calculations.",
+      "params": [
+        "Maximum %"
+      ]
+    },
+    {
+      "heading": "Strength",
+      "level": "h4",
+      "anchor": "strength",
+      "content": "Tear overstretch frames: a binding must exceed its maximum stretch percent for this many frames before it will tear.Variation %: the per-particle percentage of variation to apply.\n\nTear overstretch frames: a binding must exceed its maximum stretch percent for this many frames before it will tear.",
+      "params": [
+        "Tear overstretch frames"
+      ]
+    },
+    {
+      "heading": "Weakness",
+      "level": "h4",
+      "anchor": "weakness",
+      "content": "Use weakness map: controls whether weakness maps are enabled.Animated map: controls whether the weakness map is animated. Animated maps will be updated each time step.\n\nUse weakness map: controls whether weakness maps are enabled.\n\nAnimated map: controls whether the weakness map is animated. Animated maps will be updated each time step.\n\nDepending on the complexity of a cloth simulation, updating weakness values from a texture map can have a measurable performance impact. Therefore, instead of automatically updating a weakness map each frame, users have the ability to select whether or not the map is animated manually. Non-animated maps will only be updated once per simulation.\n\nTexmap: the weakness texmap to apply to the cloth, which will affect the weakness of cloth vertices.",
+      "params": [
+        "Animated map",
+        "Use weakness map",
+        "Texmap"
+      ]
+    },
+    {
+      "heading": "Progressive Weakening",
+      "level": "h4",
+      "anchor": "progressive-weakening",
+      "content": "Multiplier/tear: the weakness multiplier to apply to particles that are attached to a torn binding.Variation %: the per-particle percentage of variation to apply.\n\nMultiplier/tear: the weakness multiplier to apply to particles that are attached to a torn binding.",
+      "params": [
+        "Multiplier/tear"
+      ]
+    },
+    {
+      "heading": "Weakness Limits",
+      "level": "h4",
+      "anchor": "weakness-limits",
+      "content": "Min/Max: the minimum/maximum weakness values a particle may have.",
+      "params": [
+        "Min/Max"
+      ]
+    },
+    {
+      "heading": "Tear Limits",
+      "level": "h4",
+      "anchor": "tear-limits",
+      "content": "Max tears/strep: the maximum number of tears that can occur per step.Variation %: the per-particle percentage of variation to apply.\n\nMax tears/strep: the maximum number of tears that can occur per step.",
+      "params": [
+        "Max tears/strep"
+      ]
+    },
+    {
+      "heading": "Tear Distance Limits",
+      "level": "h4",
+      "anchor": "tear-distance-limits",
+      "content": "Max dist/step: the maximum cumulative rest length of torn bindings that is allowed per step.Variation %: the per-particle percentage of variation to apply.\n\nMax dist/step: the maximum cumulative rest length of torn bindings that is allowed per step.",
+      "params": [
+        "Max dist/step"
+      ]
+    },
+    {
+      "heading": "Tear Timing",
+      "level": "h4",
+      "anchor": "tear-timing",
+      "content": "Min frames/step: the minimum duration of frames that must pass before a tear step is processed.Variation %: the per-particle percentage of variation to apply.\n\nMin frames/step: the minimum duration of frames that must pass before a tear step is processed.",
+      "params": [
+        "Min frames/step"
+      ]
+    },
+    {
+      "heading": "Cloth Solver",
+      "level": "h4",
+      "anchor": "cloth-solver",
+      "content": "Tear de-activated particles: when enabled, particles that have been de-activated will still be candidates for tearing. When disabled, any cloth binds attached to de-activated particles will not be torn.Sim cloth after each tear: controls whether additional simulation solves will be performed after each time a bindings is torn.Step reduce %: controls the number of post-tear solver steps will be calculated, as a reduced percentage of the total particle bind solver steps.\n\nTear de-activated particles: when enabled, particles that have been de-activated will still be candidates for tearing. When disabled, any cloth binds attached to de-activated particles will not be torn.\n\nSim cloth after each tear: controls whether additional simulation solves will be performed after each time a bindings is torn.\n\nStep reduce %: controls the number of post-tear solver steps will be calculated, as a reduced percentage of the total particle bind solver steps.\n\nEvery time a binding is torn, it affects the way its neighbor bindings must stretch in order to accommodate the newly torn binding. This change in binding stress can affect which bindings need to be torn next. However, without re-solving all bindings, the tearing algorithm has no way of knowing which areas are experiencing more/less stretching due to the previous tear. By enabling “sim cloth after each tear”, the solver has a chance to re-adjust all bindings after each tear which can lead to fewer tearing artifacts. However, re-solving is an expensive operation, and if many tears occur in a single time step this can lead to a significant reduction in solver performance. By increasing the “step reduce %” value, you can decrease the amount of time it takes to perform the intermediate solves while retaining their overall benefit.",
+      "params": [
+        "Step reduce %",
+        "Tear de-activated particles",
+        "Sim cloth after each tear"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Mesh Rollout",
+      "level": "h3",
+      "anchor": "mesh-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Mesh",
+      "level": "h4",
+      "anchor": "mesh",
+      "content": "Generate Cloth Mesh: controls whether an actual cloth mesh will be generated by thetyFlowobject. If disabled, no cloth mesh will be created, even though cloth bindings will still be created between cloth particles.At rendertime only: when enabled, cloth meshes will only be generated during rendertime.\n\nGenerate Cloth Mesh: controls whether an actual cloth mesh will be generated by thetyFlowobject. If disabled, no cloth mesh will be created, even though cloth bindings will still be created between cloth particles.\n\nAt rendertime only: when enabled, cloth meshes will only be generated during rendertime.",
+      "params": [
+        "At rendertime only",
+        "Generate Cloth Mesh"
+      ]
+    },
+    {
+      "heading": "Post-process",
+      "level": "h4",
+      "anchor": "post-process",
+      "content": "Chamfer pinched verts: cloth tears can often lead to degenerate cases where triangles hang from a part of the cloth mesh by a single vertex. Enabling this option will chamfer those single vertex connections between faces, which makes it easier to subdivide the resulting cloth mesh without gaps forming between those faces.Inherit particle mat ID overrides: when enabled, cloth faces will inherit the material ID overrides of their driver particles.Add sehll to surface: controls whether the resulting cloth mesh will be given backside/edge faces in order to give it visual thickness.Outer amount: the distance to extrude faces along their normal.Inner amount: the distance to extrude faces along the opposite direction of their normal.Open edges only: controls whether only elements with open elements are extruded.Outer MatID Enabled: controls whether outer faces are given a material ID override.Outer MatID: the override ID to assigned to outer faces.Inner MatID Enabled: controls whether inner faces are given a material ID override.Inner MatID: the override ID to assigned to inner faces.Edge MatID Enabled: controls whether edge faces are given a material ID override.Edge MatID: the override ID to assigned to edge faces.\n\nChamfer pinched verts: cloth tears can often lead to degenerate cases where triangles hang from a part of the cloth mesh by a single vertex. Enabling this option will chamfer those single vertex connections between faces, which makes it easier to subdivide the resulting cloth mesh without gaps forming between those faces.\n\nInherit particle mat ID overrides: when enabled, cloth faces will inherit the material ID overrides of their driver particles.\n\nAdd sehll to surface: controls whether the resulting cloth mesh will be given backside/edge faces in order to give it visual thickness.\n\nOuter amount: the distance to extrude faces along their normal.\n\nInner amount: the distance to extrude faces along the opposite direction of their normal.\n\nOpen edges only: controls whether only elements with open elements are extruded.\n\nOuter MatID Enabled: controls whether outer faces are given a material ID override.\n\nOuter MatID: the override ID to assigned to outer faces.\n\nInner MatID Enabled: controls whether inner faces are given a material ID override.\n\nInner MatID: the override ID to assigned to inner faces.\n\nEdge MatID Enabled: controls whether edge faces are given a material ID override.\n\nEdge MatID: the override ID to assigned to edge faces.",
+      "params": [
+        "Outer amount",
+        "Edge MatID Enabled",
+        "Chamfer pinched verts",
+        "Inner MatID",
+        "Inner amount",
+        "Outer MatID",
+        "Outer MatID Enabled",
+        "Add sehll to surface",
+        "Inner MatID Enabled",
+        "Edge MatID",
+        "Open edges only",
+        "Inherit particle mat ID overrides"
+      ]
+    },
+    {
+      "heading": "Display Rollout",
+      "level": "h3",
+      "anchor": "display-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Show stretch/shear/bend/volume constraints: controls whether various cloth constraints will be displayed in the viewport.Show dead constraints: controls whether torn constraints will be displayed in the viewport.Display text info: controls whether various pieces of binding debug info will be displayed in the viewport, pertaining to binding particle IDs, rest lengths, stretch ratios, etc.\n\nShow stretch/shear/bend/volume constraints: controls whether various cloth constraints will be displayed in the viewport.\n\nShow dead constraints: controls whether torn constraints will be displayed in the viewport.\n\nDisplay text info: controls whether various pieces of binding debug info will be displayed in the viewport, pertaining to binding particle IDs, rest lengths, stretch ratios, etc.",
+      "params": [
+        "Display text info",
+        "Show stretch/shear/bend/volume constraints",
+        "Show dead constraints"
+      ]
+    },
+    {
+      "heading": "Cloth Deconversion Rollout",
+      "level": "h3",
+      "anchor": "cloth-deconversion-rollout",
+      "content": "Delete cloth rig particles: controls whether cloth rig particles will be deleted, when a dynamic cloth mesh is converted back into a particle shape mesh.Carry velocity forward: controls whether the average velocity of all cloth rig particles will be applied to the resulting cloth shape particle.\n\nDelete cloth rig particles: controls whether cloth rig particles will be deleted, when a dynamic cloth mesh is converted back into a particle shape mesh.\n\nCarry velocity forward: controls whether the average velocity of all cloth rig particles will be applied to the resulting cloth shape particle.",
+      "params": [
+        "Carry velocity forward",
+        "Delete cloth rig particles"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:41Z"
+}

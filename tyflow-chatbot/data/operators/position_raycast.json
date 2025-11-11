@@ -1,0 +1,122 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/position_raycast",
+  "title": "Position Raycastoperator",
+  "category": "Operators",
+  "operator": "Position Raycastoperator",
+  "sections": [
+    {
+      "heading": "Position Raycastoperator",
+      "level": "h2",
+      "anchor": "position-raycast-operator",
+      "content": "The Position Raycast operator allows you to cast rays towards the surface of an object, and place particles where the rays hit.",
+      "params": []
+    },
+    {
+      "heading": "Raycast Origin Object",
+      "level": "h4",
+      "anchor": "raycast-origin-object",
+      "content": "Origin Object: the object used to cast the rays.\n\nThe origin object was originally reserved fortyIconsonly, but now any mesh object is permitted.",
+      "params": [
+        "Origin Object"
+      ]
+    },
+    {
+      "heading": "Target Objects",
+      "level": "h4",
+      "anchor": "target-objects",
+      "content": "Target object list: the list of input objects whose surface meshes will be hit by rays.",
+      "params": [
+        "Target object list"
+      ]
+    },
+    {
+      "heading": "Raycast direction",
+      "level": "h4",
+      "anchor": "raycast-direction",
+      "content": "Absolute X/Y/Z: rays will be cast along the specified normal vector.Custom Vector: rays will be cast along the custom vector of the specified channel.Direction from origin object pivot: rays will be cast from the raycast origin object pivot to the particle’s raycast origin position.Nearest origin object normal: rays will be cast along the nearest surface normal to the particle’s input position.Origin object z-axis: rays will be cast along the z-axis of the origin object’s transform.Particle X/Y/Z: rays will be cast along the local X/Y/Z axis of the particle’s transform.Reverse direction: when enabled, each ray’s direction will be reversed.\n\nAbsolute X/Y/Z: rays will be cast along the specified normal vector.\n\nCustom Vector: rays will be cast along the custom vector of the specified channel.\n\nDirection from origin object pivot: rays will be cast from the raycast origin object pivot to the particle’s raycast origin position.\n\nNearest origin object normal: rays will be cast along the nearest surface normal to the particle’s input position.\n\nOrigin object z-axis: rays will be cast along the z-axis of the origin object’s transform.\n\nParticle X/Y/Z: rays will be cast along the local X/Y/Z axis of the particle’s transform.\n\nReverse direction: when enabled, each ray’s direction will be reversed.",
+      "params": [
+        "Direction from origin object pivot",
+        "Particle X/Y/Z",
+        "Custom Vector",
+        "Reverse direction",
+        "Nearest origin object normal",
+        "Absolute X/Y/Z",
+        "Origin object z-axis"
+      ]
+    },
+    {
+      "heading": "Raycast origin",
+      "level": "h4",
+      "anchor": "raycast-origin",
+      "content": "Particle Position: rays will be cast from the particle’s current position.Project from origin object: rays will be cast from the particle’s current position, projected onto the plane perpendicular to the z-axis of the origin object’s transform.Random on origin object: rays will be cast from a random location on the origin object.Offset: offsets the ray’s starting point along the negative raycast direction by the specified amount.\n\nParticle Position: rays will be cast from the particle’s current position.\n\nProject from origin object: rays will be cast from the particle’s current position, projected onto the plane perpendicular to the z-axis of the origin object’s transform.\n\nRandom on origin object: rays will be cast from a random location on the origin object.\n\nOffset: offsets the ray’s starting point along the negative raycast direction by the specified amount.\n\nUse the offset feature if you want a particle’s ray to collide with a surface that its ray’s starting point is inside of.",
+      "params": [
+        "Project from origin object",
+        "Random on origin object",
+        "Particle Position",
+        "Offset"
+      ]
+    },
+    {
+      "heading": "Raycast distance",
+      "level": "h4",
+      "anchor": "raycast-distance",
+      "content": "Infinite: rays will hit objects at any distane from their starting point.Minimum: rays will only hit objects beyond the specified minimum distance from their starting point.Maximum: rays will only hit objects up to the specified maximum distance from their starting point.Distance: the specified distance for non-infinite rays.\n\nInfinite: rays will hit objects at any distane from their starting point.\n\nMinimum: rays will only hit objects beyond the specified minimum distance from their starting point.\n\nMaximum: rays will only hit objects up to the specified maximum distance from their starting point.\n\nDistance: the specified distance for non-infinite rays.",
+      "params": [
+        "Minimum",
+        "Infinite",
+        "Maximum",
+        "Distance"
+      ]
+    },
+    {
+      "heading": "Position",
+      "level": "h4",
+      "anchor": "position",
+      "content": "No offset: the resulting position will be the exact raycast hit location on the target mesh.Offset along reverse raycast direction: the resulting position will be the raycast hit location offset along the negative raycast direction.Offset along surface normal: the resulting position will be the raycast hit location offset along the nearest surface normal of the target mesh.Offset: the amount to offset resulting positions, if applicable.Variation %: the per-particle percentage of variation to apply.\n\nNo offset: the resulting position will be the exact raycast hit location on the target mesh.\n\nOffset along reverse raycast direction: the resulting position will be the raycast hit location offset along the negative raycast direction.\n\nOffset along surface normal: the resulting position will be the raycast hit location offset along the nearest surface normal of the target mesh.\n\nOffset: the amount to offset resulting positions, if applicable.",
+      "params": [
+        "Offset along reverse raycast direction",
+        "Offset along surface normal",
+        "Offset",
+        "No offset"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Value: the amount to interpolate particle positionx from their previous value to the new value.Variation %: the per-particle percentage of variation to apply.\n\nValue: the amount to interpolate particle positionx from their previous value to the new value.",
+      "params": [
+        "Value"
+      ]
+    },
+    {
+      "heading": "Orientation",
+      "level": "h4",
+      "anchor": "orientation",
+      "content": "Keep original: particle orientations will not be changed.Surface: particles will be aligned to the surface their ray hit.\n\nKeep original: particle orientations will not be changed.\n\nSurface: particles will be aligned to the surface their ray hit.\n\nThe Position Raycast operator offers no extra controls over surface alignment. A Rotation operator should be used instead if more control over surface alignment is required.\n\nRay directionparticles will be aligned to the direction of the rays.",
+      "params": [
+        "Keep original",
+        "Surface"
+      ]
+    },
+    {
+      "heading": "No Raycast Hit",
+      "level": "h4",
+      "anchor": "no-raycast-hit",
+      "content": "Delete Particles: if enabled, particles whose rays do not hit an object will be deleted.",
+      "params": [
+        "Delete Particles"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:24Z"
+}

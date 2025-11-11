@@ -1,0 +1,87 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_skeleton",
+  "title": "Birth Skeletonoperator",
+  "category": "Operators",
+  "operator": "Birth Skeletonoperator",
+  "sections": [
+    {
+      "heading": "Birth Skeletonoperator",
+      "level": "h2",
+      "anchor": "birth-skeleton-operator",
+      "content": "The Birth Skeleton operator can be used to extract the curve skeleton from input meshes.\n\nThe Birth Skeleton operator extracts the curve skeleton from input meshes, and converts the segments of bones within the extracted skeleton into particles. Using this method, you can easily rig complex meshes like trees and foliage which would otherwise be extremely difficult and time-consuming to manually rig.\n\nWithin the context of this operator, a “segment” is a single line used to compose a bone. A “bone” is a curve composed of one or more “segments”. A “skeleton” is the set of all “bones” extracted from a mesh. Keep in mind that the skeleton extracted from a mesh is not a typical anatomical skeleton (ie, this operator is not meant to extract bones for the purpose of character rigging), but a curve skeleton (ie, the algorithm will attempt to convert tube-like sections of a mesh into segmented curves). For this reason, the operator is ideal for extracting bones from tube-like meshes (that’s why it works great for plants, foliage, tentacles, etc), but it doesn’t work very well for meshes that do not have many long, protruding parts.",
+      "params": []
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Object list: the list of input objects whose skeleton will be extracted.",
+      "params": [
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Particle birth",
+      "level": "h4",
+      "anchor": "particle-birth",
+      "content": "Start: controls the frame at which to birth new particles.",
+      "params": [
+        "Start"
+      ]
+    },
+    {
+      "heading": "Pre-process",
+      "level": "h4",
+      "anchor": "pre-process",
+      "content": "Relax mesh: applies laplacian relaxation to the input mesh, in order to smooth out surface details prior to skeletonization.Relax iterations: the number of relax iterations to apply to the input mesh. The higher the iterations, the smoother the mesh will be.\n\nRelax mesh: applies laplacian relaxation to the input mesh, in order to smooth out surface details prior to skeletonization.\n\nRelax iterations: the number of relax iterations to apply to the input mesh. The higher the iterations, the smoother the mesh will be.\n\nInput meshes with a lot of small, bumpy surface details can cause artifacts to appear in the resulting skeleton (junctions with unnecessary bones pointing in random directions, bones not properly following the overall surface curvature, etc). Performing pre-process relaxation (or manually relaxing the geometry of the mesh yourself) can help to improve the result of the skeletonization process. An ideal mesh for skeletonization is one that is perfectly smooth and composed only of long, tube-like structures.\n\nEnable MatID filter: when enabled, only faces matching the listed material ID values will be skeletonized.MatID: the list of face material IDs to skeletonize.\n\nEnable MatID filter: when enabled, only faces matching the listed material ID values will be skeletonized.\n\nMatID: the list of face material IDs to skeletonize.\n\nUsing the material ID filter is an easy way to exclude parts of a mesh (like leaves, small twigs, etc) from skeletonization.",
+      "params": [
+        "MatID",
+        "Relax mesh",
+        "Relax iterations",
+        "Enable MatID filter"
+      ]
+    },
+    {
+      "heading": "Optimization",
+      "level": "h4",
+      "anchor": "optimization",
+      "content": "Optimize skeleton: controls whether or not the raw extracted skeleton will be optimized in various ways.\n\nThe max angle and max length settings control how individual bones will be optimized, by merging/reducing their segments.\n\nMax angle: connected segments whose angle is below this threshold will be merged.Max length: segments below the max angle threshold will only be merged if their combined length is below this value.Subdivide: segments will be subdivided if their length is below this threshold.\n\nMax angle: connected segments whose angle is below this threshold will be merged.\n\nMax length: segments below the max angle threshold will only be merged if their combined length is below this value.\n\nSubdivide: segments will be subdivided if their length is below this threshold.\n\nIf “subdivide” is disabled, multiple segments may be merged if their combined length is below “max length”, but individual segments whose length is greater than “max length” will not be converted into multiple smaller segments.\n\nOptimize junctions: in skeletons with clear junctions (places where the endpoint of a bone touches the midpoint segment of another bone), segments will be merged at junction points.\n\nTurning “optimize junctions” on may cause endpoints of bones which touch midpoints segments of other bones to lose contact with those midpoint segments, if those midpoint segments are optimized away. Keeping this setting off will maximize junction contact in skeletons extracted from meshes with clean, contiguous topology.\n\nCull tiny junctions: single-segment bones generated at endpoint junctions of multi-segment bones will be culled.\n\nThe skeletonization algorithm has a tendency to create junctions with multiple single-segment bones pointing outwards at seemingly-random angles, in meshes that aren’t composed of perfectly smooth tube-like structures. This setting uses a fairly robust heuristic to minimize the creation of those bones.",
+      "params": [
+        "Max angle",
+        "Cull tiny junctions",
+        "Optimize junctions",
+        "Max length",
+        "Optimize skeleton",
+        "Subdivide"
+      ]
+    },
+    {
+      "heading": "Misc",
+      "level": "h4",
+      "anchor": "misc",
+      "content": "Min bone width: specified the minimum width of generated particles.",
+      "params": [
+        "Min bone width"
+      ]
+    },
+    {
+      "heading": "Custom float data",
+      "level": "h4",
+      "anchor": "custom-float-data",
+      "content": "Stores the bone index of each segment into a channel within the corresponding particle.\n\nChannel: the custom data float channel where the bone index value will be stored.\n\nBone segments each have two endpoints (the start and end of each segment line), and bones are composed of multiple segments ordered from base to tip. Thus, the target of each segment is the segment before it (excluding the first segment in a bone, which has no target). Thus, the bone segment target of a corresponding particle will be the particle ID generated before it, as each bone is processed.\n\nChannel: the custom data float channel where the bone segment target value will be stored.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Visualize skeleton: draws the raw bone segment lines in the viewport, on the frame they are generated.\n\nEach bone is given a random color, and the brightness of the color applied to each bone segment increases from base to tip. Thus, you can see the directionality of each bone in the viewport by looking at the direction of the color gradient for each bone when visualization is enabled. Bone directionality is not controllable, and is determined internally using an algorithm that examines bone radius, proximity, and direction to nearby bones.",
+      "params": [
+        "Visualize skeleton"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:06Z"
+}

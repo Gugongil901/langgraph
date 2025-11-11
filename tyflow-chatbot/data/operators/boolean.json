@@ -1,0 +1,145 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/boolean",
+  "title": "Booleanoperator",
+  "category": "Operators",
+  "operator": "Booleanoperator",
+  "sections": [
+    {
+      "heading": "Booleanoperator",
+      "level": "h2",
+      "anchor": "boolean-operator",
+      "content": "The Boolean operator allows you to perform boolean operations on particle shape meshes.",
+      "params": []
+    },
+    {
+      "heading": "Boolean rollout",
+      "level": "h2",
+      "anchor": "boolean-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Engine",
+      "level": "h3",
+      "anchor": "engine",
+      "content": "CUDA acceleration: when enabled, allows boolean operations to be accelerated with a GPU (tyFlow PROonly).",
+      "params": [
+        "CUDA acceleration"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h3",
+      "anchor": "operation",
+      "content": "Intersect: computes the intersection between operand A and B as the resulting mesh.Merge: subdivides all intersecting faces of operand A and B and generates fully connected meshes as the result.Self-merge: subdivides all intersecting faces of operand A and generates fully connected meshes as the result.Self-union: subdivides all intersecting faces of operand A, removing interior faces in the process, and generates fully connected meshes as the result.Slice (surface): uses operand B as a thin-shell cutting surface for operand A, without preserving the volume of operand A.Slice (volume): uses operand B as a thin-shell cutting surface for operand A, while also preserving the volume of operand A.\n\nIntersect: computes the intersection between operand A and B as the resulting mesh.\n\nMerge: subdivides all intersecting faces of operand A and B and generates fully connected meshes as the result.\n\nSelf-merge: subdivides all intersecting faces of operand A and generates fully connected meshes as the result.\n\nSelf-union: subdivides all intersecting faces of operand A, removing interior faces in the process, and generates fully connected meshes as the result.\n\nSlice (surface): uses operand B as a thin-shell cutting surface for operand A, without preserving the volume of operand A.\n\nSlice (volume): uses operand B as a thin-shell cutting surface for operand A, while also preserving the volume of operand A.\n\nThe slice modes are most applicable to mesh fracturing. They can be used to split meshes into multiple parts using thin cutting surfaces of any shape.\n\nSubtract (surface): subtracts operand B from A, without preserving the volume of operand A.Subtract (volume): subtracts operand B from A, while also preserving the volume of operand A.Union: subdivides all intersecting faces of operand A and B, removing interior faces in the process, and generates fully connected meshes as the result.\n\nSubtract (surface): subtracts operand B from A, without preserving the volume of operand A.\n\nSubtract (volume): subtracts operand B from A, while also preserving the volume of operand A.\n\nUnion: subdivides all intersecting faces of operand A and B, removing interior faces in the process, and generates fully connected meshes as the result.",
+      "params": [
+        "Subtract (surface)",
+        "Merge",
+        "Slice (volume)",
+        "Self-merge",
+        "Intersect",
+        "Subtract (volume)",
+        "Self-union",
+        "Union",
+        "Slice (surface)"
+      ]
+    },
+    {
+      "heading": "Operand B",
+      "level": "h3",
+      "anchor": "operand-b",
+      "content": "Object operands: when enabled, objects added to the object list will be added to operand B in the boolean operation.Particle operands: when enabled, particles satisfying the filtering criteria in the Particle operands rollout will be add to operand B in the boolean operation.\n\nObject operands: when enabled, objects added to the object list will be added to operand B in the boolean operation.\n\nParticle operands: when enabled, particles satisfying the filtering criteria in the Particle operands rollout will be add to operand B in the boolean operation.",
+      "params": [
+        "Object operands",
+        "Particle operands"
+      ]
+    },
+    {
+      "heading": "Material ID",
+      "level": "h4",
+      "anchor": "material-id",
+      "content": "Override material ID: when enabled, faces originating from operand B meshes will be assigned the specified material ID override.",
+      "params": [
+        "Override material ID"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h3",
+      "anchor": "settings",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Face classification",
+      "level": "h4",
+      "anchor": "face-classification",
+      "content": "Raycast: when selected, a raycast-based face classification method will run during the operation, to classify faces as either inside or outside of operands. For closed meshes, this is very accurate. For open meshes, this method can produce artifacts.Fast winding number: when selected, a fast winding number face classification method will run during the operation, to classify faces as either inside or outside of operands. This offers more accuracy than the raycast method when meshes contain holes and open edges (at the cost of some performance). This method does not track nested elements, and is not suitable for situations where meshes are meant to have interior, nested cavities.\n\nRaycast: when selected, a raycast-based face classification method will run during the operation, to classify faces as either inside or outside of operands. For closed meshes, this is very accurate. For open meshes, this method can produce artifacts.\n\nFast winding number: when selected, a fast winding number face classification method will run during the operation, to classify faces as either inside or outside of operands. This offers more accuracy than the raycast method when meshes contain holes and open edges (at the cost of some performance). This method does not track nested elements, and is not suitable for situations where meshes are meant to have interior, nested cavities.\n\nProcess open surfaces: when enabled, open surfaces (which normally cause problems for various boolean operations) will be treated as thin shells, alleviating those problems in the process.Preserve normals: when enabled, the explicit normals of input meshes will be preserved in the resulting output mesh.Resolve self-intersections: controls whether self-intersections of input operands will be processed during the intersection-resolution phase of the operation.Coplanar tris -> polys: controls whether groups of adjacent, coplanar triangles in the resulting mesh will be converted into polygons (have their shared edges hidden).\n\nProcess open surfaces: when enabled, open surfaces (which normally cause problems for various boolean operations) will be treated as thin shells, alleviating those problems in the process.\n\nPreserve normals: when enabled, the explicit normals of input meshes will be preserved in the resulting output mesh.\n\nResolve self-intersections: controls whether self-intersections of input operands will be processed during the intersection-resolution phase of the operation.\n\nCoplanar tris -> polys: controls whether groups of adjacent, coplanar triangles in the resulting mesh will be converted into polygons (have their shared edges hidden).",
+      "params": [
+        "Resolve self-intersections",
+        "Preserve normals",
+        "Process open surfaces",
+        "Coplanar tris -> polys",
+        "Raycast",
+        "Fast winding number"
+      ]
+    },
+    {
+      "heading": "Object operands Rollout",
+      "level": "h2",
+      "anchor": "object-operands-rollout",
+      "content": "Object list: the list of objects that will be added to operand B in each boolean operation.",
+      "params": [
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Particle operands Rollout",
+      "level": "h2",
+      "anchor": "particle-operands-rollout",
+      "content": "Particles satisfying the filtering criteria in this rollout will be added to operand B in each boolean operation.",
+      "params": []
+    },
+    {
+      "heading": "Events",
+      "level": "h4",
+      "anchor": "events",
+      "content": "All events: all particles in the flow will be operand B candidates.This event only: only other particles in the event will be operand B candidates.Exclude this event: only other particles in other events will be operand B candidates.\n\nAll events: all particles in the flow will be operand B candidates.\n\nThis event only: only other particles in the event will be operand B candidates.\n\nExclude this event: only other particles in other events will be operand B candidates.",
+      "params": [
+        "This event only",
+        "Exclude this event",
+        "All events"
+      ]
+    },
+    {
+      "heading": "Family",
+      "level": "h4",
+      "anchor": "family",
+      "content": "Only include siblings/non-siblings: controls whether operand B candidates will be filtered by their familial relationships.",
+      "params": [
+        "Only include siblings/non-siblings"
+      ]
+    },
+    {
+      "heading": "Simulation Groups",
+      "level": "h4",
+      "anchor": "simulation-groups",
+      "content": "Simulation groups: controls which particle simulation groups will be targeted.",
+      "params": [
+        "Simulation groups"
+      ]
+    },
+    {
+      "heading": "Clusters",
+      "level": "h4",
+      "anchor": "clusters",
+      "content": "Enable clustering: controls whether operand B candidates will be determined by cluster values.Channel: the particle data channel to get cluster values from.Cluster if equal: operand B candidates must have equal cluster values.Cluster if equal: operand B candidates must have unequal cluster values.\n\nEnable clustering: controls whether operand B candidates will be determined by cluster values.\n\nChannel: the particle data channel to get cluster values from.\n\nCluster if equal: operand B candidates must have equal cluster values.\n\nCluster if equal: operand B candidates must have unequal cluster values.",
+      "params": [
+        "Channel",
+        "Enable clustering",
+        "Cluster if equal"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:36Z"
+}

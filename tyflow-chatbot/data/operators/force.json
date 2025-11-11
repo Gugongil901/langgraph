@@ -1,0 +1,102 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/force",
+  "title": "Forceoperator",
+  "category": "Operators",
+  "operator": "Forceoperator",
+  "sections": [
+    {
+      "heading": "Forceoperator",
+      "level": "h2",
+      "anchor": "force-operator",
+      "content": "The Force operator allows you to apply various forces to particles.",
+      "params": []
+    },
+    {
+      "heading": "Forces Rollout",
+      "level": "h3",
+      "anchor": "forces-rollout",
+      "content": "Force objects: The input force/spacewarp helpers.",
+      "params": [
+        "Force objects"
+      ]
+    },
+    {
+      "heading": "Built-in Forces Rollout",
+      "level": "h3",
+      "anchor": "built-in-forces-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Built-in Gravity",
+      "level": "h4",
+      "anchor": "built-in-gravity",
+      "content": "Strength: the strength of the built-in gravity to apply to particles.",
+      "params": [
+        "Strength"
+      ]
+    },
+    {
+      "heading": "Built-in Wind",
+      "level": "h4",
+      "anchor": "built-in-wind",
+      "content": "X/Y/Z: controls the direction vector of the wind.Strength: controls the strength of the wind.\n\nX/Y/Z: controls the direction vector of the wind.\n\nStrength: controls the strength of the wind.",
+      "params": [
+        "X/Y/Z",
+        "Strength"
+      ]
+    },
+    {
+      "heading": "Built-in Noise",
+      "level": "h4",
+      "anchor": "built-in-noise",
+      "content": "Noise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.\n\nSource vector: controls the input vector used to calculate the noise values.Channel: the custom data channel to read custom vectors from.\n\nSource vector: controls the input vector used to calculate the noise values.\n\nChannel: the custom data channel to read custom vectors from.",
+      "params": [
+        "Noise mode",
+        "Channel",
+        "Source vector"
+      ]
+    },
+    {
+      "heading": "Force Affect Rollout",
+      "level": "h3",
+      "anchor": "force-affect-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Velocity Affect",
+      "level": "h4",
+      "anchor": "velocity-affect",
+      "content": "Affect magnitude/direction/both: controls which aspects of the resulting particle velocity the forces will affect.X/Y/Z %: controls the amount of influence forces will have over each axis of the resulting velocity.Multiplier %: an overall multiplier applied to the resulting force values.Variation %: the per-particle percentage of variation to apply.\n\nAffect magnitude/direction/both: controls which aspects of the resulting particle velocity the forces will affect.\n\nX/Y/Z %: controls the amount of influence forces will have over each axis of the resulting velocity.\n\nMultiplier %: an overall multiplier applied to the resulting force values.",
+      "params": [
+        "X/Y/Z %",
+        "Multiplier %",
+        "Affect magnitude/direction/both"
+      ]
+    },
+    {
+      "heading": "Spin Affect",
+      "level": "h4",
+      "anchor": "spin-affect",
+      "content": "X/Y/Z %: controls the amount of influence forces will have over each axis of the resulting spin.Multiplier %: an overall multiplier applied to the resulting force values.Variation %: the per-particle percentage of variation to apply.\n\nX/Y/Z %: controls the amount of influence forces will have over each axis of the resulting spin.\n\nMultiplier %: an overall multiplier applied to the resulting force values.\n\nWhen applying forces to spin values, the influence percentage may need to be very high to get the desired affect, due to the fact that spin is calculated in degrees per second and velocity is calculated in scene units per time step.\n\nVariation %: the per-particle percentage of variation to apply.Seed: the seed value for all varied parameters.\n\nSeed: the seed value for all varied parameters.\n\nThe relative property multiplier will adjust values based on the ratio between the value of a particle property and the specified threshold value.\n\nProperty type: the particle property to which the threshold value will be compared.Threshold: the target value to which the selected property value of a particle will be compared.Min multiplier: the minimum value of the resulting multiplier.Max multiplier: the maximum value of the resulting multiplier.Exponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nProperty type: the particle property to which the threshold value will be compared.\n\nThreshold: the target value to which the selected property value of a particle will be compared.\n\nMin multiplier: the minimum value of the resulting multiplier.\n\nMax multiplier: the maximum value of the resulting multiplier.\n\nExponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nRelative to perpendicular surface area: the force applied to a particle will be relative to the percentage of a particle mesh’s surface area is perpendicular to the force.\n\nThe ‘relative to perpendicular surface area’ option will reduce the amount of force applied to a particle, depending on how close a particle’s shape mesh faces are to being perpendicular to the force being applied. In simpler terms: for each face of a particle mesh, if the faces is pointing towards (parallel) the force being applied , it will be affected by the force more than if the face is pointing perpendicular (away) from the force being applied. The amount each face will be influenced by the force, based on this calculation, is then summed up to create an overall force multiplier for each particle. This is a simple way to approximate certain aerodynamic effects.\n\nThe built-in gravity force is not affected by the ‘relative to perpendicular surface area’ setting.\n\nThreshold: the minimum ratio of perpendicular faces to the total face count a particle’s mesh must have, in order to be considered fully perpendicular.\n\nThe lower the threshold value, the less parallel face coverage is required in order to undergo full force influence.\n\nExponent: the relative surface area multiplier will be raised to this exponent. Higher values mean less perpensicular coverage will result in less force application.Relative %: the percentage of affect the ‘relative to perpendicular surface area’ setting will have on the final result.Simulate substeps: forces will be interpolated in a way that simulates the addition of forces at smaller simulation substeps.Cloth aerodynamics: when enabled, cloth particles affected by the Force operator will have their force influences adjusted based on the angle between the force velocity and the face normals of the cloth that they are part of.\n\nExponent: the relative surface area multiplier will be raised to this exponent. Higher values mean less perpensicular coverage will result in less force application.\n\nRelative %: the percentage of affect the ‘relative to perpendicular surface area’ setting will have on the final result.\n\nSimulate substeps: forces will be interpolated in a way that simulates the addition of forces at smaller simulation substeps.\n\nCloth aerodynamics: when enabled, cloth particles affected by the Force operator will have their force influences adjusted based on the angle between the force velocity and the face normals of the cloth that they are part of.\n\nThe closer the angles are to being coincident, the higher the influence the force will have on the cloth particles. This helps to simulate cloth ripples and other aerodynamically-accurate effects.\n\nStrength: this value controls how much the aerodynamic cloth calculations will influence affected particles.\n\nThe higher the value, the closer the cloth face normal angles must be to the force velocities in order for the velocities to affect the cloth particles. In technical terms, this is the exponent which the dot product between the force vector and the face normal is raised to, before being used as a multiplier for the overall force influence amount on a particular particle.",
+      "params": [
+        "Simulate substeps",
+        "Min multiplier",
+        "Relative %",
+        "Max multiplier",
+        "Multiplier %",
+        "Strength",
+        "Relative to perpendicular surface area",
+        "Cloth aerodynamics",
+        "Variation %",
+        "Threshold",
+        "Exponent",
+        "Property type",
+        "X/Y/Z %",
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:44Z"
+}

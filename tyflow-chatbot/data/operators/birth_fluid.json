@@ -1,0 +1,154 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_fluid",
+  "title": "Birth Fluidoperator",
+  "category": "Operators",
+  "operator": "Birth Fluidoperator",
+  "sections": [
+    {
+      "heading": "Birth Fluidoperator",
+      "level": "h2",
+      "anchor": "birth-fluid-operator",
+      "content": "The Birth Fluid operator can be used to birth particles inside of a (Phoenix FD) fluid grid based on grid voxel and particle properties.",
+      "params": []
+    },
+    {
+      "heading": "Birth Fluid Rollout",
+      "level": "h3",
+      "anchor": "birth-fluid-rollout",
+      "content": "Fluid object: the input fluid grid object.Start/End: controls the time range in which to birth new particles.\n\nFluid object: the input fluid grid object.\n\nStart/End: controls the time range in which to birth new particles.",
+      "params": [
+        "Start/End",
+        "Fluid object"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Grid Cells Rollout",
+      "level": "h3",
+      "anchor": "grid-cells-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Input grid channels",
+      "level": "h4",
+      "anchor": "input-grid-channels",
+      "content": "Temperature: when enabled, grid cells with a temperature value above 300 will be able to spawn particles.Smoke: when enabled, grid cells with a smoke value above 0 will be able to spawn particles.Velocity: when enabled, grid cells with a velocity value above 0 will be able to spawn particles.Fire: when enabled, grid cells with a fire value above 0 will be able to spawn particles (FumeFX only).\n\nTemperature: when enabled, grid cells with a temperature value above 300 will be able to spawn particles.\n\nSmoke: when enabled, grid cells with a smoke value above 0 will be able to spawn particles.\n\nVelocity: when enabled, grid cells with a velocity value above 0 will be able to spawn particles.\n\nFire: when enabled, grid cells with a fire value above 0 will be able to spawn particles (FumeFX only).\n\nThe higher the temperature/smoke value per cell, the higher the probability that a particle will be spawned in the cell.\n\nRate per grid: The theoretical rate of particles births that can happen per simulation step over the entire grid, given a per-cell probability of 1. The actual rate of particle births will be lower, and the birth probability per-cell is dependent on the total smoke and temperature values of each cell.Rate per cell: Same as rate per grid, but the probability is calculated per cell instead of per grid.\n\nRate per grid: The theoretical rate of particles births that can happen per simulation step over the entire grid, given a per-cell probability of 1. The actual rate of particle births will be lower, and the birth probability per-cell is dependent on the total smoke and temperature values of each cell.\n\nRate per cell: Same as rate per grid, but the probability is calculated per cell instead of per grid.\n\n“Rate per grid” and “rate per cell” are easy to understand once you grasp what they are doing. “Rate per grid” means that if every single cell of a grid is completely full of smoke/velocity/etc (depending on the input grid channels you’ve selected), then the probability of each cell getting a particle is the rate divided by the cell count: [rate per grid / total cells]. So, if a grid has 1000 cells and “rate per grid” is set to 1000, each cell will generate exactly 1 particle if each cell is completely full of smoke/velocity/etc. The “rate per cell” setting is similar, except the probability of a full cell getting a particle is identical to the “rate per cell” value (ie, it’s not divided by the total number of cells). In practice, a grid will have lots of empty cells, or lots of semi-filled cells, so the total number of particles will be lower than the explicit “rate per grid/cell” settings (hence why the rate values are probabilitistic and don’t define an exact number of particles that will be generated).",
+      "params": [
+        "Temperature",
+        "Rate per cell",
+        "Velocity",
+        "Smoke",
+        "Fire",
+        "Rate per grid"
+      ]
+    },
+    {
+      "heading": "Thresholds",
+      "level": "h4",
+      "anchor": "thresholds",
+      "content": "Enabling these channels will override the default cell spawn probabilities.\n\nTemperature/Smoke/Velocity/Fire: the threshold override channels.Min/Max/Variation: the range of values for each selected channel that will control how many particles are spawned in each cell.\n\nTemperature/Smoke/Velocity/Fire: the threshold override channels.\n\nMin/Max/Variation: the range of values for each selected channel that will control how many particles are spawned in each cell.",
+      "params": [
+        "Min/Max/Variation",
+        "Temperature/Smoke/Velocity/Fire"
+      ]
+    },
+    {
+      "heading": "Grid Particles Rollout",
+      "level": "h3",
+      "anchor": "grid-particles-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Input Particle Channels",
+      "level": "h4",
+      "anchor": "input-particle-channels",
+      "content": "PhoenixFD grids can contain both voxels and particles. To birth particles that will be copies of PhoenixFD grid particles, enable the relevant particle channels.\n\nChannels: enabling these channels will birth copies of particles contained within them, if such particles are available in the cache of the input object.Channel percentages: controls the percentage of copied input particles to birth.New only: controls whether only new particles will be birthed each frame. A particle is considered new if its input ID has not been processed on a previous frame.\n\nChannels: enabling these channels will birth copies of particles contained within them, if such particles are available in the cache of the input object.\n\nChannel percentages: controls the percentage of copied input particles to birth.\n\nNew only: controls whether only new particles will be birthed each frame. A particle is considered new if its input ID has not been processed on a previous frame.",
+      "params": [
+        "New only",
+        "Channel percentages",
+        "Channels"
+      ]
+    },
+    {
+      "heading": "Spray/Foam/Bubbles Rollout",
+      "level": "h3",
+      "anchor": "spray-foam-bubbles-rollout",
+      "content": "Generate spray, foam and bubbles: when enabled, the input grid will be analyzed for areas where air could become trapped in the fluid, and generate spray/foam/bubbles accordingly.\n\nThe difference between spray, foam and bubbles is that spray particles are outside of fluid-containing cells, foam particles are in fluid-containing cells that are on the surface of the fluid (cells that border non-fluid cells), and bubbles particles are in fluid-containing cells that are fully submerged (cells that do not border non-fluid cells).",
+      "params": [
+        "Generate spray, foam and bubbles"
+      ]
+    },
+    {
+      "heading": "Splash detection",
+      "level": "h4",
+      "anchor": "splash-detection",
+      "content": "Splashes are detected by finding areas where the relative velocities between particles is high (particles moving towards each other).\n\nEnable splash detection: when enabled, particles will be generated in areas where splashes are detected.Velocity thresh min/max: the minimum and maximum relative velocities used to determine how many particles to generate in a splash. Higher minimum values mean fluid particles must have a higher relative velocity in order to be considered a splash. Lower maximum values mean more particles will be generated in splashes with a smaller relative velocity magnitude.\n\nEnable splash detection: when enabled, particles will be generated in areas where splashes are detected.\n\nVelocity thresh min/max: the minimum and maximum relative velocities used to determine how many particles to generate in a splash. Higher minimum values mean fluid particles must have a higher relative velocity in order to be considered a splash. Lower maximum values mean more particles will be generated in splashes with a smaller relative velocity magnitude.",
+      "params": [
+        "Enable splash detection",
+        "Velocity thresh min/max"
+      ]
+    },
+    {
+      "heading": "Wavecrest detection",
+      "level": "h4",
+      "anchor": "wavecrest-detection",
+      "content": "Wavecrests are detected by finding areas where the curvature of the fluid surface is high, and the fluid is moving in the direction of the nearest surface normal.\n\nEnable wavecrest detection: when enabled, particles will be generated in areas where wavecrests are detected.Forward vel thresh: controls how close the direction the wavecrest must be moving, relative to the nearest surface normal, in order to qualify for particle generation. Higher values mean the direction of the wavecrest’s motion must be closer to the nearest surface normal in order to generate wavecrest particles.Curvature min/max: controls how much local surface curvature a wavecrest must have in order to qualify for particle generation.\n\nEnable wavecrest detection: when enabled, particles will be generated in areas where wavecrests are detected.\n\nForward vel thresh: controls how close the direction the wavecrest must be moving, relative to the nearest surface normal, in order to qualify for particle generation. Higher values mean the direction of the wavecrest’s motion must be closer to the nearest surface normal in order to generate wavecrest particles.\n\nCurvature min/max: controls how much local surface curvature a wavecrest must have in order to qualify for particle generation.",
+      "params": [
+        "Enable wavecrest detection",
+        "Curvature min/max",
+        "Forward vel thresh"
+      ]
+    },
+    {
+      "heading": "Velocity thresholds",
+      "level": "h4",
+      "anchor": "velocity-thresholds",
+      "content": "Areas of the fluid in which splashes or wavecrests are detected must also meet the velocity threshold criteria in order to qualify for particle generation.\n\nVelocity min/max: the threshold values used to determine how particles are generated on a splash or wavecrest. Lower minimum values reduce the minimum velocity criteria for particle generation. Lower maximum values increase the likelihood that a splash or wavecrest will generate the maximum number of spawned particles.",
+      "params": [
+        "Velocity min/max"
+      ]
+    },
+    {
+      "heading": "Neighbor thresholds",
+      "level": "h4",
+      "anchor": "neighbor-thresholds",
+      "content": "The density of fluid particles (the number of immediate neighbors a fluid particle has) must meet the neighbor threshold criteria in order to qualify for particle generation.\n\nNeighbor min/max: the threshold values used to determine how particles are generated based on the number of neighbors they have. Lower minimum values means a particle with less neighbors can still spawn particles. Lower maximum values means a particle with less neighbors will generate the maximum number of spawned particles.",
+      "params": [
+        "Neighbor min/max"
+      ]
+    },
+    {
+      "heading": "Spawned particles",
+      "level": "h4",
+      "anchor": "spawned-particles",
+      "content": "Scale min/max: the min/max scale of spawned particles, relative to the combined probability of prior wave/splash/velocity thresholds.\n\nVelocity multiplier: multiplies spawned particle velocities by the specified amount.Variation %: the per-particle percentage of variation to apply.\n\nVelocity multiplier: multiplies spawned particle velocities by the specified amount.\n\nCount min/max: the min/max amount of new particles a fluid particle may generate, relative to the combined probability of prior wave/splash/velocity thresholds.\n\nWith the scale and count thresholds, you can define how slower fluid particles in splash areas with low relative velocity or low curvature generate particles, compared to faster fluid particles in splash areas with high relative velocity or high curvature.\n\nVariation %: the per-particle percentage of variation to apply.Per-step limit: the maximum amount of particles that the operator may generate for a given time step.\n\nPer-step limit: the maximum amount of particles that the operator may generate for a given time step.",
+      "params": [
+        "Per-step limit",
+        "Count min/max",
+        "Velocity multiplier",
+        "Variation %",
+        "Scale min/max"
+      ]
+    },
+    {
+      "heading": "Cache",
+      "level": "h4",
+      "anchor": "cache",
+      "content": "Cache fluid surface analysis: when enabled, the surface analysis of the input grid will be cached to RAM on a per-frame basis.\n\nThe fluid surface analysis cache can greatly speed up resimulations after the first fluid analysis is complete (in other words, after each frame of the fluid simulation has been processed by the Birth Fluid operator at least once). RAM usage for the surface analysis of a high resolution fluid sim is usually fairly small, so the benefits of keeping the cache enabled (resimulation speed) outweighs the cons (extra RAM usage). This setting may need to be disabled for extremely high resolution fluid simulations over very large frame ranges.",
+      "params": [
+        "Cache fluid surface analysis"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:48:50Z"
+}

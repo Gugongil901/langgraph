@@ -1,0 +1,46 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/integrate",
+  "title": "Integrateoperator",
+  "category": "Operators",
+  "operator": "Integrateoperator",
+  "sections": [
+    {
+      "heading": "Integrateoperator",
+      "level": "h2",
+      "anchor": "integrate-operator",
+      "content": "The Integrate operator allows you to immediately integrate particle properties, instead of at the end of the timestep.",
+      "params": []
+    },
+    {
+      "heading": "Properties to integrate",
+      "level": "h4",
+      "anchor": "properties-to-integrate",
+      "content": "Spin/velocity: controls which particle properties will be integrated.",
+      "params": [
+        "Spin/velocity"
+      ]
+    },
+    {
+      "heading": "Integration action",
+      "level": "h4",
+      "anchor": "integration-action",
+      "content": "Integrate value: adds the spin/velocity value of the particle to the position of the particle immediately.Do nothing: no integration action will be taken.\n\nIntegrate value: adds the spin/velocity value of the particle to the position of the particle immediately.\n\nDo nothing: no integration action will be taken.",
+      "params": [
+        "Do nothing",
+        "Integrate value"
+      ]
+    },
+    {
+      "heading": "Post-integration action",
+      "level": "h4",
+      "anchor": "post-integration-action",
+      "content": "Keep value: after the spin/velocity is integrated, the particle’s spin/velocity value is left unchanged.Clear value: after the spin/velocity is integrated, the particle’s spin/velocity value is cleared (set to zero).Flag value as already integrated: after the spin/velocity is integrated, the particle’s spin/velocity value is left unchanged but also flagged internally as already integrated, so that it won’t be re-integrated at the end of the time step.\n\nKeep value: after the spin/velocity is integrated, the particle’s spin/velocity value is left unchanged.\n\nClear value: after the spin/velocity is integrated, the particle’s spin/velocity value is cleared (set to zero).\n\nFlag value as already integrated: after the spin/velocity is integrated, the particle’s spin/velocity value is left unchanged but also flagged internally as already integrated, so that it won’t be re-integrated at the end of the time step.",
+      "params": [
+        "Flag value as already integrated",
+        "Clear value",
+        "Keep value"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:49Z"
+}

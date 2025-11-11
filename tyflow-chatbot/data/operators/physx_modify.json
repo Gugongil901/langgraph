@@ -1,0 +1,78 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/physx_modify",
+  "title": "PhysX Modifyoperator",
+  "category": "Operators",
+  "operator": "PhysX Modifyoperator",
+  "sections": [
+    {
+      "heading": "PhysX Modifyoperator",
+      "level": "h2",
+      "anchor": "physx-modify-operator",
+      "content": "The PhysX Modify operator allows you to modify the properties of existing PhysX particles/bindings.\n\nOnly PhysX bindings attached to particles influenced by the operator will be affected. OnlyPhysX JointandPhysX Springbindings will be affected by stiffness/damping parameters.",
+      "params": []
+    },
+    {
+      "heading": "PhysX Modify Rollout",
+      "level": "h3",
+      "anchor": "physx-modify-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Filter",
+      "level": "h4",
+      "anchor": "filter",
+      "content": "Affect by ID: controls whether only PhysX bindings with a matching ID will be affected.ID: the target PhysX binding ID to match.Equal: PhysX bindings with an ID that is equal to the target ID will be considered matches.Not Equal: PhysX bindings with an ID that is not equal to the target ID will be considered matches.\n\nAffect by ID: controls whether only PhysX bindings with a matching ID will be affected.\n\nID: the target PhysX binding ID to match.\n\nEqual: PhysX bindings with an ID that is equal to the target ID will be considered matches.\n\nNot Equal: PhysX bindings with an ID that is not equal to the target ID will be considered matches.",
+      "params": [
+        "ID",
+        "Not Equal",
+        "Affect by ID",
+        "Equal"
+      ]
+    },
+    {
+      "heading": "Scalar Properties",
+      "level": "h4",
+      "anchor": "scalar-properties",
+      "content": "None: does not modify properties of PhysX bindings.Set: changes the affected property to the specified value.Multiply current: sets the affected property value to the current value multiplied by the specified value.Multiply original: sets the affected property value to the original value multiplied by the specified value.Min: sets the affected property to the specified value, if the affected property is greater than the specified value.Max: sets the affected property to the specified value, if the affected property is less than the specified value.Reset to original: resets the affected property to its original value at the time the PhysX binding was first created.Multiply original by texmap: sets the affected property to its original value, multiplied by the spinner value, interpolated with the texmap mono value.\n\nNone: does not modify properties of PhysX bindings.\n\nSet: changes the affected property to the specified value.\n\nMultiply current: sets the affected property value to the current value multiplied by the specified value.\n\nMultiply original: sets the affected property value to the original value multiplied by the specified value.\n\nMin: sets the affected property to the specified value, if the affected property is greater than the specified value.\n\nMax: sets the affected property to the specified value, if the affected property is less than the specified value.\n\nReset to original: resets the affected property to its original value at the time the PhysX binding was first created.\n\nMultiply original by texmap: sets the affected property to its original value, multiplied by the spinner value, interpolated with the texmap mono value.\n\nD. Friction/S. Friction/Restitution: the thresholds of basic PhysX particles properties to affect.\n\nProperty: controls which properties of the PhysX binds will have their basic thresholds affected.Stiffness/damping: the thresholds of the basic PhysX bind properties to affect.\n\nProperty: controls which properties of the PhysX binds will have their basic thresholds affected.\n\nStiffness/damping: the thresholds of the basic PhysX bind properties to affect.\n\nForce/Torque/etc: each of these thresholds corresponds to the same value setup in the PhysX Bind operator. A threshold must first be activated in the PhysX Bind operator in order for changes made by the PhysX Modify operator to take effect.\n\nBend Angle: this threshold corresponds to the same value setup in the PhysX Bind operator. Bend Angle deformation must first be activated in the PhysX Bind operator in order for changes made by the PhysX Modify operator to take effect.\n\nVariation %: the per-particle percentage of variation to apply.Interpolate: the amount to interpolate PhysX binding scalar modifications from their previous value to the new value.\n\nInterpolate: the amount to interpolate PhysX binding scalar modifications from their previous value to the new value.\n\nIn order to animate PhysX binding scalar values changing to a particular value over time, set the operator’s timing to “continuous” and set the interpolation value to something less than 1. Smaller interpolation values will result in slower interpolation speeds.",
+      "params": [
+        "Multiply original",
+        "Reset to original",
+        "Set",
+        "Max",
+        "D. Friction/S. Friction/Restitution",
+        "Min",
+        "None",
+        "Bend Angle",
+        "Interpolate",
+        "Force/Torque/etc",
+        "Multiply original by texmap",
+        "Variation %",
+        "Property",
+        "Multiply current",
+        "Stiffness/damping"
+      ]
+    },
+    {
+      "heading": "Breaking",
+      "level": "h4",
+      "anchor": "breaking",
+      "content": "Breaking ability must have previously been enabled on PhysX bindings at the time of their creation for these settings to take effect. The conditions for a break to occur must be set inside the PhysX Bind operator where the binds were created (ie, break by length, or break by angle). These settings merely control whether or not those previously-set conditions will be obeyed.\n\nDon’t change: PhysX bind breaking ability will not be changed.Enable: PhysX bindings will be flagged as breakable.Disable: PhysX bindings will be flagged as un-breakable.\n\nDon’t change: PhysX bind breaking ability will not be changed.\n\nEnable: PhysX bindings will be flagged as breakable.\n\nDisable: PhysX bindings will be flagged as un-breakable.",
+      "params": [
+        "Enable",
+        "Disable",
+        "Don’t change"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:53:11Z"
+}

@@ -1,0 +1,38 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/flow_update",
+  "title": "Flow Updateoperator",
+  "category": "Operators",
+  "operator": "Flow Updateoperator",
+  "sections": [
+    {
+      "heading": "Flow Updateoperator",
+      "level": "h2",
+      "anchor": "flow-update-operator",
+      "content": "The Flow Update operator allows you to update particle properties based on matching particles within another flow.",
+      "params": []
+    },
+    {
+      "heading": "Source flow",
+      "level": "h4",
+      "anchor": "source-flow",
+      "content": "Flow object: thetyFlowobject whose particles will be referenced.Reference frame offset: the frame offset that the input flow object will be evaluated at.Simulation groups: controls which particle simulation groups will be read from the input flow object.Channels: controls which particle data channels to copy from the input flow object’s particles.\n\nFlow object: thetyFlowobject whose particles will be referenced.\n\nReference frame offset: the frame offset that the input flow object will be evaluated at.\n\nSimulation groups: controls which particle simulation groups will be read from the input flow object.\n\nChannels: controls which particle data channels to copy from the input flow object’s particles.",
+      "params": [
+        "Simulation groups",
+        "Reference frame offset",
+        "Flow object",
+        "Channels"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "Track Birth Flow IDs: when enabled, particles will be matched using birth IDs previously imported with a Birth Flow operator. When disabled, each particle’s own birth ID will be used to find matching particles in the reference flow.\n\nIf you are using Flow Update in combination with Birth Flow, you should keep “track Birth Flow IDs” enabled. If you are using Flow Update on its own in order to transfer properties from any arbitrary external flow or particle system, you should disable “track Birth Flow IDs”.\n\nIndex is ID: stores the tracking ID as the particle’s system index, rather than its explicit ID. Enable this setting if the interface returns invalid particle IDs.",
+      "params": [
+        "Index is ID",
+        "Track Birth Flow IDs"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:39Z"
+}

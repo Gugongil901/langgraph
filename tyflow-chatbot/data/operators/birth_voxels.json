@@ -1,0 +1,76 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_voxels",
+  "title": "Birth Voxelsoperator",
+  "category": "Operators",
+  "operator": "Birth Voxelsoperator",
+  "sections": [
+    {
+      "heading": "Birth Voxelsoperator",
+      "level": "h2",
+      "anchor": "birth-voxels-operator",
+      "content": "The Birth Voxels operator allows you to birth particles inside the volume or surface of scene objects, at uniform spatial intervals.",
+      "params": []
+    },
+    {
+      "heading": "Voxel source objects",
+      "level": "h4",
+      "anchor": "voxel-source-objects",
+      "content": "Object list: the list of input objects whose volumes will be used to birth particles.",
+      "params": [
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Particle birth",
+      "level": "h4",
+      "anchor": "particle-birth",
+      "content": "Start/End: controls the time range in which to birth new particles.Enable every nth: when enabled, particles will be birthed at regular frame intervals, instead of at every frame.Nth value: the interval value at which to birth particles.\n\nStart/End: controls the time range in which to birth new particles.\n\nEnable every nth: when enabled, particles will be birthed at regular frame intervals, instead of at every frame.\n\nNth value: the interval value at which to birth particles.",
+      "params": [
+        "Enable every nth",
+        "Nth value",
+        "Start/End"
+      ]
+    },
+    {
+      "heading": "Coordinates",
+      "level": "h4",
+      "anchor": "coordinates",
+      "content": "Relative to object transform: when enabled, voxels will be spawned relative to the transform of the specified node, rather than the world origin.Object: the object from which to derive the relative voxel transform.\n\nRelative to object transform: when enabled, voxels will be spawned relative to the transform of the specified node, rather than the world origin.\n\nObject: the object from which to derive the relative voxel transform.",
+      "params": [
+        "Relative to object transform",
+        "Object"
+      ]
+    },
+    {
+      "heading": "Voxel settings",
+      "level": "h4",
+      "anchor": "voxel-settings",
+      "content": "Mode: controls where particles will be birthed, relative to the surface or volume of a particular input object.Sample type: controls the quality of samples used to determine surface proximity, when birthing particles in “Surface” mode.Voxel size X/Y/Z: the size of individual voxels, in which particles will be birthed.Accuracy: controls the accuracy of the raycaster used to compute information about whether a particle is inside or outside of an object’s volume.  Increase this value for meshes that are self-intersecting or have holes in them.\n\nMode: controls where particles will be birthed, relative to the surface or volume of a particular input object.\n\nSample type: controls the quality of samples used to determine surface proximity, when birthing particles in “Surface” mode.\n\nVoxel size X/Y/Z: the size of individual voxels, in which particles will be birthed.\n\nAccuracy: controls the accuracy of the raycaster used to compute information about whether a particle is inside or outside of an object’s volume.  Increase this value for meshes that are self-intersecting or have holes in them.\n\nIf an input object’s surface is not closed, or is self-intersecting, increasing the accuracy value can improve results and reduce artifacts.\n\nCull duplicate voxels: when voxelizing multiple input objects, enabling this setting will delete any overlapping particles generated between the objects.\n\nInflate: pushes source mesh vertices along their normals by the specified amount, prior to particle birth. Increasing this value will expand the volume of birthed particles around the source mesh.Split elements: when enabled, the elements of the source mesh will be split into sub-meshes and processed independently. This can improve results when sub-elements are overlapping, however, if the source mesh is a thin shell (composed of two non-contiguous surfaces representing the inside and outside of the mesh), this should be disabled (otherwise the inside/outside will be processed as two independent meshes, rather than the sides of a single mesh).\n\nInflate: pushes source mesh vertices along their normals by the specified amount, prior to particle birth. Increasing this value will expand the volume of birthed particles around the source mesh.\n\nSplit elements: when enabled, the elements of the source mesh will be split into sub-meshes and processed independently. This can improve results when sub-elements are overlapping, however, if the source mesh is a thin shell (composed of two non-contiguous surfaces representing the inside and outside of the mesh), this should be disabled (otherwise the inside/outside will be processed as two independent meshes, rather than the sides of a single mesh).\n\nX/Y/Z %: the percent of progressive position offset applied to each particle, relative to the overall size of the voxels.\n\nX/Y/Z %: the percent of overall position offset applied to each particle, relative to the overall size of the voxels.\n\nX/Y/Z %: the percent of overall position jitter applied to each particle, relative to the overall size of the voxels.\n\nScale type: controls which size value particle will derive their scale from.Mult: a global scale multiplier applied to all particles.\n\nScale type: controls which size value particle will derive their scale from.\n\nMult: a global scale multiplier applied to all particles.\n\nDistance: particles within this distance from the surface will be culled.\n\nGrains: choosing this preset will apply a progressive offset to particles, such that their positions in space will form a tightly-knit overlapping grid.Grid: choosing this preset will remove all offsets from particles, such that their positions in space will form a uniform, aligned grid.\n\nGrains: choosing this preset will apply a progressive offset to particles, such that their positions in space will form a tightly-knit overlapping grid.\n\nGrid: choosing this preset will remove all offsets from particles, such that their positions in space will form a uniform, aligned grid.",
+      "params": [
+        "Mult",
+        "Mode",
+        "Inflate",
+        "Scale type",
+        "Grid",
+        "Voxel size X/Y/Z",
+        "Distance",
+        "Sample type",
+        "Grains",
+        "Cull duplicate voxels",
+        "Accuracy",
+        "Split elements",
+        "X/Y/Z %"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:14Z"
+}

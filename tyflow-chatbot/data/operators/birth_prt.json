@@ -1,0 +1,46 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_prt",
+  "title": "Birth PRToperator",
+  "category": "Operators",
+  "operator": "Birth PRToperator",
+  "sections": [
+    {
+      "heading": "Birth PRToperator",
+      "level": "h2",
+      "anchor": "birth-prt-operator",
+      "content": "The Birth PRT operator allows you to birth new particles that are copies of particles from a PRTLoader object.",
+      "params": []
+    },
+    {
+      "heading": "PRT birth",
+      "level": "h4",
+      "anchor": "prt-birth",
+      "content": "PRT object: the input object that contains PRT particles.Start/End: controls the time range in which to birth new particles.New particles only: controls whether only new particles will be birthed each frame. A particle is considered new if its input ID has not been processed on a previous frame, or its age is 0.\n\nPRT object: the input object that contains PRT particles.\n\nStart/End: controls the time range in which to birth new particles.\n\nNew particles only: controls whether only new particles will be birthed each frame. A particle is considered new if its input ID has not been processed on a previous frame, or its age is 0.",
+      "params": [
+        "PRT object",
+        "New particles only",
+        "Start/End"
+      ]
+    },
+    {
+      "heading": "Input channels",
+      "level": "h4",
+      "anchor": "input-channels",
+      "content": "Channels: controls which PRT data channels to copy into to birthed particles.\n\nLoad as custom floats/vectors: unrecognized channels (channels with names that don’t match any of the channels in the default channels list) will be loaded as custom particle properties (floats/vectors, depending on data type).",
+      "params": [
+        "Load as custom floats/vectors",
+        "Channels"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "Flip rotation: flips the w-component of quaternions loaded from PRT data.",
+      "params": [
+        "Flip rotation"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:00Z"
+}

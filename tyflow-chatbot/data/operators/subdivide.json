@@ -1,0 +1,20 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/subdivide",
+  "title": "Subdivideoperator",
+  "category": "Operators",
+  "operator": "Subdivideoperator",
+  "sections": [
+    {
+      "heading": "Subdivideoperator",
+      "level": "h2",
+      "anchor": "subdivide-operator",
+      "content": "The Subdivide operator allows you to subdivide particle meshes.\n\nInternally, the subdivide operator uses 3ds Max’s built-in subdivide modifier for its calculations. This can be slow when applied to particles with hires shape meshes, or when applied to a lot of particles at once. Use with caution.\n\nEdge length: the target length for all resulting mesh triangle edges.Relative to scale: the edge length value will be relative to each particle’s scale.Preserve normals: when enabled, existing surface normals will be preserved during the operation.\n\nEdge length: the target length for all resulting mesh triangle edges.\n\nRelative to scale: the edge length value will be relative to each particle’s scale.\n\nPreserve normals: when enabled, existing surface normals will be preserved during the operation.",
+      "params": [
+        "Preserve normals",
+        "Relative to scale",
+        "Edge length"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:06Z"
+}

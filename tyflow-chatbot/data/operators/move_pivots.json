@@ -1,0 +1,107 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/move_pivots",
+  "title": "Move Pivotsoperator",
+  "category": "Operators",
+  "operator": "Move Pivotsoperator",
+  "sections": [
+    {
+      "heading": "Move Pivotsoperator",
+      "level": "h2",
+      "anchor": "move-pivots-operator",
+      "content": "The Move Pivots operator can be used to modify particle pivot points. This is analogous to modifying the pivot of a scene object, if we think of the particle’s transform as a pivot and the particle’s shape as an object.",
+      "params": []
+    },
+    {
+      "heading": "Position",
+      "level": "h4",
+      "anchor": "position",
+      "content": "Shape center: moves the particle to the center of its shape mesh.Closest point to object (in world): moves the particles to the closest point in world-space to a specified object.Closest point to object (on shape): moves the particle to the closest point on its shape to a specified object.Furthest point from object (on shape): moves the particle to the furthest point on its shape to a specified object.On shape bounds (local): moves the particle to a specified location on its local bounding box.On shape bounds (world): moves the particle to a specified location on its axis-aligned bounding box.Offset by value (local): moves the particle in the local space of its transform.Offset by value (world): moves the particle in world space.Custom Vector: moves the particle to the location defined by a custom vector.Closest point to vector (shape): moves the particles to the closest point to a custom vector on its shape.Furthest point from vector (shape): moves the particles to the furthest point from a custom vector on its shape.Absolute position (world): moves the particle to an absolute position in world space.\n\nShape center: moves the particle to the center of its shape mesh.\n\nClosest point to object (in world): moves the particles to the closest point in world-space to a specified object.\n\nClosest point to object (on shape): moves the particle to the closest point on its shape to a specified object.\n\nFurthest point from object (on shape): moves the particle to the furthest point on its shape to a specified object.\n\nOn shape bounds (local): moves the particle to a specified location on its local bounding box.\n\nOn shape bounds (world): moves the particle to a specified location on its axis-aligned bounding box.\n\nOffset by value (local): moves the particle in the local space of its transform.\n\nOffset by value (world): moves the particle in world space.\n\nCustom Vector: moves the particle to the location defined by a custom vector.\n\nClosest point to vector (shape): moves the particles to the closest point to a custom vector on its shape.\n\nFurthest point from vector (shape): moves the particles to the furthest point from a custom vector on its shape.\n\nAbsolute position (world): moves the particle to an absolute position in world space.\n\nOffset particle position from new pivot: controls whether the particle position will be offset during the operation, resulting in the relative particle shape location remaining unchanged.",
+      "params": [
+        "On shape bounds (local)",
+        "Offset by value (local)",
+        "Absolute position (world)",
+        "Offset by value (world)",
+        "Custom Vector",
+        "Closest point to object (in world)",
+        "Shape center",
+        "On shape bounds (world)",
+        "Furthest point from vector (shape)",
+        "Furthest point from object (on shape)",
+        "Closest point to vector (shape)",
+        "Offset particle position from new pivot",
+        "Closest point to object (on shape)"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Input object list: the list of input objects.\n\nSurface: proximity tests will search for the closest point on the input object(s) surface.Pivot: proximity tests will search for the closest input object(s) pivot.\n\nSurface: proximity tests will search for the closest point on the input object(s) surface.\n\nPivot: proximity tests will search for the closest input object(s) pivot.\n\nParticle position: the closest point to an input object is found by finding the smallest distance between the particle’s position and an input object (this is the fastest mode).Particle vertices: the closest point to an input object is found by finding the smallest distance between the particle shape’s vertices and an input object (this mode offers a trade-off between speed and precision - it’s moderately precise and still relatively fast).Particle surface: the closest point to an input object is found by finding the smallest distance between the particle shape’s surface and an input object (this mode is the slowest and most accurate mode).\n\nParticle position: the closest point to an input object is found by finding the smallest distance between the particle’s position and an input object (this is the fastest mode).\n\nParticle vertices: the closest point to an input object is found by finding the smallest distance between the particle shape’s vertices and an input object (this mode offers a trade-off between speed and precision - it’s moderately precise and still relatively fast).\n\nParticle surface: the closest point to an input object is found by finding the smallest distance between the particle shape’s surface and an input object (this mode is the slowest and most accurate mode).",
+      "params": [
+        "Particle vertices",
+        "Particle surface",
+        "Input object list",
+        "Particle position",
+        "Pivot",
+        "Surface"
+      ]
+    },
+    {
+      "heading": "Shape Sample",
+      "level": "h4",
+      "anchor": "shape-sample",
+      "content": "Vertices: the vertices of the particle’s shape mesh will be used to do the closest/furthest calculations.Edge Centers: the edge centers of the particle’s shape mesh will be used to do the closest/furthest calculations.Face Centers: the face centers of the particle’s shape mesh will be used to do the closest/furthest calculations.\n\nVertices: the vertices of the particle’s shape mesh will be used to do the closest/furthest calculations.\n\nEdge Centers: the edge centers of the particle’s shape mesh will be used to do the closest/furthest calculations.\n\nFace Centers: the face centers of the particle’s shape mesh will be used to do the closest/furthest calculations.",
+      "params": [
+        "Edge Centers",
+        "Face Centers",
+        "Vertices"
+      ]
+    },
+    {
+      "heading": "Custom Vector",
+      "level": "h4",
+      "anchor": "custom-vector",
+      "content": "Channel: the channel from which to get the custom vector values for the relevant modes.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Bounds",
+      "level": "h4",
+      "anchor": "bounds",
+      "content": "Top/Bottom/Left/Right/Front/Back: the location on the bounding box to move the pivot.",
+      "params": [
+        "Top/Bottom/Left/Right/Front/Back"
+      ]
+    },
+    {
+      "heading": "By Value",
+      "level": "h4",
+      "anchor": "by-value",
+      "content": "X/Y/Z: the per-axis values for the applicable modes.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Value: the amount to interpolate particle pivot positions from their previous value to the new value.Variation %: the per-particle percentage of variation to apply.\n\nValue: the amount to interpolate particle pivot positions from their previous value to the new value.",
+      "params": [
+        "Value"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:41Z"
+}

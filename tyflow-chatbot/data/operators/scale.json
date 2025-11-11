@@ -1,0 +1,156 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/scale",
+  "title": "Scaleoperator",
+  "category": "Operators",
+  "operator": "Scaleoperator",
+  "sections": [
+    {
+      "heading": "Scaleoperator",
+      "level": "h2",
+      "anchor": "scale-operator",
+      "content": "The Scale operator allows you to control the size of particles.",
+      "params": []
+    },
+    {
+      "heading": "Scale Rollout",
+      "level": "h3",
+      "anchor": "scale-rollout",
+      "content": "Scale type: the particle scaling method to use.\n\nAbsolute: particle scales will be set to a user-defined absolute value.\n\nInherit previous: uses the current value of a particle’s scale as the starting point, prior to modifications.\n\nRelative add: add a user-defined scale value to the current value of the particle’s scale.\n\nRelative multiply: multiplies the current value of the particle’s scale by a user-defined vector.\n\nRelative first: multiplies the value of the particle’s scale when it first entered the operator by a user-defined vector.\n\nScale by velocity: constructs a scale vector for each particle using its velocity as a multiplier along each axis. The multiplier is applied to the scale of the particle when it enters the event. Scale X/Y/Z values set to 0 will maintain the original scale of each particle.\n\nScale by Sibling Distance: the z-axis of the particle’s scale vector will be set to the distance between the particle and its adjacent sibling.\n\nScale by Target Distance: the z-axis of the particle’s scale vector will be set to the distance between the particle and its target.\n\nAffect particle shape scale: controls whether a particle’s shape mesh scale will be affected by the particle’s scale change.",
+      "params": [
+        "Absolute",
+        "Scale type",
+        "Affect particle shape scale",
+        "Inherit previous",
+        "Scale by Target Distance",
+        "Scale by velocity",
+        "Scale by Sibling Distance",
+        "Relative add",
+        "Relative first",
+        "Relative multiply"
+      ]
+    },
+    {
+      "heading": "Scale value",
+      "level": "h4",
+      "anchor": "scale-value",
+      "content": "X/Y/Z %: the absolute values to use for the scale modification vector.\n\nThe effect of the absolute values on a particle’s scale depends on which scale type is selected.",
+      "params": [
+        "X/Y/Z %"
+      ]
+    },
+    {
+      "heading": "Scale variation",
+      "level": "h4",
+      "anchor": "scale-variation",
+      "content": "X/Y/Z %: the amount of variation to apply along each axis of the intermediate scale values.Uniform: the variation applied along each axis will be uniform, preventing proportion skewing.\n\nX/Y/Z %: the amount of variation to apply along each axis of the intermediate scale values.\n\nUniform: the variation applied along each axis will be uniform, preventing proportion skewing.",
+      "params": [
+        "Uniform",
+        "X/Y/Z %"
+      ]
+    },
+    {
+      "heading": "Scale by velocity",
+      "level": "h4",
+      "anchor": "scale-by-velocity",
+      "content": "Relative to start velocity: the velocity-scale multiplier will be relative to the velocity of the particle when it entered the event, rather than zero.",
+      "params": [
+        "Relative to start velocity"
+      ]
+    },
+    {
+      "heading": "Scale by distance",
+      "level": "h4",
+      "anchor": "scale-by-distance",
+      "content": "X/Y/Z: controls the level of influence the scale-by-distance modes will have on each axis of a particle’s scale vector.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Normal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.",
+      "params": [
+        "Normal interpolation"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Texmap Rollout",
+      "level": "h3",
+      "anchor": "texmap-rollout",
+      "content": "The texmap rollout allows you to control particle scales by sampling textures on nearby surfaces and multiplying scales by the resulting values. The darker the sampled texture value, the smaller the scale multiplier.\n\nMultiply by texmap: controls whether texmap scaling will be enabled.Texmap: the texture map to sample.\n\nMultiply by texmap: controls whether texmap scaling will be enabled.\n\nTexmap: the texture map to sample.",
+      "params": [
+        "Multiply by texmap",
+        "Texmap"
+      ]
+    },
+    {
+      "heading": "UVW Source",
+      "level": "h4",
+      "anchor": "uvw-source",
+      "content": "Nearest Object: UVW coordinates will be sampled from the surface of the nearest object in the object list.Particle: UVW coordinates will be taken from each particle’s mapping channel.\n\nNearest Object: UVW coordinates will be sampled from the surface of the nearest object in the object list.\n\nParticle: UVW coordinates will be taken from each particle’s mapping channel.",
+      "params": [
+        "Nearest Object",
+        "Particle"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Surface offset as W: the distance from the particle to the closest surface will be used as the W coordinate in the UVW value which is used to sample the texture.Object list: the list of objects whose surfaces will be sampled for UVW coordinates.Sample: controls which sampler will be used for surface proximity tests.\n\nSurface offset as W: the distance from the particle to the closest surface will be used as the W coordinate in the UVW value which is used to sample the texture.\n\nObject list: the list of objects whose surfaces will be sampled for UVW coordinates.\n\nSample: controls which sampler will be used for surface proximity tests.",
+      "params": [
+        "Surface offset as W",
+        "Object list",
+        "Sample"
+      ]
+    },
+    {
+      "heading": "Affect",
+      "level": "h4",
+      "anchor": "affect",
+      "content": "Affect X/Y/Z: provides control over the amount of influence a texmap will have on each axis of the resulting scale vector.Invert: inverts the effect of the texmap scaling.\n\nAffect X/Y/Z: provides control over the amount of influence a texmap will have on each axis of the resulting scale vector.\n\nInvert: inverts the effect of the texmap scaling.",
+      "params": [
+        "Invert",
+        "Affect X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Proximity Rollout",
+      "level": "h3",
+      "anchor": "proximity-rollout",
+      "content": "The proximity rollout allows you to control particle scales by measuring distances to nearby scene objects and their surfaces, and multiplying scales by the resulting values.\n\nMultiply by proximity: controls whether proximity scaling will be enabled.Radial XYZ: proximities will be calculated in 3D space.Axial X/Y/Z: proximities will be calculated on the specified 3D plane in 2D space.\n\nMultiply by proximity: controls whether proximity scaling will be enabled.\n\nRadial XYZ: proximities will be calculated in 3D space.\n\nAxial X/Y/Z: proximities will be calculated on the specified 3D plane in 2D space.\n\nWhen performing axial proximity tests, the specified axis will be ignored in the proximity calculations. For example, if you want to multiply scale by the proximity of particles to an object along the world X/Y axis, while ignoring their relative proximity along the Z-axis, specify Z-axis as the axial plane.\n\nDistance: particles within this distance will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.Invert: inverts the affect of the proximity scale multiplier.Object list: the scene objects used to calculate proximity multipliers.Sample: controls which sampler will be used for surface proximity tests.\n\nDistance: particles within this distance will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nInvert: inverts the affect of the proximity scale multiplier.\n\nObject list: the scene objects used to calculate proximity multipliers.\n\nSample: controls which sampler will be used for surface proximity tests.\n\nThe noise settings allow you to offset the way in which particle positions are measured during the proximity test.\n\nNoise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Invert",
+        "Object list",
+        "Sample",
+        "Distance",
+        "Falloff",
+        "Noise mode",
+        "Multiply by proximity",
+        "Radial XYZ",
+        "Axial X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Affect",
+      "level": "h4",
+      "anchor": "affect-1",
+      "content": "Affect X/Y/Z: provides control over the amount of influence the proximity multiplier will have on each axis of the resulting scale vector.",
+      "params": [
+        "Affect X/Y/Z"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:39Z"
+}

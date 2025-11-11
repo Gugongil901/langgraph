@@ -1,0 +1,34 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/rasterize",
+  "title": "Rasterizeoperator",
+  "category": "Operators",
+  "operator": "Rasterizeoperator",
+  "sections": [
+    {
+      "heading": "Rasterizeoperator",
+      "level": "h2",
+      "anchor": "rasterize-operator",
+      "content": "The Rasterize operator allows you to clamp particle positions to the cells of an implicit grid. This is similar to what the Birth Voxels operator does, except this doesn’t birth any new particles – instead, it changes the locations of existing particles.",
+      "params": []
+    },
+    {
+      "heading": "Raster Size",
+      "level": "h4",
+      "anchor": "raster-size",
+      "content": "X/Y/Z: the size of the cells of the implicit grid.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Overlap",
+      "level": "h4",
+      "anchor": "overlap",
+      "content": "Delete if overlapping: controls whether multiple particles are allows in the same cell. If enabled, only 1 particle will be allowed in a cell – the rest will be deleted.",
+      "params": [
+        "Delete if overlapping"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:31Z"
+}

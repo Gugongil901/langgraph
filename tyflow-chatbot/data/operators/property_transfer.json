@@ -1,0 +1,99 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/property_transfer",
+  "title": "Property Transferoperator",
+  "category": "Operators",
+  "operator": "Property Transferoperator",
+  "sections": [
+    {
+      "heading": "Property Transferoperator",
+      "level": "h2",
+      "anchor": "property-transfer-operator",
+      "content": "The Property Transfer operator allows particles to spread their properties to neighboring particles.",
+      "params": []
+    },
+    {
+      "heading": "Property Transfer",
+      "level": "h4",
+      "anchor": "property-transfer",
+      "content": "Transfer from neighbors: each affected particle will transfer properties from its neighbors, to itself.\n\n“Transfer from neighbors” mode is akin to “blurring” property values between particles. For each affected particle, it will measure values from all neighboring particles and then apply the average of all the values to the specified property. A common usage might be for color mixing between particles.\n\nTransfer to clusters: each affected particle will transfer its properties to members of its cluster.\n\n“Transfer to clusters” mode is useful for doing quick assignments of a particular property value to all other particles in the same cluster. It allows you to quickly control a property value of all particles in a cluster without having to ensure all particles in the cluster are in the same event or are affected by other operators in the exact same way (for example, when trying to share mapping coordinates between particles in a cluster).\n\nTransfrom to/from target: properties will be transferred to/from assigned targets in the specified target channel.\n\nMin: the minimum value of a property will be transferred among neighboring particles.Max: the maximum value of a property will be transferred among neighboring particles.Average: the average value of a property will be transferred among neighboring particles.Transfer strength: controls the strength of the transfer operation. The lower the value, the less property transfer will occur between neighboring particles.Variation %: the per-particle percentage of variation to apply.Iterations: the number of iterations the transfer operation will run each substep.Include all particles: particles from all events can transfer properties to particles in the current event.Only include this event’s particles: particles will only transfer properties to particles in the same event.Exclude this event’s particles: particles will only transfer properties to particles in other events.\n\nMin: the minimum value of a property will be transferred among neighboring particles.\n\nMax: the maximum value of a property will be transferred among neighboring particles.\n\nAverage: the average value of a property will be transferred among neighboring particles.\n\nTransfer strength: controls the strength of the transfer operation. The lower the value, the less property transfer will occur between neighboring particles.\n\nIterations: the number of iterations the transfer operation will run each substep.\n\nInclude all particles: particles from all events can transfer properties to particles in the current event.\n\nOnly include this event’s particles: particles will only transfer properties to particles in the same event.\n\nExclude this event’s particles: particles will only transfer properties to particles in other events.",
+      "params": [
+        "Transfer to clusters",
+        "Include all particles",
+        "Max",
+        "Transfer from neighbors",
+        "Exclude this event’s particles",
+        "Min",
+        "Transfrom to/from target",
+        "Iterations",
+        "Transfer strength",
+        "Only include this event’s particles",
+        "Average"
+      ]
+    },
+    {
+      "heading": "Neighbor Radius",
+      "level": "h4",
+      "anchor": "neighbor-radius",
+      "content": "Absolute radius: the transfer radius of each particle will be set to a specific value.Radius: the specific transfer radius value.Shape radius: the transfer radius of each particle will be set to each particle’s shape mesh radius.Scale radius: the transfer radius of each particle will be set to each particle’s maximum scale dimension.Multiplier: the multiplier to apply to shape/scale radius values.Falloff: the distance beyond the base transfer radius value within which the transfer strength will falloff.Variation %: the per-particle percentage of variation to apply.Max neighbors: the maximum number of surrounding particles that will influence a given particle.\n\nAbsolute radius: the transfer radius of each particle will be set to a specific value.\n\nRadius: the specific transfer radius value.\n\nShape radius: the transfer radius of each particle will be set to each particle’s shape mesh radius.\n\nScale radius: the transfer radius of each particle will be set to each particle’s maximum scale dimension.\n\nMultiplier: the multiplier to apply to shape/scale radius values.\n\nFalloff: the distance beyond the base transfer radius value within which the transfer strength will falloff.\n\nMax neighbors: the maximum number of surrounding particles that will influence a given particle.\n\nIn scenarios with dense particle systems and large transfer radii, if a particle has a huge number of neighbors the transfer algorithm can slow to a crawl. By clamping the max neighbors at a reasonable size, better performance can be maintained.",
+      "params": [
+        "Multiplier",
+        "Radius",
+        "Max neighbors",
+        "Absolute radius",
+        "Falloff",
+        "Shape radius",
+        "Scale radius"
+      ]
+    },
+    {
+      "heading": "Clusters",
+      "level": "h4",
+      "anchor": "clusters",
+      "content": "Particle clusters are groups of particles that share the same custom property float channel value.\n\nChannel: the custom property float channel to get cluster values from.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Transfer Float",
+      "level": "h4",
+      "anchor": "transfer-float",
+      "content": "Property: the float property to transfer between neighboring particles.Channel: the custom float channel name to use in custom float transfer mode.Map Channel: the map channel to use in mapping transfer mode.\n\nProperty: the float property to transfer between neighboring particles.\n\nChannel: the custom float channel name to use in custom float transfer mode.\n\nMap Channel: the map channel to use in mapping transfer mode.",
+      "params": [
+        "Property",
+        "Channel",
+        "Map Channel"
+      ]
+    },
+    {
+      "heading": "Transfer Vector",
+      "level": "h4",
+      "anchor": "transfer-vector",
+      "content": "Property: the vector property to transfer between neighboring particles.Channel: the custom vector channel name to use in custom vector transfer mode.Map Channel: the map channel to use in mapping transfer mode.\n\nProperty: the vector property to transfer between neighboring particles.\n\nChannel: the custom vector channel name to use in custom vector transfer mode.\n\nMap Channel: the map channel to use in mapping transfer mode.",
+      "params": [
+        "Property",
+        "Channel",
+        "Map Channel"
+      ]
+    },
+    {
+      "heading": "Timestep",
+      "level": "h4",
+      "anchor": "timestep",
+      "content": "Transfer on subframes: when disabled, the operator will only evaluate on whole frames. This can speed up simulations with a small timestep that don’t need a lot of transfer fidelity.",
+      "params": [
+        "Transfer on subframes"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:11Z"
+}

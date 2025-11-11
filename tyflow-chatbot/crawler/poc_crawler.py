@@ -49,34 +49,11 @@ class TyFlowPOCCrawler:
         """Parse HTML and extract structured content"""
         soup = BeautifulSoup(html, 'lxml')
 
-        print(f"  DEBUG: HTML length = {len(html)}")
-        print(f"  DEBUG: Soup has body = {soup.body is not None}")
-
-        # DEBUG: Save HTML to file
-        import hashlib
-        url_hash = hashlib.md5(url.encode()).hexdigest()[:8]
-        debug_file = f"debug_{url_hash}.html"
-        with open(debug_file, 'w', encoding='utf-8') as f:
-            f.write(html)
-        print(f"  DEBUG: Saved HTML to {debug_file}")
-        print(f"  DEBUG: First 500 chars: {html[:500]}")
-
         # Extract main content
         content_elem = soup.find(id='body-inner')
 
         if not content_elem:
-            # Debug: try to find what IDs are available
-            all_ids = [elem.get('id') for elem in soup.find_all(id=True) if elem.get('id')]
             print(f"  ⚠ Warning: Could not find #body-inner")
-            print(f"  DEBUG: Available IDs (first 20): {all_ids[:20]}")
-
-            # Try alternative: find by class
-            body_inner = soup.find('div', {'id': 'body-inner'})
-            if body_inner:
-                print(f"  DEBUG: Found with find('div', {{'id': 'body-inner'}})")
-                content_elem = body_inner
-
-        if not content_elem:
             return None
 
         # Extract title from first h1 or h2

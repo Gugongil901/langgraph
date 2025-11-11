@@ -1,0 +1,52 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/temporal_smooth",
+  "title": "Temporal Smoothoperator",
+  "category": "Operators",
+  "operator": "Temporal Smoothoperator",
+  "sections": [
+    {
+      "heading": "Temporal Smoothoperator",
+      "level": "h2",
+      "anchor": "temporal-smooth-operator",
+      "content": "The Temporal Smooth operator can be used to smooth out the trajectories of moving particles over time.\n\nThe Temporal Smooth operator does in 4d space what the Relax modifier in 3ds Max does in 3d space - it applies a laplacian filter to the sequence of transforms which represent a particle’s movement over time. By smoothing out the sequential changes between those transforms, jittering and other artifacts can be reduced. This reduction of jitter is especially useful for cloth or rigidbody simulations.\n\nIn order to perform a temporal smooth, a complete sequence of particle trajectories must be computed and then processed by the algorithm. For complex setups (ex: high resolution cloth) this can take a huge amount of RAM. For that reason, temporal smooth data is not saved to disk.If you open a file with a Temporal Smooth operator, you must manually re-compute the smooth operation following the steps described below. For that same reason, if you want to render the result of a temporal smooth on a render farm, youmustcache the result of the smooth and render the cache instead. The Temporal Smooth operator does not operate like a passive operator in a flow which automatically recomputes its data when the inputs of an underlying simulation are loaded or modified. It requires manual activation each time an underlying flow is changed, and is meant to be something a user manually applies before exporting particle data to a disk cache (ex: exporting to a tyCache). In other words, if you want to make a change to your simulation, after you make the change you must click the cache button in the Temporal Smooth UI again to apply proper smoothing.\n\nIf you want to temporally smooth a deforming mesh (like a cached cloth simulation), import the mesh into a flow with a Birth Objects operator, convert to cloth with a Cloth Bind, deactivate the cloth particles with a Particle Switch and finally bind the cloth particles to the original deforming input mesh with an Object Bind operator set to surface bind mode. This will generate a new deforming mesh in your flow which follows the motion of the input deforming mesh exactly. A Temporal Smooth operator can then be added to that setup and it will not interfere with any internal post-step solvers (due to the de-activation of the cloth particles using the Particle Switch operator).",
+      "params": []
+    },
+    {
+      "heading": "Timing",
+      "level": "h4",
+      "anchor": "timing",
+      "content": "Start/End: controls the range of frames which will be influenced by the temporal smoothing algorithm.Evaluate operator after PhysX: when enabled, operator will be evaluated after the PhysX simulation step of the simulation. When disabled, the operator will be evaluated in regular event order.\n\nStart/End: controls the range of frames which will be influenced by the temporal smoothing algorithm.\n\nEvaluate operator after PhysX: when enabled, operator will be evaluated after the PhysX simulation step of the simulation. When disabled, the operator will be evaluated in regular event order.",
+      "params": [
+        "Evaluate operator after PhysX",
+        "Start/End"
+      ]
+    },
+    {
+      "heading": "Smoothing",
+      "level": "h4",
+      "anchor": "smoothing",
+      "content": "If the only settings you’re changing in a flow are these smoothing settings, you can avoid having to re-cache the data of the underlying flow (in order to update the temporal smooth result) by simply clicking the “re-smooth particle data” button below. If any other settings change, the “cache and smooth particle data” must be pressed instead, so that the cache of the underlying flow remains up to date.\n\nAmount: the amount to smooth each individual particle transform along its overall trajectory.Iterations: the number of successive smoothing iterations to apply.\n\nAmount: the amount to smooth each individual particle transform along its overall trajectory.\n\nIterations: the number of successive smoothing iterations to apply.\n\nHigher iterations can lead to smoother overall trajectories, at the cost of speed.\n\nDe-activate smoothed particles: when enabled, smoothed particles will be de-activated (no longer processed by the Particle Bind Solver or the PhysX solver). Since particles whose position/rotation are smoothed do not need to be re-processed by those solvers in order to return a proper result, enabling this option will speed up smoothed sims which incoporate Bind/PhysX operators.\n\nIf you do not enable “de-activate smoothed particles”, or only smooth a subset of your total simulation frames in a simulation that contains Bind/PhysX operators, you should instead use the Temporal Smooth operator in a reference flow (a flow that references your main flow using Birth Flow/Flow Update operators) because adding a Temporal Smooth operator to the original flow in those cases will not return the correct result.\n\nIntegrate smoothed velocities: when enabled, re-calculates particles velocities based on the result of their smoothed positions, and marks those velocities as already integrated by the solver, so that particle velocities are not re-integrated at the end of the time step again.\n\nSmooth position/rotation/scale: controls which elements of particle transforms will be smoothed over time.\n\nIn some situations, you may not want to smooth all transform data. For example, in a PhysX simulation where a rigidbody hits the ground and jitters on the ground, you may want to smooth the jittering, but not smooth the hard impact. By adjusting these thresholds you can control which parts of a particle’s overall trajectory are smoothed.\n\nPosition: the maximum distance a particle may travel across time steps in order for the position data at that time step to be smoothed. Position changes across time steps larger than this value will not be smoothed.Rotation: the maximum angle a particle may rotate across time steps in order for the rotation data at that time step to be smoothed. Rotation changes across time steps larger tha nthis value will not be smoothed.Scale: the maximum amount a particle may change in scale across time steps in order for the scale data at the time step to be smoothed. Scale changes across time steps larger than this value will not be smoothed.\n\nPosition: the maximum distance a particle may travel across time steps in order for the position data at that time step to be smoothed. Position changes across time steps larger than this value will not be smoothed.\n\nRotation: the maximum angle a particle may rotate across time steps in order for the rotation data at that time step to be smoothed. Rotation changes across time steps larger tha nthis value will not be smoothed.\n\nScale: the maximum amount a particle may change in scale across time steps in order for the scale data at the time step to be smoothed. Scale changes across time steps larger than this value will not be smoothed.",
+      "params": [
+        "Amount",
+        "Integrate smoothed velocities",
+        "Smooth position/rotation/scale",
+        "Rotation",
+        "Position",
+        "Iterations",
+        "De-activate smoothed particles",
+        "Scale"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Cache and smooth particle data: fully recomputes the cacheandsmooths particle data.\n\nWhen you are satisfied with the result of an underlying simulation, click this button to activate the temporal smoothing algorithm. First it will re-simulate the flow within the bounds of the specified frame range and collect all relevant particle transform data. Then it will process the data and smooth it using the specified smoothing values. Once smoothing is complete, the flow can be simulated once again but this time the Temporal Smooth operator will assign the smooth transform values to relevant particles that enter the event, overriding their existing values.\n\nRe-smooth particle data: only recomputes the smoothing of particle data.\n\nIf you have only adjusted the smoothing settings of the operator, you can click this button to re-smooth the cached data without having to re-cache the data again.\n\nWhen a flow is updated or resimulated, the internal Temporal Smooth cache is not automatically re-computed. You must manaully activate the smoothing algorith with the provided UI buttons to re-cache and re-smooth the particle data. That is why you should treat the Temporal Smooth operator only as a post-effect manually applied to particles immediately prior to export. The reason for requiring manual activation is due to the fact that the temporal smoothing algorithm can be quite slow in certain circumstances, and it requires a complete re-simulation of the desired frame range each time it is computed. To avoid constantly interrupting the user with these slow re-simulations, activation of the algorithm is left to the user to do manually at a time of their choosing.",
+      "params": [
+        "Re-smooth particle data",
+        "Cache and smooth particle data"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:16Z"
+}

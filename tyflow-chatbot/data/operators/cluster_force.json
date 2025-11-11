@@ -1,0 +1,53 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/cluster_force",
+  "title": "Cluster Forceoperator",
+  "category": "Operators",
+  "operator": "Cluster Forceoperator",
+  "sections": [
+    {
+      "heading": "Cluster Forceoperator",
+      "level": "h2",
+      "anchor": "cluster-force-operator",
+      "content": "The Cluster Force operator allows you to apply localized forces to clusters of particles. The forces are derived from the eigenvectors of the clusters (equivalent to the transform of the object-oriented bounding box of the clusters).\n\nWhen using the Cluster Force operator, you should generate the clusters using a Cluster operator set to “LDNP” mode.",
+      "params": []
+    },
+    {
+      "heading": "Cluster Data",
+      "level": "h4",
+      "anchor": "cluster-data",
+      "content": "Channel: the custom float channel from which to derive the cluster data.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Cluster Force",
+      "level": "h4",
+      "anchor": "cluster-force",
+      "content": "Forces will push/pull particles along the cluster eigenvectors.\n\nX/Y/Z: the strength of the forces along each local eigenvector axis.Variation %: the per-particle percentage of variation to apply.\n\nX/Y/Z: the strength of the forces along each local eigenvector axis.\n\nForces will attract/repel particles towards/away the cluster eigenvectors.\n\nX/Y/Z: the strength of the forces towards/away each local eigenvector axis.Variation %: the per-particle percentage of variation to apply.\n\nX/Y/Z: the strength of the forces towards/away each local eigenvector axis.\n\nForces will spin particles around the cluster eigenvectors.\n\nX/Y/Z: the strength of the forces around each local eigenvector axis.Variation %: the per-particle percentage of variation to apply.\n\nX/Y/Z: the strength of the forces around each local eigenvector axis.\n\nForces will move particles towards/away the cluster centers.\n\nStrength: the strength of the local gravity forces.Variation %: the per-particle percentage of variation to apply.\n\nStrength: the strength of the local gravity forces.",
+      "params": [
+        "X/Y/Z",
+        "Strength"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Visualize cluster TMs: displays each cluster’s eigenvector axis in the viewport",
+      "params": [
+        "Visualize cluster TMs"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:33Z"
+}

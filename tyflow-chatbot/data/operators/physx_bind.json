@@ -1,0 +1,291 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/physx_bind",
+  "title": "PhysX Bindoperator",
+  "category": "Operators",
+  "operator": "PhysX Bindoperator",
+  "sections": [
+    {
+      "heading": "PhysX Bindoperator",
+      "level": "h2",
+      "anchor": "physx-bind-operator",
+      "content": "The PhysX Bind operator can be used to create bindings between PhysX particles.\n\nPhysX bindings are not solved by this operator, only created. PhysX bindings are solved by the global PhysX solver at the end of each simulation step. PhysX bindings created by this operator will persist between events.",
+      "params": []
+    },
+    {
+      "heading": "Bind Type Rollout",
+      "level": "h3",
+      "anchor": "bind-type-rollout",
+      "content": "PhysX Bind Type: the type of binding to apply to applicable particles\n\nDistance (Tether): A stiff distance-based binding, that will try to maintain a certain distance between bind points on two PhysX particle rigidbodies.\n\nDistance (Spring): A stretchy distance-based binding, that will try to maintain a certain distance between bind points on two PhysX particle rigidbodies, based on spring/damping settings.\n\nRigid (Glue): a stiff transform-based binding, that will try to maintain perfectly rigid cohesion between PhysX particle rigidbodies.\n\nRigid (Joint): a soft transform-based binding, that will try to maintain some level of cohesion between PhysX particle rigidbodies, based on spring/damping settings.\n\nSometimes it is better to use Rigid (Joint) bindings with very high spring stiffness, instead of Rigid (Glue) bindings, in order to simulate PhysX particles that are meant to be stuck together. If your Rigid (Glue) bindings enter into a degenerate state that cannot be properly solved, they may introduce more artifacts into a simulation than Rigid (Joint) bindings with very high stiffness.\n\ntyActor binds: binds imported using an Actor operator, from a tyActor setup which uses tyBind helper objects (used to specify the exact settings of a binding between two tyActor rig objects), or an input particle system with existing PhysX binds.\n\nOnly rigid/joint PhysX binds are supported as transferrable binds in “tyActor binds” mode. Spring/tether binds cannot be transferred between flows this way.\n\nIf you are importing tyActor binds from flow A into flow B, the binds in flow A must not have broken at the time flow B is evaluated. For example, if 10 frames are simulated in flow A and a bind breaks at frame 10, that bind will not be available for tyActor bind import into flow B, even if flow B is evaluated at frame 0. For this reason, if you plan to import tyActor binds from one flow into another, it’s a good idea to disable gravity/forces or anything else that could potentially break binds, before importing them into another flow.",
+      "params": [
+        "Rigid (Joint)",
+        "tyActor binds",
+        "PhysX Bind Type",
+        "Distance (Spring)",
+        "Rigid (Glue)",
+        "Distance (Tether)"
+      ]
+    },
+    {
+      "heading": "Bind Display Rollout",
+      "level": "h3",
+      "anchor": "bind-display-rollout",
+      "content": "Show bindings: bindings between PhysX particle rigidbodies will be drawn in the viewport.Show connections: a connection will be drawn between bound PhysX particles.Show endpoints: a dot marker will be drawn on either end of the displayed bindings/connections.\n\nShow bindings: bindings between PhysX particle rigidbodies will be drawn in the viewport.\n\nShow connections: a connection will be drawn between bound PhysX particles.\n\nShow endpoints: a dot marker will be drawn on either end of the displayed bindings/connections.\n\nIf two bound particles are close enough together, their PhysX binding length will be very small - or even zero - so “show bindings” will not be very useful. By choosing “show connections” instead, lines will be drawn between the particles themselves, not simply the locations of their binding’s endpoints, so it may be easier to visualize their relationship. Alternatively, you can enable “show endpoints” to display dot markers on either end of display lines, which will help line visibility when line length is close to zero.\n\nShow Axis: displays the bind transform axis in the viewport. The twist axis is shown in red, and swing axis are shown in green.",
+      "params": [
+        "Show endpoints",
+        "Show Axis",
+        "Show connections",
+        "Show bindings"
+      ]
+    },
+    {
+      "heading": "tyActor Bindings Rollout",
+      "level": "h3",
+      "anchor": "tyactor-bindings-rollout",
+      "content": "By ID: when enabled, only tyActor binds with a matching ID will be imported.Inherit break/deform info: when enabled, break/deform settings applied to the imported PhysX binds will be applied to the created PhysX binds.\n\nBy ID: when enabled, only tyActor binds with a matching ID will be imported.\n\nInherit break/deform info: when enabled, break/deform settings applied to the imported PhysX binds will be applied to the created PhysX binds.\n\nWhen “inherit break/deform info” is enabled, any enabled settings in the Breaking rollout will still override imported settings.",
+      "params": [
+        "Inherit break/deform info",
+        "By ID"
+      ]
+    },
+    {
+      "heading": "Basic Settings Rollout",
+      "level": "h3",
+      "anchor": "basic-settings-rollout",
+      "content": "Unlike Particle Bind Solver bindings (whose stiffness range is [0-1]), PhysX bindings can take extremely high stiffness values. Stiffness values in the millions are not uncommon for PhysX bindings that need to maintain a high level of stiffness. Don’t be afraid to experiment with very large values! Also remember that for higher bind solver accuracy, you should increase the Position Iterations settings in thetyFlowobject’s PhysX Rollout.",
+      "params": []
+    },
+    {
+      "heading": "Bind Settings",
+      "level": "h4",
+      "anchor": "bind-settings",
+      "content": "Binding ID: the ID of created bindings.Enable collisions: controls whether bound PhysX particle rigidbodies should also collide with each other.Scale with particles: controls whether bindings will be automatically adjusted to match the scale of the particles they are attached to, if their scale changes.\n\nBinding ID: the ID of created bindings.\n\nEnable collisions: controls whether bound PhysX particle rigidbodies should also collide with each other.\n\nScale with particles: controls whether bindings will be automatically adjusted to match the scale of the particles they are attached to, if their scale changes.\n\nEnable spring: enables positional springs.Spring stiffness: the stiffness of the springs.Damping: the damping applied to the springs.Restitution: the restitution applied to the springs.Limit: the positional limit of the binding. The solver will attempt to ensure positional deltas do not exceed this value.Length enable: enables a length-override on the binding.Length: the length-override value.Stretch %: the maximum allowed stretch ratio of the binding.Compress %: the maximum allowed compression ratio of the binding.Enable drive: enables movement drive, which can help to improve the stability of bindings, especially bindings that are very stiff.\n\nEnable spring: enables positional springs.\n\nSpring stiffness: the stiffness of the springs.\n\nDamping: the damping applied to the springs.\n\nRestitution: the restitution applied to the springs.\n\nLimit: the positional limit of the binding. The solver will attempt to ensure positional deltas do not exceed this value.\n\nLength enable: enables a length-override on the binding.\n\nLength: the length-override value.\n\nStretch %: the maximum allowed stretch ratio of the binding.\n\nCompress %: the maximum allowed compression ratio of the binding.\n\nEnable drive: enables movement drive, which can help to improve the stability of bindings, especially bindings that are very stiff.\n\nEnable spring: enables swing springs.Spring stiffness: the stiffness of the springs.Damping: the damping applied to the springs.Restitution: the restitution applied to the springs.Limit Y: the rotational limit of the binding, around the Y axis.Limit Z: the rotational limit of the binding, around the Z axis.Enable drive: enables swing drive, which can help to improve the stability of bindings, especially bindings that are very stiff.\n\nEnable spring: enables swing springs.\n\nSpring stiffness: the stiffness of the springs.\n\nDamping: the damping applied to the springs.\n\nRestitution: the restitution applied to the springs.\n\nLimit Y: the rotational limit of the binding, around the Y axis.\n\nLimit Z: the rotational limit of the binding, around the Z axis.\n\nEnable drive: enables swing drive, which can help to improve the stability of bindings, especially bindings that are very stiff.\n\nAxis: allows you to specify the twist (a-axis) orientation of the bind transform, by choosing which axis to align the twist axis (x-axis) to. The two swing axes will be derived from the specified twist axis orientation.\n\nSince both swing axes will be derived from the specified twist axis orientation, there is no specific axis orientation setting for them.\n\nEnable spring: enables twist springs.Spring stiffness: the stiffness of the springs.Damping: the damping applied to the springs.Restitution: the restitution applied to the springs.Limit Min: the rotational minimum limit of the binding, around the X axis.Limit Max: the rotational maximum limit of the binding, around the X axis.Enable drive: enables twist drive, which can help to improve the stability of bindings, especially bindings that are very stiff.\n\nEnable spring: enables twist springs.\n\nSpring stiffness: the stiffness of the springs.\n\nDamping: the damping applied to the springs.\n\nRestitution: the restitution applied to the springs.\n\nLimit Min: the rotational minimum limit of the binding, around the X axis.\n\nLimit Max: the rotational maximum limit of the binding, around the X axis.\n\nEnable drive: enables twist drive, which can help to improve the stability of bindings, especially bindings that are very stiff.",
+      "params": [
+        "Spring stiffness",
+        "Limit Y",
+        "Limit Z",
+        "Damping",
+        "Limit Max",
+        "Length",
+        "Enable drive",
+        "Enable collisions",
+        "Enable spring",
+        "Scale with particles",
+        "Length enable",
+        "Stretch %",
+        "Compress %",
+        "Binding ID",
+        "Limit",
+        "Axis",
+        "Restitution",
+        "Limit Min"
+      ]
+    },
+    {
+      "heading": "Strength relative to property",
+      "level": "h4",
+      "anchor": "strength-relative-to-property",
+      "content": "The relative property multiplier will adjust spring/damping values based on the ratio between the value of a particle property and the specified threshold value.\n\nImagine a scenario where you’re setting up a dynamic tree simulation. You want the binds between the trunk particles to be stronger than the binds between the branch particles (so the trunk is very sturdy, but the branches can sway in the wind). Setting up the values manually on hundreds/thousands of connected particles would be infeasible. Using these settings, you could easily make bind strength relative to particle size, so that larger trunk particles have stronger binds than smaller branch particles.\n\nProperty type: the particle property to which the threshold value will be compared.Affect spring: controls whether the multiplier will apply to spring values.Affect damping: controls whether the multiplier will apply to damping values.Threshold: the target value to which the selected property value of a particle will be compared.Min multiplier: the minimum value of the resulting multiplier.Max multiplier: the maximum value of the resulting multiplier.Exponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nProperty type: the particle property to which the threshold value will be compared.\n\nAffect spring: controls whether the multiplier will apply to spring values.\n\nAffect damping: controls whether the multiplier will apply to damping values.\n\nThreshold: the target value to which the selected property value of a particle will be compared.\n\nMin multiplier: the minimum value of the resulting multiplier.\n\nMax multiplier: the maximum value of the resulting multiplier.\n\nExponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nBind Breaking Rollout",
+      "params": [
+        "Min multiplier",
+        "Max multiplier",
+        "Affect damping",
+        "Affect spring",
+        "Threshold",
+        "Exponent",
+        "Property type"
+      ]
+    },
+    {
+      "heading": "Breaking",
+      "level": "h4",
+      "anchor": "breaking",
+      "content": "Breakable: a global override controlling whether any break modes are enabled.Force: a force differential greater than this value between two bound particles will cause their binding to break.Torque: a torque differential greater than this value between two bound particles will cause their binding to break.Stretch %: bindings that stretch beyond this ratio will break.Compress %: bindings that compress beyond this ratio will break.Max length: bindings that stretch beyond this length will break.Bend angle: bindings that bend beyond this angle will break.\n\nBreakable: a global override controlling whether any break modes are enabled.\n\nForce: a force differential greater than this value between two bound particles will cause their binding to break.\n\nTorque: a torque differential greater than this value between two bound particles will cause their binding to break.\n\nStretch %: bindings that stretch beyond this ratio will break.\n\nCompress %: bindings that compress beyond this ratio will break.\n\nMax length: bindings that stretch beyond this length will break.\n\nBend angle: bindings that bend beyond this angle will break.",
+      "params": [
+        "Bend angle",
+        "Force",
+        "Max length",
+        "Stretch %",
+        "Torque",
+        "Compress %",
+        "Breakable"
+      ]
+    },
+    {
+      "heading": "Break Limits",
+      "level": "h4",
+      "anchor": "break-limits",
+      "content": "Max breaks/frame: the maximum number of PhysX binds that may break off an individual particle, per frame.\n\nIn some situations, it is important to impose limits on the number of PhysX binds that may break off an individual particle, per frame. This is because when a particle undergoes a lot of stress (its binds bend/stretch/etc), more than one of its PhysX binds may enter a state where they qualify for breaking. However, it may be possible for the particle to resolve its stress if only a subset of its qualifying binds break, thereby rendering some breaks unnecessary in that sense. By limiting the number of breaks per frame, you can help to avoid unnecessary breaks, which may help to retain the overall stability of your bind network. If you don’t leverage this setting in your simulation, you may end up with a lot of individual particles breaking all their binds at once in stressful configurations. In even simpler terms: reducing this setting (to a very low value like 1 or 2) can help prevent individual particles from completely breaking away from all the other particles they’re attached to, at the same time (which may be undersirable).\n\nBy setting the max breaks/frame value to less than 1, you can further increase the amount of time between each allowed break. For example, by setting the value to 0.1, a minimum of 10 frames would be required to pass before a particle would be allowed to break another bind, after a given bind is broken.\n\nMin frames until break: the minimum number of frames that a PhysX bind must violate a break condition, before it can break.\n\nThe force and torque break settings will ignore the break limit settings. This is because the PhysX engine handles those breaks itself during each solve, unlike the other conditions which are handled directly bytyFlowafter the PhysX solver completes each step.",
+      "params": [
+        "Min frames until break",
+        "Max breaks/frame"
+      ]
+    },
+    {
+      "heading": "Deforming",
+      "level": "h4",
+      "anchor": "deforming",
+      "content": "Enable bend deforming: bindings that bend beyond a certain angle will reset their rest transformation offset.Bend angle: the bend angle threshold.Enable hardening: bindings that deform are also hardened (their stiffness is multiplied by the specified hardening factor).Hardening factor: values greater than 1 will harden binds that are deformed, values less than 1 will weaken binds that are deformed.Max hardening mult: limits the stiffness of a bind, after hardening, to the original stiffness multiplied by the specified value.\n\nEnable bend deforming: bindings that bend beyond a certain angle will reset their rest transformation offset.\n\nBend angle: the bend angle threshold.\n\nEnable hardening: bindings that deform are also hardened (their stiffness is multiplied by the specified hardening factor).\n\nHardening factor: values greater than 1 will harden binds that are deformed, values less than 1 will weaken binds that are deformed.\n\nMax hardening mult: limits the stiffness of a bind, after hardening, to the original stiffness multiplied by the specified value.\n\nWhen hardening is enabled, each time a PhysX bind bends past the bend angle threshold, its stiffness will be multiplied by the hardening factor. So if the bend angle is 30 degrees, the stiffness is 100 and the hardening factor is 2, its stiffness will be changed to 200 (100 x 2). If it bends another 30 degrees, its stiffness will be changed to 400 (200 x 2), etc. This can improve the rigidity of bind networks that undergo a lot of deformation. Internally, the max stiffness after hardening is limited to approximately 2 billionorthe original stiffness multiplied by the “max hardening mult” value - whichever islower. This prevents instabilities caused by multiple successive stiffness multiplications moving bind stiffness values towards infinity.\n\nPreserve local offset: controls the strength of post-deform local bind offset preservation. The lower the value, the more stretching that can occur between bindings as they deform. A value of 1 ensures that only the angle between bindings will deform over time - their relative positions will not be affected.",
+      "params": [
+        "Bend angle",
+        "Enable bend deforming",
+        "Hardening factor",
+        "Max hardening mult",
+        "Preserve local offset",
+        "Enable hardening"
+      ]
+    },
+    {
+      "heading": "Proximity Bind Rollout",
+      "level": "h3",
+      "anchor": "proximity-bind-rollout",
+      "content": "Particles/Colliders/Ground/World: controls which rigidbodies of a simulation each particle can be bound to, by proximity.",
+      "params": [
+        "Particles/Colliders/Ground/World"
+      ]
+    },
+    {
+      "heading": "Sample",
+      "level": "h4",
+      "anchor": "sample",
+      "content": "Sample type: controls which sampler will be used to determine closest-surface proximities for particles.\n\nLegacy accuracy: when selected, the closest points between particles will be derived from their positions.Basic accuracy: when selected, the closest points between particles will be derived from the centers of their mesh bounding boxes.Improved accuracy: when selected, the closest points between particles will be derived from their meshes directly.\n\nLegacy accuracy: when selected, the closest points between particles will be derived from their positions.\n\nBasic accuracy: when selected, the closest points between particles will be derived from the centers of their mesh bounding boxes.\n\nImproved accuracy: when selected, the closest points between particles will be derived from their meshes directly.\n\nPhysX Binds are created by finding the closest points between particles and then placing a bind at the average position (center) of those points, connecting the particles together. The accuracy settings allow to you control exactly how those closest points are computed. Using greater accuracy comes with a performance cost, but will produce better results on concave meshes.\n\nBind distance: the maximum distance between a particle and an enabled binding rigidbody required in order for a new binding to be created between them.Max binds: the maximum number of bindings a particle may form between itself and other relevant rigidbodies.\n\nBind distance: the maximum distance between a particle and an enabled binding rigidbody required in order for a new binding to be created between them.\n\nMax binds: the maximum number of bindings a particle may form between itself and other relevant rigidbodies.\n\nImprove accuracy: extra effort will be made to ensure the proximity calculation (which measures the distance between rigidbodies and places their corresponding binding anchors) will be more accurate.",
+      "params": [
+        "Legacy accuracy",
+        "Bind distance",
+        "Max binds",
+        "Improved accuracy",
+        "Sample type",
+        "Basic accuracy",
+        "Improve accuracy"
+      ]
+    },
+    {
+      "heading": "Rigidbody sorting",
+      "level": "h4",
+      "anchor": "rigidbody-sorting",
+      "content": "When the total number of valid neighbor rigidbodies exceeds the “max binds” value, these settings control how to sort the results.\n\nUnsorted: no sorting will occur.Sort by distance (closest): the rigidbodies will be sorted from closest to furthest.Sort by distance (furthest): the rigidbodies will be sorted from furthest to closest.Sort by volume (biggest): the rigidbodies will be sorted from biggest to smallest by volume.Sort by volume (smallest): the rigidbodies will be sorted from smallest to biggest by volume.Sort by surface area (biggest): the rigidbodies will be sorted from biggest to smallest by surface area.Sort by surface area (smallest): the rigidbodies will be sorted from smallest to biggest by surface area.Sort by Z-position (highest): the rigidbodies will be sorted from top to bottom based on their Z-position in world space.Sort by Z-position (lowest): the rigidbodies will be sorted from bottom to top based on their Z-position in world space.\n\nUnsorted: no sorting will occur.\n\nSort by distance (closest): the rigidbodies will be sorted from closest to furthest.\n\nSort by distance (furthest): the rigidbodies will be sorted from furthest to closest.\n\nSort by volume (biggest): the rigidbodies will be sorted from biggest to smallest by volume.\n\nSort by volume (smallest): the rigidbodies will be sorted from smallest to biggest by volume.\n\nSort by surface area (biggest): the rigidbodies will be sorted from biggest to smallest by surface area.\n\nSort by surface area (smallest): the rigidbodies will be sorted from smallest to biggest by surface area.\n\nSort by Z-position (highest): the rigidbodies will be sorted from top to bottom based on their Z-position in world space.\n\nSort by Z-position (lowest): the rigidbodies will be sorted from bottom to top based on their Z-position in world space.",
+      "params": [
+        "Sort by surface area (smallest)",
+        "Sort by distance (closest)",
+        "Unsorted",
+        "Sort by Z-position (highest)",
+        "Sort by Z-position (lowest)",
+        "Sort by volume (biggest)",
+        "Sort by surface area (biggest)",
+        "Sort by volume (smallest)",
+        "Sort by distance (furthest)"
+      ]
+    },
+    {
+      "heading": "Simulation Groups",
+      "level": "h4",
+      "anchor": "simulation-groups",
+      "content": "Simulation groups: controls which rigidbody simulation groups will be bind candidates.",
+      "params": [
+        "Simulation groups"
+      ]
+    },
+    {
+      "heading": "Clusters",
+      "level": "h4",
+      "anchor": "clusters",
+      "content": "Enable clustering: controls whether binding candidates will be determined by cluster values.Channel: the particle data channel to get cluster values from.Cluster if match has same value: binding candidates must have equal cluster values.Cluster if match has different value: binding candidates must have different cluster values.Cluster if match has zero value: particles will bind to candidates whose specified channel value is zero.Cluster if match has non-zero value: particles will bind to candidates whose specified channel value is not zero.\n\nEnable clustering: controls whether binding candidates will be determined by cluster values.\n\nChannel: the particle data channel to get cluster values from.\n\nCluster if match has same value: binding candidates must have equal cluster values.\n\nCluster if match has different value: binding candidates must have different cluster values.\n\nCluster if match has zero value: particles will bind to candidates whose specified channel value is zero.\n\nCluster if match has non-zero value: particles will bind to candidates whose specified channel value is not zero.",
+      "params": [
+        "Cluster if match has same value",
+        "Cluster if match has different value",
+        "Channel",
+        "Cluster if match has zero value",
+        "Enable clustering",
+        "Cluster if match has non-zero value"
+      ]
+    },
+    {
+      "heading": "Family filtering",
+      "level": "h4",
+      "anchor": "family-filtering",
+      "content": "Bind All: all rigidbodies will be bound, ignoring their relationships.Bind siblings: only sibling particles will be bound to each other.Bind non-siblings: only non-siblings will be bound to each other.\n\nBind All: all rigidbodies will be bound, ignoring their relationships.\n\nBind siblings: only sibling particles will be bound to each other.\n\nBind non-siblings: only non-siblings will be bound to each other.",
+      "params": [
+        "Bind siblings",
+        "Bind non-siblings",
+        "Bind All"
+      ]
+    },
+    {
+      "heading": "Event filtering",
+      "level": "h4",
+      "anchor": "event-filtering",
+      "content": "All events: all particles may be bound, ignoring their event.This event only: particles will only be bound to particles in the same event.Exclude this event: particles will only be bound to particles in other events.\n\nAll events: all particles may be bound, ignoring their event.\n\nThis event only: particles will only be bound to particles in the same event.\n\nExclude this event: particles will only be bound to particles in other events.",
+      "params": [
+        "This event only",
+        "Exclude this event",
+        "All events"
+      ]
+    },
+    {
+      "heading": "Point Bind Rollout",
+      "level": "h3",
+      "anchor": "point-bind-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Point Bind",
+      "level": "h4",
+      "anchor": "point-bind",
+      "content": "Point bindings are bindings whose location is controlled by the positions of objects in space.\n\nProximity bindings will form at the nearest points between two rigidbodies. However, sometimes it is necessary to exert more precise control over the locations of the binding anchor points. Point bindings allow you to control where binding anchor points are set, by positioning a target object in space and ensuring its sweep sphere overlaps the target rigidbodies. Resulting bindings will place their anchor points as close to the target object as possible.\n\nParticles/Colliders/Ground/World: controls which rigidbodies of a simulation each particle can be bound to, by points.Sweep size: the sweep size of each target object’s sweep sphere.\n\nParticles/Colliders/Ground/World: controls which rigidbodies of a simulation each particle can be bound to, by points.\n\nSweep size: the sweep size of each target object’s sweep sphere.\n\nPoint bindings will only be created between rigidbodies that overlap the target object’s sweep spheres.",
+      "params": [
+        "Particles/Colliders/Ground/World",
+        "Sweep size"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Input object list: the list of target objects.",
+      "params": [
+        "Input object list"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Show sweep spheres: draws the target object sweep spheres in the viewport.",
+      "params": [
+        "Show sweep spheres"
+      ]
+    },
+    {
+      "heading": "Family Bind Rollout",
+      "level": "h3",
+      "anchor": "family-bind-rollout",
+      "content": "Bind to siblings: controls whether sibling particles will be bound to each other.Bind to parent: controls whether child particles will be bound to their parent particle.Only if first child: when enabled, only the first child of a parent particle will be bound to the parent.\n\nBind to siblings: controls whether sibling particles will be bound to each other.\n\nBind to parent: controls whether child particles will be bound to their parent particle.\n\nOnly if first child: when enabled, only the first child of a parent particle will be bound to the parent.",
+      "params": [
+        "Bind to siblings",
+        "Only if first child",
+        "Bind to parent"
+      ]
+    },
+    {
+      "heading": "Target Bind",
+      "level": "h3",
+      "anchor": "target-bind",
+      "content": "Bind to target: controls whether particles will be bound to their target.Channel: the target channel containing the target particle ID.\n\nBind to target: controls whether particles will be bound to their target.\n\nChannel: the target channel containing the target particle ID.",
+      "params": [
+        "Channel",
+        "Bind to target"
+      ]
+    },
+    {
+      "heading": "Actor Bind Rollout",
+      "level": "h3",
+      "anchor": "actor-bind-rollout",
+      "content": "Enable actor hierarchical bindings: enables bindings between parent/child actor rig particles, whose bind setup ID matches a specified value.Bind setup ID: the bind setup ID to match.\n\nEnable actor hierarchical bindings: enables bindings between parent/child actor rig particles, whose bind setup ID matches a specified value.\n\nBind setup ID: the bind setup ID to match.",
+      "params": [
+        "Enable actor hierarchical bindings",
+        "Bind setup ID"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:53:02Z"
+}

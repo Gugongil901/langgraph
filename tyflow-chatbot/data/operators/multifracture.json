@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/multifracture",
+  "title": "Multifractureoperator",
+  "category": "Operators",
+  "operator": "Multifractureoperator",
+  "sections": [
+    {
+      "heading": "Multifractureoperator",
+      "level": "h2",
+      "anchor": "multifracture-operator",
+      "content": "TheMultifractureoperator shares its parameters, UI,and documentationwith thetyMultifracturemodifier.Click hereto navigate to the shared documentation.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T11:52:33Z"
+}

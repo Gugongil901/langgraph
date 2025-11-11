@@ -1,0 +1,47 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/link_to_target",
+  "title": "Link to Targetoperator",
+  "category": "Operators",
+  "operator": "Link to Targetoperator",
+  "sections": [
+    {
+      "heading": "Link to Targetoperator",
+      "level": "h2",
+      "anchor": "link-to-target-operator",
+      "content": "The Link to Target operator allows you to link a particle to its target particle, causing its transform to follow its target particle’s transform.\n\nThe behavior of the Link to Target operator is similar to regular object linking/parenting within 3ds Max. It is the easiest way to get particles to follow other particles, without introducing heavy solver calculations (like when using Particle or PhysX Bind operators).",
+      "params": []
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Link: particles will be linked to their target.Unlink: any existing links will be broken.Only link if current link is invalid: linking will only happen if the current link is either invalid (the target particle is deleted or the target ID is invalid) or a link has not been set.\n\nLink: particles will be linked to their target.\n\nUnlink: any existing links will be broken.\n\nOnly link if current link is invalid: linking will only happen if the current link is either invalid (the target particle is deleted or the target ID is invalid) or a link has not been set.",
+      "params": [
+        "Unlink",
+        "Link",
+        "Only link if current link is invalid"
+      ]
+    },
+    {
+      "heading": "Target",
+      "level": "h4",
+      "anchor": "target",
+      "content": "Channel: the channel from which to retrieve the target particle ID.",
+      "params": [
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "Lock to target: turning this on will rigidly attach particles to their target. If this setting is off, particles can still move if they have a velocity, and changes to their transform (relative to the target they are linked to) will be made by incrementally measuring target transform changes.Position/Rotation/Scale: controls which portions of a particle’s transform will be locked.Affect velocity: when enabled, particle velocities will be set to match the changes they undergo as a result of their link target’s motion.\n\nLock to target: turning this on will rigidly attach particles to their target. If this setting is off, particles can still move if they have a velocity, and changes to their transform (relative to the target they are linked to) will be made by incrementally measuring target transform changes.\n\nPosition/Rotation/Scale: controls which portions of a particle’s transform will be locked.\n\nAffect velocity: when enabled, particle velocities will be set to match the changes they undergo as a result of their link target’s motion.",
+      "params": [
+        "Affect velocity",
+        "Position/Rotation/Scale",
+        "Lock to target"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:18Z"
+}

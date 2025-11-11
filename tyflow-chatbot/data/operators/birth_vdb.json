@@ -1,0 +1,83 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/birth_vdb",
+  "title": "Birth VDBoperator",
+  "category": "Operators",
+  "operator": "Birth VDBoperator",
+  "sections": [
+    {
+      "heading": "Birth VDBoperator",
+      "level": "h2",
+      "anchor": "birth-vdb-operator",
+      "content": "The Birth VDB operator will initialize a new VDB.\n\nA default VDB is just an empty container. Grids (density, SDF, uvw, etc) must be added to it with the appropriate operators, after it is initialized. Alternatively, grids can be imported from .vdb files on disk.",
+      "params": []
+    },
+    {
+      "heading": "Birth VDB Rollout",
+      "level": "h3",
+      "anchor": "birth-vdb-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Birth VDB",
+      "level": "h4",
+      "anchor": "birth-vdb",
+      "content": "Grid name: the name of the SDF grid to initialize.Frame: controls which frame the VDB will be initialized on.Voxel size: controls the size of voxels in the VDB.Visualize grid: when enabled, a colored VDB grid marker will be displayed in the view, which also displays the size of the VDB’s voxels.\n\nGrid name: the name of the SDF grid to initialize.\n\nFrame: controls which frame the VDB will be initialized on.\n\nVoxel size: controls the size of voxels in the VDB.\n\nVisualize grid: when enabled, a colored VDB grid marker will be displayed in the view, which also displays the size of the VDB’s voxels.",
+      "params": [
+        "Grid name",
+        "Voxel size",
+        "Visualize grid",
+        "Frame"
+      ]
+    },
+    {
+      "heading": "SDF",
+      "level": "h4",
+      "anchor": "sdf",
+      "content": "Default narrow band: controls the default size of SDF narrow bands (the buffer of voxels around the implicit surface of an SDF).\n\nThe default size of 3 is usually best. However, some operations can benefit from a larger narrow band (example: UVW sync during advection on a grid with a tiny voxel size and large velocities. You should usually only increase this value if you see artifacts after advection when using an SDF Solver operator.",
+      "params": [
+        "Default narrow band"
+      ]
+    },
+    {
+      "heading": ".vdb File Rollout",
+      "level": "h3",
+      "anchor": "vdb-file-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": ".vdb file",
+      "level": "h4",
+      "anchor": "vdb-file",
+      "content": "Filename: The filename pointing to a single .vdb file, or sequence of .vdb files.\n\nIn order for VDB sequences to load properly, the filename format should be: filename_XXXXX.vdb, where “XXXXX” represents the frame number of preceeding “0”s (ex: filename_00023.vdb).\n\nIs sequence: when enabled, the operator will attempt to load the .vdb file matching the current frame number (plus offset).Frame offset: the offset added to the frame value of the current simulation step, when loading sequences.Voxel size from file: when enabled, the voxel size of the VDB will be initialized from the first grid found in the .vdb file, otherwise all grids will be resampled to match the value of the voxel size spinner.Sampler: controls which sampling method will be used to convert the file grid size to the specified voxel size.\n\nIs sequence: when enabled, the operator will attempt to load the .vdb file matching the current frame number (plus offset).\n\nFrame offset: the offset added to the frame value of the current simulation step, when loading sequences.\n\nVoxel size from file: when enabled, the voxel size of the VDB will be initialized from the first grid found in the .vdb file, otherwise all grids will be resampled to match the value of the voxel size spinner.\n\nSampler: controls which sampling method will be used to convert the file grid size to the specified voxel size.\n\nConvert Y-up to Z-up: rotates the input grid so that its Y-Axis is aligned to 3ds Max’s Z-Axis.Use file transforms: grid transforms will be taken from the input file.Reset transform: input grids will be moved to the scene origin.Transform with object: input grids will be transformed using the transform of the selected object.\n\nConvert Y-up to Z-up: rotates the input grid so that its Y-Axis is aligned to 3ds Max’s Z-Axis.\n\nUse file transforms: grid transforms will be taken from the input file.\n\nReset transform: input grids will be moved to the scene origin.\n\nTransform with object: input grids will be transformed using the transform of the selected object.",
+      "params": [
+        "Is sequence",
+        "Reset transform",
+        "Voxel size from file",
+        "Convert Y-up to Z-up",
+        "Use file transforms",
+        "Transform with object",
+        "Sampler",
+        "Frame offset",
+        "Filename"
+      ]
+    },
+    {
+      "heading": "Grid Extraction",
+      "level": "h4",
+      "anchor": "grid-extraction",
+      "content": "Automatic grid extraction: when enabled, the operator will search for available grids in the loaded .vdb file and attempt to match them to appropriate grid types (density, velocity, etc) withintyFlow, using a best-guess name-based heuristic. When disabled, users can manually choose which grids found in the .vdb file will be assigned to which grid channels withintyFlow.Density/SDF/UVW/Velocity: enter the name of the grid from the file in the appropriate grid channel, in order to manually assign grids to channels.Velocity from float grids: when enabled, three float grid names can be specified. If found, the float grids will be merged into a single velocity (vector) grid.\n\nAutomatic grid extraction: when enabled, the operator will search for available grids in the loaded .vdb file and attempt to match them to appropriate grid types (density, velocity, etc) withintyFlow, using a best-guess name-based heuristic. When disabled, users can manually choose which grids found in the .vdb file will be assigned to which grid channels withintyFlow.\n\nDensity/SDF/UVW/Velocity: enter the name of the grid from the file in the appropriate grid channel, in order to manually assign grids to channels.\n\nVelocity from float grids: when enabled, three float grid names can be specified. If found, the float grids will be merged into a single velocity (vector) grid.\n\nUse “velocity from float grids” mode to import PhoenixFD velocity grids, which are exported separately.\n\nVelocity from vector grid: when enabled, the velocity grid will be imported from a single corresponding vector grid in the .vdb file.Keep origin values: when selected, no additional scaling will be applied to imported velocity values.Scale values (second > frame): when selected, velocity values from the .vdb file will be converted from per-second timescale to per-frame timescale.\n\nVelocity from vector grid: when enabled, the velocity grid will be imported from a single corresponding vector grid in the .vdb file.\n\nKeep origin values: when selected, no additional scaling will be applied to imported velocity values.\n\nScale values (second > frame): when selected, velocity values from the .vdb file will be converted from per-second timescale to per-frame timescale.\n\nSome grid simulators (ex: PhoenixFD) work in a per-second timescale, whereastyFlowworks in a per-frame timescale. Use the “per-second > per-frame” option to convert input values (ex: from PhoenixFD) totyFlow’s timescale.",
+      "params": [
+        "Some grid simulators (ex",
+        "Velocity from vector grid",
+        "Velocity from float grids",
+        "Scale values (second > frame)",
+        "Automatic grid extraction",
+        "Density/SDF/UVW/Velocity",
+        "Keep origin values"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:17Z"
+}

@@ -1,0 +1,74 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/object_to_terrain/object_to_terrain",
+  "title": "Object to Terrainoperator",
+  "category": "Operators",
+  "operator": "Object to Terrainoperator",
+  "sections": [
+    {
+      "heading": "Object to Terrainoperator",
+      "level": "h2",
+      "anchor": "object-to-terrain-operator",
+      "content": "The Object to Terrain operator can be used to add input meshes into a terrain grid.\n\nGrid names: terrain grids with matching names will be affected by the operator.Operation: controls how height values applied to affected terrain grids will affect existing height values of the grids.Object: the list of objects to use to change height values of affected grids.\n\nGrid names: terrain grids with matching names will be affected by the operator.\n\nOperation: controls how height values applied to affected terrain grids will affect existing height values of the grids.\n\nObject: the list of objects to use to change height values of affected grids.",
+      "params": [
+        "Object",
+        "Grid names",
+        "Operation"
+      ]
+    },
+    {
+      "heading": "Mode",
+      "level": "h3",
+      "anchor": "mode",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Direct height transfer",
+      "level": "h4",
+      "anchor": "direct-height-transfer",
+      "content": "This mode directly converts the height of an object, along the Z-axis, to height values in affected terrain grids.\n\nOffset: height values added to the grid from an object will be offset by this value.Max difference: Controls the maximum difference that height values in affected grids can be changed by.Falloff: the falloff settings control how the effect of height changes on a cell will affect its neighbors within a given distance.\n\nOffset: height values added to the grid from an object will be offset by this value.\n\nMax difference: Controls the maximum difference that height values in affected grids can be changed by.\n\nFalloff: the falloff settings control how the effect of height changes on a cell will affect its neighbors within a given distance.",
+      "params": [
+        "Max difference",
+        "Falloff",
+        "Offset"
+      ]
+    },
+    {
+      "heading": "Slope by distance",
+      "level": "h4",
+      "anchor": "slope-by-distance",
+      "content": "This mode affects terrain grid heights by measuring the distance from each cell to input objects, and generating slopes using an interpolation function based on that distance.\n\nDistance threshold: the maximum distance a cell may be from an input object in order to be affected by it.Height multiplier: a multiplier applied to the distance function, to control the overall height of generated slopes.Multiplier curve: controls how heights will be interpolated between furthest points and closest points to the input objects.\n\nDistance threshold: the maximum distance a cell may be from an input object in order to be affected by it.\n\nHeight multiplier: a multiplier applied to the distance function, to control the overall height of generated slopes.\n\nMultiplier curve: controls how heights will be interpolated between furthest points and closest points to the input objects.",
+      "params": [
+        "Distance threshold",
+        "Height multiplier",
+        "Multiplier curve"
+      ]
+    },
+    {
+      "heading": "Slope fill-in",
+      "level": "h4",
+      "anchor": "slope-fill-in",
+      "content": "This mode affects terrain grid heights by finding cells inside input meshes and generating slopes using an interpolation function based on their distance to the nearest point on the input mesh’s surface.\n\nHeight multiplier: a multiplier applied to the distance function, to control the overall height of generated slopes.Multiplier curve: controls how heights will be interpolated between furthest points and closest points to the input objects.\n\nHeight multiplier: a multiplier applied to the distance function, to control the overall height of generated slopes.\n\nMultiplier curve: controls how heights will be interpolated between furthest points and closest points to the input objects.\n\nProcess all objects together: when enabled, objects will be processed in a single, combined operation. When disabled, objects will be processed individually.",
+      "params": [
+        "Multiplier curve",
+        "Height multiplier",
+        "Process all objects together"
+      ]
+    },
+    {
+      "heading": "Result",
+      "level": "h3",
+      "anchor": "result",
+      "content": "Affect terrain: when enabled, affected terrain grids will undergo changes to their height values.Generate mask: when enabled, the height changes a terrain undergoes will be converted into a color mask.Height delta (R/G): when enabled, whether a cell’s height is decreased or increased will be mapped to red/green coloration in the mask.Area of influence: when enabled, the amount of change a cell’s height undergoes will be mapped to a luminance value.Operation: controls how new mask values will be merged with existing values, if the mask color channel is not empty.Color channel: the color channel in which to save the generated mask.\n\nAffect terrain: when enabled, affected terrain grids will undergo changes to their height values.\n\nGenerate mask: when enabled, the height changes a terrain undergoes will be converted into a color mask.\n\nHeight delta (R/G): when enabled, whether a cell’s height is decreased or increased will be mapped to red/green coloration in the mask.\n\nArea of influence: when enabled, the amount of change a cell’s height undergoes will be mapped to a luminance value.\n\nOperation: controls how new mask values will be merged with existing values, if the mask color channel is not empty.\n\nColor channel: the color channel in which to save the generated mask.",
+      "params": [
+        "Height delta (R/G)",
+        "Generate mask",
+        "Operation",
+        "Color channel",
+        "Affect terrain",
+        "Area of influence"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:55Z"
+}

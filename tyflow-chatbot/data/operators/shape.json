@@ -1,0 +1,131 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/shape",
+  "title": "Shapeoperator",
+  "category": "Operators",
+  "operator": "Shapeoperator",
+  "sections": [
+    {
+      "heading": "Shapeoperator",
+      "level": "h2",
+      "anchor": "shape-operator",
+      "content": "The Shape operator allows you to assign meshes to particles.",
+      "params": []
+    },
+    {
+      "heading": "Shape List Rollout",
+      "level": "h3",
+      "anchor": "shape-list-rollout",
+      "content": "Shape list: the list of possible shapes that will be assigned to particles.\n\nSelect an existing item in the shape list to modify its properties.",
+      "params": [
+        "Shape list"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Miscellaneous Rollout",
+      "level": "h3",
+      "anchor": "miscellaneous-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Distribution",
+      "level": "h4",
+      "anchor": "distribution",
+      "content": "Random by frequency: each particle will choose a shape from the list randomly, taking into consideration each list entry’s frequency parameter.Index from custom float value: each particle will choose a shape from the list, using a custom data float value as an index to the listbox’s entry array.Channel: the custom data float channel to retrieve the index value.Save index: the chosen shape index for each particle will be saved to a custom data float channel.Channel: the custom data float channel to save the index value.\n\nRandom by frequency: each particle will choose a shape from the list randomly, taking into consideration each list entry’s frequency parameter.\n\nIndex from custom float value: each particle will choose a shape from the list, using a custom data float value as an index to the listbox’s entry array.\n\nChannel: the custom data float channel to retrieve the index value.\n\nSave index: the chosen shape index for each particle will be saved to a custom data float channel.\n\nChannel: the custom data float channel to save the index value.\n\nUse “index from custom float value” to specifically choose which shape from the list each particle will be assigned. Doing this will allow you to choose the same shape for each particle across multiple Shape operators in the flow.",
+      "params": [
+        "Channel",
+        "Random by frequency",
+        "Save index",
+        "Index from custom float value"
+      ]
+    },
+    {
+      "heading": "Animation",
+      "level": "h4",
+      "anchor": "animation",
+      "content": "Save current frame: when enabled, the current frame of each particle’s animation will be saved to the specified channel.Channel: the channel to save the animation frame data.\n\nSave current frame: when enabled, the current frame of each particle’s animation will be saved to the specified channel.\n\nChannel: the channel to save the animation frame data.",
+      "params": [
+        "Channel",
+        "Save current frame"
+      ]
+    },
+    {
+      "heading": "Distribution Rollout",
+      "level": "h3",
+      "anchor": "distribution-rollout",
+      "content": "Frequency: the distribution frequency of a particular shape in the list.\n\nAs particles enter the operator, the shape they are assigned depends on the frequency values of shapes in the list. For example, if one shape has a frequency of 10%, and a second shape has a frequency of 90%, there will be a 10% chance that particles will be assigned the first shape, and a 90% chance that particles will be assigned the second shape.You do not need to ensure that all shape frequencies add up to 100%. Their values will be normalized automatically if they do not all add up to 100%.\n\nOverride scale: controls whether to override the scale of particles which are assigned the shape.Scale %: the scale override.Variation %: the per-particle percentage of variation to apply.\n\nOverride scale: controls whether to override the scale of particles which are assigned the shape.\n\nScale %: the scale override.",
+      "params": [
+        "Frequency",
+        "Scale %",
+        "Override scale"
+      ]
+    },
+    {
+      "heading": "Mesh Rollout",
+      "level": "h3",
+      "anchor": "mesh-rollout",
+      "content": "2D: controls whether the shape will be selected from a list of preset 2D meshes.3D: controls whether the shape will be selected from a list of preset 3D meshes.Reference object: controls whether the shape will be referenced from a scene object in the scene..vrmesh file: controls whether the shape will be loaded from an existing .vrmesh file.Load full mesh in render only: when enabled, only preview geometry will be displayed for loaded .vrmesh data in the view (this can drastically speed up viewport performance for high resolution proxy files).\n\n2D: controls whether the shape will be selected from a list of preset 2D meshes.\n\n3D: controls whether the shape will be selected from a list of preset 3D meshes.\n\nReference object: controls whether the shape will be referenced from a scene object in the scene.\n\n.vrmesh file: controls whether the shape will be loaded from an existing .vrmesh file.\n\nLoad full mesh in render only: when enabled, only preview geometry will be displayed for loaded .vrmesh data in the view (this can drastically speed up viewport performance for high resolution proxy files).\n\n.vrmesh files must be exported with preview geometry enabled, in order to display it in the viewport. Preview geometry settings are available in the standard .vrmesh exporter provided by Chaos Group.\n\nSplit group members: if the shape is referenced from a scene object, and the scene object is a group head, the assigned shape will be chosen from a random child of the group head.\n\nWhen selecting a group as the reference object, make sure you select the bounding group head object, not a member of the group itself. The group head is denoted in the viewport as a colored bounding box around the group members, and can be displayed by selecting the closed group and choosing Group->Open from the 3ds Max Group menu.\n\nKeep original pivots: when enabled, the original pivots of the group members will be used, rather than the pivot of the group head object.Split mesh elements: if the shape mesh has child elements, the assigned shape will be a random child element of the mesh.Center pivots: moves the shape’s particle offset to its center.Preserve normals: when enabled, existing surface normals will be made explicit and preserved during the operation.Material ID Override: overrides the material ID of the particles the shape is assigned to with a random material ID within a range of specified values.Min/Max: the min/max range of potential material IDs.\n\nKeep original pivots: when enabled, the original pivots of the group members will be used, rather than the pivot of the group head object.\n\nSplit mesh elements: if the shape mesh has child elements, the assigned shape will be a random child element of the mesh.\n\nCenter pivots: moves the shape’s particle offset to its center.\n\nPreserve normals: when enabled, existing surface normals will be made explicit and preserved during the operation.\n\nMaterial ID Override: overrides the material ID of the particles the shape is assigned to with a random material ID within a range of specified values.\n\nMin/Max: the min/max range of potential material IDs.",
+      "params": [
+        "Min/Max",
+        "Keep original pivots",
+        "Load full mesh in render only",
+        "Split mesh elements",
+        "Preserve normals",
+        "3D",
+        "Center pivots",
+        ".vrmesh file",
+        "Material ID Override",
+        "Split group members",
+        "Reference object",
+        "2D"
+      ]
+    },
+    {
+      "heading": "Animation Rollout",
+      "level": "h3",
+      "anchor": "animation-rollout",
+      "content": "Animated Geometry: controls whether animated deformations of the shape will carry over onto particles that are assigned the shape.Update in render only: controls whether animated deformations of the shape are only updated at rendertime. This allows for faster viewport updates.Animation sync: controls the offset timing of animated deformations.\n\nAnimated Geometry: controls whether animated deformations of the shape will carry over onto particles that are assigned the shape.\n\nUpdate in render only: controls whether animated deformations of the shape are only updated at rendertime. This allows for faster viewport updates.\n\nAnimation sync: controls the offset timing of animated deformations.\n\nEvent age: the start frame of the animation will be synced to the event age of the particle.\n\nParticle age: the start frame of the animation will be synced to the age of the particle.\n\nFrame: the start frame of the animation will be synced to the current frame of the timeline.\n\nCustom Float (Offset Event Age): the start frame of the animation will be synced to the specified custom float value added to the event age of the particle.\n\nCustom Float (Offset Particle Age): the start frame of the animation will be synced to the specified custom float value added to the age of the particle.\n\nCustom Float (Offset Frame): the start frame of the animation will be synced to the specified custom float value added to the current frame of the timeline.\n\nCustom Float (Full Control): the current frame of the animation will be set to the specified custom float value.\n\nDefault frame: the default frame that will be loaded in the viewport when “update in render only” is enabled.Start frame: the start frame of the animation to reference.End frame: the end frame of the animation to reference.Rand offset: the per-particle random starting offset within the start/end range of the animation.Speed: the per-particle animation playback speed multiplier.Variation %: the per-particle percentage of variation to apply.Loop: controls whether the animation will loop back to the start frame once the end frame is reached, during sync.Smooth subframe interpolation: controls whether the input geometry will be sampled at subframes or whole frames when playback speed is less than 1.0.\n\nDefault frame: the default frame that will be loaded in the viewport when “update in render only” is enabled.\n\nStart frame: the start frame of the animation to reference.\n\nEnd frame: the end frame of the animation to reference.\n\nRand offset: the per-particle random starting offset within the start/end range of the animation.\n\nSpeed: the per-particle animation playback speed multiplier.\n\nLoop: controls whether the animation will loop back to the start frame once the end frame is reached, during sync.\n\nSmooth subframe interpolation: controls whether the input geometry will be sampled at subframes or whole frames when playback speed is less than 1.0.\n\nEnabling smooth subframe interpolation can produce smooth mesh deformations when playback speed is less than 1.0, but can also vastly increase RAM consumption for high resolution geometry when speed variation is greater than 0.0% because the likelihood of two particles being able to share the same mesh is lowered. Enable this setting with caution!",
+      "params": [
+        "Start frame",
+        "Animated Geometry",
+        "Loop",
+        "Event age",
+        "Smooth subframe interpolation",
+        "Particle age",
+        "Frame",
+        "Custom Float (Offset Particle Age)",
+        "Custom Float (Offset Frame)",
+        "End frame",
+        "Custom Float (Offset Event Age)",
+        "Custom Float (Full Control)",
+        "Speed",
+        "Update in render only",
+        "Rand offset",
+        "Default frame",
+        "Animation sync"
+      ]
+    },
+    {
+      "heading": "Instance Material Rollout",
+      "level": "h3",
+      "anchor": "instance-material-rollout",
+      "content": "None: no material override will be assigned to render instances of this shape.Inherit from reference: the material override for render instances of this shape will be taken from the scene object it is referencing.Scene Material: the material override for render instances of this shape will be the specified material..mat file: the material override for render instances of this shape will be the first material present in the specified material file.\n\nNone: no material override will be assigned to render instances of this shape.\n\nInherit from reference: the material override for render instances of this shape will be taken from the scene object it is referencing.\n\nScene Material: the material override for render instances of this shape will be the specified material.\n\n.mat file: the material override for render instances of this shape will be the first material present in the specified material file.",
+      "params": [
+        "Inherit from reference",
+        "None",
+        ".mat file",
+        "Scene Material"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:54Z"
+}

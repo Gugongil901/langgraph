@@ -1,0 +1,90 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/point_force",
+  "title": "Point Forceoperator",
+  "category": "Operators",
+  "operator": "Point Forceoperator",
+  "sections": [
+    {
+      "heading": "Point Forceoperator",
+      "level": "h2",
+      "anchor": "point-force-operator",
+      "content": "The Point Force operator allows you to inject radial forces into a simulation, at particle locations.",
+      "params": []
+    },
+    {
+      "heading": "Point Force",
+      "level": "h4",
+      "anchor": "point-force",
+      "content": "Push:: the outward force of each point.Spin:: the spin force of each point, perpendicular to the world Z-axis.Variation %: the per-particle percentage of variation to apply.\n\nPush:: the outward force of each point.\n\nSpin:: the spin force of each point, perpendicular to the world Z-axis.\n\nAlong vector: when specified, point forces applied to particles will be aligned to the specified vector.Outwards from center: when specified, point forces applied to particles will be applied outwards from the center of the point force to the particle.X/Y/Z: the point force vector.Divergence: the amount of divergence to apply to the direction of each point force.\n\nAlong vector: when specified, point forces applied to particles will be aligned to the specified vector.\n\nOutwards from center: when specified, point forces applied to particles will be applied outwards from the center of the point force to the particle.\n\nX/Y/Z: the point force vector.\n\nDivergence: the amount of divergence to apply to the direction of each point force.\n\nAllows you to add turbulence to the point forces.\n\nStrength: the strength of the turbulent noise.Frequency: the frequenrcy of the turbulent noise.Scale: the scale of the turbulent noise\n\nStrength: the strength of the turbulent noise.\n\nFrequency: the frequenrcy of the turbulent noise.\n\nScale: the scale of the turbulent noise\n\nThe relative property multiplier will adjust values based on the ratio between the value of a particle property and the specified threshold value.\n\nProperty type: the particle property to which the threshold value will be compared.Threshold: the target value to which the selected property value of a particle will be compared.Min multiplier: the minimum value of the resulting multiplier.Max multiplier: the maximum value of the resulting multiplier.Exponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nProperty type: the particle property to which the threshold value will be compared.\n\nThreshold: the target value to which the selected property value of a particle will be compared.\n\nMin multiplier: the minimum value of the resulting multiplier.\n\nMax multiplier: the maximum value of the resulting multiplier.\n\nExponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nIgnore source particle: the particle from which the force originated will not be affected by the force.",
+      "params": [
+        "Min multiplier",
+        "Along vector",
+        "Spin",
+        "Push",
+        "Max multiplier",
+        "Strength",
+        "Outwards from center",
+        "Divergence",
+        "Ignore source particle",
+        "X/Y/Z",
+        "Threshold",
+        "Frequency",
+        "Scale",
+        "Property type",
+        "Exponent"
+      ]
+    },
+    {
+      "heading": "Force Timing",
+      "level": "h4",
+      "anchor": "force-timing",
+      "content": "Duration: the duration, in frames, each point force will be active.Variation %: the per-particle percentage of variation to apply.Decay: the amount of decay to apply to point forces, each time step.\n\nDuration: the duration, in frames, each point force will be active.\n\nDecay: the amount of decay to apply to point forces, each time step.\n\nDecay will decrease the point force strength over time.",
+      "params": [
+        "Decay",
+        "Duration"
+      ]
+    },
+    {
+      "heading": "Force Influence",
+      "level": "h4",
+      "anchor": "force-influence",
+      "content": "Absolute radius: the radius of each point force will be set to a specific value.Radius: the specific radius value.Shape radius: the radius of each point force will be set to each particle’s shape mesh radius.Scale radius: the radius of each point force will be set to each particle’s maximum scale dimension.Multiplier: the multiplier to apply to shape/scale radius values.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nAbsolute radius: the radius of each point force will be set to a specific value.\n\nRadius: the specific radius value.\n\nShape radius: the radius of each point force will be set to each particle’s shape mesh radius.\n\nScale radius: the radius of each point force will be set to each particle’s maximum scale dimension.\n\nMultiplier: the multiplier to apply to shape/scale radius values.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.",
+      "params": [
+        "Multiplier",
+        "Radius",
+        "Absolute radius",
+        "Falloff",
+        "Shape radius",
+        "Scale radius"
+      ]
+    },
+    {
+      "heading": "Simulation Groups",
+      "level": "h4",
+      "anchor": "simulation-groups",
+      "content": "Simulation groups: controls which particle simulation groups will be affected by the point forces.",
+      "params": [
+        "Simulation groups"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Show point forces: controls whether point forces will be visualized in the viewport, as spheres representing the size of their influence in the scene.",
+      "params": [
+        "Show point forces"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:11Z"
+}

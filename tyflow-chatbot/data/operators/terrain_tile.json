@@ -1,0 +1,85 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/terrain_tile/terrain_tile",
+  "title": "Terrain Tileoperator",
+  "category": "Operators",
+  "operator": "Terrain Tileoperator",
+  "sections": [
+    {
+      "heading": "Terrain Tileoperator",
+      "level": "h2",
+      "anchor": "terrain-tile-operator",
+      "content": "The Terrain Tile operator can be used to seamlessly tile terrain grids.\n\nGrid names: terrain grids with matching names will be tiled.Mode: controls which tiling mode will be used on affected terrain grids.\n\nGrid names: terrain grids with matching names will be tiled.\n\nMode: controls which tiling mode will be used on affected terrain grids.",
+      "params": [
+        "Grid names",
+        "Mode"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Advanced overlap blending",
+      "level": "h3",
+      "anchor": "advanced-overlap-blending",
+      "content": "Advanced overlap blending can be used to seamlessly blend mis-matched terrain grids together. It involves a two-stage process, wherein terrain grids are increased in size so that adjacent grids overlap, then decreased in size using an algorithm which blends the previously-overlapping areas together, resulting in a seamless edges between adjacent grids in situations where seams would otherwise be visible.\n\nThe two-stage process requires that grids in the first stage are already in a seamless state - so typical usage would involve placing a Terrain Tile operator (in “advanced overlap blending” > “expand” mode) on group of adjacent grids whose edges are already seamless (perhaps those grids were generated with a Terrain Tile operator in ‘subdivide’ mode), then applying FX/erosion/noise/resmple/etc to the grids, and then restoring their seamless state using a second Terrain Tile operator (in “advanced overlap blending” > “shrink” mode). So a typical event stack using this method would look like this:\n\nBirth Terrain //initialize terrain\nTerrain Slope //add various operators to make initial changes to base grid...\nTerrain Noise //...\nTerrain Filter //...\n//etc...\nTerrain Tile //\"Subdivide terrain into tiles\"\nTerrain Tile //\"Advanced overlap blending\" > \"expand\"\nTerrain Resample //add various operators to make further changes to base grid...\nTerrain FX //...\nTerrain Erosion //...\n//etc...\nTerrain Tile //\"Advanced overlap blending\" > \"shrink\"\n//...\n\nThe blending algorithm works on both height values and colors, so it can be used to blend all visible aspects of terrain grids together.\n\nPrepare tiles (expand): this mode is the first stage of the blending process.Overlap %: controls how much terrain grids will be scaled, in order to cause adjacent grids to overlap. Larger values can improve fidelity of the blending process, but will (slightly) reduce fidelity of the overall grid resolution.Blend tiles (shrink): this mode is the second stage of the blending process.\n\nPrepare tiles (expand): this mode is the first stage of the blending process.\n\nOverlap %: controls how much terrain grids will be scaled, in order to cause adjacent grids to overlap. Larger values can improve fidelity of the blending process, but will (slightly) reduce fidelity of the overall grid resolution.\n\nBlend tiles (shrink): this mode is the second stage of the blending process.",
+      "params": [
+        "Blend tiles (shrink)",
+        "Prepare tiles (expand)",
+        "Overlap %"
+      ]
+    },
+    {
+      "heading": "Blend adjacent tile seams",
+      "level": "h3",
+      "anchor": "blend-adjacent-tile-seams",
+      "content": "This tiling mode works by measuring differences in edge heights between adjacent tiles, and averaging the distance between adjacent grid cells using a linear interpolation function. It can prevent gaps between grid tiles but seams along the gapless edges may still have visible artifacts.\n\nDelta blur: controls how much blur will be applied to the individual height differences measured between adjacent grid cells. Higher values can help smooth out visible seams created by high-frequency details on the edges of mis-matched grids.Enable color shift blending: when enabled, color blending between tiles can be improved by shifting/warping colors along seams so that they become less noticeable.\n\nDelta blur: controls how much blur will be applied to the individual height differences measured between adjacent grid cells. Higher values can help smooth out visible seams created by high-frequency details on the edges of mis-matched grids.\n\nEnable color shift blending: when enabled, color blending between tiles can be improved by shifting/warping colors along seams so that they become less noticeable.",
+      "params": [
+        "Delta blur",
+        "Enable color shift blending"
+      ]
+    },
+    {
+      "heading": "Copy terrain into tiles",
+      "level": "h3",
+      "anchor": "copy-terrain-into-tiles",
+      "content": "This tiling mode clones each affected terrain grid tile into adjacent tile location around its perimeter, allow you to copy terrain grids into grid-like patterns.\n\nMulti-tile input: when enabled, instead of the tile operation affecting terrain grids individually, all affected terrain grids will be treated as variations for the copy function. This allows you to create a series of terrain grid variations for the purpose of scattering them within an overall grid-like pattern (starting from the first affected terrain grid).Random orientation: when enabled, created grids will be rotated at random, in 90-degree increments.Diagonal (grid) expansion: when enabled, the tiling function will allow terrain grids to be tiled diagonally from the starting grid.X/Y/etc: controls how many times the tiling function will copy terrain grids outward, from the starting location. Increase values to increase the size of the resulting grid-like pattern.Naming convention: controls how new grids created by the tiling function will be named, according to their location in the resulting grid-like pattern.\n\nMulti-tile input: when enabled, instead of the tile operation affecting terrain grids individually, all affected terrain grids will be treated as variations for the copy function. This allows you to create a series of terrain grid variations for the purpose of scattering them within an overall grid-like pattern (starting from the first affected terrain grid).\n\nRandom orientation: when enabled, created grids will be rotated at random, in 90-degree increments.\n\nDiagonal (grid) expansion: when enabled, the tiling function will allow terrain grids to be tiled diagonally from the starting grid.\n\nX/Y/etc: controls how many times the tiling function will copy terrain grids outward, from the starting location. Increase values to increase the size of the resulting grid-like pattern.\n\nNaming convention: controls how new grids created by the tiling function will be named, according to their location in the resulting grid-like pattern.",
+      "params": [
+        "X/Y/etc",
+        "Diagonal (grid) expansion",
+        "Naming convention",
+        "Random orientation",
+        "Multi-tile input"
+      ]
+    },
+    {
+      "heading": "Loop terrain edges",
+      "level": "h3",
+      "anchor": "loop-terrain-edges",
+      "content": "This tiling mode loops color/height values on affected grids in order to make them individually seamless - in other words, if you apply this tiling mode to a terrain grid, it can be copied in a repeating pattern and the shared edges between the copies will be seamless.\n\nEdge falloff: this curve controls loop interpolation along the distance value, from each edge of a terrain grid.Distance: this value controls how far from the edge the loop interpolation will start.\n\nEdge falloff: this curve controls loop interpolation along the distance value, from each edge of a terrain grid.\n\nDistance: this value controls how far from the edge the loop interpolation will start.",
+      "params": [
+        "Edge falloff",
+        "Distance"
+      ]
+    },
+    {
+      "heading": "Subdivide terrain into tiles",
+      "level": "h3",
+      "anchor": "subdivide-terrain-into-tiles",
+      "content": "This tiling mode subdivides affected terrain grids into smaller terrain grids that match the shape/color of the source grid.\n\nSubdivision level: controls how many subdivisions will occur along the X/Y axis of a terrain grid.Resampling: controls whether subdivided terrain grids will be resampled. Auto mode will resample subdivided grids to the nearest power, manual mode allows you to specify the resolution of subdivided grids.Clear source terrain: when enabled, the subdivided source grid will be cleared.Adjust base multi-grid resolution: when enabled, subdivided grids will be internally modified in a way that maintains the scale of multi-grid effects applied to them (for example, with a Terrain FX or Terrain Erosion operator).Naming convention: controls how new grids created by the tiling function will be named, according to their location in the resulting grid-like pattern.\n\nSubdivision level: controls how many subdivisions will occur along the X/Y axis of a terrain grid.\n\nResampling: controls whether subdivided terrain grids will be resampled. Auto mode will resample subdivided grids to the nearest power, manual mode allows you to specify the resolution of subdivided grids.\n\nClear source terrain: when enabled, the subdivided source grid will be cleared.\n\nAdjust base multi-grid resolution: when enabled, subdivided grids will be internally modified in a way that maintains the scale of multi-grid effects applied to them (for example, with a Terrain FX or Terrain Erosion operator).\n\nNaming convention: controls how new grids created by the tiling function will be named, according to their location in the resulting grid-like pattern.",
+      "params": [
+        "Clear source terrain",
+        "Subdivision level",
+        "Naming convention",
+        "Resampling",
+        "Adjust base multi-grid resolution"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:55:27Z"
+}

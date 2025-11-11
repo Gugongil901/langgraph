@@ -1,0 +1,47 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/terrain_transform/terrain_transform",
+  "title": "Terrain Transformoperator",
+  "category": "Operators",
+  "operator": "Terrain Transformoperator",
+  "sections": [
+    {
+      "heading": "Terrain Transformoperator",
+      "level": "h2",
+      "anchor": "terrain-transform-operator",
+      "content": "The Terrain Transform operator can be used to move, scale and rotate terrain grids.\n\nMany terrain operators are sensitive to terrain scale - changing the scale of a terrain can affect the result of their output. By placing a Terrain Transform operator at theendof your terrain flow, you can scale terrain grids as a post-process, thereby avoiding any unintended side-effects of scaling terrain grids prior to the addition of other terrain modifications (ex: terrain FX).\n\nGrid names: terrain grids with matching names will be transformed.",
+      "params": [
+        "Grid names"
+      ]
+    },
+    {
+      "heading": "Transform",
+      "level": "h4",
+      "anchor": "transform",
+      "content": "Transform grid with object: when enabled, terrain grids transforms will be modified to match the specified scene object’s transform.",
+      "params": [
+        "Transform grid with object"
+      ]
+    },
+    {
+      "heading": "Position",
+      "level": "h4",
+      "anchor": "position",
+      "content": "Offset X/Y/Z: allows you to offset terrain grid positions using the specified per-axis values.",
+      "params": [
+        "Offset X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Scale",
+      "level": "h4",
+      "anchor": "scale",
+      "content": "Absolute: terrain grids will have their transform scale set to the specified value.Multiplier %: terrain grids will be scaled by the specified multiplier value.Affect position: when enabled, terrain grid positions in world-space will be scaled as well.\n\nAbsolute: terrain grids will have their transform scale set to the specified value.\n\nMultiplier %: terrain grids will be scaled by the specified multiplier value.\n\nAffect position: when enabled, terrain grid positions in world-space will be scaled as well.",
+      "params": [
+        "Affect position",
+        "Multiplier %",
+        "Absolute"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:55:32Z"
+}

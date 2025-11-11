@@ -1,0 +1,83 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/branch",
+  "title": "Branchoperator",
+  "category": "Operators",
+  "operator": "Branchoperator",
+  "sections": [
+    {
+      "heading": "Branchoperator",
+      "level": "h2",
+      "anchor": "branch-operator",
+      "content": "The Branch operator spawns child particles which travel at predictably-divergent angles relative to parent particles. It can be used as the basis for effects like growing frost, lightning, etc.",
+      "params": []
+    },
+    {
+      "heading": "Branches",
+      "level": "h4",
+      "anchor": "branches",
+      "content": "Distance: the minimum distance a parent particle must travel before spawning a child.Variation %: the per-particle percentage of variation to apply.\n\nDistance: the minimum distance a parent particle must travel before spawning a child.\n\nMax: the maximum number of particles to spawn at each branch event.Variation %: the per-particle percentage of variation to apply.\n\nMax: the maximum number of particles to spawn at each branch event.\n\nThe Splay settings allow you to control the incremental splay of particles as a whole, from their parent.\n\nX/Y/Z: controls the axis around which the splay will occur.World space/Particle space: controls the source of the splay axis.Splay: the incremental splay, in degrees, over which the new particles will be splayed outwards.Variation %: the per-particle percentage of variation to apply.Divergence: the angle of divergence applied to each group of splayed particles as a whole.Variation %: the per-particle percentage of variation to apply.\n\nX/Y/Z: controls the axis around which the splay will occur.\n\nWorld space/Particle space: controls the source of the splay axis.\n\nSplay: the incremental splay, in degrees, over which the new particles will be splayed outwards.\n\nDivergence: the angle of divergence applied to each group of splayed particles as a whole.\n\nThe Spread settings allow you to control the incremental spread of particles as a whole, from their parent.\n\nSpread: the degrees from which the new particles will be spread outwards from their parent.Variation %: the per-particle percentage of variation to apply.Divergence: the angle of divergence applied to each group of spread particles as a whole.Variation %: the per-particle percentage of variation to apply.\n\nSpread: the degrees from which the new particles will be spread outwards from their parent.\n\nDivergence: the angle of divergence applied to each group of spread particles as a whole.\n\nThe divergence settings allow you to randomize the individual trajectories of spawned particles.\n\nAngle: the angle of divergence applied to each individual spawned particle’s velocity trajectory.Variation %: the per-particle percentage of variation to apply.\n\nAngle: the angle of divergence applied to each individual spawned particle’s velocity trajectory.\n\nAlign to travel direction: when enabled, new particles will be aligned (along their Z-axis) to their new travel (branch) direction.XYZ/YXZ: controls how the alignment transform will be constructed, and whether the XY components (constructed by taking the parent parent velocity and the cross product between the parent particle velocity and the branch direction) will be flipped.Flip X/Y/Z: controls whether any of the alignment transform’s local axes will be flipped.\n\nAlign to travel direction: when enabled, new particles will be aligned (along their Z-axis) to their new travel (branch) direction.\n\nXYZ/YXZ: controls how the alignment transform will be constructed, and whether the XY components (constructed by taking the parent parent velocity and the cross product between the parent particle velocity and the branch direction) will be flipped.\n\nFlip X/Y/Z: controls whether any of the alignment transform’s local axes will be flipped.",
+      "params": [
+        "Splay",
+        "Max",
+        "XYZ/YXZ",
+        "World space/Particle space",
+        "Distance",
+        "Flip X/Y/Z",
+        "Spread",
+        "Divergence",
+        "Angle",
+        "X/Y/Z",
+        "Align to travel direction"
+      ]
+    },
+    {
+      "heading": "Limits",
+      "level": "h4",
+      "anchor": "limits",
+      "content": "Max depth: the maximum number of recursive branches that may be spawned.Variation %: the per-particle percentage of variation to apply.\n\nMax depth: the maximum number of recursive branches that may be spawned.\n\nIncreasing max depth increases the number of successive recursive steps the branching algorithm can take. For example, a max depth of 2 means that particles which enter the event may spawn children, and those children may spawn children of their own, but that third group of children (the grand-children of the original particles) may not spawn further children. Increasing the max depth will exponentially increase the total number of particles that will be spawned over time.",
+      "params": [
+        "Max depth"
+      ]
+    },
+    {
+      "heading": "Inheritance",
+      "level": "h4",
+      "anchor": "inheritance",
+      "content": "Inherit %: the amount of velocity child particles will inherit from parent particles.Variation %: the per-particle percentage of variation to apply.\n\nInherit %: the amount of velocity child particles will inherit from parent particles.\n\nInherit %: the amount of scale child particles will inherit from parent particles.Variation %: the per-particle percentage of variation to apply.\n\nInherit %: the amount of scale child particles will inherit from parent particles.",
+      "params": [
+        "Inherit %"
+      ]
+    },
+    {
+      "heading": "Parent",
+      "level": "h4",
+      "anchor": "parent",
+      "content": "Delete %: controls the probability that a parent particle will be deleted after it branches.Branch from parent if parent deleted: controls whether child particles will have their origin moved to the location of their parent particle, if their parent particle is deleted.\n\nDelete %: controls the probability that a parent particle will be deleted after it branches.\n\nBranch from parent if parent deleted: controls whether child particles will have their origin moved to the location of their parent particle, if their parent particle is deleted.\n\nWhen this setting is disabled, child branch particles will be born at the location of the spacing threshold, along the path of their parent particle. For example, if a parent particle travels 10 units up in a time step, and the branch threshold is set to 7 units, the branch particles will be located 7 units up (ie, not at the location of their parent particle). This is desirable when spawning many branches along the trajectory of a living parent particle. However, if the parent particle is deleted, this can cause a break in continuity between the trajectory of the parent particle and its children. By enabling “branch from parent if parent deleted”, the child particles will snap to the location where the parent was deleted, regardless of the spacing value. So using the previous example, if the parent travels 10 units up and the spacing is set to 7 units, if the parent is deleted the child branch particles will snap to 10 units up as their starting location (rather than 7).\n\nConvert child branches into siblings: when enabled, new branch particles (which are child particles of the original branch particles) will be converted into siblings of the original branch particles.\n\nBy default, new particles spawned by the Branch operator will be children of the original branch particles. However, particles spawned from the original branch particles with other operators (like the Spawn operator) will also be children of the original branch particles - so you can run into situations where branch particles and any children they spawn in other operators will all be siblings. This can confuse other operators like the Particle Bind operator, which can bind particles by sibling relationship. By enabling ‘convert child branches into siblings’, no particles spawned by the Branch operator itself will be children of other particles within the Branch operator…allowing for easier differentiation between branch particles and any of their children spawned by other operators.",
+      "params": [
+        "Branch from parent if parent deleted",
+        "Convert child branches into siblings",
+        "Delete %"
+      ]
+    },
+    {
+      "heading": "Test TRUE",
+      "level": "h4",
+      "anchor": "test-true",
+      "content": "Min depth enable: controls whether child particles that reach a certain depth will test TRUE for output.Min depth value: sets the minimum depth value required for child particles to satisfy the condition.\n\nMin depth enable: controls whether child particles that reach a certain depth will test TRUE for output.\n\nMin depth value: sets the minimum depth value required for child particles to satisfy the condition.",
+      "params": [
+        "Min depth value",
+        "Min depth enable"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:49:19Z"
+}

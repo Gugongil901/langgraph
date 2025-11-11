@@ -1,0 +1,30 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/optimize",
+  "title": "Optimizeoperator",
+  "category": "Operators",
+  "operator": "Optimizeoperator",
+  "sections": [
+    {
+      "heading": "Optimizeoperator",
+      "level": "h2",
+      "anchor": "optimize-operator",
+      "content": "The Optimize operator allows you to optimize particle meshes.\n\nEngine: controls which mesh optimization engine will be used for particle shape mesh optimization.\n\nThe “ProOptimizer” engine uses 3ds Max’s native ProOptimizer modifier’s core algorithms to perform mesh optimizations. Due to limitations of that modifier’s implementation, it can only be evaluated by a single thread at a time - therefore, Optimize operators using that engine will be single-threaded.",
+      "params": [
+        "Engine"
+      ]
+    },
+    {
+      "heading": "ProOptimizer",
+      "level": "h3",
+      "anchor": "prooptimizer",
+      "content": "Vertex %: controls how optimized output meshes will aim to be, as a percent of original vertex count.Keep material boundaries: material boundaries (edges that border separate material IDs) will not be optimized.Preserve UVs: ensures that mesh map channels are adjusted to account for vertices removed by the optimization process.Delete particles with empty meshes: deletes particles whose meshes have no vertices left after the optimization process.\n\nVertex %: controls how optimized output meshes will aim to be, as a percent of original vertex count.\n\nKeep material boundaries: material boundaries (edges that border separate material IDs) will not be optimized.\n\nPreserve UVs: ensures that mesh map channels are adjusted to account for vertices removed by the optimization process.\n\nDelete particles with empty meshes: deletes particles whose meshes have no vertices left after the optimization process.",
+      "params": [
+        "Preserve UVs",
+        "Vertex %",
+        "Keep material boundaries",
+        "Delete particles with empty meshes"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:51:44Z"
+}

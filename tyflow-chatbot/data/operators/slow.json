@@ -1,0 +1,82 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/slow",
+  "title": "Slowoperator",
+  "category": "Operators",
+  "operator": "Slowoperator",
+  "sections": [
+    {
+      "heading": "Slowoperator",
+      "level": "h2",
+      "anchor": "slow-operator",
+      "content": "The Slow operator allows you to dampen particle forces. It should be used instead of a Drag spacewarp to slow particles down within a flow.\n\nThe Slow operator should usually be placedaboveany other operators that apply forces to particles within an event. Since operators are evaluated in order, this will dampen forces when the next time step is evaluated, without damping forces added to particles in the current time step.",
+      "params": []
+    },
+    {
+      "heading": "Velocity",
+      "level": "h4",
+      "anchor": "velocity",
+      "content": "X/Y/Z: the amount to dampen particle velocities, per axis.\n\nValues greater than zero: a velocity value along a particular axis will only be dampened if it is above zero.Values less than zero: a velocity value along a particular axis will only be dampened if it is below zero.All values: all velocities values will be dampened.\n\nValues greater than zero: a velocity value along a particular axis will only be dampened if it is above zero.\n\nValues less than zero: a velocity value along a particular axis will only be dampened if it is below zero.\n\nAll values: all velocities values will be dampened.\n\nSometimes you might only want to dampen particle velocities in a certain direction. For example, you might want to dampen particle velocities as particles move upwards, but not as they move downwards with gravity (to prevent unwanted bouncing). Use the appropriate “only affect” type to precisely control which values will be dampened.",
+      "params": [
+        "X/Y/Z",
+        "All values",
+        "Values greater than zero",
+        "Values less than zero"
+      ]
+    },
+    {
+      "heading": "Spin",
+      "level": "h4",
+      "anchor": "spin",
+      "content": "X/Y/Z: the amount to dampen particle spin, per axis.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Influence",
+      "level": "h4",
+      "anchor": "influence",
+      "content": "The relative property multiplier will adjust values based on the ratio between the value of a particle property and the specified threshold value.\n\nProperty type: the particle property to which the threshold value will be compared.Threshold: the target value to which the selected property value of a particle will be compared.Min multiplier: the minimum value of the resulting multiplier.Max multiplier: the maximum value of the resulting multiplier.Exponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nProperty type: the particle property to which the threshold value will be compared.\n\nThreshold: the target value to which the selected property value of a particle will be compared.\n\nMin multiplier: the minimum value of the resulting multiplier.\n\nMax multiplier: the maximum value of the resulting multiplier.\n\nExponent: the exponent to which the ratio between the particle property and the selected property will be raised.",
+      "params": [
+        "Min multiplier",
+        "Max multiplier",
+        "Threshold",
+        "Exponent",
+        "Property type"
+      ]
+    },
+    {
+      "heading": "Timestep",
+      "level": "h4",
+      "anchor": "timestep",
+      "content": "Slow on subframes::controls whether to apply damping to particles on subframes. Turning this on will affect how quickly particles will be slowed, if simulation time steps are set to smaller than 1 frame.",
+      "params": [
+        "Slow on subframes"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Slow by surface proximity: controls whether the affect of the operator will be relative to a particle’s proximity to nearby objects.Slow if inside volume: controls whether the proximity effect will be applied to particles inside a surface.Object list: the list of input objects whose proximity will be tested.\n\nSlow by surface proximity: controls whether the affect of the operator will be relative to a particle’s proximity to nearby objects.\n\nSlow if inside volume: controls whether the proximity effect will be applied to particles inside a surface.\n\nObject list: the list of input objects whose proximity will be tested.\n\nSample: controls which sampler will be used for surface proximity tests.\n\nThe proximity influence extends outwards from the surface of nearby obstacles.\n\nDistance: particles within this distance will be fully affected.Falloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nDistance: particles within this distance will be fully affected.\n\nFalloff: the effect on particles beyond the base distance, but within this falloff distance, will diminish according to the inverse-square law.\n\nInvertinverts the effect of proximity slowing.",
+      "params": [
+        "Slow if inside volume",
+        "Object list",
+        "Sample",
+        "Distance",
+        "Falloff",
+        "Slow by surface proximity"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:42Z"
+}

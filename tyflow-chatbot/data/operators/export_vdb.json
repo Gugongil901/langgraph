@@ -1,0 +1,61 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/export_vdb",
+  "title": "Export VDBoperator",
+  "category": "Operators",
+  "operator": "Export VDBoperator",
+  "sections": [
+    {
+      "heading": "Export VDBoperator",
+      "level": "h2",
+      "anchor": "export-vdb-operator",
+      "content": "The Export VDB operator can be used to export VDB data to disk.",
+      "params": []
+    },
+    {
+      "heading": "Grids",
+      "level": "h4",
+      "anchor": "grids",
+      "content": "SDF/Density/UVW/Velocity: controls which VDB grids will be saved to the .vdb file.\n\nWhen importing VDB data into another program, sometimes the naming scheme of each grid type is important. For example, certain software packages expect the SDF grid to be named “LevelSet” and the density grid to be named “Density”. To export grids with those names, make sure you’ve initialized the grids with those names elsewhere in your flow.",
+      "params": [
+        "SDF/Density/UVW/Velocity"
+      ]
+    },
+    {
+      "heading": "Output",
+      "level": "h4",
+      "anchor": "output",
+      "content": "Filename: the output path for the .vdb file.",
+      "params": [
+        "Filename"
+      ]
+    },
+    {
+      "heading": "Simulation",
+      "level": "h4",
+      "anchor": "simulation",
+      "content": "Auto-export during simulation: when enabled, .vdb files will be written automatically as the simulation progresses, after each time step.\n\nEnabling this setting will cause any existing .vdb files in the output path to be overwritten, any time the simulation progresses.",
+      "params": [
+        "Auto-export during simulation"
+      ]
+    },
+    {
+      "heading": "Export",
+      "level": "h4",
+      "anchor": "export",
+      "content": "Generate VDB files: when pressed, the entire timeline will be simulated, exporting .vdb files after each timestep.\n\nBecause VDB data is not cached on a per-frame basis, a previously-cached sim must be recomputed during manual export.",
+      "params": [
+        "Generate VDB files"
+      ]
+    },
+    {
+      "heading": "VDB loaders",
+      "level": "h4",
+      "anchor": "vdb-loaders",
+      "content": "Notify loaders after export: when enabled, the specified VDB loaders will be refreshed after the .vdb file(s) are exported.\n\nThe Export VDB operator will attempt to notify scene VDB loaders that their data needs to be updated, but only some loaders are officially supported for this task. The officially supported loaders are: PhoenixFDFire containers and RedshiftVolumeGrid containers.",
+      "params": [
+        "Notify loaders after export"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:07Z"
+}

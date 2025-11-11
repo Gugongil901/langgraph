@@ -1,0 +1,39 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/terrain_noise/terrain_noise",
+  "title": "Terrain Noiseoperator",
+  "category": "Operators",
+  "operator": "Terrain Noiseoperator",
+  "sections": [
+    {
+      "heading": "Terrain Noiseoperator",
+      "level": "h2",
+      "anchor": "terrain-noise-operator",
+      "content": "The Terrain Noise operator can be used to add noise to a terrain grid.\n\nGrid names: terrain grids with matching names will have noise applied to them.Operation: controls how noise values will be applied to affected terrain grids.Noise scale mult: an additional multiplied applied to the scale value of noise.Seed per tile: when enabled, each affected terrain grid will be given a unique noise seed.\n\nGrid names: terrain grids with matching names will have noise applied to them.\n\nOperation: controls how noise values will be applied to affected terrain grids.\n\nNoise scale mult: an additional multiplied applied to the scale value of noise.\n\nSeed per tile: when enabled, each affected terrain grid will be given a unique noise seed.",
+      "params": [
+        "Grid names",
+        "Seed per tile",
+        "Noise scale mult",
+        "Operation"
+      ]
+    },
+    {
+      "heading": "Noise",
+      "level": "h3",
+      "anchor": "noise",
+      "content": "Noise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Noise mode"
+      ]
+    },
+    {
+      "heading": "Domain warp",
+      "level": "h3",
+      "anchor": "domain-warp",
+      "content": "Domain warp applies a warp noise to the base noise, allowing for more interesting noise patterns to be created when the two types of noise are applied together.\n\nNoise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Noise mode"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:55:15Z"
+}

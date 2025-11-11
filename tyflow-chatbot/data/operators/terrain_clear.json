@@ -1,0 +1,20 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/terrain_clear/terrain_clear",
+  "title": "Terrain Clearoperator",
+  "category": "Operators",
+  "operator": "Terrain Clearoperator",
+  "sections": [
+    {
+      "heading": "Terrain Clearoperator",
+      "level": "h2",
+      "anchor": "terrain-clear-operator",
+      "content": "The Terrain Clear operator can be used to clear out terrain grids from the flow.\n\nGrid names: terrain grids with matching names will be cleared.Only clear if empty: when enabled, terrain grids will only be cleared if their maximum height value is below the specified height threshold.Invert result: when enabled, the group of terrain grids that will be cleared will be inverted (terrain grids that were originally meant to be cleared will be retained, and terrain grids that were originally meant to be retained will be cleared).\n\nGrid names: terrain grids with matching names will be cleared.\n\nOnly clear if empty: when enabled, terrain grids will only be cleared if their maximum height value is below the specified height threshold.\n\nInvert result: when enabled, the group of terrain grids that will be cleared will be inverted (terrain grids that were originally meant to be cleared will be retained, and terrain grids that were originally meant to be retained will be cleared).",
+      "params": [
+        "Grid names",
+        "Only clear if empty",
+        "Invert result"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:57Z"
+}

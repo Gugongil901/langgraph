@@ -1,0 +1,56 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/pack",
+  "title": "Packoperator",
+  "category": "Operators",
+  "operator": "Packoperator",
+  "sections": [
+    {
+      "heading": "Packoperator",
+      "level": "h2",
+      "anchor": "pack-operator",
+      "content": "The Pack operator can be used to pack particle meshes into non-overlapping configuations.\n\nThe Pack operator uses an efficient UV-packing algorithm to pack 3D, concave meshes into a non-overlapping state on a 2D plane. It cannot be used to pack meshes into a volume or across a non-planar surface.\n\nThe Pack operator will not detach disconnected particle mesh elements. You can use an Element Fracture operator to detach elements prior to a pack operation.",
+      "params": []
+    },
+    {
+      "heading": "Pack center",
+      "level": "h4",
+      "anchor": "pack-center",
+      "content": "Node: if a node is assigned, the result of the pack operation will be centered at the node’s position in world-space. If a node is not assigned, the result of the pack operation will be centered at the world origin.Affect scale: when enabled, the scale of the node will affect the scale of the packed result.\n\nNode: if a node is assigned, the result of the pack operation will be centered at the node’s position in world-space. If a node is not assigned, the result of the pack operation will be centered at the world origin.\n\nAffect scale: when enabled, the scale of the node will affect the scale of the packed result.",
+      "params": [
+        "Node",
+        "Affect scale"
+      ]
+    },
+    {
+      "heading": "Mesh orientation",
+      "level": "h4",
+      "anchor": "mesh-orientation",
+      "content": "Local/world X/Y/Z: controls which local or world axis particles will be implicitly projected (flattened) along during the pack operation. This axis is essentially the “up” axis of the pack operation, which will be perpendicular to the packed result.Allow pack rotation: when enabled, particles may be rotated during the pack operation (around the “up” axis, specified above).\n\nLocal/world X/Y/Z: controls which local or world axis particles will be implicitly projected (flattened) along during the pack operation. This axis is essentially the “up” axis of the pack operation, which will be perpendicular to the packed result.\n\nAllow pack rotation: when enabled, particles may be rotated during the pack operation (around the “up” axis, specified above).",
+      "params": [
+        "Allow pack rotation",
+        "Local/world X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Packing",
+      "level": "h4",
+      "anchor": "packing",
+      "content": "Padding: controls the amount of padding to add between particle meshes during the pack operation.\n\nThe padding value is not a world-space value. The pack operation is performed in a rasterized UV-space of 1024 square pixels - the padding value is relative to that rasterized UV-space. Larger padding values may increase the time it takes to perform the pack operation.\n\nSort meshes by size: when enabled, the packing algorithm will sort meshes by their overall size, typically resulting in a diagonal distribution of meshes from largest to smallest. When disabled, pre-pack mesh ordering will be random, resulting in a layout of meshes with no recognizable distribution.\n\nWhen sorting is disabled, the overall shape and size of the packed layout may vary (ie, may not be a perfect square).\n\nCenter meshes on plane: when enabled, all packed meshes will be centered along their Z-axis on the pack plane. When disabled, the base of all packed meshes will rest on the pack plane.",
+      "params": [
+        "Sort meshes by size",
+        "Padding",
+        "Center meshes on plane"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:01Z"
+}

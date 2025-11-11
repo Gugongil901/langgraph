@@ -1,0 +1,91 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/particles_to_sdf",
+  "title": "Particles to VDBoperator",
+  "category": "Operators",
+  "operator": "Particles to VDBoperator",
+  "sections": [
+    {
+      "heading": "Particles to VDBoperator",
+      "level": "h2",
+      "anchor": "particles-to-vdb-operator",
+      "content": "The Particles to VDB operator can be used to convert input particles into a density or SDF grid.\n\nGrid type: the type of grid to convert the meshes into.",
+      "params": [
+        "Grid type"
+      ]
+    },
+    {
+      "heading": "Density grid",
+      "level": "h4",
+      "anchor": "density-grid",
+      "content": "Grid name: the name of the target density grid.",
+      "params": [
+        "Grid name"
+      ]
+    },
+    {
+      "heading": "SDF grid",
+      "level": "h4",
+      "anchor": "sdf-grid",
+      "content": "Grid name: the name of the target SDF grid.",
+      "params": [
+        "Grid name"
+      ]
+    },
+    {
+      "heading": "Particles",
+      "level": "h4",
+      "anchor": "particles",
+      "content": "Include this flow’s particles: when enabled, the particles in the same flow as this operator will be input into the VDB.Integrate spin/velocity: when enabled, the same flow’s particles will have their spin/velocity integrated during the input process.\n\nInclude this flow’s particles: when enabled, the particles in the same flow as this operator will be input into the VDB.\n\nIntegrate spin/velocity: when enabled, the same flow’s particles will have their spin/velocity integrated during the input process.\n\nNormally spin/velocity integration happens for a particle at the end of the timestep. Therefore, in order to properly sync VDB data with particle data of the current timestep, spin/velocity must be manually integrated beforehand. Hence, the need for this setting.\n\nParticle objects: the list of additional particle systems to be input into the VDB.",
+      "params": [
+        "Include this flow’s particles",
+        "Integrate spin/velocity",
+        "Particle objects"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Operation: controls which boolean operation will be used to merge the particle data into the VDB.Use particle meshes: when enabled, each particle’s mesh will be input into the VDB, instead of simply considering the particle as a point with a radius.\n\nOperation: controls which boolean operation will be used to merge the particle data into the VDB.\n\nUse particle meshes: when enabled, each particle’s mesh will be input into the VDB, instead of simply considering the particle as a point with a radius.",
+      "params": [
+        "Operation",
+        "Use particle meshes"
+      ]
+    },
+    {
+      "heading": "Blobmesh mode",
+      "level": "h4",
+      "anchor": "blobmesh-mode",
+      "content": "Classic blobmesh: a standard marching-cubes, quad-based mesher.Zhu-Bridson: a modification of the classic blobmesh algorithm, that blends and flattens more densely populated areas of particles.Blend distance: the absolute distance to search from each particle, to find neighbors and determine which areas are more densely populated. The distance will be clamped such that it will be at least the radius of the largest particle.Blend multiplier: the relative distance to search from each particle, to find neighbors and determine which areas are more densely populated. The relative distance is the blend multiplier multiplied by the radius of the largest particle.\n\nClassic blobmesh: a standard marching-cubes, quad-based mesher.\n\nZhu-Bridson: a modification of the classic blobmesh algorithm, that blends and flattens more densely populated areas of particles.\n\nBlend distance: the absolute distance to search from each particle, to find neighbors and determine which areas are more densely populated. The distance will be clamped such that it will be at least the radius of the largest particle.\n\nBlend multiplier: the relative distance to search from each particle, to find neighbors and determine which areas are more densely populated. The relative distance is the blend multiplier multiplied by the radius of the largest particle.",
+      "params": [
+        "Blend multiplier",
+        "Blend distance",
+        "Zhu-Bridson",
+        "Classic blobmesh"
+      ]
+    },
+    {
+      "heading": "Radius",
+      "level": "h4",
+      "anchor": "radius",
+      "content": "When “use particle meshes” is disabled, each particle will be treated as a point with a radius (ie, a sphere).\n\nAbsolute radius: the radius of each particle will be set to a specific value.Radius: the specific radius value.Shape radius: the radius of each particle will be set to each particle’s shape mesh radius.Scale radius: the radius of each particle will be set to each particle’s maximum scale dimension.Multiplier: the multiplier to apply to shape/scale radius values.\n\nAbsolute radius: the radius of each particle will be set to a specific value.\n\nRadius: the specific radius value.\n\nShape radius: the radius of each particle will be set to each particle’s shape mesh radius.\n\nScale radius: the radius of each particle will be set to each particle’s maximum scale dimension.\n\nMultiplier: the multiplier to apply to shape/scale radius values.",
+      "params": [
+        "Multiplier",
+        "Radius",
+        "Absolute radius",
+        "Shape radius",
+        "Scale radius"
+      ]
+    },
+    {
+      "heading": "Filtering",
+      "level": "h4",
+      "anchor": "filtering",
+      "content": "Simulation/export groups: controls which groups will be used to filter input particles.",
+      "params": [
+        "Simulation/export groups"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:54:22Z"
+}

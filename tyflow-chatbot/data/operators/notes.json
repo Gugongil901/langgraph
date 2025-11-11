@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/notes",
+  "title": "Notesoperator",
+  "category": "Operators",
+  "operator": "Notesoperator",
+  "sections": [
+    {
+      "heading": "Notesoperator",
+      "level": "h2",
+      "anchor": "notes-operator",
+      "content": "The Notes operator allows users to store notes/comments/info inside of a flow.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T11:55:49Z"
+}

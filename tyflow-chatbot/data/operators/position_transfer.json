@@ -1,0 +1,83 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/position_transfer",
+  "title": "Position Transferoperator",
+  "category": "Operators",
+  "operator": "Position Transferoperator",
+  "sections": [
+    {
+      "heading": "Position Transferoperator",
+      "level": "h2",
+      "anchor": "position-transfer-operator",
+      "content": "The Position Transfer operator allows you to transfer particles from one surface to the exact relative location on another surface with the same topology.\n\nThe Position Transfer operator can be especially helpful when you want to simulate particles on a static surface, and then transfer their motion to a matching animated surface (ie, an animated character). It is often easier to perform this kind of transfer from static to animated mesh, than to try and perform the initial particle simulation on the animated mesh directly.\n\nFor the position transfer to work correctly, the objects in the list must have the same topology and be in the same order in all matching Position Transfer operators.\n\nWhen transferring data between flows, don’t forget to enable Custom TM channel caching in the source flow.",
+      "params": []
+    },
+    {
+      "heading": "Transfer properties",
+      "level": "h4",
+      "anchor": "transfer-properties",
+      "content": "Transfer position/rotation/scale: controls which relative particle properties to transfer between surfaces.",
+      "params": [
+        "Transfer position/rotation/scale"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Save surface location: the operator will save the relative surface location of particles to a custom TM data channel.Load surface location: the operator will load the relative surface location of particles from a custom TM data channel.Channel: the main custom TM data channel where transfer data will be stored.Aux channel: the secondary custom TM data channel where rotation/scale offset data will be stored, if rotation/scale property transfer is enabled.\n\nSave surface location: the operator will save the relative surface location of particles to a custom TM data channel.\n\nLoad surface location: the operator will load the relative surface location of particles from a custom TM data channel.\n\nChannel: the main custom TM data channel where transfer data will be stored.\n\nAux channel: the secondary custom TM data channel where rotation/scale offset data will be stored, if rotation/scale property transfer is enabled.\n\nIf both channels are required for the transfer (ie, if you’ve enabled rotation/scale transfer), ensure they are not assigned the same name.",
+      "params": [
+        "Channel",
+        "Load surface location",
+        "Aux channel",
+        "Save surface location"
+      ]
+    },
+    {
+      "heading": "Mode",
+      "level": "h4",
+      "anchor": "mode",
+      "content": "Barycentric Coordinates: saves the transfer data as relative barycentric coordinates of the closest face on the source mesh.Face transform: saves the transfer data as a position relative to a transform constructed from the closest face on the source mesh.\n\nBarycentric Coordinates: saves the transfer data as relative barycentric coordinates of the closest face on the source mesh.\n\nFace transform: saves the transfer data as a position relative to a transform constructed from the closest face on the source mesh.\n\n“Barycentric coordinate” mode works best if particles are near the source surface and the source surface is fairly smooth. It does a good job of smoothly interpolating particles between faces on the target mesh, so long as particles are not too far away from the source surface and the surface does not have a lot of hard edges/angles, otherwise it can result in popping artifacts. “Face transform” mode will not smoothly interpolate particles between faces, but does a better job at storing the absolute particle position relative to the source mesh, even if the particles are heavily offset from the source surface.\n\nWhen transferring rotation/scale data, face transform mode must be used.",
+      "params": [
+        "Face transform",
+        "Barycentric Coordinates"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h4",
+      "anchor": "objects",
+      "content": "Object list: the list of input objects that particles will be transferred to/from.",
+      "params": [
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Sample",
+      "level": "h4",
+      "anchor": "sample",
+      "content": "Sample type: controls which sampler will be used to determine closest-surface proximities for particles.",
+      "params": [
+        "Sample type"
+      ]
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Normal interpolation: linearly interpolates the current value towards the target value.Full interpolation on entry: linearly interpolates the particle's current value towards the target value, unless the particle's event age is 0 - then the particle's current value will be set to the target value.Full interpolation at time of birth: linearly interpolates the particle's current value towards the target value, unless the particle's age is 0 - then the particle's current value will be set to the target value.Curve interpolation (static): uses a curve to interpolate the particle's current value towards the value assigned to the particle when the particle first entered the event.Curve interpolation (dynamic): uses a curve to interpolate the particle's current value towards the target value.Duration: the number of frames over which the curve interpolation will be performed.Value: the amount to linearly interpolate values each frame.Variation %: the amount of variation to apply to the interpolation value.",
+      "params": [
+        "Normal interpolation"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:27Z"
+}

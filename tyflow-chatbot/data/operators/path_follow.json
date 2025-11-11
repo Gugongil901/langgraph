@@ -1,0 +1,101 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/operators/path_follow",
+  "title": "Path Followoperator",
+  "category": "Operators",
+  "operator": "Path Followoperator",
+  "sections": [
+    {
+      "heading": "Path Followoperator",
+      "level": "h2",
+      "anchor": "path-follow-operator",
+      "content": "The Path Follow operator allows you to apply forces to particles using regular shapes and splines.\n\nThe default additive nature of forces can cause particles to quickly fly away from any input shapes. In order to cause particles to follow shapes more closely, force damping is required. The best way to dampen forces is to add a Slow operator to your event (above this operator) and increase the velocity slowdown value until the desired effect is achieved.",
+      "params": []
+    },
+    {
+      "heading": "Shapes",
+      "level": "h4",
+      "anchor": "shapes",
+      "content": "Shape object list: the list of input shape objects.",
+      "params": [
+        "Shape object list"
+      ]
+    },
+    {
+      "heading": "Shape",
+      "level": "h4",
+      "anchor": "shape",
+      "content": "Closest/Random: defines which shape to follow from the list.",
+      "params": [
+        "Closest/Random"
+      ]
+    },
+    {
+      "heading": "Follow",
+      "level": "h4",
+      "anchor": "follow",
+      "content": "Follow forces are forces that are parallel to shape tangents.\n\nVelocity:: the value of the force applied to particles.Variation %: the per-particle percentage of variation to apply.Falloff: the distance over which forces will be diminished, according to the inverse-square law. A value of 0 means no falloff will be computed.Accel %: controls how quickly particle forces will accelerate from their old values to the newly applied values.\n\nVelocity:: the value of the force applied to particles.\n\nFalloff: the distance over which forces will be diminished, according to the inverse-square law. A value of 0 means no falloff will be computed.",
+      "params": [
+        "Velocity",
+        "Falloff"
+      ]
+    },
+    {
+      "heading": "Attraction",
+      "level": "h4",
+      "anchor": "attraction",
+      "content": "Attraction forces are forces that are perpendicular to shape tangents, which cause particles to move toward shapes.\n\nVelocity:: the value of the force applied to particles.Variation %: the per-particle percentage of variation to apply.Falloff: the distance over which forces will be diminished, according to the inverse-square law. A value of 0 means no falloff will be computed.Accel %: controls how quickly particle forces will accelerate from their old values to the newly applied values.Clamp to distance: when enabled, the length of the attraction velocity vector will not exceed the distance from a particle to the target spline. This prevents velocity overshoot.\n\nVelocity:: the value of the force applied to particles.\n\nFalloff: the distance over which forces will be diminished, according to the inverse-square law. A value of 0 means no falloff will be computed.\n\nClamp to distance: when enabled, the length of the attraction velocity vector will not exceed the distance from a particle to the target spline. This prevents velocity overshoot.",
+      "params": [
+        "Velocity",
+        "Clamp to distance",
+        "Falloff"
+      ]
+    },
+    {
+      "heading": "Spin",
+      "level": "h4",
+      "anchor": "spin",
+      "content": "Spin forces are forces that are perpendicular to shape tangents, which cause particles to move around shapes.\n\nVelocity:: the value of the force applied to particles.Variation %: the per-particle percentage of variation to apply.Falloff: the distance over which forces will be diminished, according to the inverse-square law. A value of 0 means no falloff will be computed.Accel %: controls how quickly particle forces will accelerate from their old values to the newly applied values.\n\nVelocity:: the value of the force applied to particles.\n\nFalloff: the distance over which forces will be diminished, according to the inverse-square law. A value of 0 means no falloff will be computed.",
+      "params": [
+        "Velocity",
+        "Falloff"
+      ]
+    },
+    {
+      "heading": "Distance to shape",
+      "level": "h4",
+      "anchor": "distance-to-shape",
+      "content": "Dynamic: no constraints are placed on the distance particles are allowed to travel towards/away from input shapes.Lockedthe initial distance any given particle is to an input shape, is the exact distance they must maintain while affected by the operator.Initial distance is min distancethe initial distance any given particle is to an input shape, is the minimum distance they must maintain while affected by the operator. Particles are allowed to travel further than that distance away from the input shapes.Initial distance is max distancethe initial distance any given particle is to an input shape, is the maximum distance they must maintain while affected by the operator. Particles are allowed to travel closer than that distance towards the input shapes.Custom min/max: the range of distances a particle must stay within, from input shapes, is defined by the user.Min/Max: the range of distances used in ‘Custom min/max’ mode”\n\nDynamic: no constraints are placed on the distance particles are allowed to travel towards/away from input shapes.\n\nLockedthe initial distance any given particle is to an input shape, is the exact distance they must maintain while affected by the operator.\n\nInitial distance is min distancethe initial distance any given particle is to an input shape, is the minimum distance they must maintain while affected by the operator. Particles are allowed to travel further than that distance away from the input shapes.\n\nInitial distance is max distancethe initial distance any given particle is to an input shape, is the maximum distance they must maintain while affected by the operator. Particles are allowed to travel closer than that distance towards the input shapes.\n\nCustom min/max: the range of distances a particle must stay within, from input shapes, is defined by the user.\n\nMin/Max: the range of distances used in ‘Custom min/max’ mode”",
+      "params": [
+        "Dynamic",
+        "Custom min/max",
+        "Min/Max"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "Spline interp: the number of sub-segments to slice input shapes up into, which will be used to accelerate the shape proximity algorithm.\n\nIf shapes have a lot of overall curve complexity, this value should be increased.\n\nLock to first shape: controls whether particles will continually look for a new shape to derive their forces from, or if they’ll stay locked to the same shape for their entire stay within the event.Simulate substeps: forces will be interpolated in a way that simulates the addition of forces at smaller simulation substeps.\n\nLock to first shape: controls whether particles will continually look for a new shape to derive their forces from, or if they’ll stay locked to the same shape for their entire stay within the event.\n\nSimulate substeps: forces will be interpolated in a way that simulates the addition of forces at smaller simulation substeps.\n\nThe relative property multiplier will adjust values based on the ratio between the value of a particle property and the specified threshold value.\n\nProperty type: the particle property to which the threshold value will be compared.Threshold: the target value to which the selected property value of a particle will be compared.Min multiplier: the minimum value of the resulting multiplier.Max multiplier: the maximum value of the resulting multiplier.Exponent: the exponent to which the ratio between the particle property and the selected property will be raised.\n\nProperty type: the particle property to which the threshold value will be compared.\n\nThreshold: the target value to which the selected property value of a particle will be compared.\n\nMin multiplier: the minimum value of the resulting multiplier.\n\nMax multiplier: the maximum value of the resulting multiplier.\n\nExponent: the exponent to which the ratio between the particle property and the selected property will be raised.",
+      "params": [
+        "Simulate substeps",
+        "Spline interp",
+        "Min multiplier",
+        "Max multiplier",
+        "Lock to first shape",
+        "Threshold",
+        "Exponent",
+        "Property type"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T11:50:09Z"
+}
