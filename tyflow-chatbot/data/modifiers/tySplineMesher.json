@@ -1,0 +1,338 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tySplineMesher",
+  "title": "tySplineMesherModifier",
+  "category": "Modifiers",
+  "operator": "tySplineMesherModifier",
+  "sections": [
+    {
+      "heading": "tySplineMesherModifier",
+      "level": "h2",
+      "anchor": "tysplinemesher-modifier",
+      "content": "ThetySplineMeshermodifier can quickly convert huge numbers of splines into geometry, much faster than 3ds Max’s default renderable spline modifier. It is ideal fortySplinesobjects, but can be assigned to shape objects of any type.\n\nVariation parameters are seeded by both the seed spinner values, and the material ID of the subspline. In order to apply variation between subsplines, ensure the subsplines have different material ID values.\n\nSpline Mesher Rollout",
+      "params": []
+    },
+    {
+      "heading": "Spline Mesher Rollout",
+      "level": "h3",
+      "anchor": "spline-mesher-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Geometry mode",
+      "level": "h4",
+      "anchor": "geometry-mode",
+      "content": "Extrude: extrudes the splines in a specific direction.Mesh: deforms meshes along the length of splines.Straight skeleton: extrudes the splines inward toward their straight skeleton.Trails: creates motion trails behind moving splines.\n\nExtrude: extrudes the splines in a specific direction.\n\nMesh: deforms meshes along the length of splines.\n\nStraight skeleton: extrudes the splines inward toward their straight skeleton.\n\nTrails: creates motion trails behind moving splines.\n\nThe number of knots and subsplines in your spline object must not change over time in order for trails mode to generate trail meshes. If the number of sub-elements does change over time, no mesh will be generated.\n\nTube: converts splines into cylindrical meshes.Use raw tySplineCaches: when enabled, if this modifier is directly above a tySplineCache modifier (because it’s on a tyCache object which is loading cached splines), it will efficiently and directly access loaded spline data (ignoring optimization/interpolation values in the tySplineCache modifier.\n\nTube: converts splines into cylindrical meshes.\n\nUse raw tySplineCaches: when enabled, if this modifier is directly above a tySplineCache modifier (because it’s on a tyCache object which is loading cached splines), it will efficiently and directly access loaded spline data (ignoring optimization/interpolation values in the tySplineCache modifier.\n\nIn order to obey optimization/interpolation settings of an underlying tySplineCache modifier (at the cost of performance), disable this setting.\n\nExtrude Rollout",
+      "params": [
+        "Use raw tySplineCaches",
+        "Extrude",
+        "Tube",
+        "Trails",
+        "Mesh",
+        "Straight skeleton"
+      ]
+    },
+    {
+      "heading": "Extrude Rollout",
+      "level": "h2",
+      "anchor": "extrude-rollout",
+      "content": "Per-Spline: extrusions will happen on a per-spline basis. No boolean operations will be performed and overlapping splines will have overlapping extrusion geometry.Multi-Spline: prior to any extrusions, splines will be combined using boolean operations and split into non-overlapping groups. No overlapping extrusion geometry should be generated in the result, and nested splines will create holes in the resulting extrusions.Odd, Non-Zero, Positive, Negative: winding order rules which determine which parts of overlapping splines are considered interiors, and how to deal with them.\n\nPer-Spline: extrusions will happen on a per-spline basis. No boolean operations will be performed and overlapping splines will have overlapping extrusion geometry.\n\nMulti-Spline: prior to any extrusions, splines will be combined using boolean operations and split into non-overlapping groups. No overlapping extrusion geometry should be generated in the result, and nested splines will create holes in the resulting extrusions.\n\nOdd, Non-Zero, Positive, Negative: winding order rules which determine which parts of overlapping splines are considered interiors, and how to deal with them.",
+      "params": [
+        "Per-Spline",
+        "Odd, Non-Zero, Positive, Negative",
+        "Multi-Spline"
+      ]
+    },
+    {
+      "heading": "Settings",
+      "level": "h4",
+      "anchor": "settings",
+      "content": "Amount: the distance to extrude the splines.Multiply by knot radius: controls whether the distance of spline extrusions is affected by knot radius. Knot radius is a custom value passed up the modifier stack bytySplinesobjects, based on originating particle radii. This option will not work if this modifier is assigned to a default 3ds Max shape.X/Y/Z: the radius of the knot along the given axis will be the multiplier.XYZ: the radius of the longest knot axis will be the multiplier.Multiply by curve along spline: when enabled, spline extrusions will be multiplied by the specified curve value, mapped to the length of each subspline.Segments: the number of segments to generate along the extrusion.Cap start: faces will be generated on the bottom of closed extruded splines.Cap end: faces will be generated at the top of closed extruded splines.Smooth: extruded faces will be assigned smoothing groups.Real-world map size: assigned UVW coordinates will be relative to the size of the extruded mesh.\n\nAmount: the distance to extrude the splines.\n\nMultiply by knot radius: controls whether the distance of spline extrusions is affected by knot radius. Knot radius is a custom value passed up the modifier stack bytySplinesobjects, based on originating particle radii. This option will not work if this modifier is assigned to a default 3ds Max shape.\n\nX/Y/Z: the radius of the knot along the given axis will be the multiplier.\n\nXYZ: the radius of the longest knot axis will be the multiplier.\n\nMultiply by curve along spline: when enabled, spline extrusions will be multiplied by the specified curve value, mapped to the length of each subspline.\n\nSegments: the number of segments to generate along the extrusion.\n\nCap start: faces will be generated on the bottom of closed extruded splines.\n\nCap end: faces will be generated at the top of closed extruded splines.\n\nSmooth: extruded faces will be assigned smoothing groups.\n\nReal-world map size: assigned UVW coordinates will be relative to the size of the extruded mesh.",
+      "params": [
+        "Cap start",
+        "Real-world map size",
+        "Amount",
+        "Smooth",
+        "X/Y/Z",
+        "XYZ",
+        "Segments",
+        "Multiply by curve along spline",
+        "Multiply by knot radius",
+        "Cap end"
+      ]
+    },
+    {
+      "heading": "Direction",
+      "level": "h4",
+      "anchor": "direction",
+      "content": "Shape normal: the direction of the extrusion will be a vector perpendicular to the spline’s flattened knots.\n\nShape normal mode uses a fast normal calculation method that may not be accurate for splines whose knots do not all lie on a common plane.\n\nVector: the direction of the extrusion will be a user-specified vector.Nearest surface normal: the direction of the extrusion will be the nearest surface normal on the nearest mesh to each input spline knot.Objects: the list of input objects whose distance to spline knots will be measured.\n\nVector: the direction of the extrusion will be a user-specified vector.\n\nNearest surface normal: the direction of the extrusion will be the nearest surface normal on the nearest mesh to each input spline knot.\n\nObjects: the list of input objects whose distance to spline knots will be measured.\n\nCapping options are not available when “nearest surface normal” direction mode is activated.\n\nMesh Rollout",
+      "params": [
+        "Shape normal",
+        "Objects",
+        "Nearest surface normal",
+        "Vector"
+      ]
+    },
+    {
+      "heading": "Mesh Rollout",
+      "level": "h2",
+      "anchor": "mesh-rollout",
+      "content": "Mesh list: the list of input meshes that will be randomly selected and extruded along input splines.",
+      "params": [
+        "Mesh list"
+      ]
+    },
+    {
+      "heading": "Mesh distribution",
+      "level": "h4",
+      "anchor": "mesh-distribution",
+      "content": "Random (mat ID is seed): when this mode is selected, meshes will be chosen for a spline at random, by using the material ID assigned to the spline as the random seed.Uniform (mat ID is index): when this mode is selected, meshes will be chosen for a spline in order, using the material ID assigned to the spline as the specified index. For example, a spline with a material ID of 3 will be assigned the 3rd mesh in the list. Index values will wrap around if they are greater than the total number of meshes in the list.\n\nRandom (mat ID is seed): when this mode is selected, meshes will be chosen for a spline at random, by using the material ID assigned to the spline as the random seed.\n\nUniform (mat ID is index): when this mode is selected, meshes will be chosen for a spline in order, using the material ID assigned to the spline as the specified index. For example, a spline with a material ID of 3 will be assigned the 3rd mesh in the list. Index values will wrap around if they are greater than the total number of meshes in the list.",
+      "params": [
+        "Random (mat ID is seed)",
+        "Uniform (mat ID is index)"
+      ]
+    },
+    {
+      "heading": "Stretch mode",
+      "level": "h4",
+      "anchor": "stretch-mode",
+      "content": "Mesh bounds: the “stretch” parameter in the Spline Mesher rollout will act as a multiplier on the bounds of the input mesh. A value of 100 will stretch the input mesh to its default length.Spline length: the “stretch” parameter in the Spline Mesher rollout will act as a multiplier on the length of the input spline. A value of 100 will stretch the input mesh to the length of the spline.\n\nMesh bounds: the “stretch” parameter in the Spline Mesher rollout will act as a multiplier on the bounds of the input mesh. A value of 100 will stretch the input mesh to its default length.\n\nSpline length: the “stretch” parameter in the Spline Mesher rollout will act as a multiplier on the length of the input spline. A value of 100 will stretch the input mesh to the length of the spline.\n\nNo repetition: mesh will be stretched along spline a single time.Repeat to fit: mesh will be stretched along spline the optimal number of times, given the spline’s length divided by its length.Repeat N times: mesh will be stretched the specified number of times along spline.\n\nNo repetition: mesh will be stretched along spline a single time.\n\nRepeat to fit: mesh will be stretched along spline the optimal number of times, given the spline’s length divided by its length.\n\nRepeat N times: mesh will be stretched the specified number of times along spline.",
+      "params": [
+        "No repetition",
+        "Mesh bounds",
+        "Repeat to fit",
+        "Spline length",
+        "Repeat N times"
+      ]
+    },
+    {
+      "heading": "Offset along spline",
+      "level": "h4",
+      "anchor": "offset-along-spline",
+      "content": "Applies an offset to the input mesh’s position along the length of the spline.\n\nPercent: the mesh will be offset by a percentage of the spline’s overall length.Distance: the mesh will be offset by an absolute value along the spline’s overall length.Variation %: the per-particle percentage of variation to apply.\n\nPercent: the mesh will be offset by a percentage of the spline’s overall length.\n\nDistance: the mesh will be offset by an absolute value along the spline’s overall length.",
+      "params": [
+        "Distance",
+        "Percent"
+      ]
+    },
+    {
+      "heading": "Axis",
+      "level": "h4",
+      "anchor": "axis",
+      "content": "X/Y/Z: the axis used to orient the input mesh along the spline.Flip: flips the orientation axis.Center pivot: input meshes will be deformed along their center, rather than their default pivot.\n\nX/Y/Z: the axis used to orient the input mesh along the spline.\n\nFlip: flips the orientation axis.\n\nCenter pivot: input meshes will be deformed along their center, rather than their default pivot.",
+      "params": [
+        "X/Y/Z",
+        "Center pivot",
+        "Flip"
+      ]
+    },
+    {
+      "heading": "Material ID",
+      "level": "h4",
+      "anchor": "material-id",
+      "content": "Inherit Material ID: input meshes will inherit the material ID of their spline.",
+      "params": [
+        "Inherit Material ID"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nStraight Skeleton Settings Rollout",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Straight Skeleton Settings Rollout",
+      "level": "h2",
+      "anchor": "straight-skeleton-settings-rollout",
+      "content": "Limit inset: when enabled, the distance the spline will be extruded towards its straight skeleton will be limited to this value.Variation %: the per-particle percentage of variation to apply.Height: the distance along the spline’s normal to extrude faces towards the straight skeleton.Slope %: the extrusion height for any given vertex will be equal to the distance between it and its originating spline edge, multiplied by this value.Variation %: the per-particle percentage of variation to apply.Mat ID: the material ID to assign to generated faces.UVW scale: a scale multiplier to apply to generated UVW coordinates.Normalize UVWs: when enabled, UVWs (with a scale of 1.0) will be scaled from world-space to fit a UVW range of 0-1. When disabled, UVW coordinates will correspond to the world-space scale of generated meshes.\n\nLimit inset: when enabled, the distance the spline will be extruded towards its straight skeleton will be limited to this value.\n\nHeight: the distance along the spline’s normal to extrude faces towards the straight skeleton.\n\nSlope %: the extrusion height for any given vertex will be equal to the distance between it and its originating spline edge, multiplied by this value.\n\nMat ID: the material ID to assign to generated faces.\n\nUVW scale: a scale multiplier to apply to generated UVW coordinates.\n\nNormalize UVWs: when enabled, UVWs (with a scale of 1.0) will be scaled from world-space to fit a UVW range of 0-1. When disabled, UVW coordinates will correspond to the world-space scale of generated meshes.\n\nWhen generating meshes across multiple closed splines, disabling “normalize UVWs” will prevent each individual mesh from having its UVWs scaled differently. However, more extreme UVW scale values will be required to adjust UVW coordinate scaling from world-space to typical UVW-space ranges.",
+      "params": [
+        "UVW scale",
+        "Limit inset",
+        "Height",
+        "Mat ID",
+        "Normalize UVWs",
+        "Slope %"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Gables",
+      "level": "h4",
+      "anchor": "gables",
+      "content": "Preserve gables: when enabled, edges matching the specified gable thresholds will be extruded upwards, rather than along their slope.Min/Max length: edges will be marked for gable extrusions when their length is between these threshold values.Corner thresh:edges adjacent to candidate gable edges must be angled 90 degrees (+/- this corner threshold value) to be marked for gable extrusions.Mat ID: the material ID to assign to the front of gable faces.\n\nPreserve gables: when enabled, edges matching the specified gable thresholds will be extruded upwards, rather than along their slope.\n\nMin/Max length: edges will be marked for gable extrusions when their length is between these threshold values.\n\nCorner thresh:edges adjacent to candidate gable edges must be angled 90 degrees (+/- this corner threshold value) to be marked for gable extrusions.\n\nMat ID: the material ID to assign to the front of gable faces.\n\nMesh/Tube Settings Rollout",
+      "params": [
+        "Preserve gables",
+        "Corner thresh",
+        "Mat ID",
+        "Min/Max length"
+      ]
+    },
+    {
+      "heading": "Mesh/Tube Settings Rollout",
+      "level": "h2",
+      "anchor": "mesh-tube-settings-rollout",
+      "content": "Stretch %: controls the maximum percent along splines to stretch geometry. Animating this value allows you to animate the length of an extrusion along the spline.Squash: squashes the extrusion along a vector that is perpendicular to each spline segment.Offset: offsets the extrusion along a vector that is perpendicular to each spline segment.Rotation: rotates the extrusion along each spline segment’s local axis.Rotation offset: controls the starting point along the spline after which rotation values will take effect.Twist: controls the amount of twist that will be applied to successive geometry cross sections along the length of the spline.Twist offset: controls the starting point along the spline after which twist values will take effect.Normalize twist: controls whether the amount of twist applied is dependent on the length of the spline.Reverse: controls whether the ordering of knots along a spline is reversed.\n\nStretch %: controls the maximum percent along splines to stretch geometry. Animating this value allows you to animate the length of an extrusion along the spline.\n\nSquash: squashes the extrusion along a vector that is perpendicular to each spline segment.\n\nOffset: offsets the extrusion along a vector that is perpendicular to each spline segment.\n\nRotation: rotates the extrusion along each spline segment’s local axis.\n\nRotation offset: controls the starting point along the spline after which rotation values will take effect.\n\nTwist: controls the amount of twist that will be applied to successive geometry cross sections along the length of the spline.\n\nTwist offset: controls the starting point along the spline after which twist values will take effect.\n\nNormalize twist: controls whether the amount of twist applied is dependent on the length of the spline.\n\nReverse: controls whether the ordering of knots along a spline is reversed.",
+      "params": [
+        "Twist",
+        "Stretch %",
+        "Normalize twist",
+        "Rotation offset",
+        "Rotation",
+        "Twist offset",
+        "Squash",
+        "Reverse",
+        "Offset"
+      ]
+    },
+    {
+      "heading": "Orientation",
+      "level": "h4",
+      "anchor": "orientation",
+      "content": "From spline: the orientation of geometry cross sections along the spline will be dynamically determined by the spline’s topology.Sharp mitering: the corners of spline segments will be mitered in a way that attempts to maintain the angle between the segments.From knots: the orientation of geometry cross sections along the spline will be determined by its knots. This option will not work if this modifier is assigned to a default 3ds max shape.Forward X/Y/Z: controls which axis of the source TM will be the forward vector of the orientation matrix.Up enabled/X/Y/Z: controls whether the up axis of the orientation matrix will be overridden with a specified axis of the source TM.\n\nFrom spline: the orientation of geometry cross sections along the spline will be dynamically determined by the spline’s topology.\n\nSharp mitering: the corners of spline segments will be mitered in a way that attempts to maintain the angle between the segments.\n\nFrom knots: the orientation of geometry cross sections along the spline will be determined by its knots. This option will not work if this modifier is assigned to a default 3ds max shape.\n\nForward X/Y/Z: controls which axis of the source TM will be the forward vector of the orientation matrix.\n\nUp enabled/X/Y/Z: controls whether the up axis of the orientation matrix will be overridden with a specified axis of the source TM.",
+      "params": [
+        "Sharp mitering",
+        "Forward X/Y/Z",
+        "Up enabled/X/Y/Z",
+        "From spline",
+        "From knots"
+      ]
+    },
+    {
+      "heading": "Radius Rollout",
+      "level": "h3",
+      "anchor": "radius-rollout",
+      "content": "Radius: controls the overall radius of spline extrusions.Multiply by knot radius: controls whether the radius of spline extrusions is affected by knot radius. Knot radius is a custom value passed up the modifier stack bytySplinesobjects, based on originating particle radii. This option will not work if this modifier is assigned to a default 3ds Max shape.\n\nRadius: controls the overall radius of spline extrusions.\n\nMultiply by knot radius: controls whether the radius of spline extrusions is affected by knot radius. Knot radius is a custom value passed up the modifier stack bytySplinesobjects, based on originating particle radii. This option will not work if this modifier is assigned to a default 3ds Max shape.\n\nX/Y/Z: the radius of the knot along the given axis will be the multiplier.XYZ: the radius of the longest knot axis will be the multiplier.\n\nX/Y/Z: the radius of the knot along the given axis will be the multiplier.\n\nXYZ: the radius of the longest knot axis will be the multiplier.",
+      "params": [
+        "X/Y/Z",
+        "Radius",
+        "Multiply by knot radius",
+        "XYZ"
+      ]
+    },
+    {
+      "heading": "Variable radius",
+      "level": "h4",
+      "anchor": "variable-radius",
+      "content": "Multiply radius by length: controls whether the radius of spline extrusions will be affected by the overall length of each spline.Length threshold: controls the reference length that each spline length will be compared against, when determining how to multiply its extrusion radii.Min mult: the minimum multiplier value for extrusion radii. Increase this value to prevent variable-radius spline extrusions from becoming too thin.Max mult: the maximum multiplier value for extrusion radii. Decrease this value to prevent variable-radius spline extrusions from becoming too thick.Invert: inverts the variable-radius operation.\n\nMultiply radius by length: controls whether the radius of spline extrusions will be affected by the overall length of each spline.\n\nLength threshold: controls the reference length that each spline length will be compared against, when determining how to multiply its extrusion radii.\n\nMin mult: the minimum multiplier value for extrusion radii. Increase this value to prevent variable-radius spline extrusions from becoming too thin.\n\nMax mult: the maximum multiplier value for extrusion radii. Decrease this value to prevent variable-radius spline extrusions from becoming too thick.\n\nInvert: inverts the variable-radius operation.",
+      "params": [
+        "Length threshold",
+        "Invert",
+        "Min mult",
+        "Max mult",
+        "Multiply radius by length"
+      ]
+    },
+    {
+      "heading": "Taper",
+      "level": "h4",
+      "anchor": "taper",
+      "content": "Taper by overall length: the overall length of the spline will determine the taper interpolation.Taper from start: the taper will start from the specified min distance from the start of the spline, and be interpolated up to the specified max distance from the start of the spline.Taper from end: the taper will start from the specified min distance from the end of the spline, and be interpolated up to the specified max distance from the end of the spline.Min/max: the minimum/maximum length along the spline along which the taper will be interpolated.Taper by age: the age of the knots will determine the taper interpolation.Linear: linear taper is a radius multiplier applied evenly along the spline.Curve: curve taper is a radius multiplier applied by projecting a curve along the spline.Amount: the amount of linear taper to apply.X/Y/XY: controls the taper axis.Symmetrical taper: enabling this option tapers splines from the center outwards, instead of from end-to-end.Taper closed splines: when enabled, closed splines will be tapered. When disabled, only open splines will be tapered.\n\nTaper by overall length: the overall length of the spline will determine the taper interpolation.\n\nTaper from start: the taper will start from the specified min distance from the start of the spline, and be interpolated up to the specified max distance from the start of the spline.\n\nTaper from end: the taper will start from the specified min distance from the end of the spline, and be interpolated up to the specified max distance from the end of the spline.\n\nMin/max: the minimum/maximum length along the spline along which the taper will be interpolated.\n\nTaper by age: the age of the knots will determine the taper interpolation.\n\nLinear: linear taper is a radius multiplier applied evenly along the spline.\n\nCurve: curve taper is a radius multiplier applied by projecting a curve along the spline.\n\nAmount: the amount of linear taper to apply.\n\nX/Y/XY: controls the taper axis.\n\nSymmetrical taper: enabling this option tapers splines from the center outwards, instead of from end-to-end.\n\nTaper closed splines: when enabled, closed splines will be tapered. When disabled, only open splines will be tapered.\n\nTrails Rollout",
+      "params": [
+        "Taper by overall length",
+        "X/Y/XY",
+        "Taper closed splines",
+        "Amount",
+        "Linear",
+        "Min/max",
+        "Symmetrical taper",
+        "Taper by age",
+        "Taper from end",
+        "Curve",
+        "Taper from start"
+      ]
+    },
+    {
+      "heading": "Trails Rollout",
+      "level": "h2",
+      "anchor": "trails-rollout",
+      "content": "Duration: the number of frames that the trails will lag behind the splines.Steps: the number of times to sample the splines each frame. Higher values increase the smoothless of the trail.Vel. cutoff: the minimum velocity a spline must have in order to generate a trail over a particular frame interval.Vel. thresh: trail lengths will be multiplied by their spline’s velocity (after cutoff is applied) divided by this value. Increasing this value means splines will have to move faster in order to generate longer trails.Cull static samples: when enabled, mesh samples with no velocity will not contribute to the overall trail mesh. Disable this settings to prevent topology changes between static and dynamic frames on a mesh with static topology.UVW channel: the map channel where trail UVWs will be saved. Mapping coordinates taken from source splines in other channels will be preserved.Anchor UVWs: when selected, the length of trail UVW U-values will be independent of trail length (instead, relative to a specified length threshold).Thresh: the explicit length that trail UVW U-values will be relative to.Stretch UVWs: when selected, trail UVW U-values will span the relative length of the trail.Normalize: when enabled, trail UVW values will be evenly spread along the length/width of the trail. When disabled, trail UVW values will be relative to the placement of the spline knots and time samples of the trail, resulting in more distortion/stretching.\n\nDuration: the number of frames that the trails will lag behind the splines.\n\nSteps: the number of times to sample the splines each frame. Higher values increase the smoothless of the trail.\n\nVel. cutoff: the minimum velocity a spline must have in order to generate a trail over a particular frame interval.\n\nVel. thresh: trail lengths will be multiplied by their spline’s velocity (after cutoff is applied) divided by this value. Increasing this value means splines will have to move faster in order to generate longer trails.\n\nCull static samples: when enabled, mesh samples with no velocity will not contribute to the overall trail mesh. Disable this settings to prevent topology changes between static and dynamic frames on a mesh with static topology.\n\nUVW channel: the map channel where trail UVWs will be saved. Mapping coordinates taken from source splines in other channels will be preserved.\n\nAnchor UVWs: when selected, the length of trail UVW U-values will be independent of trail length (instead, relative to a specified length threshold).\n\nThresh: the explicit length that trail UVW U-values will be relative to.\n\nStretch UVWs: when selected, trail UVW U-values will span the relative length of the trail.\n\nNormalize: when enabled, trail UVW values will be evenly spread along the length/width of the trail. When disabled, trail UVW values will be relative to the placement of the spline knots and time samples of the trail, resulting in more distortion/stretching.\n\nTube Rollout",
+      "params": [
+        "Stretch UVWs",
+        "Normalize",
+        "Cull static samples",
+        "Steps",
+        "Duration",
+        "Thresh",
+        "Vel. cutoff",
+        "Anchor UVWs",
+        "Vel. thresh",
+        "UVW channel"
+      ]
+    },
+    {
+      "heading": "Tube Rollout",
+      "level": "h2",
+      "anchor": "tube-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Sides",
+      "level": "h4",
+      "anchor": "sides",
+      "content": "Default: the default number of side faces created around a spline extrusion. Increasing this value increases the resulting mesh resolution.Render: enabling this override allows you to control the number of side faces created around a spline extrusion at render time.\n\nDefault: the default number of side faces created around a spline extrusion. Increasing this value increases the resulting mesh resolution.\n\nRender: enabling this override allows you to control the number of side faces created around a spline extrusion at render time.",
+      "params": [
+        "Default",
+        "Render"
+      ]
+    },
+    {
+      "heading": "Materials",
+      "level": "h4",
+      "anchor": "materials",
+      "content": "Override side matID: controls whether side faces will receive a custom material ID.Side ID: controls the material ID value for side faces.Override cap matID: controls whether cap faces will receive a custom material ID.Cap ID: controls the material ID value for cap faces.\n\nOverride side matID: controls whether side faces will receive a custom material ID.\n\nSide ID: controls the material ID value for side faces.\n\nOverride cap matID: controls whether cap faces will receive a custom material ID.\n\nCap ID: controls the material ID value for cap faces.\n\nCap ends: controls whether the ends of an extrusion are capped with faces.\n\nUV Coordinates Rollout",
+      "params": [
+        "Cap ID",
+        "Side ID",
+        "Cap ends",
+        "Override cap matID",
+        "Override side matID"
+      ]
+    },
+    {
+      "heading": "UV Coordinates Rollout",
+      "level": "h2",
+      "anchor": "uv-coordinates-rollout",
+      "content": "Assign UVs: (mesh mode only) controls whether UV overrides will be applied.Normalize UVs: controls whether UVW coordinates assigned to a vertex are relative to that vertex’s location along the spline.\n\nAssign UVs: (mesh mode only) controls whether UV overrides will be applied.\n\nNormalize UVs: controls whether UVW coordinates assigned to a vertex are relative to that vertex’s location along the spline.\n\nIf “normalize UVs” is enabled, texture vertex V-coordinates will have a value between 0.0 and 1.0, depending on how far along each spline they are. If “normalize UVs” is disabled, texture vertex V-coordinates will have a value relative to the number of edge segments along the subspline they are. For example, in “Tube” mode a vertex placed along the spline at the 6th edge segment will have a V-coordinate value of 6.0.\n\nMap channel: (mesh mode only) controls the mapping channel that UV overrides will be applied to.",
+      "params": [
+        "Assign UVs",
+        "Normalize UVs",
+        "Map channel"
+      ]
+    },
+    {
+      "heading": "U Coordinates",
+      "level": "h4",
+      "anchor": "u-coordinates",
+      "content": "U Coordinate settings are only available in “Tube” mode.\n\nMultiplier: a multiplier applied to U coordinate values.Variation %: the per-particle percentage of variation to apply.Offset: an overall offset applied to U coordinate values.Variation %: the per-particle percentage of variation to apply.\n\nMultiplier: a multiplier applied to U coordinate values.\n\nOffset: an overall offset applied to U coordinate values.",
+      "params": [
+        "Offset",
+        "Multiplier"
+      ]
+    },
+    {
+      "heading": "V Coordinates",
+      "level": "h4",
+      "anchor": "v-coordinates",
+      "content": "Multiplier: a multiplier applied to V coordinate values.Variation %: the per-particle percentage of variation to apply.Offset: an overall offset applied to V coordinate values.Variation %: the per-particle percentage of variation to apply.Seed: the value which will seed the various randomization functions.\n\nMultiplier: a multiplier applied to V coordinate values.\n\nOffset: an overall offset applied to V coordinate values.\n\nSeed: the value which will seed the various randomization functions.",
+      "params": [
+        "Offset",
+        "Multiplier",
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:38Z"
+}

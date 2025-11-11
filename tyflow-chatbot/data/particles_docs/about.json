@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/object/about",
+  "title": "About Rollout",
+  "category": "Particles_Docs",
+  "operator": "About Rollout",
+  "sections": [
+    {
+      "heading": "About Rollout",
+      "level": "h2",
+      "anchor": "about-rollout",
+      "content": "The About rollout contains copyright information, a link to Tyson Ibele’s website, as well as third party license information.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:59Z"
+}

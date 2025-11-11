@@ -1,0 +1,73 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyFaceExtrude",
+  "title": "tyFaceExtrudeModifier",
+  "category": "Modifiers",
+  "operator": "tyFaceExtrudeModifier",
+  "sections": [
+    {
+      "heading": "tyFaceExtrudeModifier",
+      "level": "h2",
+      "anchor": "tyfaceextrude-modifier",
+      "content": "ThetyFaceExtrudemodifier allows you to procedurally extrude and scale mesh faces, using vertex soft selection values to control the extrusion/scale amounts.",
+      "params": []
+    },
+    {
+      "heading": "Operate on",
+      "level": "h4",
+      "anchor": "operate-on",
+      "content": "Triangles/Polygons: controls which mesh elements will be extruded.\n\nPolygons are groups of faces whose adjacent edges are invisible.\n\nUse selection: controls whether extrusion/scale amounts will be based on the mesh’s current vertex selection.\n\nWindow: all vertices of a face must be selected in order for the face to be extruded.Crossingat least one vertex of the face must be selected in order for the face to be extruded.Select affected faces: when enabled, affected faces (faces that are extruded or scaled) will be selected.Select new faces: when enabled, new faces (faces created during extrusion process) will be selected.\n\nWindow: all vertices of a face must be selected in order for the face to be extruded.\n\nCrossingat least one vertex of the face must be selected in order for the face to be extruded.\n\nSelect affected faces: when enabled, affected faces (faces that are extruded or scaled) will be selected.\n\nSelect new faces: when enabled, new faces (faces created during extrusion process) will be selected.",
+      "params": [
+        "Triangles/Polygons",
+        "Select affected faces",
+        "Select new faces",
+        "Use selection",
+        "Window"
+      ]
+    },
+    {
+      "heading": "Face Extrude",
+      "level": "h4",
+      "anchor": "face-extrude",
+      "content": "Amount: the amount to extrude applicable faces.Variation %: the per-particle percentage of variation to apply.Along face normals: extruded face vertices will be moved along the direction of the extruded face normal.Along face verts: extruded face vertices will be moved along the direction of the extruded face vertex normals.Selection affect curve: soft selection values will be interpolated along this curve.Relative to area: the length of the extrusion will be relative to the area of the face.Area: the target face area.Invert: inverts the effect of the face area multiplier.\n\nAmount: the amount to extrude applicable faces.\n\nAlong face normals: extruded face vertices will be moved along the direction of the extruded face normal.\n\nAlong face verts: extruded face vertices will be moved along the direction of the extruded face vertex normals.\n\nSelection affect curve: soft selection values will be interpolated along this curve.\n\nRelative to area: the length of the extrusion will be relative to the area of the face.\n\nArea: the target face area.\n\nInvert: inverts the effect of the face area multiplier.\n\nAverage: the average selection weight of a face’s vertices will be used to control the extrude amount.Per-Vertex: the extrude amount of each face’s vertex will be individually controlled by the vertex’s selection weight.\n\nAverage: the average selection weight of a face’s vertices will be used to control the extrude amount.\n\nPer-Vertex: the extrude amount of each face’s vertex will be individually controlled by the vertex’s selection weight.\n\nCount: the number of extra segments to add to the height of each extrusion.Jitter %: the amount of random jitter to displace each segment by, relative to its neighboring segments.\n\nCount: the number of extra segments to add to the height of each extrusion.\n\nJitter %: the amount of random jitter to displace each segment by, relative to its neighboring segments.",
+      "params": [
+        "Jitter %",
+        "Count",
+        "Amount",
+        "Invert",
+        "Relative to area",
+        "Per-Vertex",
+        "Selection affect curve",
+        "Average",
+        "Area",
+        "Along face normals",
+        "Along face verts"
+      ]
+    },
+    {
+      "heading": "Face Scale",
+      "level": "h4",
+      "anchor": "face-scale",
+      "content": "Scale %: the amount to scale extruded faces, tapering the extrusion up to its maximum height.Variation %: the per-particle percentage of variation to apply.Segment interpolation curve: controls how each segment along the extrusion’s height will conform to the linear taper towards the top of the extrusion (the taper controlled by the “scale %” value).Selection affect curve: soft selection values will be interpolated along this curve.Relative to area: the amount to scale will be relative to the area of the face.Area: the target face area.Invert: inverts the effect of the face area multiplier.\n\nScale %: the amount to scale extruded faces, tapering the extrusion up to its maximum height.\n\nSegment interpolation curve: controls how each segment along the extrusion’s height will conform to the linear taper towards the top of the extrusion (the taper controlled by the “scale %” value).\n\nSelection affect curve: soft selection values will be interpolated along this curve.\n\nRelative to area: the amount to scale will be relative to the area of the face.\n\nArea: the target face area.\n\nInvert: inverts the effect of the face area multiplier.\n\nAverage: the average selection weight of a face’s vertices will be used to control the scale amount.Per-Vertex: the scale amount of each face’s vertex will be individually controlled by the vertex’s selection weight.\n\nAverage: the average selection weight of a face’s vertices will be used to control the scale amount.\n\nPer-Vertex: the scale amount of each face’s vertex will be individually controlled by the vertex’s selection weight.",
+      "params": [
+        "Segment interpolation curve",
+        "Invert",
+        "Relative to area",
+        "Selection affect curve",
+        "Average",
+        "Area",
+        "Scale %",
+        "Per-Vertex"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:04Z"
+}

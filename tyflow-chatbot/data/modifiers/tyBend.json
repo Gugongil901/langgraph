@@ -1,0 +1,68 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyBend",
+  "title": "tyBendModifier",
+  "category": "Modifiers",
+  "operator": "tyBendModifier",
+  "sections": [
+    {
+      "heading": "tyBendModifier",
+      "level": "h2",
+      "anchor": "tybend-modifier",
+      "content": "ThetyBendmodifier is an alternative to 3ds Max’s built-in Bend modifier, that has options for bend segmentation so that you can bend a mesh along any axis and get a smooth/sharp crease that is not dependent on underlying topology.\n\nThetyBendmodifier is ideal for creating folding effects, like procedural origami.",
+      "params": []
+    },
+    {
+      "heading": "tyBend Rollout",
+      "level": "h3",
+      "anchor": "tybend-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Bend",
+      "level": "h4",
+      "anchor": "bend",
+      "content": "Angle: the amount (in degrees) to bend around the specified bend axis.Direction: the amount (in degrees) to rotate the bend transform around the specified bend axis.Use vertex selection: controls whether or not underlying vertex selections will affect the bend amount.\n\nAngle: the amount (in degrees) to bend around the specified bend axis.\n\nDirection: the amount (in degrees) to rotate the bend transform around the specified bend axis.\n\nUse vertex selection: controls whether or not underlying vertex selections will affect the bend amount.",
+      "params": [
+        "Direction",
+        "Angle",
+        "Use vertex selection"
+      ]
+    },
+    {
+      "heading": "Bend Axis",
+      "level": "h4",
+      "anchor": "bend-axis",
+      "content": "X/Y/Z: the axis (of the bend gizmo) around which to bend geometry.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Limits",
+      "level": "h4",
+      "anchor": "limits",
+      "content": "Limit effect: controls whether the bend deformation will be limited to a certain distance above/below the bend axis.Upper limit: the amount to limit the bend deformation above the bend axis.Lower limit: the amount to limit the bend deformation below the bend axis.Bend left/right/back/front: these additional limits allow you to control whether bend deformations will happen on either sides of the two auxiliary axes of the bend transform.\n\nLimit effect: controls whether the bend deformation will be limited to a certain distance above/below the bend axis.\n\nUpper limit: the amount to limit the bend deformation above the bend axis.\n\nLower limit: the amount to limit the bend deformation below the bend axis.\n\nBend left/right/back/front: these additional limits allow you to control whether bend deformations will happen on either sides of the two auxiliary axes of the bend transform.",
+      "params": [
+        "Lower limit",
+        "Bend left/right/back/front",
+        "Limit effect",
+        "Upper limit"
+      ]
+    },
+    {
+      "heading": "Bend subdivision",
+      "level": "h4",
+      "anchor": "bend-subdivision",
+      "content": "Segments: the number of segments to generate parallel to the slice plane.Render: enables a render-only segment value, for increasing/decreasing segment count at render-time.Weld seams: controls whether the vertices on the open edges of the segment slices will be welded together.Optimize slices edges: controls whether the edges of sliced polygons will be optimized. Enabling this can reduce the vertex/face count of the result, but may prevent some areas of the slice edges from being welded, since adjacent face vertex locations may not match after optimization.No subdiv when angle=0: when enabled, the mesh will only be subdivided when the bend angle is not equal to 0.\n\nSegments: the number of segments to generate parallel to the slice plane.\n\nRender: enables a render-only segment value, for increasing/decreasing segment count at render-time.\n\nWeld seams: controls whether the vertices on the open edges of the segment slices will be welded together.\n\nOptimize slices edges: controls whether the edges of sliced polygons will be optimized. Enabling this can reduce the vertex/face count of the result, but may prevent some areas of the slice edges from being welded, since adjacent face vertex locations may not match after optimization.\n\nNo subdiv when angle=0: when enabled, the mesh will only be subdivided when the bend angle is not equal to 0.",
+      "params": [
+        "Weld seams",
+        "Segments",
+        "Render",
+        "Optimize slices edges",
+        "No subdiv when angle=0"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:38Z"
+}

@@ -1,0 +1,22 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_display",
+  "title": "Fracture displayRollout",
+  "category": "Modifiers",
+  "operator": "Fracture displayRollout",
+  "sections": [
+    {
+      "heading": "Fracture displayRollout",
+      "level": "h2",
+      "anchor": "fracture-display-rollout",
+      "content": "The Fracture display rollout offers controls for how intermediate fracture data is displayed in the viewport. This data can be useful to visualize aspects of the procedural multifracture workflow.\n\nFracture points: when enabled, individual points used to generate fracture meshes (ex: points used to generate Voronoi cells) will be displayed in the viewport.Fracture planes: when enabled, planes used to place and orient fracture meshes (ex: gizmo-aligned planes used to place planar fracture meshes) will be displayed in the viewport.Fracture patterns: when enabled, radial/texmap patters will be displayed in the viewport, aligned to the fracture planes used to place them.Fracture meshes: when enabled, generated fracture meshes will be displayed in the viewport.Fracture intersections: when enabled, surface intersections between input meshes and fracture meshes will be displayed in the viewport.\n\nFracture points: when enabled, individual points used to generate fracture meshes (ex: points used to generate Voronoi cells) will be displayed in the viewport.\n\nFracture planes: when enabled, planes used to place and orient fracture meshes (ex: gizmo-aligned planes used to place planar fracture meshes) will be displayed in the viewport.\n\nFracture patterns: when enabled, radial/texmap patters will be displayed in the viewport, aligned to the fracture planes used to place them.\n\nFracture meshes: when enabled, generated fracture meshes will be displayed in the viewport.\n\nFracture intersections: when enabled, surface intersections between input meshes and fracture meshes will be displayed in the viewport.",
+      "params": [
+        "Fracture planes",
+        "Fracture patterns",
+        "Fracture meshes",
+        "Fracture intersections",
+        "Fracture points"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:26Z"
+}

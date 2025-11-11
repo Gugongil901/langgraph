@@ -1,0 +1,42 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMeshRepair",
+  "title": "tyMeshRepairModifier",
+  "category": "Modifiers",
+  "operator": "tyMeshRepairModifier",
+  "sections": [
+    {
+      "heading": "tyMeshRepairModifier",
+      "level": "h2",
+      "anchor": "tymeshrepair-modifier",
+      "content": "ThetyMeshRepairmodifier can be used to fix many common topological issues present in meshes.",
+      "params": []
+    },
+    {
+      "heading": "Mesh analysis",
+      "level": "h4",
+      "anchor": "mesh-analysis",
+      "content": "Analyze before repair: when enabled, a mesh analysis will occur before any issues are fixed, and the results of the analysis will be printed in the UI.\n\nIf any mesh degeneracies are detected during analysis, an analysis of face winding order/orientation will not occur, because the methods used to determine winding order can fail if mesh degeneracies are present.",
+      "params": [
+        "Analyze before repair"
+      ]
+    },
+    {
+      "heading": "Repair",
+      "level": "h4",
+      "anchor": "repair",
+      "content": "Remove degenerate faces: when enabled, faces with invalid (out-of-range, duplicate or overlapping) vertex indices will be removed.Remove zero-area faces: when enabled, faces with a zero (or near-zero) area will be removed.Remove degenerate vertices: when enabled, vertices with invalid (NaN) coordinates will be removed.Remove isolated vertices: when enabled, vertices not connected to any faces will be removed.Remove degenerate maps: when enabled, maps with invalid face indices will be removed.Remove explicit normals: when enabled, any explicit normals applied to the mesh will be removed.Unify face winding order: when enabled, adjacent faces that have opposite winding order (clockwise vs counter-clockwise order of vertex indices) will be flipped to match each other. Since mesh normals are related to winding order, this should result in a unification of mesh normals across the surface.\n\nRemove degenerate faces: when enabled, faces with invalid (out-of-range, duplicate or overlapping) vertex indices will be removed.\n\nRemove zero-area faces: when enabled, faces with a zero (or near-zero) area will be removed.\n\nRemove degenerate vertices: when enabled, vertices with invalid (NaN) coordinates will be removed.\n\nRemove isolated vertices: when enabled, vertices not connected to any faces will be removed.\n\nRemove degenerate maps: when enabled, maps with invalid face indices will be removed.\n\nRemove explicit normals: when enabled, any explicit normals applied to the mesh will be removed.\n\nUnify face winding order: when enabled, adjacent faces that have opposite winding order (clockwise vs counter-clockwise order of vertex indices) will be flipped to match each other. Since mesh normals are related to winding order, this should result in a unification of mesh normals across the surface.\n\nFor meshes with really terrible topology (edges with more than two adjacent faces connecting many elements, large numbers of adjacent faces with opposing winding order in localized groups, etc), it may seem as though “unify face winding order” will fail to properly fix winding order issues. However, a mesh that is irreparable is typically a mesh whose front and back faces exist in an ambiguous state, due to topological loops formed by groups of faces with a matching winding order being connected in multiple places to other faces with an opposing winding order. In these scenarios, the flood-fill algorithm used to correct winding order issues cannot resolve all those issues in a visually-consistent manner, and it will still be up to the artist to manually flip the winding order of remaining problem faces.\n\nUnify surface orientation: when enabled, surfaces that are inside-out will have all of their face winding orders flipped. This will result in the normals of the surface being flipped as well.\n\nThe surface unification algorithm uses a per-element raycasting approach to determine if a mesh is inside out. For elements in a mesh that are closed and not self-intersecting, this should have a 100% success rate. For more degenerate meshes (open, self-intersecting), the failure rate of this method can be higher.\n\nSplit non-manifold elements: when enabled, non-manifold elements (elements connected by an edge that has 3 or more adjacent faces) will be separated from each other.\n\nA simple example of a mesh with a non-manifold element would be a mesh composed of two cubes that are connected along a single edge. The connection edge will have 4 adjacent faces, instead of 2.",
+      "params": [
+        "Remove degenerate maps",
+        "Unify surface orientation",
+        "Unify face winding order",
+        "Remove degenerate faces",
+        "Remove isolated vertices",
+        "Remove degenerate vertices",
+        "Remove explicit normals",
+        "Remove zero-area faces",
+        "Split non-manifold elements"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:16Z"
+}

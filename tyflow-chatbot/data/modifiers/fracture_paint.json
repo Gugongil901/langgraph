@@ -1,0 +1,47 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_paint",
+  "title": "Fracture paintRollout",
+  "category": "Modifiers",
+  "operator": "Fracture paintRollout",
+  "sections": [
+    {
+      "heading": "Fracture paintRollout",
+      "level": "h2",
+      "anchor": "fracture-paint-rollout",
+      "content": "The Fracture paint rollout contains parameters for the “fracture paint” fracture mode.\n\nCanvas orientation: controls whether a view-aligned plane will be used for painting, or an axis-aligned plane.",
+      "params": [
+        "Canvas orientation"
+      ]
+    },
+    {
+      "heading": "Stroke segments",
+      "level": "h3",
+      "anchor": "stroke-segments",
+      "content": "Min length: when enabled, stroke segments will be reduced so that the minimum length of any given segment is no less than the specified value.",
+      "params": [
+        "Min length"
+      ]
+    },
+    {
+      "heading": "Stroke meshes",
+      "level": "h3",
+      "anchor": "stroke-meshes",
+      "content": "Iterations: when set to a value greater than 1, the stroke meshes will be duplicated N times (where N is the number of iterations greater than 1), and each iteration of stroke meshes will be assigned a different set of per-vertex noise values, offset by the specified phase variation values.",
+      "params": [
+        "Iterations"
+      ]
+    },
+    {
+      "heading": "Stroke mesh offset",
+      "level": "h4",
+      "anchor": "stroke-mesh-offset",
+      "content": "Amount: controls how much to offset stroke meshes generatedafterthe first iteration (ie, iteration 2 and above, unless symmetrical mode enabled - see below), along their vertex normals.Symmetrical: when enabled, all stroke iterations will be divided into two groups, and each group will be offset in the opposite direction of the other. So if your iteration count is 2 and your offset amount if 1, one stroke mesh will be offset by 0.5 units along its surface normals, and the other by -0.5 units along its surface normals.Noise phase variation: phase variation applied to any extra iterations of stroke meshes that are generated, based on the iterations parameter.\n\nAmount: controls how much to offset stroke meshes generatedafterthe first iteration (ie, iteration 2 and above, unless symmetrical mode enabled - see below), along their vertex normals.\n\nSymmetrical: when enabled, all stroke iterations will be divided into two groups, and each group will be offset in the opposite direction of the other. So if your iteration count is 2 and your offset amount if 1, one stroke mesh will be offset by 0.5 units along its surface normals, and the other by -0.5 units along its surface normals.\n\nNoise phase variation: phase variation applied to any extra iterations of stroke meshes that are generated, based on the iterations parameter.",
+      "params": [
+        "Symmetrical",
+        "Noise phase variation",
+        "Amount"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:41Z"
+}

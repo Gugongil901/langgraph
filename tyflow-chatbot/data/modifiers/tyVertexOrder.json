@@ -1,0 +1,30 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyVertexOrder",
+  "title": "tyVertexOrderModifier",
+  "category": "Modifiers",
+  "operator": "tyVertexOrderModifier",
+  "sections": [
+    {
+      "heading": "tyVertexOrderModifier",
+      "level": "h2",
+      "anchor": "tyvertexorder-modifier",
+      "content": "ThetyVertexOrdermodifier allows you to re-order mesh vertex IDs, based on their relative position to a scene object.",
+      "params": []
+    },
+    {
+      "heading": "Vertex Order",
+      "level": "h4",
+      "anchor": "vertex-order",
+      "content": "Order by vertex proximity: each vertex will get its new ID based on which vertex ID of a specified scene object each vertex is closest to.\n\nThis mode only works when the vertex count between the selected object and the specified scene object are the same.\n\nOrder by material ID: vertices will be ordered based on the material ID value of their nearest face.\n\nWhen Unity imports submeshes from FBX files, it sorts them based on their face and vertex ordering. This makes it difficult to import submeshes in a way that corresponds to their material ID assignments within 3ds Max. By enabling “ordering by material ID” and “sort faces by vertex order”, their imported submesh ordering will correspond exactly to their material ID assignments.\n\nOrder by TM proximity: vertices will be ordered (from closest to furthest) based on their distances to the specified scene object’s transform.Order by UVW proximity: each vertex will get its new ID based on which vertex ID of a specified scene object each vertex is closest to, in UVW space.\n\nOrder by TM proximity: vertices will be ordered (from closest to furthest) based on their distances to the specified scene object’s transform.\n\nOrder by UVW proximity: each vertex will get its new ID based on which vertex ID of a specified scene object each vertex is closest to, in UVW space.\n\nUVW proximity mode only works when the face count between the selected object and the specified scene object are the same.\n\nSort faces by vertex order: when enabled, mesh faces will be sorted from lowest-to-highest face vertex index.Display indices in viewport: when enabled, vertex IDs will be displayed in the viewport.\n\nSort faces by vertex order: when enabled, mesh faces will be sorted from lowest-to-highest face vertex index.\n\nDisplay indices in viewport: when enabled, vertex IDs will be displayed in the viewport.",
+      "params": [
+        "Order by UVW proximity",
+        "Order by TM proximity",
+        "Sort faces by vertex order",
+        "Order by material ID",
+        "Order by vertex proximity",
+        "Display indices in viewport"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:07Z"
+}

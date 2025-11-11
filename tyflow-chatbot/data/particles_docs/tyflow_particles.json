@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles",
+  "title": "tyFlowParticles",
+  "category": "Particles_Docs",
+  "operator": "tyFlowParticles",
+  "sections": [
+    {
+      "heading": "tyFlowParticles",
+      "level": "h2",
+      "anchor": "tyflow-particles",
+      "content": "Click a category in the sidebar for more information about various features.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:14Z"
+}

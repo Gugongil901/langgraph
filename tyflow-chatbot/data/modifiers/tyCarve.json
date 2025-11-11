@@ -1,0 +1,62 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyCarve",
+  "title": "tyCarveModifier",
+  "category": "Modifiers",
+  "operator": "tyCarveModifier",
+  "sections": [
+    {
+      "heading": "tyCarveModifier",
+      "level": "h2",
+      "anchor": "tycarve-modifier",
+      "content": "ThetyCarvemodifier allows you to paint detailed slice patterns onto a mesh, which break up the mesh into concave chunks using CSG operations. The resulting chunks can be input into atyFlowsimulation as particles. When used to simulate destruction, these chunks have much more visual fidelity than the types of chunks created by a voronoi fracture operation.\n\nAs oftyFlow v1.118, thetyCarvemodifier has been fully deprecated. Old scenes using it will still load, but it is now hidden from the modifier list. Users should use thetyMultifracturemodifier (in “paint” mode) instead.",
+      "params": []
+    },
+    {
+      "heading": "Parameters",
+      "level": "h4",
+      "anchor": "parameters",
+      "content": "Carve mesh: enabling this checkbutton causes the modifier to evaluate. To disable modifier evaluation, uncheck this button.Analyze input mesh: analyzes the input mesh (the mesh of the object the modifier is applied to), and returns information about issues in its topology.\n\nCarve mesh: enabling this checkbutton causes the modifier to evaluate. To disable modifier evaluation, uncheck this button.\n\nAnalyze input mesh: analyzes the input mesh (the mesh of the object the modifier is applied to), and returns information about issues in its topology.\n\ntyCarveworks best on closed meshes that contain no self-intersections, coincident faces, degenerate faces, etc. Open meshes or meshes with topological problems can preventtyCarvefrom performing clean cuts.\n\nDraw strokes: enabling this checkbutton will enable stroke drawing in the viewport. Disabling this checkbutton will end the current stroke drawing session. In order to carve up a mesh, you must draw desired slice strokes over it.Plane orientation: controls the orientation of the drawing plane. “View” means slices can be drawn in screen-space. “X/Y/Z” means slices will be drawn in world-space, along the chosen axis.Display draw plane: controls whether the drawing plane is displayed as a visible grid in the viewport, during a stroke drawing session.Print calculation times: controls whether details about the time taken to evaluate the carve are printed to the MAXScript Listener.\n\nDraw strokes: enabling this checkbutton will enable stroke drawing in the viewport. Disabling this checkbutton will end the current stroke drawing session. In order to carve up a mesh, you must draw desired slice strokes over it.\n\nPlane orientation: controls the orientation of the drawing plane. “View” means slices can be drawn in screen-space. “X/Y/Z” means slices will be drawn in world-space, along the chosen axis.\n\nDisplay draw plane: controls whether the drawing plane is displayed as a visible grid in the viewport, during a stroke drawing session.\n\nPrint calculation times: controls whether details about the time taken to evaluate the carve are printed to the MAXScript Listener.",
+      "params": [
+        "Carve mesh",
+        "Display draw plane",
+        "Plane orientation",
+        "Analyze input mesh",
+        "Print calculation times",
+        "Draw strokes"
+      ]
+    },
+    {
+      "heading": "Strokes",
+      "level": "h4",
+      "anchor": "strokes",
+      "content": "Stroke list: contains a list of drawn strokes that will be used to carve the mesh. A series of buttons below it can be used to enable/disable/remove/re-order strokes. When the modifier evaluates, strokes are evaluated in the top-to-bottom order that they appear in this list.\n\ntyCarveconverts drawn strokes into 3D stroke meshes used to carve a mesh. The extrusion direction of a stroke is determined by the orientation of the plane it was drawn on.\n\nSegment length: controls the size of segments generated between points on stroke meshes. Decreasing this value will increase the resolution of stroke meshes.Thickness: controls the thickness of stroke meshes. Increase this value will create gaps between different elements of a carved meshes.Expansion: controls the distance stroke meshes will be expanded outwards prior to carving. The direction of expansion is outward from the edges of the stroke plane.Mat ID: controls the material ID of faces created to cap holes between carved elements.Smooth group: controls the smoothing group value of faces created to cap holes between carved elements.UV scale: controls the size of UVW coordinates generated on faces created to cap holes between carved elements.Select faces: controls whether faces created to cap holes between carved elements will be selected in the resulting mesh.\n\nSegment length: controls the size of segments generated between points on stroke meshes. Decreasing this value will increase the resolution of stroke meshes.\n\nThickness: controls the thickness of stroke meshes. Increase this value will create gaps between different elements of a carved meshes.\n\nExpansion: controls the distance stroke meshes will be expanded outwards prior to carving. The direction of expansion is outward from the edges of the stroke plane.\n\nMat ID: controls the material ID of faces created to cap holes between carved elements.\n\nSmooth group: controls the smoothing group value of faces created to cap holes between carved elements.\n\nUV scale: controls the size of UVW coordinates generated on faces created to cap holes between carved elements.\n\nSelect faces: controls whether faces created to cap holes between carved elements will be selected in the resulting mesh.\n\nExplicit normals: noise will displace stroke meshes along the direction of explicit normals on a stroke mesh.Average normals: noise will displace stroke meshes along the direction of averaged normals on a stroke mesh.World Space: noise will displace stroke meshes in world-space directions on a stroke mesh, determined by the resulting noise values.\n\nExplicit normals: noise will displace stroke meshes along the direction of explicit normals on a stroke mesh.\n\nAverage normals: noise will displace stroke meshes along the direction of averaged normals on a stroke mesh.\n\nWorld Space: noise will displace stroke meshes in world-space directions on a stroke mesh, determined by the resulting noise values.\n\nStrength: controls the strength of the noise displacement.Roughness: controls the roughness of the noise displacement.Iterations: controls the number of iterations the noise algorithm will undergo.Scale: controls the scale of the noise displacement.Offset: controls the offset assigned to input particle positions sent through the noise algorithm.Grout offset: controls the progressive offset assigned to each grout iteration. The more grout iterations, the more offset.\n\nStrength: controls the strength of the noise displacement.\n\nRoughness: controls the roughness of the noise displacement.\n\nIterations: controls the number of iterations the noise algorithm will undergo.\n\nScale: controls the scale of the noise displacement.\n\nOffset: controls the offset assigned to input particle positions sent through the noise algorithm.\n\nGrout offset: controls the progressive offset assigned to each grout iteration. The more grout iterations, the more offset.\n\nIterations: controls the number of grout iterations.\n\n“Grout” refers to the result of closely overlapping carve calculations, which can add more small carve details near stroke planes surfaces in a resulting mesh. For every grout iterations, all stroke planes will be re-evaluated. Adding noise displacement to stroke meshes, and increasing grout offset will result in overlapping-but-not-coincident stroke planes being created to carve the mesh.\n\nFor every grout iteration added, the entire stroke list must be re-evaluated. Too many grout iterations can cause carve evaluation to slow down dramatically.\n\nStroke must cross element: controls whether a stroke plane will be used to carve a mesh sub-element if the originating stroke does not cross the element completely. Keeping this on allows you to slice through particular mesh elements without slicing surrounding elements, so long as the stroke does not completely cross surrounding elements.Bounds size %: mesh elements whose bounding box size is less than this value (relative to the bounding box size of the whole mesh) will not be sliced. Increasing this value can reduce the number of slice operations performed on meshes with many smaller sub-elements, reducing total calculation time.Slice/subtract: the “slice” operation will not cap the faces of sliced meshes, resulting in open mesh sub-elements. The “subtract” operation will cap the faces of sliced meshes, resulting in closed mesh sub-elements.Random element matID: controls whether resulting mesh sub-elements will receive a randomized material ID. Turning this on and assigning a multi-sub material to the object with random colorings can help visualize the slices being drawn on a mesh.\n\nStroke must cross element: controls whether a stroke plane will be used to carve a mesh sub-element if the originating stroke does not cross the element completely. Keeping this on allows you to slice through particular mesh elements without slicing surrounding elements, so long as the stroke does not completely cross surrounding elements.\n\nBounds size %: mesh elements whose bounding box size is less than this value (relative to the bounding box size of the whole mesh) will not be sliced. Increasing this value can reduce the number of slice operations performed on meshes with many smaller sub-elements, reducing total calculation time.\n\nSlice/subtract: the “slice” operation will not cap the faces of sliced meshes, resulting in open mesh sub-elements. The “subtract” operation will cap the faces of sliced meshes, resulting in closed mesh sub-elements.\n\nRandom element matID: controls whether resulting mesh sub-elements will receive a randomized material ID. Turning this on and assigning a multi-sub material to the object with random colorings can help visualize the slices being drawn on a mesh.\n\nNone: disables stroke mesh display in the viewport.Selected stroke mesh: displays the stroke mesh selected in the stroke list in the viewport.All stroke meshes: displays all stroke meshes in the viewport.\n\nNone: disables stroke mesh display in the viewport.\n\nSelected stroke mesh: displays the stroke mesh selected in the stroke list in the viewport.\n\nAll stroke meshes: displays all stroke meshes in the viewport.",
+      "params": [
+        "Thickness",
+        "Select faces",
+        "Segment length",
+        "Offset",
+        "World Space",
+        "Random element matID",
+        "All stroke meshes",
+        "Average normals",
+        "Bounds size %",
+        "Roughness",
+        "Grout offset",
+        "None",
+        "Stroke must cross element",
+        "Smooth group",
+        "Iterations",
+        "UV scale",
+        "Scale",
+        "Mat ID",
+        "Selected stroke mesh",
+        "Stroke list",
+        "Explicit normals",
+        "Expansion",
+        "Strength",
+        "Slice/subtract"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:53Z"
+}

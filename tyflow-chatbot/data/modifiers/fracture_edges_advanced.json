@@ -1,0 +1,81 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_edges_advanced",
+  "title": "Fracture edges (advanced)Rollout",
+  "category": "Modifiers",
+  "operator": "Fracture edges (advanced)Rollout",
+  "sections": [
+    {
+      "heading": "Fracture edges (advanced)Rollout",
+      "level": "h2",
+      "anchor": "fracture-edges-advanced-rollout",
+      "content": "The Fracture edges (advanced) rollout contains parameters for the “fracture edges (advanced)” fracture mode.\n\n“Fracture edges (advanced)” generates individual fracture meshes for all qualifying edges on an input mesh. Unlike “Fracture edges (simple)”, it is not limited to fracturing only edges on the convex hull of the input mesh. However, it may require more fine-tuning than “Fracture edges (simple)”, due to the inherent difficulty of performing per-edge fractures on an arbitrary mesh.",
+      "params": []
+    },
+    {
+      "heading": "Prepare input",
+      "level": "h3",
+      "anchor": "prepare-input",
+      "content": "Weld vertices: When enabled, the input mesh will be welded using the specified weld threshold.\n\nWelding the input mesh in order to collapse thin triangles along sharp edges can help to improve the fracture result.",
+      "params": [
+        "Weld vertices"
+      ]
+    },
+    {
+      "heading": "Edge detection",
+      "level": "h3",
+      "anchor": "edge-detection",
+      "content": "Visible edges only: when enabled, invisible edges of the input mesh will not be fractured.Culling mode: controls whether candidate edges will be included or excluded from fracturing based on their intersection with a bounding box gizmo.Angle thresh: the maximum angle between the faces of an edge in order for an edge to qualify for fracturing.Probability%: the random probability that an edge will qualify for fracturing.Seed: the seed value for the probability function.\n\nVisible edges only: when enabled, invisible edges of the input mesh will not be fractured.\n\nCulling mode: controls whether candidate edges will be included or excluded from fracturing based on their intersection with a bounding box gizmo.\n\nAngle thresh: the maximum angle between the faces of an edge in order for an edge to qualify for fracturing.\n\nProbability%: the random probability that an edge will qualify for fracturing.\n\nSeed: the seed value for the probability function.",
+      "params": [
+        "Culling mode",
+        "Probability%",
+        "Seed",
+        "Angle thresh",
+        "Visible edges only"
+      ]
+    },
+    {
+      "heading": "Curve processing",
+      "level": "h3",
+      "anchor": "curve-processing",
+      "content": "Qualifying edges of the input mesh will be converted into curves (which can be welded/culled based on the parameters below) before being extruded into the resulting fracture meshes.\n\nWeld curves: when enabled, qualifying edges of the input mesh will be welded into longer curves before being converted into fracture meshes.Angle thresh: the maximum angle between edges in order for them to be welded together.Min length: curves with a total length below this value will be culled.\n\nWeld curves: when enabled, qualifying edges of the input mesh will be welded into longer curves before being converted into fracture meshes.\n\nAngle thresh: the maximum angle between edges in order for them to be welded together.\n\nMin length: curves with a total length below this value will be culled.",
+      "params": [
+        "Min length",
+        "Weld curves",
+        "Angle thresh"
+      ]
+    },
+    {
+      "heading": "Curve settings",
+      "level": "h3",
+      "anchor": "curve-settings",
+      "content": "Depth: controls how far a curve will be shifted below the surface of the input mesh, along the (negative) direction of the nearest input mesh surface normal. Higher values results in deeper edge fractures.Variation %: the per-particle percentage of variation to apply.Seed: the seed value for the depth variation function.\n\nDepth: controls how far a curve will be shifted below the surface of the input mesh, along the (negative) direction of the nearest input mesh surface normal. Higher values results in deeper edge fractures.\n\nSeed: the seed value for the depth variation function.",
+      "params": [
+        "Seed",
+        "Depth"
+      ]
+    },
+    {
+      "heading": "Mesh settings",
+      "level": "h3",
+      "anchor": "mesh-settings",
+      "content": "Once curves are generated from qualifying edges of the input mesh, they are converted into the actual fracture meshes.\n\nRadius: controls how far on either side of a curve a fracture mesh will be extruded outwards. Higher values create horizontally-larger fracture meshes.\n\nIncrease the radius value if your fracture meshes are not cutting all the way through the adjacent faces of any given edge.",
+      "params": [
+        "Radius"
+      ]
+    },
+    {
+      "heading": "Junctions/Ends",
+      "level": "h4",
+      "anchor": "junctions-ends",
+      "content": "A “junction” is an end of a curve that touches another curve. An “end” is an end of a curve that does not touch another curve. The junction/end parameters (overlap, pin and taper) are smoothly interpolated from the center of each curve.\n\nOverlap %: Controls how far past the end of a curve the generated fracture mesh will overlap, as a percentage of the curve’s depth value.Pin %: Controls how much the end of a curve will be affected by the curve’s depth value. Decrease this value to flatten the ends of fracture meshes.Taper %: Controls how much the end of a curve will be affected by the curve’s radius value. Increase this value to taper the ends of fracture meshes.\n\nOverlap %: Controls how far past the end of a curve the generated fracture mesh will overlap, as a percentage of the curve’s depth value.\n\nPin %: Controls how much the end of a curve will be affected by the curve’s depth value. Decrease this value to flatten the ends of fracture meshes.\n\nTaper %: Controls how much the end of a curve will be affected by the curve’s radius value. Increase this value to taper the ends of fracture meshes.\n\nCull fractured meshes: when enabled, fractured parts of the input mesh that lie within the fracture meshes will be culled. Disable this setting to retain all fracture meshes after the fracture operation is completed.Expand cull volume: controls how much fracture meshes should be extruded upward in the direction of their edge normal. Increase this value to improve fracture mesh coverage of the surface around a fracture edge.\n\nCull fractured meshes: when enabled, fractured parts of the input mesh that lie within the fracture meshes will be culled. Disable this setting to retain all fracture meshes after the fracture operation is completed.\n\nExpand cull volume: controls how much fracture meshes should be extruded upward in the direction of their edge normal. Increase this value to improve fracture mesh coverage of the surface around a fracture edge.",
+      "params": [
+        "Expand cull volume",
+        "Cull fractured meshes",
+        "Pin %",
+        "Taper %",
+        "Overlap %"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:36Z"
+}

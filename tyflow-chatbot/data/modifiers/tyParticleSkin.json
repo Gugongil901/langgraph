@@ -1,0 +1,89 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyParticleSkin",
+  "title": "tyParticleSkinModifier",
+  "category": "Modifiers",
+  "operator": "tyParticleSkinModifier",
+  "sections": [
+    {
+      "heading": "tyParticleSkinModifier",
+      "level": "h2",
+      "anchor": "typarticleskin-modifier",
+      "content": "ThetyParticleSkinmodifier can be used to deform a regular mesh with a particle system.",
+      "params": []
+    },
+    {
+      "heading": "Particle Skin",
+      "level": "h4",
+      "anchor": "particle-skin",
+      "content": "Node: the object whose particles or vertices will be used to skin the mesh.\n\nThetyParticleSkinmodifier can take any particle system or mesh as input. When a mesh is chosen as input, the mesh’s vertices will be internally converted into particles (with mesh vertex transforms taken from mesh face normals), driving the modifier the same way a normal particle system would. In that sense, thetyParticleSkinmodifier can operate as an alternative to 3ds Max’s Skin Wrap modifier.\n\nConvert input to mesh: when enabled, the input object will be treated purely as an editable mesh. This is useful if your input object is a particle system (with a valid mesh) and you want to skin the vertices to its mesh, not its particles.Use vertex selection: only selected vertices of the input object will be affected by the modifier.\n\nConvert input to mesh: when enabled, the input object will be treated purely as an editable mesh. This is useful if your input object is a particle system (with a valid mesh) and you want to skin the vertices to its mesh, not its particles.\n\nUse vertex selection: only selected vertices of the input object will be affected by the modifier.\n\nVertices: the mesh will search for nearest particles within the flow from the location of its vertices.Faces: the mesh will search for nearest particles within the flow from the location of its face centers.PhysX tearing solver: each individual vertex will be weighted to the nearest input particles. The PhysX-bind hierarchy of weighted particles will then be examined, and if breaks are detected over time, weightings will be adjusted to account for lost connections between affecting particles. The adjusted weightings manifest as gaps between previously-adjacent faces (ie, tears in the mesh). This effectively allows you to usetyParticleSkinas a history-independent tearing solver for rigid body simulations.\n\nVertices: the mesh will search for nearest particles within the flow from the location of its vertices.\n\nFaces: the mesh will search for nearest particles within the flow from the location of its face centers.\n\nPhysX tearing solver: each individual vertex will be weighted to the nearest input particles. The PhysX-bind hierarchy of weighted particles will then be examined, and if breaks are detected over time, weightings will be adjusted to account for lost connections between affecting particles. The adjusted weightings manifest as gaps between previously-adjacent faces (ie, tears in the mesh). This effectively allows you to usetyParticleSkinas a history-independent tearing solver for rigid body simulations.\n\nThe PhysX tearing solver is only available when the input node is a tyFlow object. If a tyCache object or any other compatible particle system is the input object, the modifier will internally fall back to vertex mode if PhysX tearing solver is selected.\n\nThe PhysX tearing solver solver only works when the all mesh faces are detached into individual elements. ThetyParticleSkinmodifier will perform the detach operation if it detects that the total number of mesh vertices is not equal to the total number of mesh faces multiplied by three (ie, the only valid ratio of faces-to-verts allowed for this mode), however, the modifier will perform faster if atyFaceFracturemodifier is placed below it, which does the proper detaching instead. In that configuration, thetyFaceFracturemodifier (when operating on a static mesh) will only need to evaluate once, as opposed to the detach operation evaluating every frame when performed in thetyParticleSkinmodifier.\n\nDue to the requirement for detached faces by the PhysX tearing solver, when using that mode it is recommended to add atyWeldmodifier above thetyParticleSkinmodifier in the modifier stack, so that detached faces are re-attached after the skinning operation is performed. This will have a performance cost but will keep resulting surfaces smooth instead of faceted.\n\nIf particles have a shape mesh, the vertices of the shape mesh will be considered during the nearest particle search, for improved accuracy.\n\nTearing sub-object mode: controls which mesh sub-object location (vertices, triangle centers or face centers) the PhysX tearing solver mode will use in order to find the nearest particles within the flow.Ref frame: the reference frame to use as the initialization time for the skin.Distance: the distance that a particle can be from a mesh vertex/face in order to fully influence it.Falloff: the falloff from the distance value that a particle can be from a mesh vertex/face in order to influence it (with influence dimishing according to the inverse square law).\n\nTearing sub-object mode: controls which mesh sub-object location (vertices, triangle centers or face centers) the PhysX tearing solver mode will use in order to find the nearest particles within the flow.\n\nRef frame: the reference frame to use as the initialization time for the skin.\n\nDistance: the distance that a particle can be from a mesh vertex/face in order to fully influence it.\n\nFalloff: the falloff from the distance value that a particle can be from a mesh vertex/face in order to influence it (with influence dimishing according to the inverse square law).\n\nThe maximum distance that a particle can be from a mesh vertex/face in order to have any influence over it, is [distance + falloff].\n\nMax count: the maximum number of particles that can influence a mesh vertex.Consider particle meshes: controls whether nearest-particle distances will be calculated to particle meshes, instead of just particle positions.Weight all vertices: if no particles are within the maximum distance to a mesh vertex/face, the nearest particle (regardless of distance) will be used. This ensures all vertices are weighted to at least one particle, assuming at least one particle exists.\n\nMax count: the maximum number of particles that can influence a mesh vertex.\n\nConsider particle meshes: controls whether nearest-particle distances will be calculated to particle meshes, instead of just particle positions.\n\nWeight all vertices: if no particles are within the maximum distance to a mesh vertex/face, the nearest particle (regardless of distance) will be used. This ensures all vertices are weighted to at least one particle, assuming at least one particle exists.\n\nEnabling “weight all vertices” can violate element ID matching - because it ensures every vertex is weighted by at least one particle, which does not guarantee that the particle will have a matching element ID. If element ID matching is enabled, it’s best to keep “weight all vertices” disabled.\n\nDuring initialization, influencing particles will be weighted based on their relative and normalized distance to the target vertex. If a vertex is influenced by multiple particles, the weights for each particle will be determined by their distances to the vertex, with closer particles having a higher weight than further particles.\n\nRe-initialize: re-initializes the skin.",
+      "params": [
+        "Ref frame",
+        "Consider particle meshes",
+        "Distance",
+        "Max count",
+        "Use vertex selection",
+        "Node",
+        "Convert input to mesh",
+        "Tearing sub-object mode",
+        "Faces",
+        "Weight all vertices",
+        "Falloff",
+        "Re-initialize",
+        "PhysX tearing solver",
+        "Vertices"
+      ]
+    },
+    {
+      "heading": "Element ID matching",
+      "level": "h4",
+      "anchor": "element-id-matching",
+      "content": "In certain setups you may want to ensure that particles generates from particular mesh elements are the only particles which will have influence over the corresponding mesh element that is skinned to the generated particles. By enabling ‘match elements by ID’ you can ensure that this correspondance will be maintained. Note: one way to assign proper element IDs to particles generated from meshes is to enable element tracking in the Birth Objects operator used to import the mesh into the source flow for the tyParticleSkin modifier.\n\nWhen element ID matching is enabled, you may need to increase the distance and max count values in order to ensure every vertex is able to find at least one particle with a matching element ID, if such a particle exists.\n\nMatch elements by ID: when enabled, values in the specified particle custom float channel must match mesh vertex element ID in order for a particle to have influence over a vertex.Match mesh element IDs: when selected, the ID for a given mesh face will be derived from its element index.Match UVW element IDs: when selected, the ID for a given mesh face will be derived from the X value of the first UVW coordinate for the corresponding map face in the specified mapping channel.\n\nMatch elements by ID: when enabled, values in the specified particle custom float channel must match mesh vertex element ID in order for a particle to have influence over a vertex.\n\nMatch mesh element IDs: when selected, the ID for a given mesh face will be derived from its element index.\n\nMatch UVW element IDs: when selected, the ID for a given mesh face will be derived from the X value of the first UVW coordinate for the corresponding map face in the specified mapping channel.\n\nUse “match UVW element IDs” in situations where the number of custom float values in the target particle system is not equal to (or does not correspond to) the number of mesh elements in the skinned mesh. In that case, users should store ID values in a mapping channel of the skinned mesh, to be read by the tyParticleSkin modifier.\n\nMap channel: the map channel where IDs are stored for the mesh.Element match channel: theh specified particle custom float channel.\n\nMap channel: the map channel where IDs are stored for the mesh.\n\nElement match channel: theh specified particle custom float channel.",
+      "params": [
+        "Match mesh element IDs",
+        "Element match channel",
+        "Match elements by ID",
+        "Match UVW element IDs",
+        "Map channel"
+      ]
+    },
+    {
+      "heading": "Simulation Groups",
+      "level": "h4",
+      "anchor": "simulation-groups",
+      "content": "Simulation groups: controls which particle simulation groups will be imported.",
+      "params": [
+        "Simulation groups"
+      ]
+    },
+    {
+      "heading": "Export Groups",
+      "level": "h4",
+      "anchor": "export-groups",
+      "content": "Export groups: controls which particle export groups will be imported.",
+      "params": [
+        "Export groups"
+      ]
+    },
+    {
+      "heading": "Clustering",
+      "level": "h4",
+      "anchor": "clustering",
+      "content": "Enable clustering: when enabled, particles will only be used for skinning if their float values in the specified custom property float channels match the clustering rule (ex: if the clustering rule is set to “cluster with non-zero values”, only particles with non-zero float values in the specified cluster channel(s) will be used for skinning).\n\nClustering provides an easy way to filter out certain particles from the skin algorithm, that doesn’t involve managing particle groups or element IDs. Simply specify which channels you’d like to use for clustering, and the clustering rule, and all other particles will be ignored.",
+      "params": [
+        "Enable clustering"
+      ]
+    },
+    {
+      "heading": "PhysX Tearing",
+      "level": "h4",
+      "anchor": "physx-tearing",
+      "content": "Connectivity: the maximum hierarchy depth to search for a PhysX bind connection between two particles which both influence a single vertex. If a connection cannot be found within this depth, the particles are considered broken apart.Tear time: the time, in frames, vertices will interpolate between bound and broken states after particle binding is found to be broken. The greater the value, the slower/smoother each new tear will form.Auto re-weld: re-welds faces extracted by thetyParticleSkinmodifier when in “PhysX tearing solver” mode. If this option is disabled, none of the mesh’s individual faces will remain connected (the PhysX tearing solver requires faces to be separated prior to calculating tears).\n\nConnectivity: the maximum hierarchy depth to search for a PhysX bind connection between two particles which both influence a single vertex. If a connection cannot be found within this depth, the particles are considered broken apart.\n\nTear time: the time, in frames, vertices will interpolate between bound and broken states after particle binding is found to be broken. The greater the value, the slower/smoother each new tear will form.\n\nAuto re-weld: re-welds faces extracted by thetyParticleSkinmodifier when in “PhysX tearing solver” mode. If this option is disabled, none of the mesh’s individual faces will remain connected (the PhysX tearing solver requires faces to be separated prior to calculating tears).",
+      "params": [
+        "Tear time",
+        "Auto re-weld",
+        "Connectivity"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:11Z"
+}

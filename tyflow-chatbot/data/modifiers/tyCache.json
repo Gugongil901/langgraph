@@ -1,0 +1,73 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyCache",
+  "title": "tyCacheModifier",
+  "category": "Modifiers",
+  "operator": "tyCacheModifier",
+  "sections": [
+    {
+      "heading": "tyCacheModifier",
+      "level": "h2",
+      "anchor": "tycache-modifier",
+      "content": "ThetyCachemodifier is an alternative to 3ds Max’s built-in Point Cache modifier, that has no restrictions on the type of mesh input it can cache. Caches can preserve changing topology, animated UVWs, animated explicit normals, etc.\n\ntyCachesexported from an Export Particles operator within a flow cannot be loaded by atyCachemodifier, and vice versa. The two file formats share the same base name (“tyCache”) but are not interchangeable. Caches saved with atyCachemodifier can only be loaded by atyCachemodifier - and caches exported from an Export Particles operator can only be loaded by atyCacheobject.",
+      "params": []
+    },
+    {
+      "heading": "tyCache Rollout",
+      "level": "h3",
+      "anchor": "tycache-rollout",
+      "content": "Mode: controls whether the cache will be saved within the .max file itself, or to an externaltyCache(.tycm) file.\n\ntyCachemodifiers can be instanced across multiple objects. If cache mode is set to “Save in .max file”, the modifier will automatically save each object’s cache to the appropriate data chunk in the .max file. If cache mode is set to “Save in external file”, the modifier will assign a unique 6-character hash value to each object (stored in its user properties buffer under the “tyCacheModID” key), and then append that hash value to the specified output filename for each cache (internally). So, for example, if you instance thetyCachemodifier across 3 objects and set the output path to “C:\\cache.tycm”, the actual output cache names might look something like “C:\\cache[P1TV39].tycm”, “C:\\cache[TD2R0l].tycm” and “C:\\cache_[A8MMDR].tycm”. This system prevents objects from overwriting each other’s caches when exporting from an instanced modifier.",
+      "params": [
+        "Mode"
+      ]
+    },
+    {
+      "heading": "Cache file",
+      "level": "h4",
+      "anchor": "cache-file",
+      "content": "Filename: the cache file to load, from disk, when mode set to “save in external file”Keep cache in RAM: when disabled, no cache data will persist in memory between evaluations of the modifier.\n\nFilename: the cache file to load, from disk, when mode set to “save in external file”\n\nKeep cache in RAM: when disabled, no cache data will persist in memory between evaluations of the modifier.\n\nWhile disabling “keep cache in RAM” can improve RAM usage in scenes with heavy caches, it can lead tosignificantlylonger evaluation times, because the entire cache must be re-read from disk each time the modifier is evaluated. Disable this setting with caution!",
+      "params": [
+        "Filename",
+        "Keep cache in RAM"
+      ]
+    },
+    {
+      "heading": "Cache",
+      "level": "h4",
+      "anchor": "cache",
+      "content": "Start/end frame: controls the time range that will be cached.Time step: controls the size of a time step (in frame units) between each cached frame. Values lower than 1 will create larger caches due to sub-frame data being cached.\n\nStart/end frame: controls the time range that will be cached.\n\nTime step: controls the size of a time step (in frame units) between each cached frame. Values lower than 1 will create larger caches due to sub-frame data being cached.\n\nOnce a cache is saved, you can disable all modifiers below thetyCachemodifier (even modifiers that change mesh topology) - the cache contains all data required to perfectly recreate the mesh at any given cache frame.\n\nUsers can use MAXScript to export caches from atyCachemodifier by calling the “cache()” function on the modifier. If any errors occur during export, they will be printed to the MAXScript listener.",
+      "params": [
+        "Time step",
+        "Start/end frame"
+      ]
+    },
+    {
+      "heading": "Timing Rollout",
+      "level": "h3",
+      "anchor": "timing-rollout",
+      "content": "Frame offset: offsets the timing of sequence playback.Clamp frame range: controls whether the input sequence frame range will be clamped.Clamp range: define the clamped frame range of the sequence.\n\nFrame offset: offsets the timing of sequence playback.\n\nClamp frame range: controls whether the input sequence frame range will be clamped.\n\nClamp range: define the clamped frame range of the sequence.\n\nHold: requested frames outside of the clamp range will be set to the nearest frame within the clamp range.Blank: requested frames outside of the clamp range will be empty/ignored.Loop: requested frames outside of the clamp range will be set to loop within the clamp range.\n\nHold: requested frames outside of the clamp range will be set to the nearest frame within the clamp range.\n\nBlank: requested frames outside of the clamp range will be empty/ignored.\n\nLoop: requested frames outside of the clamp range will be set to loop within the clamp range.\n\nIn hold mode, a requested frame of 125 in a clamp range of 0-100 will be set to 100. In loop mode, a requested frame of 125 in a clamp range of 0-100 will be set to 25.\n\nRound to nearest frame: prevents sub-frame evaluation.\n\nWhen “round to nearest frame” is enabled, deformation motion blur will no longer occur.",
+      "params": [
+        "Frame offset",
+        "Clamp frame range",
+        "Hold",
+        "Loop",
+        "Blank",
+        "Round to nearest frame",
+        "Clamp range"
+      ]
+    },
+    {
+      "heading": "Retimer",
+      "level": "h4",
+      "anchor": "retimer",
+      "content": "Enable retimer: controls whether playback will be controlled by the retimer frame value.Retime type: controls whether the retimer affects playback frame or speed.\n\nEnable retimer: controls whether playback will be controlled by the retimer frame value.\n\nRetime type: controls whether the retimer affects playback frame or speed.\n\nFrame: the retimer frame value that controls playback. Animate this value to control the current playback frame.\n\nSpeed %: the percent value that controls playback speed.Ref Frame: the reference frame that the speed multiplier will be relative to.\n\nSpeed %: the percent value that controls playback speed.\n\nRef Frame: the reference frame that the speed multiplier will be relative to.\n\nSetting a proper reference frame is important for the speed multiplier. The reference frame should typically be the start frame of your playback sequence, not necessarily the start frame of the tyCache.The equation for the speed retimer is:playbackFrame = [referenceFrame + abs(time - referenceFrame) * speed * sign(time - referenceFrame)].",
+      "params": [
+        "Frame",
+        "Ref Frame",
+        "Retime type",
+        "Speed %",
+        "Enable retimer"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:51Z"
+}

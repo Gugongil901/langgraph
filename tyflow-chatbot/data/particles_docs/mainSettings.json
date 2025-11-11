@@ -1,0 +1,52 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/object/mainSettings",
+  "title": "Main Settings Rollout",
+  "category": "Particles_Docs",
+  "operator": "Main Settings Rollout",
+  "sections": [
+    {
+      "heading": "Main Settings Rollout",
+      "level": "h2",
+      "anchor": "main-settings-rollout",
+      "content": "Enabled state dropdown: controls whether the flow is enabled, enabled (Render Only), or disabled. Disabled flows do not evaluate at all, while enabled (Render Only) flows only evaluate at render time.\n\nShow icon: controls whether thetyFlowobject’s icon is visible in the viewport.Icon size: controls the size of thetyFlowobject’s icon in the viewport.Show name: controls whether the name of thetyFlowobject is displayed in the viewport.\n\nShow icon: controls whether thetyFlowobject’s icon is visible in the viewport.\n\nIcon size: controls the size of thetyFlowobject’s icon in the viewport.\n\nShow name: controls whether the name of thetyFlowobject is displayed in the viewport.",
+      "params": [
+        "Show icon",
+        "Icon size",
+        "Enabled state dropdown",
+        "Show name"
+      ]
+    },
+    {
+      "heading": "Simulation mode",
+      "level": "h4",
+      "anchor": "simulation-mode",
+      "content": "History-dependent: this istyFlow’s regular simulation mode. When activated, simulated frames are dependent on prior simulated frames, allowing for changes to accumulate in the simulation over time.History-independent: this simulation mode forces each frame of the simulation to be independent from all other frames, over time. It’s equivalent to restarting the simulation at each successive frame. If you are modifying changing input (ex: using a flow to modify a cache) this mode won’t require you to simulate all prior frames before being able to make changes to input at a given frame.\n\nHistory-dependent: this istyFlow’s regular simulation mode. When activated, simulated frames are dependent on prior simulated frames, allowing for changes to accumulate in the simulation over time.\n\nHistory-independent: this simulation mode forces each frame of the simulation to be independent from all other frames, over time. It’s equivalent to restarting the simulation at each successive frame. If you are modifying changing input (ex: using a flow to modify a cache) this mode won’t require you to simulate all prior frames before being able to make changes to input at a given frame.",
+      "params": [
+        "History-dependent",
+        "History-independent"
+      ]
+    },
+    {
+      "heading": "Time step",
+      "level": "h4",
+      "anchor": "time-step",
+      "content": "Time step dropdown: controls the number of steps the simulation will divide each frame into. With more time steps, simulation accuracy will be increased but simulation speed will be decreased. A value of ‘Frame’ is usually fine for simulations that don’t require physical accuracy. A value of “1⁄4Frame” or “1⁄8Frame” is best for simulations featuring physically accurate constraints (sand/cloth/rope/etc) in order to increase overall simulation stability.Time scale: the time scale setting allows you to control the speed of the simulation. Unlike the retimer settings, which allow you to control playback speedafterthe simulation is cached, the time scale setting allows you to control simulation speedas it is calculated. Values less than one have the effect of slowing the simulation, and values greater than one speed things up. N\n\nTime step dropdown: controls the number of steps the simulation will divide each frame into. With more time steps, simulation accuracy will be increased but simulation speed will be decreased. A value of ‘Frame’ is usually fine for simulations that don’t require physical accuracy. A value of “1⁄4Frame” or “1⁄8Frame” is best for simulations featuring physically accurate constraints (sand/cloth/rope/etc) in order to increase overall simulation stability.\n\nTime scale: the time scale setting allows you to control the speed of the simulation. Unlike the retimer settings, which allow you to control playback speedafterthe simulation is cached, the time scale setting allows you to control simulation speedas it is calculated. Values less than one have the effect of slowing the simulation, and values greater than one speed things up. N\n\nIncreasing the time scale value can lead to physics/PhysX inaccuracies, because increasing the value increases the velocity of all particles within the time step. You would only use this setting, as opposed to using the retimer, if you need to change the simulation speed of particles while maintaining the speed of all scene objects your particles are interacting with.\n\nInterpolate ticks: controls whether particle transforms will be interpolated at ticks between time steps.",
+      "params": [
+        "Interpolate ticks",
+        "Time scale",
+        "Time step dropdown"
+      ]
+    },
+    {
+      "heading": "Network rendering",
+      "level": "h4",
+      "anchor": "network-rendering",
+      "content": "Abort on version mismatch: RenderingtyFlowson machines whosetyFlowversion does not match the version of the originating scene file is usually a bad idea. While it doesn’t guarantee problems, if the scene file relies on a feature not present in the version on the render machine, the scene may not render correctly. If this setting is enabled, renders will be automatically aborted on machines whosetyFlowversion does not match the scene file, avoiding incorrect renders in the process.\n\nIt is always recommended to use the most recent version oftyFlow.\n\nAllow caching: Controls whether render machines will cache frames while the simulation is processed on them prior to rendering. In most cases this should be left on, and only disabled if a particular render machine has enough RAM to process the simulation, but not enough RAM to cache each processed frame. Disabling this can greatly increase render time of complex simulations if multiple frames of the simulation are accessed in descending order (for example, in the case of a simulation retimed to play in reverse, or multiple flows referencing each other with staggered frame offsets).",
+      "params": [
+        "Allow caching",
+        "Abort on version mismatch"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:32Z"
+}

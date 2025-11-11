@@ -1,0 +1,69 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyBoolean/carve",
+  "title": "CarveEngine",
+  "category": "Modifiers",
+  "operator": "CarveEngine",
+  "sections": [
+    {
+      "heading": "CarveEngine",
+      "level": "h2",
+      "anchor": "carve-engine",
+      "content": "The Carve engine istyFlow’s legacy boolean engine, implemented originally in the very first build oftyFlow. As oftyFlow v1.1, it has been replaced by thePRISMengine.",
+      "params": []
+    },
+    {
+      "heading": "Operation",
+      "level": "h3",
+      "anchor": "operation",
+      "content": "Self-union: joins the separate elements of object A together, into a single connected mesh.Intersection: computes the intersection between object A and B as the resulting mesh.A minus B: subtracts object A from B and returns the resulting mesh.A minus B (no cap): subtracts object A from B (without preserving volume) and returns the resulting mesh.B minus A: subtracts object B from A and returns the resulting mesh.B minus A (no cap): ssubtracts object B from A (without preserving volume) and returns the resulting mesh.Union: joins object A and B together, into a single connected mesh.\n\nSelf-union: joins the separate elements of object A together, into a single connected mesh.\n\nIntersection: computes the intersection between object A and B as the resulting mesh.\n\nA minus B: subtracts object A from B and returns the resulting mesh.\n\nA minus B (no cap): subtracts object A from B (without preserving volume) and returns the resulting mesh.\n\nB minus A: subtracts object B from A and returns the resulting mesh.\n\nB minus A (no cap): ssubtracts object B from A (without preserving volume) and returns the resulting mesh.\n\nUnion: joins object A and B together, into a single connected mesh.",
+      "params": [
+        "B minus A",
+        "Intersection",
+        "B minus A (no cap)",
+        "Self-union",
+        "Union",
+        "A minus B (no cap)",
+        "A minus B"
+      ]
+    },
+    {
+      "heading": "Input Objects (B)",
+      "level": "h3",
+      "anchor": "input-objects-b",
+      "content": "Object list: the list of objects that will act as object(s) B in the boolean operation.Hide after adding: controls whether objects added to the list will be hidden after adding them.\n\nObject list: the list of objects that will act as object(s) B in the boolean operation.\n\nHide after adding: controls whether objects added to the list will be hidden after adding them.",
+      "params": [
+        "Hide after adding",
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Pre-process",
+      "level": "h3",
+      "anchor": "pre-process",
+      "content": "Split source elements: when enabled, the elements of the source mesh will be split apart and processed in parrallel.Split input obj elements: when enabled, the elements of the inputs objects will be split apart and processed separately.\n\nSplit source elements: when enabled, the elements of the source mesh will be split apart and processed in parrallel.\n\nSplit input obj elements: when enabled, the elements of the inputs objects will be split apart and processed separately.\n\nIf your mesh has shell surfaces (ie, a closed mesh with thickness), these options should be disabled. If these options are not disabled for shell surfaces, the inside and outside of the shell will be processed separately and may not return the desired result.",
+      "params": [
+        "Split input obj elements",
+        "Split source elements"
+      ]
+    },
+    {
+      "heading": "Edge visibility",
+      "level": "h3",
+      "anchor": "edge-visibility",
+      "content": "Coplanar tris -> polys: controls whether groups of adjacent, coplanar triangles in the resulting mesh will be converted into polygons (have their shared edges hidden).",
+      "params": [
+        "Coplanar tris -> polys"
+      ]
+    },
+    {
+      "heading": "Post-process",
+      "level": "h3",
+      "anchor": "post-process",
+      "content": "Inherit element matID: after the boolean operation is completed, the material ID from the first face of each original mesh element will be assigned to the output mesh element, as opposed to the material ID from the face of the operand mesh.",
+      "params": [
+        "Inherit element matID"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:46Z"
+}

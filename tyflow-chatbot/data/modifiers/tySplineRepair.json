@@ -1,0 +1,43 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tySplineRepair",
+  "title": "tySplineRepairModifier",
+  "category": "Modifiers",
+  "operator": "tySplineRepairModifier",
+  "sections": [
+    {
+      "heading": "tySplineRepairModifier",
+      "level": "h2",
+      "anchor": "tysplinerepair-modifier",
+      "content": "ThetySplineRepairmodifier can be used to repair common issues with splines.",
+      "params": []
+    },
+    {
+      "heading": "Repair",
+      "level": "h4",
+      "anchor": "repair",
+      "content": "Close open splines: when enabled, open splines (with 3 or more knots) will be closed.Flatten knots: when enabled, spline knots will be projected (and flattened) along the specified axis.Along X/Y/Z: the flatten axis will be the specified world-space axis.Along nearest axis: the flatten axis will be the world-space X/Y/Z axis closest to the computed spline normal.Along normalthe flatten axis will be the computed spline normal.Per-object/Per-spline: the flatten procedure will be performed on either a per-spline basis (meaning each subspline will be flattened individually), or a per-object basis (all spline knots will be flattened together).Full projection: when enabled, all knots will be fully projected onto the plane perpedicular to the flatten axis. When disabled, the height of each knot in plane-space will be set to the average height of all knots in plane-space.Remove coincident knots: when enabled, all coincident (perfectly overalpping) knots will be removed.Clip splines: performs a spline clipping operation where all overlapping spline segments (along the computed normal of the spline) will be resolved with new knots/segments, relative to the specified operation and fill type.Per-object/Per-spline: the clipping procedure will be performed on either a per-spline basis (meaning each subspline will be split individually), or a per-object basis (all segments intersections will be resolved together).\n\nClose open splines: when enabled, open splines (with 3 or more knots) will be closed.\n\nFlatten knots: when enabled, spline knots will be projected (and flattened) along the specified axis.\n\nAlong X/Y/Z: the flatten axis will be the specified world-space axis.\n\nAlong nearest axis: the flatten axis will be the world-space X/Y/Z axis closest to the computed spline normal.\n\nAlong normalthe flatten axis will be the computed spline normal.\n\nPer-object/Per-spline: the flatten procedure will be performed on either a per-spline basis (meaning each subspline will be flattened individually), or a per-object basis (all spline knots will be flattened together).\n\nFull projection: when enabled, all knots will be fully projected onto the plane perpedicular to the flatten axis. When disabled, the height of each knot in plane-space will be set to the average height of all knots in plane-space.\n\nRemove coincident knots: when enabled, all coincident (perfectly overalpping) knots will be removed.\n\nClip splines: performs a spline clipping operation where all overlapping spline segments (along the computed normal of the spline) will be resolved with new knots/segments, relative to the specified operation and fill type.\n\nPer-object/Per-spline: the clipping procedure will be performed on either a per-spline basis (meaning each subspline will be split individually), or a per-object basis (all segments intersections will be resolved together).\n\nIf “clip splines” is enabled, splines will be pre-flattened along their normal.\n\nModify winding order: the winding order of all splines (relative to the combined spline normal) will be modified to match the specified mode - CW (clockwise), CCW (couner-clockwise), CCW with holes (CCW contours, CW holes), or reversed.",
+      "params": [
+        "Along nearest axis",
+        "Per-object/Per-spline",
+        "Full projection",
+        "Clip splines",
+        "Modify winding order",
+        "Flatten knots",
+        "Remove coincident knots",
+        "Along X/Y/Z",
+        "Close open splines"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h4",
+      "anchor": "display",
+      "content": "Display knots: when enabled, spline knot points will be displayed in the viewport.Display knot indices: when enabled, spline knot indices will be displayed in the viewport.\n\nDisplay knots: when enabled, spline knot points will be displayed in the viewport.\n\nDisplay knot indices: when enabled, spline knot indices will be displayed in the viewport.",
+      "params": [
+        "Display knot indices",
+        "Display knots"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:40Z"
+}

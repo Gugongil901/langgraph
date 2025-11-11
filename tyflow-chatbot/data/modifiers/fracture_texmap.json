@@ -1,0 +1,26 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_texmap",
+  "title": "Fracture texmapRollout",
+  "category": "Modifiers",
+  "operator": "Fracture texmapRollout",
+  "sections": [
+    {
+      "heading": "Fracture texmapRollout",
+      "level": "h2",
+      "anchor": "fracture-texmap-rollout",
+      "content": "The Fracture texmap rollout contains parameters for the “fracture texmap” fracture mode. In this mode, a fracture pattern is extracted from a texture map and applied to fracture planes scattered over fracture points on the input mesh.\n\nTexmap: the texture map from which to derive the fracture pattern.Preserve aspect ratio: when enabled, the aspect ratio of the texmap will be preserved, even if it does not match the default scale of the underlying fracture plane onto which the fracture pattern is applied.Resolution: the sampling resolution used to extract the fracture pattern from the texture map.Threshold: pixel values in the texture map above this luminosity value will be extracted as white, all other pixels will be extracted as black.\n\nTexmap: the texture map from which to derive the fracture pattern.\n\nPreserve aspect ratio: when enabled, the aspect ratio of the texmap will be preserved, even if it does not match the default scale of the underlying fracture plane onto which the fracture pattern is applied.\n\nResolution: the sampling resolution used to extract the fracture pattern from the texture map.\n\nThreshold: pixel values in the texture map above this luminosity value will be extracted as white, all other pixels will be extracted as black.\n\nFracture patterns extracted from texture maps are derived from black/white pixel values only. The threshold value allows you to control how a texture map is converted into a purely black and white image (with no intermediate grayscale values).\n\nNormalize: when enabled, input texture maps are normalized based on their min/max luminosity, prior to conversion to purely black/white images.Trace edges: when enabled, the edges of the input texture map will be traced prior to conversion into a fracture pattern.\n\nNormalize: when enabled, input texture maps are normalized based on their min/max luminosity, prior to conversion to purely black/white images.\n\nTrace edges: when enabled, the edges of the input texture map will be traced prior to conversion into a fracture pattern.\n\nThe fracture pattern extraction algorithm works by finding the “skeleton” of a black and white image (a “skeleton” in this case is a minimal set of lines that follow shaded areas of the image). By first tracing the edges of the image, a more intuitive “skeleton” may be extracted, if the image is not already composed of lines.\n\nAuto-invert: when enabled, the pattern extraction engine will automatically invert the black and white values of the converted image, if it appears as though the black values are what should be skeletonized, based on the ratio of black-to-white pixels within the converted image.\n\nThe fracture pattern extraction algorithm will create a skeleton from white pixels, rather than black pixels (black pixels are assumed to be bordering the patterned areas. Therefore, if the image appears to be inverted (more white pixels exist than black pixels), the auto-invert parameter will flip the values for optimal skeletonization.\n\nInvert: controls whether the image will be manually inverted, when auto-invert is disabled.Weld extracted curves: controls whether the splines of the extracted fracture pattern will be welded together, prior to meshing.\n\nInvert: controls whether the image will be manually inverted, when auto-invert is disabled.\n\nWeld extracted curves: controls whether the splines of the extracted fracture pattern will be welded together, prior to meshing.",
+      "params": [
+        "Normalize",
+        "Trace edges",
+        "Invert",
+        "Preserve aspect ratio",
+        "Texmap",
+        "Resolution",
+        "Threshold",
+        "Auto-invert",
+        "Weld extracted curves"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:51Z"
+}

@@ -1,0 +1,570 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tySelect",
+  "title": "tySelectModifier",
+  "category": "Modifiers",
+  "operator": "tySelectModifier",
+  "sections": [
+    {
+      "heading": "tySelectModifier",
+      "level": "h2",
+      "anchor": "tyselect-modifier",
+      "content": "ThetySelectmodifier allows you to create procedural selections of mesh sub-objects (vertices, triangles, polygons or elements), using various customizable criteria.\n\nThis modifier is meant to replace 3ds Max’s default “Volume Select” modifier, which is out-dated and lacking a lot of important features.",
+      "params": []
+    },
+    {
+      "heading": "Parameters Rollout",
+      "level": "h3",
+      "anchor": "parameters-rollout",
+      "content": "Sub-object level: this controls what type of sub-object thetySelectmodifier will select.Selection list: this is the list of selectors that will be evaluated from top to bottom.\n\nSub-object level: this controls what type of sub-object thetySelectmodifier will select.\n\nSelection list: this is the list of selectors that will be evaluated from top to bottom.\n\nThetySelectmodifier has its own selection list (similar to 3ds Max’s modifier stack) which can be filled with selectors, each of which can have its own selection method and settings. The selection list is evaluated from top to bottom, and its purpose is to keep thetySelectmodifier compact within 3ds Max’s modifier stack. So if you need to create a selection with various criteria (adding and subtracting sub-objects based on different selection methods), you’ll only need 1tySelectmodifier in the modifier stack to do it, which keeps the modifier stack tidy in cases where complex selections are generated.",
+      "params": [
+        "Selection list",
+        "Sub-object level"
+      ]
+    },
+    {
+      "heading": "Input",
+      "level": "h4",
+      "anchor": "input",
+      "content": "Select at specific frame: when enabled, the input mesh will be evaluated at the specified frame, rather than the current frame.Frame: the specified frame at which to evaulate the input mesh.\n\nSelect at specific frame: when enabled, the input mesh will be evaluated at the specified frame, rather than the current frame.\n\nFrame: the specified frame at which to evaulate the input mesh.\n\n“Select at specific frame” allows you to perform deformation-independent selections on a deforming mesh. So, for example, if a particular selection would occur at frame 0, but not frame 20, you can replicate frame 0’s selection at frame 20 by enabling this setting and setting the selection frame to 0.",
+      "params": [
+        "Frame",
+        "Select at specific frame"
+      ]
+    },
+    {
+      "heading": "Result",
+      "level": "h4",
+      "anchor": "result",
+      "content": "Assign to vertex colors: the resulting vertex selection values will be converted into color values and assigned to the mesh’s vertex color map channel.Channel: the channel to assign vertex colors to.\n\nAssign to vertex colors: the resulting vertex selection values will be converted into color values and assigned to the mesh’s vertex color map channel.\n\nChannel: the channel to assign vertex colors to.\n\nThe default vertex color channel is 0, but technically any channel can take vertex color values.\n\nDisplay sub-objects in view: controls whether the selected sub-object type will be displayed in the viewport (vertices, faces, etc).",
+      "params": [
+        "Display sub-objects in view",
+        "Assign to vertex colors",
+        "Channel"
+      ]
+    },
+    {
+      "heading": "Additive Selections Rollout",
+      "level": "h3",
+      "anchor": "additive-selections-rollout",
+      "content": "The additive selection parameters allow you to accumulate selections over time. The frames in the defined range will be evaluated and added together in succession, with their selections potentially decaying/fading as time progresses, depending on the temporal effect settings.\n\nAdditive selections ENABLED/DISABLED: this checkbutton controls whether or not additive selections will be read from the baked data.",
+      "params": [
+        "Additive selections ENABLED/DISABLED"
+      ]
+    },
+    {
+      "heading": "Frame Range",
+      "level": "h4",
+      "anchor": "frame-range",
+      "content": "Start/End: the start and end frame of the additive selection interval.Steps/frame: the number of time steps to sample/evaluate between frames during additive selection calculations.\n\nStart/End: the start and end frame of the additive selection interval.\n\nSteps/frame: the number of time steps to sample/evaluate between frames during additive selection calculations.\n\nThe more steps per frame, the more accurate the overall selection will be (temporally). Increasing the steps parameter is most useful for increasing accuracy when selections are generated from fast-moving objects.",
+      "params": [
+        "Steps/frame",
+        "Start/End"
+      ]
+    },
+    {
+      "heading": "Temporal Effect",
+      "level": "h4",
+      "anchor": "temporal-effect",
+      "content": "Decay: selection values will be decayed at this rate, over time.Age curve: selection values will be interpolated along a curve by their age relative to a total lifespan value.Decay multiplier: the multiplier applied to selection values over time.Lifespan: the maximum lifespan of selection values.\n\nDecay: selection values will be decayed at this rate, over time.\n\nAge curve: selection values will be interpolated along a curve by their age relative to a total lifespan value.\n\nDecay multiplier: the multiplier applied to selection values over time.\n\nLifespan: the maximum lifespan of selection values.\n\nBake additive selections: computes the additive selections over the chosen frame range and stores them in memory.Auto update: additive selections will automatically be computed when changes to the input geometry ortySelectsettings are detected.\n\nBake additive selections: computes the additive selections over the chosen frame range and stores them in memory.\n\nAuto update: additive selections will automatically be computed when changes to the input geometry ortySelectsettings are detected.",
+      "params": [
+        "Bake additive selections",
+        "Age curve",
+        "Decay multiplier",
+        "Lifespan",
+        "Auto update",
+        "Decay"
+      ]
+    },
+    {
+      "heading": "Profiler Rollout",
+      "level": "h3",
+      "anchor": "profiler-rollout",
+      "content": "The profiler rollout shows info related to the total calculation time for each step of thetySelectselection process.",
+      "params": []
+    },
+    {
+      "heading": "Selector Settings Rollout",
+      "level": "h3",
+      "anchor": "selector-settings-rollout",
+      "content": "Selection Method: controls the way in which mesh sub-objects will be selected for the selected selector in the selection list.Coverage (window/crossing): when window coverage is selected, all parts of a sub-object must be selected in order for the sub-object to be selected (for example, all vertices must be selected in order for a face to be selected, and all faces must be selected in order for an element to be selected). When crossing is selected, any parts of a sub-object can be selected in order for the sub-object to be selected.Grow/Shrink: controls how must to grow or shrink a selection with adjacent sub-objects (grow with positive values, shrink with negative values).Grow through edges: face selection will grow through edges that connect faces, rather than through vertices (this mode is only available when sub-object type set to triangles).Ignore non-manifold edges: when face selection is set to grow through edges, selections will only be grown through edges that are manifold (edges that are connected to exactly 2 faces). Edges connected to 3 or more faces will bound the selection growth.\n\nSelection Method: controls the way in which mesh sub-objects will be selected for the selected selector in the selection list.\n\nCoverage (window/crossing): when window coverage is selected, all parts of a sub-object must be selected in order for the sub-object to be selected (for example, all vertices must be selected in order for a face to be selected, and all faces must be selected in order for an element to be selected). When crossing is selected, any parts of a sub-object can be selected in order for the sub-object to be selected.\n\nGrow/Shrink: controls how must to grow or shrink a selection with adjacent sub-objects (grow with positive values, shrink with negative values).\n\nGrow through edges: face selection will grow through edges that connect faces, rather than through vertices (this mode is only available when sub-object type set to triangles).\n\nIgnore non-manifold edges: when face selection is set to grow through edges, selections will only be grown through edges that are manifold (edges that are connected to exactly 2 faces). Edges connected to 3 or more faces will bound the selection growth.",
+      "params": [
+        "Ignore non-manifold edges",
+        "Coverage (window/crossing)",
+        "Grow through edges",
+        "Grow/Shrink",
+        "Selection Method"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h4",
+      "anchor": "operation",
+      "content": "Set: sets the sub-object selection to the result of the selector.Add: adds the result of the selector to the current selection.Subtract: subtracts the result of the selector to the current selection.Multiply: multiplies the result of the selector to the current selection.Invert: inverts the result of the selector.\n\nSet: sets the sub-object selection to the result of the selector.\n\nAdd: adds the result of the selector to the current selection.\n\nSubtract: subtracts the result of the selector to the current selection.\n\nMultiply: multiplies the result of the selector to the current selection.\n\nInvert: inverts the result of the selector.",
+      "params": [
+        "Invert",
+        "Add",
+        "Subtract",
+        "Multiply",
+        "Set"
+      ]
+    },
+    {
+      "heading": "Post-process",
+      "level": "h4",
+      "anchor": "post-process",
+      "content": "Exponent: raises resulting soft-selection values to the specified power.\n\nChanging the exponent setting from the default value of 1.0 is an easy way to crunch or inflate the influence amount of individual soft selection values.\n\nClamp: enables value clamping.\n\nCertain operations can produce vertex selection values outside the range of [0-1]. Sometimes this can be intentional, but other times it can be an unintentional consequence of the selector’s operation type. The clamp settings allow you to force resulting vertex selection values to be stay within a certain range.\n\nMin: the minimum allowable vertex selection value after the selector’s operation has completed.Max: the maximum allowable vertex selection value after the selector’s operation has completed.\n\nMin: the minimum allowable vertex selection value after the selector’s operation has completed.\n\nMax: the maximum allowable vertex selection value after the selector’s operation has completed.",
+      "params": [
+        "Exponent",
+        "Clamp",
+        "Max",
+        "Min"
+      ]
+    },
+    {
+      "heading": "Activation",
+      "level": "h4",
+      "anchor": "activation",
+      "content": "Activation: an animatable parameter controlling the activation state of the selector (1 = on, 0 = off)\n\nSet keyframes on the activation parameter to animate a selector’s activation state over time.",
+      "params": [
+        "Activation"
+      ]
+    },
+    {
+      "heading": "Soft Selection Rollout",
+      "level": "h3",
+      "anchor": "soft-selection-rollout",
+      "content": "Soft selections are only available in vertex sub-object mode, and emanate outwards from fully-selected vertices. Enabling soft selections will override any soft vertex selection values assigned directly by selectors.\n\nUse Soft Selection: enables soft-selection value calculations.Override existing: when enabled, existing soft-selections (selection values on vertices less than 1) will be overriden by the soft-selection algorithm, meaning that all soft-selections will derive from vertex selections equal to 1. When disabled, all vertex selection values greater than 0 will contribute to soft-selections. Disable this setting if you want soft-selections to extend from all vertex selection values, not just values equal to 1.Linear distance: soft selection values will be computed as the distance from a vertex to the nearest fully-selected vertex, in worldspace.Edge distance: soft selection values will be computed as the distance from a vertex to the nearest fully-selected vertex, along connected surface edges.\n\nUse Soft Selection: enables soft-selection value calculations.\n\nOverride existing: when enabled, existing soft-selections (selection values on vertices less than 1) will be overriden by the soft-selection algorithm, meaning that all soft-selections will derive from vertex selections equal to 1. When disabled, all vertex selection values greater than 0 will contribute to soft-selections. Disable this setting if you want soft-selections to extend from all vertex selection values, not just values equal to 1.\n\nLinear distance: soft selection values will be computed as the distance from a vertex to the nearest fully-selected vertex, in worldspace.\n\nEdge distance: soft selection values will be computed as the distance from a vertex to the nearest fully-selected vertex, along connected surface edges.\n\nWhen soft-selecting in “edge distance” mode, any vertices that have no direct connection along surface edges to fully-selected vertices will always receive a soft-selection value of 0.\n\nInclude hidden: when enabled, the edge distance algorithm will traverse hidden edges. When disabled, it will skip them.Distance: the distance value used to compute soft-selection ratios.Noise mode: controls how soft-selection noise is computed for a given vertex. “Add to position” means a noise vector will be computed for each vertex and then added to its position prior to its soft-selection distance computation. “Add to position (fade)” is the same as “add to position”, except the strength of the noise will be diminished as the soft-selected vertices affected get closer to fully-selected vertices (this mode only changes the result in “linear distance” mode). “Subtract from distance” means a noise value will be subtracted from the soft-selection distance value after the distance value is computed.\n\nInclude hidden: when enabled, the edge distance algorithm will traverse hidden edges. When disabled, it will skip them.\n\nDistance: the distance value used to compute soft-selection ratios.\n\nNoise mode: controls how soft-selection noise is computed for a given vertex. “Add to position” means a noise vector will be computed for each vertex and then added to its position prior to its soft-selection distance computation. “Add to position (fade)” is the same as “add to position”, except the strength of the noise will be diminished as the soft-selected vertices affected get closer to fully-selected vertices (this mode only changes the result in “linear distance” mode). “Subtract from distance” means a noise value will be subtracted from the soft-selection distance value after the distance value is computed.\n\n“Add to position” mode can result in stepped areas of low soft-selection right next to areas of full selection, but creates more traditional noise patterns. “Subtract from distance” mode reduces stepping around fully-selected areas, but will also increase the overall soft-selection size as the noise strength increases. “Subtract from distance” mode may also require significantly reduced noise strength values, to produce acceptable results (especially in “edge distance” mode), compared to “add to position” mode.\n\nCurve: the curve used to interpolate soft-selection ratios along the distance, resulting in the final soft-selection value.",
+      "params": [
+        "Override existing",
+        "Distance",
+        "Edge distance",
+        "Linear distance",
+        "Use Soft Selection",
+        "Curve",
+        "Include hidden",
+        "Noise mode"
+      ]
+    },
+    {
+      "heading": "Selection Methods",
+      "level": "h3",
+      "anchor": "selection-methods",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Bounds Ratio",
+      "level": "h4",
+      "anchor": "bounds-ratio",
+      "content": "The bounds ratio selector computes selections by checking the ratio between each mesh element/triangle’s longest OOBB (object-oriented bounding box) axis and second longest OOBB axis. If the ratio between the longest OOBB axis and the second longest OOBB axis is greater than the threshold, the element/triangles’s face(s)/vertices will be selected. This computation allows you to identify select elongated mesh elements/triangles.\n\nElement bounds: when selected, bounds of entire mesh elements will be measured.Triangle bounds: when selected, bounds of individual mesh triangles will be measured.Threshold: the length ratio threshold between the longest OOBB axis and the second longest OOBB axis.\n\nElement bounds: when selected, bounds of entire mesh elements will be measured.\n\nTriangle bounds: when selected, bounds of individual mesh triangles will be measured.\n\nThreshold: the length ratio threshold between the longest OOBB axis and the second longest OOBB axis.",
+      "params": [
+        "Element bounds",
+        "Threshold",
+        "Triangle bounds"
+      ]
+    },
+    {
+      "heading": "Camera Frustum",
+      "level": "h4",
+      "anchor": "camera-frustum",
+      "content": "The camera frustum selector computes selections by checking whether or not vertices/faces are visible within a camera’s field-of-view (FOV).\n\nCamera node: the scene camera to use.Expand: the amount of expand the camera’s FOV. Values larger than zero will select vertices/faces outside of the camera’s FOV.\n\nCamera node: the scene camera to use.\n\nExpand: the amount of expand the camera’s FOV. Values larger than zero will select vertices/faces outside of the camera’s FOV.",
+      "params": [
+        "Expand",
+        "Camera node"
+      ]
+    },
+    {
+      "heading": "Current Selection",
+      "level": "h4",
+      "anchor": "current-selection",
+      "content": "The current selection selector imports the current selection stack as its selection. An example usage of this modifier, is if you want to re-compute soft selection values on a particular selection stack, in a way that is independent from the soft-selection methods previously computed. For example, the Mesh selector computes soft-selections by calculating surface proximities. This may not be ideal in situations where you want a soft-selection that is not relative to surface distances. So in that instance, you would use this selector to import the selection values of the Mesh selector, and re-compute the soft-selection.\n\nMin: the minimum selection value to import.Max: the maximum selection value to import.\n\nMin: the minimum selection value to import.\n\nMax: the maximum selection value to import.\n\nValues less than 1 are soft-selection values.",
+      "params": [
+        "Max",
+        "Min"
+      ]
+    },
+    {
+      "heading": "Coincident Faces",
+      "level": "h4",
+      "anchor": "coincident-faces",
+      "content": "The coincident faces selector computes selections by checking whether or not faces within a certain proximity to each other are overlapping.\n\nDist thresh: the maximum distance between two faces in order for them to perform an overlap test.Thin face cull: faces with an angle between two edges smaller than this value will be ignored.\n\nDist thresh: the maximum distance between two faces in order for them to perform an overlap test.\n\nThin face cull: faces with an angle between two edges smaller than this value will be ignored.\n\nVery thin faces can return false-positive results in the overlap test. Culling thin faces like this will prevent them from being erroneously selected.\n\nCheck all faces: all faces will be compared to each other.Check if same element: only faces of the same element will be compared to each other.Check if different element: only faces of different elements will be compared to each other.\n\nCheck all faces: all faces will be compared to each other.\n\nCheck if same element: only faces of the same element will be compared to each other.\n\nCheck if different element: only faces of different elements will be compared to each other.",
+      "params": [
+        "Check all faces",
+        "Thin face cull",
+        "Check if same element",
+        "Check if different element",
+        "Dist thresh"
+      ]
+    },
+    {
+      "heading": "Curvature",
+      "level": "h4",
+      "anchor": "curvature",
+      "content": "The curvature selector computes selections by measuring the angle between adjacent faces and comparing the result to user-defined threshold parameters.\n\nMin/Max angle: faces whose adjacency angle is between these values will be fully selected.Falloff: faces whose adjacency angle is outside of the min/max threshold but within this falloff threshold will have their vertices partially selected, depending on how close their angle is to the min/max threshold.\n\nMin/Max angle: faces whose adjacency angle is between these values will be fully selected.\n\nFalloff: faces whose adjacency angle is outside of the min/max threshold but within this falloff threshold will have their vertices partially selected, depending on how close their angle is to the min/max threshold.",
+      "params": [
+        "Min/Max angle",
+        "Falloff"
+      ]
+    },
+    {
+      "heading": "Deformation",
+      "level": "h4",
+      "anchor": "deformation",
+      "content": "The deformation selector computes selections by comparing the input mesh to a reference mesh at a certain point in time. The greater the distance between mesh vertices, the stronger the selection. For example, it can be used to compute selections for stretched or creased areas of an animated mesh.\n\nRef frame: the frame at which the reference mesh will be analyzed.Self: the reference mesh will be an internal snapshot of the current mesh evaluated at the reference frame.Mesh: the reference mesh will be the mesh of an external object evaluated at the reference frame.\n\nRef frame: the frame at which the reference mesh will be analyzed.\n\nSelf: the reference mesh will be an internal snapshot of the current mesh evaluated at the reference frame.\n\nMesh: the reference mesh will be the mesh of an external object evaluated at the reference frame.\n\nDeformations can only be computed on meshes with identical topology. If the meshes do not have identical vertex counts, the deformation selection cannot be performed.\n\nVertex distance: the selection will be computed by comparing distances between vertices of the reference/input meshes.Edge bend: the selection will be computed by comparing angles between edges of the reference/input meshes.Edge length: the selection will be computed by comparing differences between the lengths of edges in the reference/input meshes.Face area: the selection will be computed by comparing differences between face areas in the reference/input meshes.Threshold: the type-dependent selection threshold. For example, it is used as an angle threshold in “edge bend” mode, and a length threshold in “edge length” mode. For face area mode it is used as a ratio (for example, a threshold of “2” means input faces with twice the area of their counterpart in the reference mesh will be selected).\n\nVertex distance: the selection will be computed by comparing distances between vertices of the reference/input meshes.\n\nEdge bend: the selection will be computed by comparing angles between edges of the reference/input meshes.\n\nEdge length: the selection will be computed by comparing differences between the lengths of edges in the reference/input meshes.\n\nFace area: the selection will be computed by comparing differences between face areas in the reference/input meshes.\n\nThreshold: the type-dependent selection threshold. For example, it is used as an angle threshold in “edge bend” mode, and a length threshold in “edge length” mode. For face area mode it is used as a ratio (for example, a threshold of “2” means input faces with twice the area of their counterpart in the reference mesh will be selected).\n\nAbsolute/relative: controls whether the measured differences will be absolute values in the selected spatial coordinates, or values relative to adjacent vertex neighbors.Local/space: controls whether differences will be measured in local (mesh) space coordinates, or world space.\n\nAbsolute/relative: controls whether the measured differences will be absolute values in the selected spatial coordinates, or values relative to adjacent vertex neighbors.\n\nLocal/space: controls whether differences will be measured in local (mesh) space coordinates, or world space.\n\nSelection strength values are available in “edge length” mode.\n\nStretch: a multiplier which controls the amount that stretched edges will contribute to the selection.Compress: a multiplier which controls the amount that compressed edges will contribute to the selection.\n\nStretch: a multiplier which controls the amount that stretched edges will contribute to the selection.\n\nCompress: a multiplier which controls the amount that compressed edges will contribute to the selection.",
+      "params": [
+        "Ref frame",
+        "Edge bend",
+        "Edge length",
+        "Compress",
+        "Face area",
+        "Self",
+        "Local/space",
+        "Threshold",
+        "Stretch",
+        "Absolute/relative",
+        "Mesh",
+        "Vertex distance"
+      ]
+    },
+    {
+      "heading": "Edge Count",
+      "level": "h4",
+      "anchor": "edge-count",
+      "content": "The edge count selector selects sub-objects based on how many adjacent edges they are connected to.\n\nThreshold: a soft-selection will be generated based on the number of adjacent edges compared to a threshold value.Min/Max: elements with an adjacent-edge count within the min/max range will be selected.\n\nThreshold: a soft-selection will be generated based on the number of adjacent edges compared to a threshold value.\n\nMin/Max: elements with an adjacent-edge count within the min/max range will be selected.",
+      "params": [
+        "Threshold",
+        "Min/Max"
+      ]
+    },
+    {
+      "heading": "Edge Loop",
+      "level": "h4",
+      "anchor": "edge-loop",
+      "content": "The edge loop selector recursively selects edges adjacant to existing edge selections based on their angle of divergence.\n\nThreshold: the maximum amount of divergence an edge can have from a selected edge in order to be included in a selection loop.Visible edges only: when enabled, hidden edges will not be added to selection loops.Allow branching: when enabled, all adjacent edges that diverge less than the threshold value will be added to the selection. When disabled, only the edge with the least amount of divergence will be added.\n\nThreshold: the maximum amount of divergence an edge can have from a selected edge in order to be included in a selection loop.\n\nVisible edges only: when enabled, hidden edges will not be added to selection loops.\n\nAllow branching: when enabled, all adjacent edges that diverge less than the threshold value will be added to the selection. When disabled, only the edge with the least amount of divergence will be added.",
+      "params": [
+        "Threshold",
+        "Allow branching",
+        "Visible edges only"
+      ]
+    },
+    {
+      "heading": "Edge Length",
+      "level": "h4",
+      "anchor": "edge-length",
+      "content": "The edge length selector selects sub-objects based on the length of their adjacent edges.\n\nLess than/greater than: the length condition.Length: the length threshold.\n\nLess than/greater than: the length condition.\n\nLength: the length threshold.",
+      "params": [
+        "Length",
+        "Less than/greater than"
+      ]
+    },
+    {
+      "heading": "Element Triangle Count",
+      "level": "h4",
+      "anchor": "element-triangle-count",
+      "content": "The element triangle count selector selects sub-objects based on how many triangles are in the sub-object’s mesh element. A mesh element is a contiguous set of triangles.\n\nMin: counts equal to the min value and above will be fully selected.Max: counts equal to the max value and below will be fully selected.Range: counts equal to the min value and above, or equal to the max value and below will be fully selected.Soft vertex selection: elements with counts that didn’t qualify for a full selection will be soft-selected based on the ratio between their count and the count criteria.\n\nMin: counts equal to the min value and above will be fully selected.\n\nMax: counts equal to the max value and below will be fully selected.\n\nRange: counts equal to the min value and above, or equal to the max value and below will be fully selected.\n\nSoft vertex selection: elements with counts that didn’t qualify for a full selection will be soft-selected based on the ratio between their count and the count criteria.",
+      "params": [
+        "Soft vertex selection",
+        "Max",
+        "Range",
+        "Min"
+      ]
+    },
+    {
+      "heading": "Element Size",
+      "level": "h4",
+      "anchor": "element-size",
+      "content": "The element size selector selects sub-objects based on the size of their mesh element. A mesh element is a contiguous set of triangles.\n\nSurface Area/Volume: the element size type.Min: sizes equal to the min value and above will be fully selected.Max: sizes equal to the max value and below will be fully selected.Range: sizes equal to the min value and above, or equal to the max value and below will be fully selected.Soft vertex selection: elements with sizes that didn’t qualify for a full selection will be soft-selected based on the ratio between their size and the size criteria.\n\nSurface Area/Volume: the element size type.\n\nMin: sizes equal to the min value and above will be fully selected.\n\nMax: sizes equal to the max value and below will be fully selected.\n\nRange: sizes equal to the min value and above, or equal to the max value and below will be fully selected.\n\nSoft vertex selection: elements with sizes that didn’t qualify for a full selection will be soft-selected based on the ratio between their size and the size criteria.",
+      "params": [
+        "Soft vertex selection",
+        "Surface Area/Volume",
+        "Max",
+        "Range",
+        "Min"
+      ]
+    },
+    {
+      "heading": "Every Nth",
+      "level": "h4",
+      "anchor": "every-nth",
+      "content": "The every nth selector selects sub-objects based on repeating patterns. For example, an nth value of “2” will select every other sub-object. An nth value of “3” will select every third sub-object, etc.\n\nNth: the pattern value to use.Offset: the offset to apply to the input sub-object index, prior to pattern matching.\n\nNth: the pattern value to use.\n\nOffset: the offset to apply to the input sub-object index, prior to pattern matching.\n\nThe every nth selector uses the modulus operator to compute pattern matches. The selection condition equation is:(([sub-object index] + offset) % nth) == 0",
+      "params": [
+        "Offset",
+        "Nth"
+      ]
+    },
+    {
+      "heading": "Face Angles",
+      "level": "h4",
+      "anchor": "face-angles",
+      "content": "The face angles selector computes selections based on the angles between the edges of mesh faces. If all three pairs of adjacent edges within the same face have an angle within the defined min/max thresholds, the face will be selected.\n\nMin: the minimum angle between face edges in order for a face to be a candidate for selection.Max: the maximum angle between face edges in order for a face to be a candidate for selection.\n\nMin: the minimum angle between face edges in order for a face to be a candidate for selection.\n\nMax: the maximum angle between face edges in order for a face to be a candidate for selection.",
+      "params": [
+        "Max",
+        "Min"
+      ]
+    },
+    {
+      "heading": "Face Area/Volume",
+      "level": "h4",
+      "anchor": "face-area-volume",
+      "content": "The face area selector selects sub-objects based on the area of mesh faces.\n\nMin: areas equal to the min value and above will be fully selected.Max: areas equal to the max value and below will be fully selected.Range: areas equal to the min value and above, or equal to the max value and below will be fully selected.Soft vertex selection: faces with areas that didn’t qualify for a full selection will be soft-selected based on the ratio between their area and the area criteria.\n\nMin: areas equal to the min value and above will be fully selected.\n\nMax: areas equal to the max value and below will be fully selected.\n\nRange: areas equal to the min value and above, or equal to the max value and below will be fully selected.\n\nSoft vertex selection: faces with areas that didn’t qualify for a full selection will be soft-selected based on the ratio between their area and the area criteria.",
+      "params": [
+        "Soft vertex selection",
+        "Max",
+        "Range",
+        "Min"
+      ]
+    },
+    {
+      "heading": "Gizmo",
+      "level": "h4",
+      "anchor": "gizmo",
+      "content": "The gizmo selector selects sub-objects using a gizmo sub-object. Sub-objects encompassed by the gizmo sub-object will be fully selected.\n\nBox/Sphere/Plane: the shape of the gizmo sub-object.\n\nNoise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Noise mode",
+        "Box/Sphere/Plane"
+      ]
+    },
+    {
+      "heading": "Material ID",
+      "level": "h4",
+      "anchor": "material-id",
+      "content": "The material ID selector selects sub-objects using face material ID values.\n\nIDs: the list of material IDs to match.",
+      "params": [
+        "IDs"
+      ]
+    },
+    {
+      "heading": "Mesh",
+      "level": "h4",
+      "anchor": "mesh",
+      "content": "The mesh selector selects sub-objects using the meshes of external scene objects.\n\nEnable “use soft selection” in the soft selection rollout in order to interpolate mesh proximity values as vertex soft-selection values.\n\nSelect if inside: vertices inside the input meshes will be fully selected.Split elements: when enabled, mesh elements will be tested individually (leading to more consistent results when using complex/non-manifold meshes as the selection source).Accuracy: the accuracy of the inside test. Increase this value for meshes that are self-intersecting or have holes in them.\n\nSelect if inside: vertices inside the input meshes will be fully selected.\n\nSplit elements: when enabled, mesh elements will be tested individually (leading to more consistent results when using complex/non-manifold meshes as the selection source).\n\nAccuracy: the accuracy of the inside test. Increase this value for meshes that are self-intersecting or have holes in them.\n\nMultiply by UVW values: when enabled, the selection result will be further multiplied by the specified UVW component of the specified map channel at the nearest point on the input mesh.Average/U/V/W: controls which component of a mapping value the selection multiplier will be taken from.Map channel: the map channel from which to derive the UVW values.\n\nMultiply by UVW values: when enabled, the selection result will be further multiplied by the specified UVW component of the specified map channel at the nearest point on the input mesh.\n\nAverage/U/V/W: controls which component of a mapping value the selection multiplier will be taken from.\n\nMap channel: the map channel from which to derive the UVW values.\n\nSample type: controls which sampler will be used to determine closest-surface proximities for vertices.\n\nThe noise settings allow you to offset the way in which vertex positions are measured during the distance/volume tests.\n\nNoise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Noise mode",
+        "Accuracy",
+        "Split elements",
+        "Multiply by UVW values",
+        "Select if inside",
+        "Sample type",
+        "Average/U/V/W",
+        "Map channel"
+      ]
+    },
+    {
+      "heading": "Normals",
+      "level": "h4",
+      "anchor": "normals",
+      "content": "The normals selector selects sub-objects based on the direction of mesh face normals.\n\nGizmo direction: the direction vector of the gizmo sub-object determines which face normals will be selected.Closest normal on surface: the closest normal on the selected surface to the center of the source face will determine which face normals will be selected.Absolute X/Y/Z: the vector defined by the X/Y/Z spinners will determine which face normals will be selected.Towards/Away/Both: controls the manner in which face normals must align to the test vector in order to be selected.Threshold: faces with normals which align to the test vector within this threshold will be selected. The greater the threshold value, the less exact an alignment must be in order for a face to be considered a selection candidate.\n\nGizmo direction: the direction vector of the gizmo sub-object determines which face normals will be selected.\n\nClosest normal on surface: the closest normal on the selected surface to the center of the source face will determine which face normals will be selected.\n\nAbsolute X/Y/Z: the vector defined by the X/Y/Z spinners will determine which face normals will be selected.\n\nTowards/Away/Both: controls the manner in which face normals must align to the test vector in order to be selected.\n\nThreshold: faces with normals which align to the test vector within this threshold will be selected. The greater the threshold value, the less exact an alignment must be in order for a face to be considered a selection candidate.\n\nThe noise settings allow you to offset the way in which normals are measured by the normals selector.\n\nNoise mode: controls which noise algorithm will be used.Noise texmap: the texmap that will be used by the noise texmap mode(s).Noise preview: a preview image showing a 2D representation of the selected noise mode.Strength: the strength of the noise (a multiplier on the default noise range of [-1, 1]).Frequency: the speed at which the noise will evolve over time.Scale: the scale multiplier for position values sent through the noise algorithm. Smaller values create larger noise patterns.Roughness: controls the amount of extra detail applicable noise modes will generate.Lacunarity: controls the scale of successive noise octaves for applicable noise modes.Gain: controls the relative intensity of successive noise octaves for applicable noise modes.Iterations/Octaves: controls the number of overlapping noise patterns that applicable noise modes will generate.Phase: provides manual control over the evolution of the noise over time.",
+      "params": [
+        "Absolute X/Y/Z",
+        "Towards/Away/Both",
+        "Closest normal on surface",
+        "Threshold",
+        "Noise mode",
+        "Gizmo direction"
+      ]
+    },
+    {
+      "heading": "Occluded Elements",
+      "level": "h4",
+      "anchor": "occluded-elements",
+      "content": "The occluded elements selector selects sub-objects based on whether or not all vertices of a mesh element are occluded by other parts of the mesh.\n\nThis selector makes it easy to select mesh elements that are inside of other mesh elements, or mesh elements whose normals are flipped inside-out. An example usage would be selecting all interior faces/elements of a blobmesh created by atyMesher.\n\nThe occlusion test is performed by casting rays out from vertices of the mesh. If a vertex doesn’t hit a face, it is deemed un-occluded by the mesh. Increasing the accuracy parameter increases the number of rays cast from each vertex, which increases the probability that a vertex which is not completely occluded by parts of the mesh will have rays which escape without hitting a face.\n\nSingle ray per element: when enabled, only a single ray will be cast out from each mesh element. If the ray’s origin is determined to be inside another element, the entire element will be occluded.\n\nThe “single ray per element” test is very fast, but only works on meshes with elements that are not intersecting. For more complex meshes (self-intersecting, non-manifold, etc), this test won’t return accurate results.\n\nOcclusion %: the minimum percent of vertices within a mesh element that must be occluded by parts of the overall mesh, in order for the element to be selected.Accuracy: the number of rays to cast from each vertex, to test for occlusion.\n\nOcclusion %: the minimum percent of vertices within a mesh element that must be occluded by parts of the overall mesh, in order for the element to be selected.\n\nAccuracy: the number of rays to cast from each vertex, to test for occlusion.",
+      "params": [
+        "Occlusion %",
+        "Single ray per element",
+        "Accuracy"
+      ]
+    },
+    {
+      "heading": "Occluded Faces",
+      "level": "h4",
+      "anchor": "occluded-faces",
+      "content": "The occluded faces selector selects sub-objects based on whether or not all vertices of a face are occluded by other parts of the mesh.\n\nThis selector makes it easy to select mesh faces that are inside of mesh elements. An example usage would be selecting all interior faces of a blobmesh created by atyMesher.\n\nThe occlusion test is performed by casting rays out from every vertex of the mesh. If a vertex doesn’t hit a face, it is deemed un-occluded by the mesh. Increasing the accuracy parameter increases the number of rays cast from each vertex, which increases the probability that a vertex which is not completely occluded by parts of the mesh will have rays which escape without hitting a face.\n\n‘Any hit’ occlusion: when enabled, any raycast hit detected from a vertex will be considered an occluded hit. When disabled, only total vertex raycast hit count totals that are odd numbers will be considered occluded.\n\nIn general, a ray cast outward from inside of a closed mesh will only ever penetrate an odd number of faces in order to escape the mesh volume - this is why regular occlusion (not ‘any hit’ occlusion) only considers oddly-numbered hit counts as occluded.\n\nOcclusion %: the minimum percent of vertices within a face that must be occluded by parts of the overall mesh, in order for the face to be selected.Accuracy: the number of rays to cast from each vertex, to test for occlusion.\n\nOcclusion %: the minimum percent of vertices within a face that must be occluded by parts of the overall mesh, in order for the face to be selected.\n\nAccuracy: the number of rays to cast from each vertex, to test for occlusion.",
+      "params": [
+        "‘Any hit’ occlusion",
+        "Occlusion %",
+        "Accuracy"
+      ]
+    },
+    {
+      "heading": "Open Edges",
+      "level": "h4",
+      "anchor": "open-edges",
+      "content": "The open edges selector selects sub-objects based on whether or not they are touching an open edge. An open edge is an edge with only one adjacent face. This selector has no settings.",
+      "params": []
+    },
+    {
+      "heading": "Particles",
+      "level": "h3",
+      "anchor": "particles",
+      "content": "The particles selector selects sub-objects using the particles of external particle systems.\n\nAbsolute radius: sub-objects within an absolute radius to particles will be selected.Radius: the absolute radius value to use.Particle radius: sub-objects within each particle’s radius will be selected.Multiplier: a multiplier to apply to each particle’s radius.\n\nAbsolute radius: sub-objects within an absolute radius to particles will be selected.\n\nRadius: the absolute radius value to use.\n\nParticle radius: sub-objects within each particle’s radius will be selected.\n\nMultiplier: a multiplier to apply to each particle’s radius.",
+      "params": [
+        "Particle radius",
+        "Radius",
+        "Absolute radius",
+        "Multiplier"
+      ]
+    },
+    {
+      "heading": "Simulation Groups",
+      "level": "h4",
+      "anchor": "simulation-groups",
+      "content": "Simulation groups: controls which particle simulation groups will be imported.",
+      "params": [
+        "Simulation groups"
+      ]
+    },
+    {
+      "heading": "Export Groups",
+      "level": "h4",
+      "anchor": "export-groups",
+      "content": "Export groups: controls which particle export groups will be imported.",
+      "params": [
+        "Export groups"
+      ]
+    },
+    {
+      "heading": "Multipliers",
+      "level": "h4",
+      "anchor": "multipliers",
+      "content": "Multiply by density: when enabled, the strength of the selection will depend on how dense the particle cloud around a particular vertex is, based on the specified threshold.Threshold: the number of particles that must be in proximity to a particular mesh vertex, to result in a full vertex selection. Vertices with particle densities below this threshold will be softly selected.Multiply by age: when enabled, the strength of the selection will depend on how old each proximite particle is.\n\nMultiply by density: when enabled, the strength of the selection will depend on how dense the particle cloud around a particular vertex is, based on the specified threshold.\n\nThreshold: the number of particles that must be in proximity to a particular mesh vertex, to result in a full vertex selection. Vertices with particle densities below this threshold will be softly selected.\n\nMultiply by age: when enabled, the strength of the selection will depend on how old each proximite particle is.\n\nAge caching must be enabled on the inputtyFlowparticle system for this feature to work.\n\nThreshold: the minimum age a proximate particle needs to be, to result in a full vertex selection.Invert: inverts the effect of the “multiply by age” setting, so that older particles contribute less of an effect on selections.\n\nThreshold: the minimum age a proximate particle needs to be, to result in a full vertex selection.\n\nInvert: inverts the effect of the “multiply by age” setting, so that older particles contribute less of an effect on selections.",
+      "params": [
+        "Invert",
+        "Multiply by density",
+        "Threshold",
+        "Multiply by age"
+      ]
+    },
+    {
+      "heading": "Pinched Vertices",
+      "level": "h3",
+      "anchor": "pinched-vertices",
+      "content": "The pinched vertices selector selects vertices that are connected to three or more open edges.\n\nPinched vertices most often occur where two isolated triangles are welded by a single vertex.",
+      "params": []
+    },
+    {
+      "heading": "Polygon Vertices",
+      "level": "h4",
+      "anchor": "polygon-vertices",
+      "content": "The polygon vertices selector selects a certain number of each polygon’s vertices.\n\nCount: the number of vertices in each polygon to select.Variation %: the per-particle percentage of variation to apply.Seed: the seed value which controls the variation.\n\nCount: the number of vertices in each polygon to select.\n\nSeed: the seed value which controls the variation.",
+      "params": [
+        "Count",
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Random %",
+      "level": "h4",
+      "anchor": "random",
+      "content": "The random % selector selects a random percentage of sub-objects.\n\n%: the random percentage of sub-objects to select.Seed: the seed value which controls the randomness.\n\n%: the random percentage of sub-objects to select.\n\nSeed: the seed value which controls the randomness.",
+      "params": [
+        "%",
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Raycast",
+      "level": "h4",
+      "anchor": "raycast",
+      "content": "The raycast selector selects sub-objects based on whether or not faces are hit with rays emanating from a gizmo sub-object.\n\nGizmo/Object z-Axis/Object look-at: controls whether the rays will be cast from the sub-object gizmo z-axis, a scene object’s z-axis, or the direction from a scene object’s pivot to the center of the sub-object (ex: vertex position).",
+      "params": [
+        "Gizmo/Object z-Axis/Object look-at"
+      ]
+    },
+    {
+      "heading": "Relax",
+      "level": "h4",
+      "anchor": "relax",
+      "content": "The relax selector applies a relaxation kernel to current vertex selections, which averages selection values between edge-adjacent vertices.\n\nAmount: the amount to linearly-interpolate current selections to post-relax selection values.Iterations: the number of times to run the relaxation kernel over the current selection.\n\nAmount: the amount to linearly-interpolate current selections to post-relax selection values.\n\nIterations: the number of times to run the relaxation kernel over the current selection.",
+      "params": [
+        "Iterations",
+        "Amount"
+      ]
+    },
+    {
+      "heading": "Self-Proximity",
+      "level": "h4",
+      "anchor": "self-proximity",
+      "content": "The self-proximity selector computes selections based on the distance of vertices to other vertices within the same mesh.\n\nDistance: vertices within this distance to each other will be fully selected.Falloff: vertices whose distance is further than the distance threshold, but within the falloff threshold, will be partially selected.Ignore same element: vertices within the same mesh element will ignore each other.Ignore adjacent vertices: vertices whose edge connectivity is within a certain depth threshold to each other will ignore each other.Depth: the vertex connectivity depth threshold.\n\nDistance: vertices within this distance to each other will be fully selected.\n\nFalloff: vertices whose distance is further than the distance threshold, but within the falloff threshold, will be partially selected.\n\nIgnore same element: vertices within the same mesh element will ignore each other.\n\nIgnore adjacent vertices: vertices whose edge connectivity is within a certain depth threshold to each other will ignore each other.\n\nDepth: the vertex connectivity depth threshold.",
+      "params": [
+        "Distance",
+        "Depth",
+        "Ignore same element",
+        "Falloff",
+        "Ignore adjacent vertices"
+      ]
+    },
+    {
+      "heading": "Self-Intersections",
+      "level": "h4",
+      "anchor": "self-intersections",
+      "content": "The self-intersections selector computes selections based on whether or not vertices are found to be intersecting their mesh.\n\nAccuracy: controls the accuracy of the raycaster used to compute information about whether a vertex is inside or outside of its mesh.",
+      "params": [
+        "Accuracy"
+      ]
+    },
+    {
+      "heading": "Smoothing Groups",
+      "level": "h4",
+      "anchor": "smoothing-groups",
+      "content": "The smoothing groups selector selects sub-objects using face smoothing group values.\n\nIDs: the list of smoothing group to match.",
+      "params": [
+        "IDs"
+      ]
+    },
+    {
+      "heading": "Stack Selection",
+      "level": "h4",
+      "anchor": "stack-selection",
+      "content": "The stack selection selector selects sub-objects using existing selections present in the modifier stack.\n\nVertices: existing vertex selections will be used to select sub-objects.Triangles: existing triangle selections will be used to select sub-objects.\n\nVertices: existing vertex selections will be used to select sub-objects.\n\nTriangles: existing triangle selections will be used to select sub-objects.",
+      "params": [
+        "Vertices",
+        "Triangles"
+      ]
+    },
+    {
+      "heading": "Texmap",
+      "level": "h4",
+      "anchor": "texmap",
+      "content": "The texmap selector selects sub-objects using the monochromatic intensity values of a texmap.\n\nTexmap: the texmap to sample per-vertex values from.Min: texmap values equal to the min value and above will be fully selected.Max: texmap values equal to the max value and below will be fully selected.Range: texmap values equal to the min value and above, or equal to the max value and below will be fully selected.Absolute: texmap values will be converted directly into selection values.Variation %: the per-particle percentage of variation to apply.Seed: the seed value which controls the variation.Soft vertex selection: vertices with texmap values that didn’t qualify for a full selection will be soft-selected based on the ratio between their texmap value and the texmap value criteria.\n\nTexmap: the texmap to sample per-vertex values from.\n\nMin: texmap values equal to the min value and above will be fully selected.\n\nMax: texmap values equal to the max value and below will be fully selected.\n\nRange: texmap values equal to the min value and above, or equal to the max value and below will be fully selected.\n\nAbsolute: texmap values will be converted directly into selection values.\n\nSeed: the seed value which controls the variation.\n\nSoft vertex selection: vertices with texmap values that didn’t qualify for a full selection will be soft-selected based on the ratio between their texmap value and the texmap value criteria.",
+      "params": [
+        "Absolute",
+        "Seed",
+        "Soft vertex selection",
+        "Texmap",
+        "Max",
+        "Range",
+        "Min"
+      ]
+    },
+    {
+      "heading": "UVW Seams",
+      "level": "h4",
+      "anchor": "uvw-seams",
+      "content": "The UVW seams selector selects sub-objects that are on the open edges of map channel faces.\n\nMap channel: the map channel from which to derive the UVW layout.",
+      "params": [
+        "Map channel"
+      ]
+    },
+    {
+      "heading": "UVW Values",
+      "level": "h4",
+      "anchor": "uvw-values-1",
+      "content": "The UVW values selector selects sub-objects using values (0-1) assigned to the mapping channel of a mesh.\n\nAverage/U/V/W: controls which component of a mapping value the selection value will be taken from.Map channel: the map channel from which to derive the UVW values.\n\nAverage/U/V/W: controls which component of a mapping value the selection value will be taken from.\n\nMap channel: the map channel from which to derive the UVW values.",
+      "params": [
+        "Average/U/V/W",
+        "Map channel"
+      ]
+    },
+    {
+      "heading": "MAXScript Access",
+      "level": "h3",
+      "anchor": "maxscript-access",
+      "content": "The follow MAXScript commands can be used to access tySelect functions:\n\n[tySelect modifier].addSelector()[tySelect modifier].removeSelector: integer (0-based index of selector in list)[tySelect modifier].setSelectorEnabled: integer, bool (0-based index of selector in list and true/false value to set enabled state)[tySelect modifier].bakeAdditiveSelections()\n\n[tySelect modifier].addSelector()\n\n[tySelect modifier].removeSelector: integer (0-based index of selector in list)\n\n[tySelect modifier].setSelectorEnabled: integer, bool (0-based index of selector in list and true/false value to set enabled state)\n\n[tySelect modifier].bakeAdditiveSelections()",
+      "params": [
+        "[tySelect modifier].setSelectorEnabled",
+        "[tySelect modifier].removeSelector"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:24Z"
+}

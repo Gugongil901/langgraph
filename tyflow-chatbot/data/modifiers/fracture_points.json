@@ -1,0 +1,230 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_points",
+  "title": "Fracture pointsRollout",
+  "category": "Modifiers",
+  "operator": "Fracture pointsRollout",
+  "sections": [
+    {
+      "heading": "Fracture pointsRollout",
+      "level": "h2",
+      "anchor": "fracture-points-rollout",
+      "content": "The Fracture points rollout has parameters which provide control over how intermediate fracture points are scattered on meshes. Those points are then used to scatter fracture planes, or generate Voronoi cells, etc. Some fracture modes do not require fracture points (ex: paint fracture), so this rollout may not always appear (depending on which fracture mode you have selected). Certain parameters are only visible when using theMultifractureoperator, over thetyMultifracturemodifier, and vice-versa.",
+      "params": []
+    },
+    {
+      "heading": "Procedural points",
+      "level": "h3",
+      "anchor": "procedural-points",
+      "content": "[None]: when selected, only painted points will be used to generate fractures.\n\nCenter: when selected, a single point will be generated at the center of the input mesh.\n\nGizmo: when selected, points will be generated inside the modifier’s sub-object gizmo.Gizmo type: controls the shape of the sub-object gizmo.\n\nGizmo: when selected, points will be generated inside the modifier’s sub-object gizmo.\n\nGizmo type: controls the shape of the sub-object gizmo.",
+      "params": [
+        "Gizmo",
+        "Center",
+        "Gizmo type",
+        "[None]"
+      ]
+    },
+    {
+      "heading": "Random",
+      "level": "h3",
+      "anchor": "random",
+      "content": "Count: controls the number of points generated in the sub-object gizmo.Variation %: the per-particle percentage of variation to apply.Separation: controls the minimum distance that will be enforced between points positions. If a new point is within the minimum distance threshold to previous point, several attempts will be made to move the new point to another position with a valid minimum distance to previous points. If the re-attempts all fail to find a valid position, the point will be culled (ie, setting this value to greater than 0 may result in fewer points being generated than the specified number of points).\n\nCount: controls the number of points generated in the sub-object gizmo.\n\nSeparation: controls the minimum distance that will be enforced between points positions. If a new point is within the minimum distance threshold to previous point, several attempts will be made to move the new point to another position with a valid minimum distance to previous points. If the re-attempts all fail to find a valid position, the point will be culled (ie, setting this value to greater than 0 may result in fewer points being generated than the specified number of points).",
+      "params": [
+        "Separation",
+        "Count"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nObjects: when selected, points will be generated at the location of specified objects in the scene.",
+      "params": [
+        "Objects",
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Objects",
+      "level": "h3",
+      "anchor": "objects",
+      "content": "Closest point on mesh: when enabled, generated points will be moved to the nearest location on the input mesh.\n\nCustom TMs: when selected, points will be generated at the position/orientation values of custom TMs properties saved to input particles.",
+      "params": [
+        "Custom TMs",
+        "Closest point on mesh"
+      ]
+    },
+    {
+      "heading": "Custom TMs",
+      "level": "h3",
+      "anchor": "custom-tms",
+      "content": "Channel base name: the base name used to find relevant custom TM properties.\n\nThe specified base name will be used to find up to 1000 (0-999) sequential TMs saved to particle custom TM channels. For example, if the specified base name is “point_“, the property search algorithm will attempt to find channels named “point_001”, “point_002”, “point_003”…“point_999” and convert their values into fracture plane locations. The property search algorithm starts at “000” and will stop searching as soon as a sequential name isnotfound. For example, if you only save a TM to a channel named “point_001” (ie, not starting at “point_000”), then no points will be loaded. And if sequential entries in the list of available channels are missing (ex: “point_000” and “point_002” exist, but “point_001” does not) then any channels whose names come after the missing channel will be skipped as well. So, make sure your channel names contain a 3-digit suffix, in sequential order starting at “000”.",
+      "params": [
+        "Channel base name"
+      ]
+    },
+    {
+      "heading": "PhysX contact points",
+      "level": "h3",
+      "anchor": "physx-contact-points",
+      "content": "The PhysX contact point mode allows you to generate fracture points at collision contact locations on PhysX particles. This allows for physics-based fracturing, where meshes are fractured when collisions between them and other particles occur.\n\nBecause PhysX collisions may occur at any given frame in the simulation, and not simply on event entry, it is recommended to change theMultifractureoperator’s timing to continuous or any other non-entry mode when this fracture point mode is selected (so that all desired collisions will be captured). To avoid exponential generation of fractures over time (as more and more collisions occur between meshes and their fractured components), it is also recommended to assign filters or recursion limits (“Fracture input” rollout) to theMultifractureoperator when timing is set to a non-entry mode (ex: continuous).\n\nSimulation groups: controls which PhysX colliders will generate fracture points. By adjusting simulation group settings, you can filter out certain PhysX colliders from generating fracture points.",
+      "params": [
+        "Simulation groups"
+      ]
+    },
+    {
+      "heading": "Contact points",
+      "level": "h4",
+      "anchor": "contact-points",
+      "content": "Particles/Colliders/Ground: controls which types of PhysX rigidbodies will generate fracture points from their collisions with the input particle.Min relative vel: only particles whose minimum relative velocity (relative to the colliding body) is above this value will generate fracture points.\n\nParticles/Colliders/Ground: controls which types of PhysX rigidbodies will generate fracture points from their collisions with the input particle.\n\nMin relative vel: only particles whose minimum relative velocity (relative to the colliding body) is above this value will generate fracture points.\n\nIncrease the “min relative vel” setting to ensure only fast-moving particles will generate fracture points. For example, if “min relative vel” is set to 100, the relative difference in magnitudes between a particle and the colliding body must be at least 100 (which means it won’t generate fracture points unless it’s moving really fast).\n\nMin size ratio: only particles whose surface area ratio (relative to the colliding body) is greather than this threshold will generate fracture points.\n\nIncrease the “min size ratio” setting to ensure collisions between bodies will only generate fracture points if their overall surface area is similar. For example, if “min size ratio” is set to .01, a particle will only generate fracture points when colliding with a body whose surface area is at least 1% of its own. This prevents extremely tiny particles from being able to fracture much larger particles, regardless of their velocity.\n\nMax count: the maximum number of PhysX contact points that will generate fracture points for a given particle.\n\nThe Voronoi fracture mode of theMultifractureoperator requires at least 2 fracture points to be generated in order for Voronoi cells to be generated. If a particle only has 1 PhysX contact point on a given time step, no Voronoi fracture cells will be generated. Therefore it is recommended to enable clusters when using PhysX contact mode in combination with Voronoi fracture mode, to ensure at least 2 or more fracture points are generated when only 1 PhysX contact point is detected.\n\nObject proxmitity: when selected, points will be generated on the input mesh, if those locations on the input mesh are within proximity to the specified objects in the scene.",
+      "params": [
+        "Max count",
+        "Min relative vel",
+        "Particles/Colliders/Ground",
+        "Object proxmitity",
+        "Min size ratio"
+      ]
+    },
+    {
+      "heading": "Proximity points",
+      "level": "h4",
+      "anchor": "proximity-points",
+      "content": "Distance threshold: the maximum distance a proximity point on the input mesh must be to a point on the specified proximity objects’ surface, to avoid being culled.Density: the number of points to generate on the input mesh, for proximity measurements. This value is relative to the surface area of the input mesh. If density is 1.0 and the input mesh has a surface area of 100, then 100 proximity points will be generated.Location interp: this value interpolates fracture points between their origin on the input mesh and their respective proximal location on the proximity objects’ mesh.Spread: a random spread applied to proximity points, so that they don’t all lie uniformly at their point of origin.Max count: controls the maximum number of non-culled proximity points that will be converted to fracture points.\n\nDistance threshold: the maximum distance a proximity point on the input mesh must be to a point on the specified proximity objects’ surface, to avoid being culled.\n\nDensity: the number of points to generate on the input mesh, for proximity measurements. This value is relative to the surface area of the input mesh. If density is 1.0 and the input mesh has a surface area of 100, then 100 proximity points will be generated.\n\nLocation interp: this value interpolates fracture points between their origin on the input mesh and their respective proximal location on the proximity objects’ mesh.\n\nSpread: a random spread applied to proximity points, so that they don’t all lie uniformly at their point of origin.\n\nMax count: controls the maximum number of non-culled proximity points that will be converted to fracture points.",
+      "params": [
+        "Distance threshold",
+        "Max count",
+        "Spread",
+        "Location interp",
+        "Density"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nParticles: when selected, points will be generated at the location of particles in the specified particle system.Use this flow’s particles: when enabled, only particles from the operator’s source flow will be used. When disabled, a user-specified particle system can be chosen.Simulation/export groups: these settings allow you to filter which particles will be used for generating fracture points.\n\nParticles: when selected, points will be generated at the location of particles in the specified particle system.\n\nUse this flow’s particles: when enabled, only particles from the operator’s source flow will be used. When disabled, a user-specified particle system can be chosen.\n\nSimulation/export groups: these settings allow you to filter which particles will be used for generating fracture points.\n\nRandom (surface): when selected, points will be randomly generated on the surface of the input mesh.",
+      "params": [
+        "Random (surface)",
+        "Seed",
+        "Use this flow’s particles",
+        "Simulation/export groups",
+        "Particles"
+      ]
+    },
+    {
+      "heading": "Random",
+      "level": "h3",
+      "anchor": "random-1",
+      "content": "Count: controls the number of points generated on the surface of the input mesh.Variation %: the per-particle percentage of variation to apply.\n\nCount: controls the number of points generated on the surface of the input mesh.",
+      "params": [
+        "Count"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nRandom (volume): when selected, points will be randomly generated in the volume of the input mesh.",
+      "params": [
+        "Seed",
+        "Random (volume)"
+      ]
+    },
+    {
+      "heading": "Random",
+      "level": "h3",
+      "anchor": "random-2",
+      "content": "Count: controls the number of points generated in the volume of the input mesh.Variation %: the per-particle percentage of variation to apply.\n\nCount: controls the number of points generated in the volume of the input mesh.",
+      "params": [
+        "Count"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nSplines: when selected, points will be randomly generated along the specified splines.",
+      "params": [
+        "Splines",
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Random",
+      "level": "h3",
+      "anchor": "random-3",
+      "content": "Count: controls the number of points generated on the splines.Variation %: the per-particle percentage of variation to apply.\n\nCount: controls the number of points generated on the splines.",
+      "params": [
+        "Count"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Baked points",
+      "level": "h3",
+      "anchor": "baked-points",
+      "content": "The “baked points” parameters allow you to paint fracture points directly onto input meshes, using your mouse. These baked points can be used in combination with procedural points, or on their own.\n\nBake all points: when clicked, all procedural points will be converted to baked points. Since baked points can be individually erased with the erase brush, this allows you to erase points which were previously fully procedural (and thus, not individually modifiable).",
+      "params": [
+        "Bake all points"
+      ]
+    },
+    {
+      "heading": "Randomize",
+      "level": "h4",
+      "anchor": "randomize",
+      "content": "Spread: a random spread applied to baked points, so that they don’t all lie uniformly at their point of origin on the input mesh surface.",
+      "params": [
+        "Spread"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Clusters",
+      "level": "h3",
+      "anchor": "clusters",
+      "content": "Clusters generate extra points around the initial fracture points, to procedurally increase point density. They are especially useful for the Voronoi fracture mode, which requires at least 2 points to generate fracture cells (some fracture point modes may only generate a single fracture point, so clusters are necessary to achieve a fracture point count of 2+).\n\nEnable clusters: when enabled, cluster points will be generated on the initial fracture points.Point count: controls the number of cluster points to generate on a given fracture point.Variation %: the per-particle percentage of variation to apply.Point scale: controls the maximum size of an individual cluster of points may be around a given fracture point.Variation %: the per-particle percentage of variation to apply.Spread: the maximum amount an individual cluster point’s distance may vary, from its parent fracture point to the “point scale” value.\n\nEnable clusters: when enabled, cluster points will be generated on the initial fracture points.\n\nPoint count: controls the number of cluster points to generate on a given fracture point.\n\nPoint scale: controls the maximum size of an individual cluster of points may be around a given fracture point.\n\nSpread: the maximum amount an individual cluster point’s distance may vary, from its parent fracture point to the “point scale” value.",
+      "params": [
+        "Point scale",
+        "Spread",
+        "Point count",
+        "Enable clusters"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nSecondary clusters: secondary clusters generate cluster points around the primary cluster points, allowing for even more point density variation. The secondary cluster parameters are the same as the primary cluster parameter, with the addition of a “probability” setting.Probability %: controls the probability that a primary cluster point will be used to generate secondary cluster points.\n\nSecondary clusters: secondary clusters generate cluster points around the primary cluster points, allowing for even more point density variation. The secondary cluster parameters are the same as the primary cluster parameter, with the addition of a “probability” setting.\n\nProbability %: controls the probability that a primary cluster point will be used to generate secondary cluster points.",
+      "params": [
+        "Probability %",
+        "Seed",
+        "Secondary clusters"
+      ]
+    },
+    {
+      "heading": "Optimization",
+      "level": "h3",
+      "anchor": "optimization",
+      "content": "Cull points beyond hull: when enabled, generated points that are further from the radius of the input mesh’s convex hull, multiplied by the specified distance threshold, will be culled. This prevents distant points (that are too far away from the input mesh to affect its fracture mesh) from slowing down fracture mesh computations.",
+      "params": [
+        "Cull points beyond hull"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:56Z"
+}

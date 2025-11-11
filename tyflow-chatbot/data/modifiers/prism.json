@@ -1,0 +1,100 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyBoolean/prism",
+  "title": "PRISMEngine",
+  "category": "Modifiers",
+  "operator": "PRISMEngine",
+  "sections": [
+    {
+      "heading": "PRISMEngine",
+      "level": "h2",
+      "anchor": "prism-engine",
+      "content": "ThePRISMengine istyFlow’s new boolean engine, implemented intyFlow v1.1. More information aboutPRISMcan be foundhere.",
+      "params": []
+    },
+    {
+      "heading": "Engine",
+      "level": "h3",
+      "anchor": "engine",
+      "content": "Multi-threading: when enabled, allows fracture operations to be computed across multiple CPU cores (tyFlow PROonly).CUDA acceleration: when enabled, allows fracture operations to be accelerated with a GPU (tyFlow PROonly).\n\nMulti-threading: when enabled, allows fracture operations to be computed across multiple CPU cores (tyFlow PROonly).\n\nCUDA acceleration: when enabled, allows fracture operations to be accelerated with a GPU (tyFlow PROonly).",
+      "params": [
+        "CUDA acceleration",
+        "Multi-threading"
+      ]
+    },
+    {
+      "heading": "Operation",
+      "level": "h3",
+      "anchor": "operation",
+      "content": "Custom: allows you to define a custom boolean operation by specifying winding number vector (WNV) rules for operands A and B.Intersect: computes the intersection between object A and B as the resulting mesh.Merge: subdivides all intersecting faces of object A and B and generates fully connected meshes as the result.Self-merge: subdivides all intersecting faces of object A and generates fully connected meshes as the result.Self-union: subdivides all intersecting faces of object A, removing interior faces in the process, and generates fully connected meshes as the result.Slice (surface): uses object B as a thin-shell cutting surface for object A, without preserving the volume of object A.Slice (volume): uses object B as a thin-shell cutting surface for object A, while also preserving the volume of object A.\n\nCustom: allows you to define a custom boolean operation by specifying winding number vector (WNV) rules for operands A and B.\n\nIntersect: computes the intersection between object A and B as the resulting mesh.\n\nMerge: subdivides all intersecting faces of object A and B and generates fully connected meshes as the result.\n\nSelf-merge: subdivides all intersecting faces of object A and generates fully connected meshes as the result.\n\nSelf-union: subdivides all intersecting faces of object A, removing interior faces in the process, and generates fully connected meshes as the result.\n\nSlice (surface): uses object B as a thin-shell cutting surface for object A, without preserving the volume of object A.\n\nSlice (volume): uses object B as a thin-shell cutting surface for object A, while also preserving the volume of object A.\n\nThe slice modes are most applicable to mesh fracturing. They can be used to split meshes into multiple parts using thin cutting surfaces of any shape.\n\nSubtract (surface): subtracts object B from A, without preserving the volume of object A.Subtract (volume): subtracts object B from A, while also preserving the volume of object A.Union: subdivides all intersecting faces of object A and B, removing interior faces in the process, and generates fully connected meshes as the result.\n\nSubtract (surface): subtracts object B from A, without preserving the volume of object A.\n\nSubtract (volume): subtracts object B from A, while also preserving the volume of object A.\n\nUnion: subdivides all intersecting faces of object A and B, removing interior faces in the process, and generates fully connected meshes as the result.",
+      "params": [
+        "Merge",
+        "Self-merge",
+        "Slice (volume)",
+        "Slice (surface)",
+        "Subtract (surface)",
+        "Self-union",
+        "Union",
+        "Intersect",
+        "Custom",
+        "Subtract (volume)"
+      ]
+    },
+    {
+      "heading": "Input Objects (B)",
+      "level": "h3",
+      "anchor": "input-objects-b",
+      "content": "Object list: the list of objects that will act as object(s) B in the boolean operation.Hide after adding: controls whether objects added to the list will be hidden after adding them.\n\nObject list: the list of objects that will act as object(s) B in the boolean operation.\n\nHide after adding: controls whether objects added to the list will be hidden after adding them.",
+      "params": [
+        "Hide after adding",
+        "Object list"
+      ]
+    },
+    {
+      "heading": "Pre-process",
+      "level": "h3",
+      "anchor": "pre-process",
+      "content": "World space coordinates: when enabled, the individual transform of object A will be discarded during the boolean operation and the coordinates of its mesh will be converted into world-space coordinates. When the operation is finished, the coordinates will be converted back to their original transform-local space.\n\nExtremely tiny objects that are scaled up in size can generate artifacts during boolean operations, due to their small scale in local-space conflicting with various hard-coded tolerances within thePRISMengine. Enabling “world space coordinates” can alleviate these issues.\n\nSplit source elements: when enabled, the elements of the source mesh will be split apart and processed in parrallel.",
+      "params": [
+        "World space coordinates",
+        "Split source elements"
+      ]
+    },
+    {
+      "heading": "Face classification",
+      "level": "h3",
+      "anchor": "face-classification",
+      "content": "Raycast: when selected, a raycast-based face classification method will run during the operation, to classify faces as either inside or outside of operands. For closed meshes, this is very accurate. For open meshes, this method can produce artifacts.Fast winding number: when selected, a fast winding number face classification method will run during the operation, to classify faces as either inside or outside of operands. This offers more accuracy than the raycast method when meshes contain holes and open edges (at the cost of some performance). This method does not track nested elements, and is not suitable for situations where meshes are meant to have interior, nested cavities.\n\nRaycast: when selected, a raycast-based face classification method will run during the operation, to classify faces as either inside or outside of operands. For closed meshes, this is very accurate. For open meshes, this method can produce artifacts.\n\nFast winding number: when selected, a fast winding number face classification method will run during the operation, to classify faces as either inside or outside of operands. This offers more accuracy than the raycast method when meshes contain holes and open edges (at the cost of some performance). This method does not track nested elements, and is not suitable for situations where meshes are meant to have interior, nested cavities.\n\nProcess open surfaces: when enabled, open surfaces (which normally cause problems for various boolean operations) will be treated as thin shells, alleviating those problems in the process.Perturb vertices: when enabled, the vertices of operand meshes will be perturbed by a random amount prior to the boolean operation.Preserve normals: when enabled, the explicit normals of input meshes will be preserved in the resulting output mesh.Resolve self-intersections: controls whether self-intersections of input operands will be processed during the intersection-resolution phase of the operation.\n\nProcess open surfaces: when enabled, open surfaces (which normally cause problems for various boolean operations) will be treated as thin shells, alleviating those problems in the process.\n\nPerturb vertices: when enabled, the vertices of operand meshes will be perturbed by a random amount prior to the boolean operation.\n\nPreserve normals: when enabled, the explicit normals of input meshes will be preserved in the resulting output mesh.\n\nResolve self-intersections: controls whether self-intersections of input operands will be processed during the intersection-resolution phase of the operation.",
+      "params": [
+        "Fast winding number",
+        "Preserve normals",
+        "Perturb vertices",
+        "Process open surfaces",
+        "Raycast",
+        "Resolve self-intersections"
+      ]
+    },
+    {
+      "heading": "Resulting elements",
+      "level": "h3",
+      "anchor": "resulting-elements",
+      "content": "Smooth: controls whether smoothing groups will be applied, by angle threshold, to the resulting mesh.Cull by surface area: controls whether elements of the resulting mesh will be culled depending on their size.Min area: elements with a surface area below this threshold will be culled.Min area ratio %: elements with a surface area whose ratio to the largest element’s surface area is below this threshold will be culled.\n\nSmooth: controls whether smoothing groups will be applied, by angle threshold, to the resulting mesh.\n\nCull by surface area: controls whether elements of the resulting mesh will be culled depending on their size.\n\nMin area: elements with a surface area below this threshold will be culled.\n\nMin area ratio %: elements with a surface area whose ratio to the largest element’s surface area is below this threshold will be culled.\n\nThe “min area ratio %” setting allows you to relativistically control which elements will be culled, based on their surface area. Instead of being culled if they are below an absolute area threshold, they’ll be culled if they’re below a threshold relative to the largest element in the resulting mesh. For example, setting the “min area ratio %” threshold to 1%, means that all elements which have less than 1% of the surface area of the largest element will be culled.",
+      "params": [
+        "Min area",
+        "Min area ratio %",
+        "Smooth",
+        "Cull by surface area"
+      ]
+    },
+    {
+      "heading": "Edge visibility",
+      "level": "h3",
+      "anchor": "edge-visibility",
+      "content": "Coplanar tris -> polys: controls whether groups of adjacent, coplanar triangles in the resulting mesh will be converted into polygons (have their shared edges hidden).\n\nPrint timings: when enabled, timings for various functions in thePRISMcore algorithm will be printed to the MAXScript listener when the boolean operation is completed.",
+      "params": [
+        "Print timings",
+        "Coplanar tris -> polys"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:48Z"
+}

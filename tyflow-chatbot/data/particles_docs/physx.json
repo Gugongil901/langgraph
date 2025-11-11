@@ -1,0 +1,82 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/object/physx",
+  "title": "PhysX Rollout",
+  "category": "Particles_Docs",
+  "operator": "PhysX Rollout",
+  "sections": [
+    {
+      "heading": "PhysX Rollout",
+      "level": "h2",
+      "anchor": "physx-rollout",
+      "content": "These controls affect all PhysX rigidbodies in the simulation.",
+      "params": []
+    },
+    {
+      "heading": "Solver",
+      "level": "h4",
+      "anchor": "solver",
+      "content": "PGS/TGS: controls which PhysX solver to use in the simulation\n\nInformation about each solver (Projected/Temporal Gauss-Seidel) can be found on NVidia’s PhysX website. TGS is a relatively new addition to PhysX, and is typically faster than PGS for rigidbody simulations, but can produce unexpected results when solving PhysX bindings (constraints). In general, it should be treated as an experimental solver, and PGS should still be used by default.",
+      "params": [
+        "PGS/TGS"
+      ]
+    },
+    {
+      "heading": "World",
+      "level": "h4",
+      "anchor": "world",
+      "content": "Default gravity: controls whether a default gravity force will be applied to all PhysX particles.Gravity value: controls the strength of the default gravity force.Ground collider: controls whether a default ground collider will be added to the PhysX simulation.Height: the height of the default ground collider, in world-space.Restitution: the restitution of the default ground collider.Static friction: the static friction of the default ground collider.Dynamic friction: the dynamic friction of the default ground collider.Simulation groups: the simulation groups that will be affected by the ground collider.\n\nDefault gravity: controls whether a default gravity force will be applied to all PhysX particles.\n\nGravity value: controls the strength of the default gravity force.\n\nGround collider: controls whether a default ground collider will be added to the PhysX simulation.\n\nHeight: the height of the default ground collider, in world-space.\n\nRestitution: the restitution of the default ground collider.\n\nStatic friction: the static friction of the default ground collider.\n\nDynamic friction: the dynamic friction of the default ground collider.\n\nSimulation groups: the simulation groups that will be affected by the ground collider.",
+      "params": [
+        "Static friction",
+        "Simulation groups",
+        "Default gravity",
+        "Height",
+        "Dynamic friction",
+        "Restitution",
+        "Ground collider",
+        "Gravity value"
+      ]
+    },
+    {
+      "heading": "Property Combination",
+      "level": "h4",
+      "anchor": "property-combination",
+      "content": "The property combination settings allow you to define how the friction/restitution settings of colliding PhysX objects will be combined. For example, if a PhysX particle with a friction value of 0 touches a PhysX particle with a friction value of 1 and the “friction minimum” setting is selected, the two objects will slide over each other because the minimum value (0) between the two of them will be used when frictional forces are calculated.\n\nFriction/Restitution Average: the average of the two objects’ values will be used.Friction/Restitution Minimum: the minimum of the two objects’ values will be used.Friction/Restitution Maximum: the maximum of the two objects’ values will be used.Friction/Restitution Multiply: the product of the two objects’ values will be used.\n\nFriction/Restitution Average: the average of the two objects’ values will be used.\n\nFriction/Restitution Minimum: the minimum of the two objects’ values will be used.\n\nFriction/Restitution Maximum: the maximum of the two objects’ values will be used.\n\nFriction/Restitution Multiply: the product of the two objects’ values will be used.",
+      "params": [
+        "Friction/Restitution Minimum",
+        "Friction/Restitution Maximum",
+        "Friction/Restitution Average",
+        "Friction/Restitution Multiply"
+      ]
+    },
+    {
+      "heading": "Simulation",
+      "level": "h4",
+      "anchor": "simulation",
+      "content": "Substeps: the number of substeps that will be calculated per time-step for the PhysX simulation.\n\nIncrease substeps to increase the overall accuracy of the simulation. For high-fidelity simulations, a value of 12 or higher may be more appropriate than the default value.\n\nPos iterations: the number of position iterations that will be used to solve joint/contact constraints, per rigidbody, per substep.Vel iterations: the number of velocity iterations that will be used to solve joint/contact constraints, per rigidbody, per substep.\n\nPos iterations: the number of position iterations that will be used to solve joint/contact constraints, per rigidbody, per substep.\n\nVel iterations: the number of velocity iterations that will be used to solve joint/contact constraints, per rigidbody, per substep.\n\nIncrease pos/vel iterations to reduce jittering when simulating particles with PhysX bindings.\n\nInertia mult: this is a multiplier which affects all PhysX particles’ inertia. Higher values can increase simulation stability while decreasing angular acceleration/deceleration. Lower values increase angular acceleration/deceleration, but can lead to jittering or other instabilities. For smaller objects with low mass, this value can be lowered (0.5 - 1.0). For bigger objects with a lot of mass, it should be kept high (5.0 - 20.0).Sim group collision filtering: when enabled, PhysX rigidbodies will only collide if they have overlapping simulation group assignments. When disabled, simulation groups will have no effect on rigidbody collisions.Enhanced determinism: enforces simulation determinism, at the cost of performance. If this is disabled, simulations may be indeterministic (different results may be generated with each subsequent re-simulation of a PhysX setup).Friction every substep: when enabled, frictional contacts will be calculated every substep, rather than only on the last 3 substeps (default). This can improve simulation accuracy, at the cost of performance.Kinematic collision pairs: controls whether inter-penetrating particle rigidbody pairs that are set to ‘kinematic’ or ‘trigger’ will generate contacts.CCD: controls whethercontinuous collision detectionis enabled or disable.Continuous collision detectioncan prevent collision tunnelling between high-velocity rigidbodies, for a performance cost.CCD steps: controls the number of substeps used to resolve collisions by the CCD engine.Print errors to listener: controls whether to print PhysX simulation errors (reported internally by the PhysX engine) to the MAXScript listener.\n\nInertia mult: this is a multiplier which affects all PhysX particles’ inertia. Higher values can increase simulation stability while decreasing angular acceleration/deceleration. Lower values increase angular acceleration/deceleration, but can lead to jittering or other instabilities. For smaller objects with low mass, this value can be lowered (0.5 - 1.0). For bigger objects with a lot of mass, it should be kept high (5.0 - 20.0).\n\nSim group collision filtering: when enabled, PhysX rigidbodies will only collide if they have overlapping simulation group assignments. When disabled, simulation groups will have no effect on rigidbody collisions.\n\nEnhanced determinism: enforces simulation determinism, at the cost of performance. If this is disabled, simulations may be indeterministic (different results may be generated with each subsequent re-simulation of a PhysX setup).\n\nFriction every substep: when enabled, frictional contacts will be calculated every substep, rather than only on the last 3 substeps (default). This can improve simulation accuracy, at the cost of performance.\n\nKinematic collision pairs: controls whether inter-penetrating particle rigidbody pairs that are set to ‘kinematic’ or ‘trigger’ will generate contacts.\n\nCCD: controls whethercontinuous collision detectionis enabled or disable.Continuous collision detectioncan prevent collision tunnelling between high-velocity rigidbodies, for a performance cost.\n\nCCD steps: controls the number of substeps used to resolve collisions by the CCD engine.\n\nPrint errors to listener: controls whether to print PhysX simulation errors (reported internally by the PhysX engine) to the MAXScript listener.",
+      "params": [
+        "Friction every substep",
+        "Enhanced determinism",
+        "CCD",
+        "Inertia mult",
+        "Sim group collision filtering",
+        "Vel iterations",
+        "Substeps",
+        "Pos iterations",
+        "Kinematic collision pairs",
+        "CCD steps",
+        "Print errors to listener"
+      ]
+    },
+    {
+      "heading": "Sleep thresholds",
+      "level": "h4",
+      "anchor": "sleep-thresholds",
+      "content": "Velocity thresh: Particles with a linear/angular velocity below this threshold at the end of the time step will be candidates for sleeping.Min duration: Particles which satisfy the velocity threshold for this number of frames will be put to sleep.\n\nVelocity thresh: Particles with a linear/angular velocity below this threshold at the end of the time step will be candidates for sleeping.\n\nMin duration: Particles which satisfy the velocity threshold for this number of frames will be put to sleep.\n\nStrange behavior can occur if particles with PhysX Bindings are put to sleep, therefore particles with PhysX Bindings will ignore the sleep threshold settings.",
+      "params": [
+        "Min duration",
+        "Velocity thresh"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:47Z"
+}

@@ -1,0 +1,38 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tySplineCache",
+  "title": "tySplineCacheModifier",
+  "category": "Modifiers",
+  "operator": "tySplineCacheModifier",
+  "sections": [
+    {
+      "heading": "tySplineCacheModifier",
+      "level": "h2",
+      "anchor": "tysplinecache-modifier",
+      "content": "ThetySplineCachemodifier extracts spline cache data loaded into atyCacheobject, and converts it into editable splines.\n\nSpline data exported from an Export Particles operator is stored in a mesh-based format. This modifier, when placed on atyCacheobject that contains that data, will convert it into a format that 3ds Max can recognize as traditional, editable splines.",
+      "params": []
+    },
+    {
+      "heading": "Interpolation",
+      "level": "h4",
+      "anchor": "interpolation",
+      "content": "Linear/Smooth: the type of interpolation to apply to spline knots.Steps: the number of interpolation steps to apply to splines.Optimize: controls whether or not the step count will be optimized depending on the spline curvature.\n\nLinear/Smooth: the type of interpolation to apply to spline knots.\n\nSteps: the number of interpolation steps to apply to splines.\n\nOptimize: controls whether or not the step count will be optimized depending on the spline curvature.",
+      "params": [
+        "Optimize",
+        "Steps",
+        "Linear/Smooth"
+      ]
+    },
+    {
+      "heading": "Relax",
+      "level": "h4",
+      "anchor": "relax",
+      "content": "Enable: enables spline relaxation, which applies a Laplacian smoothing filter to spline knot positions.Amount: the amount to interpolate each spline knot position to the centerpoint of its neighbors.Iterations: the number of relaxation iterations to apply.\n\nEnable: enables spline relaxation, which applies a Laplacian smoothing filter to spline knot positions.\n\nAmount: the amount to interpolate each spline knot position to the centerpoint of its neighbors.\n\nIterations: the number of relaxation iterations to apply.",
+      "params": [
+        "Iterations",
+        "Amount",
+        "Enable"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:35Z"
+}

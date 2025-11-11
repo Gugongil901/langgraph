@@ -1,0 +1,27 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyConvexHull",
+  "title": "tyConvexHullModifier",
+  "category": "Modifiers",
+  "operator": "tyConvexHullModifier",
+  "sections": [
+    {
+      "heading": "tyConvexHullModifier",
+      "level": "h2",
+      "anchor": "tyconvexhull-modifier",
+      "content": "ThetyConvexHullmodifier allows you to transform an object’s mesh into its convex hull, or a decompose a spline object’s polygons into convex hulls.",
+      "params": []
+    },
+    {
+      "heading": "Convex Hull",
+      "level": "h4",
+      "anchor": "convex-hull",
+      "content": "Mode: mesh mode converts an object’s mesh into a convex hull - spline mode decomposes a spline’s polygons into convex hull polygons.Inflate: the amount to inflate resulting convex hulls by pushing the hull vertices along their normals.Split elements: when enabled, a convex hull will be generated for each mesh element. When disabled, all mesh elements will be transformed into a single convex hull.\n\nMode: mesh mode converts an object’s mesh into a convex hull - spline mode decomposes a spline’s polygons into convex hull polygons.\n\nInflate: the amount to inflate resulting convex hulls by pushing the hull vertices along their normals.\n\nSplit elements: when enabled, a convex hull will be generated for each mesh element. When disabled, all mesh elements will be transformed into a single convex hull.",
+      "params": [
+        "Split elements",
+        "Mode",
+        "Inflate"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:59Z"
+}

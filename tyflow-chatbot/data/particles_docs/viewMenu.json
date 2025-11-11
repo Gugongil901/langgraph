@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/start/viewMenu",
+  "title": "Viewport Menu",
+  "category": "Particles_Docs",
+  "operator": "Viewport Menu",
+  "sections": [
+    {
+      "heading": "Viewport Menu",
+      "level": "h2",
+      "anchor": "viewport-menu",
+      "content": "tyFlowfeatures a viewport menu (located in the top left corner of the active viewport) that will automatically be displayed when anytyFlowobjects are present in the scene, and will be automatically hidden when notyFlowobjects are present in the scene. It can be used to quickly access and control availabletyFlowobjects, with options to enable/disable, hide/unhide, refresh, select and edit them. Options also exist to select/hide/unhide all existingtyFlowobjects at once.\n\nThe viewport menu also displays the current version number of thetyFlowplugin file installed on the machine.\n\nUsing the viewport menu to accesstyFlowsin the scene is often much easier than manually navigating to them through the viewport or scene explorer, and is part of an efficient workflow.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:24Z"
+}

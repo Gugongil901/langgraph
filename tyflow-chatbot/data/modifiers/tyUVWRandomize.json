@@ -1,0 +1,83 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyUVWRandomize",
+  "title": "tyUVWRandomizeModifier",
+  "category": "Modifiers",
+  "operator": "tyUVWRandomizeModifier",
+  "sections": [
+    {
+      "heading": "tyUVWRandomizeModifier",
+      "level": "h2",
+      "anchor": "tyuvwrandomize-modifier",
+      "content": "ThetyUVWRandomizemodifier can be used to randomize the position, orientation and scale of UVW elements.",
+      "params": []
+    },
+    {
+      "heading": "Map channel",
+      "level": "h3",
+      "anchor": "map-channel",
+      "content": "Source channel: specifies which input object mapping channel to affect.",
+      "params": [
+        "Source channel"
+      ]
+    },
+    {
+      "heading": "Mode",
+      "level": "h3",
+      "anchor": "mode",
+      "content": "Per object: the faces of each object the modifier is applied to will be grouped together, and randomized as a single, combined element.Per mesh element: the faces of each mesh element of each object the modifier is applied to will be grouped together, and randomized individually.Per UVW element: the faces of each UVW element of each object the modifier is applied to will be grouped together, and randomized individually.Use face selection: when enabled, only UVW faces corresponding to selected faces on input meshes will be affected.Enable material ID filter: when enabled, only UVW faces corresponding to mesh faces with matching material IDs will be affected.\n\nPer object: the faces of each object the modifier is applied to will be grouped together, and randomized as a single, combined element.\n\nPer mesh element: the faces of each mesh element of each object the modifier is applied to will be grouped together, and randomized individually.\n\nPer UVW element: the faces of each UVW element of each object the modifier is applied to will be grouped together, and randomized individually.\n\nUse face selection: when enabled, only UVW faces corresponding to selected faces on input meshes will be affected.\n\nEnable material ID filter: when enabled, only UVW faces corresponding to mesh faces with matching material IDs will be affected.",
+      "params": [
+        "Per object",
+        "Per mesh element",
+        "Per UVW element",
+        "Enable material ID filter",
+        "Use face selection"
+      ]
+    },
+    {
+      "heading": "Position randomization",
+      "level": "h3",
+      "anchor": "position-randomization",
+      "content": "Display UVW/system units: controls how position units will be displayed in the modifier.U min/U max/V min/V max: controls the minimum and maximum random offset along the U/V axis in UV space (these spinners are visible when not constraining the U/V parameters to a single value with the “>>” buttons).U/V: controls the maximum range of random offset (from -U to U and -V to V) along the U/V axis in UV space (these spinners are visible when the U/V parameters are constrained to a single value with the “>>” buttons).Step: when set to a value greater than zero, random U/V offsets will be constrained to multiples of this value.\n\nDisplay UVW/system units: controls how position units will be displayed in the modifier.\n\nU min/U max/V min/V max: controls the minimum and maximum random offset along the U/V axis in UV space (these spinners are visible when not constraining the U/V parameters to a single value with the “>>” buttons).\n\nU/V: controls the maximum range of random offset (from -U to U and -V to V) along the U/V axis in UV space (these spinners are visible when the U/V parameters are constrained to a single value with the “>>” buttons).\n\nStep: when set to a value greater than zero, random U/V offsets will be constrained to multiples of this value.\n\nTo randomize the position of elements across multiple UDIMs, set the step value to 1.0 and the U/V values to something greater than 1.\n\nSeed: the random seed for the U/V parameters.",
+      "params": [
+        "Step",
+        "Seed",
+        "Display UVW/system units",
+        "U/V",
+        "U min/U max/V min/V max"
+      ]
+    },
+    {
+      "heading": "Orientation randomization",
+      "level": "h3",
+      "anchor": "orientation-randomization",
+      "content": "Angle min/Angle max: controls the minimum and maximum random angle to rotate elements around the W axis in UVW space (these spinners are visible when not constraining the angle parameter to a single value with the “>>” button).Angle: controls the maximum range of random angle (from -angle to angle) to rotate elements around the W axis in UVW space (this spinner is visible when the angle parameter is constrained to a single value with the “>>” button).Step: when set to a value greater than zero, random angles will be constrained to multiples of this value.Seed: the random seed for the angle parameter.\n\nAngle min/Angle max: controls the minimum and maximum random angle to rotate elements around the W axis in UVW space (these spinners are visible when not constraining the angle parameter to a single value with the “>>” button).\n\nAngle: controls the maximum range of random angle (from -angle to angle) to rotate elements around the W axis in UVW space (this spinner is visible when the angle parameter is constrained to a single value with the “>>” button).\n\nStep: when set to a value greater than zero, random angles will be constrained to multiples of this value.\n\nSeed: the random seed for the angle parameter.",
+      "params": [
+        "Step",
+        "Angle",
+        "Seed",
+        "Angle min/Angle max"
+      ]
+    },
+    {
+      "heading": "Scale randomization",
+      "level": "h3",
+      "anchor": "scale-randomization",
+      "content": "% min/% max: controls the minimum and maximum random multiplier to apply to element scale in UV space (these spinners are visible when not constraining the scale parameter to a single value with the “>>” button).%: controls the maximum range of random multiplier (from 100% to %) to apply to element scale in UV space (this spinner spinners is visible when constraining the scale parameter to a single value with the “>>” button).Seed: the random seed for the scale parameter.\n\n% min/% max: controls the minimum and maximum random multiplier to apply to element scale in UV space (these spinners are visible when not constraining the scale parameter to a single value with the “>>” button).\n\n%: controls the maximum range of random multiplier (from 100% to %) to apply to element scale in UV space (this spinner spinners is visible when constraining the scale parameter to a single value with the “>>” button).\n\nSeed: the random seed for the scale parameter.",
+      "params": [
+        "% min/% max",
+        "%",
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Display",
+      "level": "h3",
+      "anchor": "display",
+      "content": "Display UVWs:: when enabled, input mesh UVWs will be displayed in the viewport, scaled to the specified scale value (for better visibility).",
+      "params": [
+        "Display UVWs"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:49Z"
+}

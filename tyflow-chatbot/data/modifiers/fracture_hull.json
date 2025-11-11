@@ -1,0 +1,29 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_hull",
+  "title": "Fracture hullRollout",
+  "category": "Modifiers",
+  "operator": "Fracture hullRollout",
+  "sections": [
+    {
+      "heading": "Fracture hullRollout",
+      "level": "h2",
+      "anchor": "fracture-hull-rollout",
+      "content": "The Fracture hull rollout contains parameters for the “fracture hull” fracture mode.\n\nPoints: the number of random fracture points to generate on the convex hull of an input mesh. A fracture mesh will then be placed at every generated fracture point.Variation %: the per-particle percentage of variation to apply.Depth: fracture meshes will be placed at this depth along negative surface normal of each random fracture point. Larger values will move fracture meshes inward towards the center of the mesh hull.Variation %: the per-particle percentage of variation to apply.\n\nPoints: the number of random fracture points to generate on the convex hull of an input mesh. A fracture mesh will then be placed at every generated fracture point.\n\nDepth: fracture meshes will be placed at this depth along negative surface normal of each random fracture point. Larger values will move fracture meshes inward towards the center of the mesh hull.",
+      "params": [
+        "Depth",
+        "Points"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nCull fractured meshes: when enabled, fractured parts of the input mesh that lie above the fracture meshes will be culled. Disable this setting to retain all fracture meshes after the fracture operation is completed.",
+      "params": [
+        "Cull fractured meshes",
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:38Z"
+}

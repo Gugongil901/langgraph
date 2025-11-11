@@ -1,0 +1,16 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/object/update",
+  "title": "Update Rollout",
+  "category": "Particles_Docs",
+  "operator": "Update Rollout",
+  "sections": [
+    {
+      "heading": "Update Rollout",
+      "level": "h2",
+      "anchor": "update-rollout",
+      "content": "The Update rollout gives you the ability to check online to see if the installed version oftyFlowis older than the latest available version.\n\nThe update rollout does not check for experimental builds that may be available for download. Only normal builds which are considered relatively stable.",
+      "params": []
+    }
+  ],
+  "crawled_at": "2025-11-11T12:08:02Z"
+}

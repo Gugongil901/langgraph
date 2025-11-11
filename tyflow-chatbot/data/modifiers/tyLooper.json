@@ -1,0 +1,31 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyLooper",
+  "title": "tyLooperModifier",
+  "category": "Modifiers",
+  "operator": "tyLooperModifier",
+  "sections": [
+    {
+      "heading": "tyLooperModifier",
+      "level": "h2",
+      "anchor": "tylooper-modifier",
+      "content": "ThetyLoopermodifier allows you to create seamlessly looping animations from deforming geometry that does not loop by default.\n\nThetyLoopermodifier adjusts geometry over time so that a given start frame and a given end frame smoothly interpolate into an identical state. However, thetyLoopermodifier does not extrapolate animation over time - that has to be done separately, by looping the playback graph of a cache of the loop. For example, if you want a swaying tree animation to loop seamlessly from frame 0-100, you can easily achieve that with thetyLoopermodifier, but if you want to play that looping animation back over frames 0-5000, you’ll have to cache thetyLoopermesh (with a Point Cache modifier, or by caching to disk with tyCache, etc) and then adjust the playback graph of your cache to continue playing the loop over the desired framerange.",
+      "params": []
+    },
+    {
+      "heading": "Looper Rollout",
+      "level": "h3",
+      "anchor": "looper-rollout",
+      "content": "Start frame: the start frame of the loop.End frame: the end frame of the loop.Blend frames: the number of frames to blend between the start/end frame, in order to create the loop.\n\nStart frame: the start frame of the loop.\n\nEnd frame: the end frame of the loop.\n\nBlend frames: the number of frames to blend between the start/end frame, in order to create the loop.\n\nFor proper looping, ensure the “blend frames” value is smaller than the total number of frames between the start and end values.\n\nLoop at beginning: when selected, the loop will happen at the beginning of the sequence, using frames from the end of the sequence to smoothly interpolate between beginning/end.Loop at end: when selected, the loop will happen at the end of the sequence, using frames from the beginning of the sequence to smoothly interpolate between beginning/end.Loop to static mesh: when enabled, instead of using pre/post-roll frames at the beginning/end to create the loop, frames will be interpolated to/from a static mesh. When “loop at beginning” is selected, the state mesh will be taken from the end frame, and vice-verse when “loop at end” is selected.Loop interpolation curve: this curve controls the way in which the mesh loop is interpolated. The X-axis represents time, and the Y-axis represents the amount to interpolate the start/end mesh.\n\nLoop at beginning: when selected, the loop will happen at the beginning of the sequence, using frames from the end of the sequence to smoothly interpolate between beginning/end.\n\nLoop at end: when selected, the loop will happen at the end of the sequence, using frames from the beginning of the sequence to smoothly interpolate between beginning/end.\n\nLoop to static mesh: when enabled, instead of using pre/post-roll frames at the beginning/end to create the loop, frames will be interpolated to/from a static mesh. When “loop at beginning” is selected, the state mesh will be taken from the end frame, and vice-verse when “loop at end” is selected.\n\nLoop interpolation curve: this curve controls the way in which the mesh loop is interpolated. The X-axis represents time, and the Y-axis represents the amount to interpolate the start/end mesh.\n\nAdjusting the curve tangents to ease-in and ease-out at the start or end can help to reduce popping that occurs at either end of the loop, in some circumstances, due to (default) linear interpolation.",
+      "params": [
+        "Loop interpolation curve",
+        "Loop to static mesh",
+        "Loop at end",
+        "Blend frames",
+        "Start frame",
+        "Loop at beginning",
+        "End frame"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:11Z"
+}

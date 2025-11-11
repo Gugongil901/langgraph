@@ -1,0 +1,179 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyConform",
+  "title": "Unknown",
+  "category": "Modifiers",
+  "operator": "Unknown",
+  "sections": [
+    {
+      "heading": "tyConformModifier",
+      "level": "h3",
+      "anchor": "tyconform-modifier",
+      "content": "ThetyConformmodifier allows you to conform the surface of one piece of geometry to another.",
+      "params": []
+    },
+    {
+      "heading": "Target Objects",
+      "level": "h4",
+      "anchor": "target-objects",
+      "content": "Target Objects: the list of objects to which the input surface will be conformed.",
+      "params": [
+        "Target Objects"
+      ]
+    },
+    {
+      "heading": "Conform",
+      "level": "h4",
+      "anchor": "conform",
+      "content": "Closest Surface: vertices of the input surface will conform to the nearest surface in the target objects list.Expandwrap: vertices of the input surface will conform to the nearest hit point of a ray cast from the pivot of the nearest target object to each vertex.Shrinkwrap: vertices of the input surface will conform to the nearest hit point of a ray cast from each vertex to the pivot of the nearest target object.Raycast: vertices of the input surface will conform to the nearest hit point of a ray cast along a user-defined vector.Matching Vertex ID: vertices of the input surface will conform to the matching vertex (by ID) of the nearest object in the target objects list.Temporal: vertices of the input surface will conform to the target object relative to their initial offset at a specified frame.\n\nClosest Surface: vertices of the input surface will conform to the nearest surface in the target objects list.\n\nExpandwrap: vertices of the input surface will conform to the nearest hit point of a ray cast from the pivot of the nearest target object to each vertex.\n\nShrinkwrap: vertices of the input surface will conform to the nearest hit point of a ray cast from each vertex to the pivot of the nearest target object.\n\nRaycast: vertices of the input surface will conform to the nearest hit point of a ray cast along a user-defined vector.\n\nMatching Vertex ID: vertices of the input surface will conform to the matching vertex (by ID) of the nearest object in the target objects list.\n\nTemporal: vertices of the input surface will conform to the target object relative to their initial offset at a specified frame.\n\nTemporal conform mode measures the offset a particular vertex has to a target surface at a specified frame and then transforms the vertex by that offset to the target surface at the current frame. It is similar to how the Skin Wrap modifier works, except that it will remain consistent even if the input surface’s topology changes. So you could, for example, temporally conform the geometric result of an evolving particle system to a moving surface.\n\nPosition Transfer: vertices of the input surface will conform to the position target object relative to their initial offset from the base target object.\n\nFor position transfer to work correctly, the number of objects in the base target object list should be the same as the number of objects in the position target object list, and their face/vertex counts should match (in order). The purpose of the position transfer mode is to transfer a mesh from one surface to its relative offset from a different surface with identical topology.\n\nVolume: vertices of the input surface will conform to the nearest surface in the target objects list, retaining their offset from the surface based on their initial distance to the plane of the sub-object gizmo.\n\nThe Volume mode of thetyConformmodifier allows you to conform meshes to surfaces while maintaining their volume. In order to maintain the volume of one mesh when conformed to another, an initial relative resting state is required. But how can that be calculated when input geometry is completely arbitrary? That’s where the sub-object gizmo comes in - you can use the sub-object gizmo to define a “baseline”, which is a flat plane from which each vertex of the input mesh will have its offset calculated. Then, implicitly during the conform operation, each point is conformed to that plane andthenconformed to the target surface. After being conformed to the target surface, each point is then offset from the surface the same distance they were offset from the plane - allowing the volume of the resulting mesh to be maintained (to a degree). The orientation of that sub-object gizmo, relative to the surface, is important…however, you can enable “pre-align mesh to surface” to havetyConformdo some internal alignments which can improve the result.\n\nAmount %: the amount to conform the input surface to the target surface.Offset: the offset from the target surface to apply the conform.Depth multiplier: controls the amount of mesh volume (depth from the target surface) that will be preserved in volume conform mode.Use vertex selection: only selected vertices will be conformed (soft-selections are allowed).\n\nAmount %: the amount to conform the input surface to the target surface.\n\nOffset: the offset from the target surface to apply the conform.\n\nDepth multiplier: controls the amount of mesh volume (depth from the target surface) that will be preserved in volume conform mode.\n\nUse vertex selection: only selected vertices will be conformed (soft-selections are allowed).",
+      "params": [
+        "Depth multiplier",
+        "Shrinkwrap",
+        "Position Transfer",
+        "Matching Vertex ID",
+        "Expandwrap",
+        "Volume",
+        "Amount %",
+        "Offset",
+        "Use vertex selection",
+        "Temporal",
+        "Raycast",
+        "Closest Surface"
+      ]
+    },
+    {
+      "heading": "Element Matching",
+      "level": "h4",
+      "anchor": "element-matching",
+      "content": "None: disables element matching.One element per element: when enabled, each element of the input surface will conform to only a single element of any mesh in the target objects list. This helps to reduce stretching artifacts, when vertices of a single input element conform to different elements of the target object list due to natural differences in their proximity. This setting is most useful when both input meshes and meshes in the target object list contain many different small elements.\n\nNone: disables element matching.\n\nOne element per element: when enabled, each element of the input surface will conform to only a single element of any mesh in the target objects list. This helps to reduce stretching artifacts, when vertices of a single input element conform to different elements of the target object list due to natural differences in their proximity. This setting is most useful when both input meshes and meshes in the target object list contain many different small elements.",
+      "params": [
+        "One element per element",
+        "None"
+      ]
+    },
+    {
+      "heading": "Distance Affect",
+      "level": "h4",
+      "anchor": "distance-affect",
+      "content": "Distance: vertices within this distance to the target surface will be fully affected.Falloff: the effect on vertices beyond the base distance to the target surface, but within this falloff distance, will diminish according to the inverse-square law.\n\nDistance: vertices within this distance to the target surface will be fully affected.\n\nFalloff: the effect on vertices beyond the base distance to the target surface, but within this falloff distance, will diminish according to the inverse-square law.",
+      "params": [
+        "Distance",
+        "Falloff"
+      ]
+    },
+    {
+      "heading": "Affect",
+      "level": "h4",
+      "anchor": "affect",
+      "content": "Vertices: the conform operation will affect input surface vertex positions.Material IDs: the conform operation will affect input surface material IDs.Normals: the conform operation will affect input surface vertex normal directions.Smoothing groups: the conform operation will affect input surface smoothing groups.UVWs: the conform operation will affect input surface UVW coordinates.All/specific channels: controls whether UVW inheritance will affect all mapping channels or only a specific channel.Channel: the specfic mapping channel to target.\n\nVertices: the conform operation will affect input surface vertex positions.\n\nMaterial IDs: the conform operation will affect input surface material IDs.\n\nNormals: the conform operation will affect input surface vertex normal directions.\n\nSmoothing groups: the conform operation will affect input surface smoothing groups.\n\nUVWs: the conform operation will affect input surface UVW coordinates.\n\nAll/specific channels: controls whether UVW inheritance will affect all mapping channels or only a specific channel.\n\nChannel: the specfic mapping channel to target.",
+      "params": [
+        "All/specific channels",
+        "Channel",
+        "Material IDs",
+        "UVWs",
+        "Normals",
+        "Vertices",
+        "Smoothing groups"
+      ]
+    },
+    {
+      "heading": "Misc",
+      "level": "h4",
+      "anchor": "misc",
+      "content": "Rebuild normals: when enabled, face and vertex normals will be rebuilt (explicit normals will be cleared).\n\nIf a mesh with explicit normals undergoes enough deformation during the conform operation, faces may appear darker/black due to normals now pointing in the wrong direction. Enable the “rebuild normals” option to clear explicit normals after the conform operation, which will fix black face artifacts.",
+      "params": [
+        "Rebuild normals"
+      ]
+    },
+    {
+      "heading": "Relax Rollout",
+      "level": "h3",
+      "anchor": "relax-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Relaxation",
+      "level": "h4",
+      "anchor": "relaxation",
+      "content": "Enable relaxation: when enabled, each conform operation will be followed by a mesh relaxation step, which itself will be followed by a final conform operation. Enabling mesh relexation can help to smooth out surfaces over their conform target meshes.Amount: the amount of mesh relaxation to apply during each mesh relaxation step.Iterations: the number of mesh relaxation steps to apply.\n\nEnable relaxation: when enabled, each conform operation will be followed by a mesh relaxation step, which itself will be followed by a final conform operation. Enabling mesh relexation can help to smooth out surfaces over their conform target meshes.\n\nAmount: the amount of mesh relaxation to apply during each mesh relaxation step.\n\nIterations: the number of mesh relaxation steps to apply.",
+      "params": [
+        "Iterations",
+        "Amount",
+        "Enable relaxation"
+      ]
+    },
+    {
+      "heading": "Raycast Rollout",
+      "level": "h3",
+      "anchor": "raycast-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Raycast Direction",
+      "level": "h4",
+      "anchor": "raycast-direction",
+      "content": "Vertex normals: the raycast rays will be cast along vertex normals.Vert to self pivot: the raycast rays will be cast from the location of each vertex to the pivot of the source object.Absolute: the raycast rays will be cast along the vector defined by the X/Y/Z values.Object z-axis: the raycast rays will be cast along the local z-axis of a specified object.Object: the object whose z-axis will cast the rays.X/Y/Z: the coordinates of the user-defined vector to use as the raycast direction for Raycast mode.Reverse direction: reverses the direction of the raycast rays.\n\nVertex normals: the raycast rays will be cast along vertex normals.\n\nVert to self pivot: the raycast rays will be cast from the location of each vertex to the pivot of the source object.\n\nAbsolute: the raycast rays will be cast along the vector defined by the X/Y/Z values.\n\nObject z-axis: the raycast rays will be cast along the local z-axis of a specified object.\n\nObject: the object whose z-axis will cast the rays.\n\nX/Y/Z: the coordinates of the user-defined vector to use as the raycast direction for Raycast mode.\n\nReverse direction: reverses the direction of the raycast rays.",
+      "params": [
+        "Vertex normals",
+        "Absolute",
+        "X/Y/Z",
+        "Reverse direction",
+        "Vert to self pivot",
+        "Object z-axis",
+        "Object"
+      ]
+    },
+    {
+      "heading": "Ray Origin Offset",
+      "level": "h4",
+      "anchor": "ray-origin-offset",
+      "content": "X/Y/Z: offset values to apply to each vertex’s raycast origin point.",
+      "params": [
+        "X/Y/Z"
+      ]
+    },
+    {
+      "heading": "Closest Surface Rollout",
+      "level": "h3",
+      "anchor": "closest-surface-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Sample",
+      "level": "h4",
+      "anchor": "sample",
+      "content": "Sample: controls which sampler will be used for surface proximity tests.",
+      "params": [
+        "Sample"
+      ]
+    },
+    {
+      "heading": "Volume Rollout",
+      "level": "h3",
+      "anchor": "volume-rollout",
+      "content": "Sample type: controls how points on the target surface are sampled - either by closest surface, raycast or UVW align.\n\nClosest surface and raycast mode can be used to find the nearest point on the target surface in world space. UVW align mode can be used to find the nearest point on the target surface in UVW space. When in UVW align mode, use the sub-object gizmo to move/scale/rotate the specified UVW coordinates relative to the input mesh.\n\nUnify normals: specifies an interpolation amount between 0-1, used to blend collected normals together. A value of 0 means each point will be offest from the target surface using the closest normal of the surface. A value of 1 means each point will be offset from the target surface using the average of all sampled surface normals.Use gizmo dir: specifies an interpolation amount between 0-1, used to blend between collected normals and the sub-object gizmo direction. A value of 0 means the gizmo direction is not used to offset points. A value of 1 means all points will be offset only along the gizmo direction.Pre-align mesh to surface: when enabled, the input mesh (and sub-object gizmo) are implicitly aligned to the closest point on the surface prior to the volume conform operation, allowing for better volume preservation in many cases. When this mode is enabled, the implicit gizmo icon will also be drawn in the view, so the new alignment can be visualized.Display volume helpers: when enabled, volume-mode gizmos and meshes (for UVW alignment mode) will be displayed in the viewport.Snap gizmo to local Z-min: pressing this button will move the sub-object gizmo to the base of the mesh (the lowest point) relative to the gizmo’s local Z-axis. This can quickly establish a proper volume conform baseline on meshes where the gizmo is offset from the lowest point on the mesh.\n\nUnify normals: specifies an interpolation amount between 0-1, used to blend collected normals together. A value of 0 means each point will be offest from the target surface using the closest normal of the surface. A value of 1 means each point will be offset from the target surface using the average of all sampled surface normals.\n\nUse gizmo dir: specifies an interpolation amount between 0-1, used to blend between collected normals and the sub-object gizmo direction. A value of 0 means the gizmo direction is not used to offset points. A value of 1 means all points will be offset only along the gizmo direction.\n\nPre-align mesh to surface: when enabled, the input mesh (and sub-object gizmo) are implicitly aligned to the closest point on the surface prior to the volume conform operation, allowing for better volume preservation in many cases. When this mode is enabled, the implicit gizmo icon will also be drawn in the view, so the new alignment can be visualized.\n\nDisplay volume helpers: when enabled, volume-mode gizmos and meshes (for UVW alignment mode) will be displayed in the viewport.\n\nSnap gizmo to local Z-min: pressing this button will move the sub-object gizmo to the base of the mesh (the lowest point) relative to the gizmo’s local Z-axis. This can quickly establish a proper volume conform baseline on meshes where the gizmo is offset from the lowest point on the mesh.",
+      "params": [
+        "Unify normals",
+        "Use gizmo dir",
+        "Display volume helpers",
+        "Snap gizmo to local Z-min",
+        "Pre-align mesh to surface",
+        "Sample type"
+      ]
+    },
+    {
+      "heading": "UVW Coordinates Rollout",
+      "level": "h3",
+      "anchor": "uvw-coordinates-rollout",
+      "content": "Gizmo relative to mesh/UVWs: controls whether moving the sub-object gizmo will adjust the location of the UVWs relative to the input mesh, or the input mesh relative to the UVWs.Use all/front/back map faces: controls which map faces will be used for UVW alignment. Front/back faces are determined by examining the face normal in UVW space.Map channel: controls which map channel will be used to extract UVW coordinates.\n\nGizmo relative to mesh/UVWs: controls whether moving the sub-object gizmo will adjust the location of the UVWs relative to the input mesh, or the input mesh relative to the UVWs.\n\nUse all/front/back map faces: controls which map faces will be used for UVW alignment. Front/back faces are determined by examining the face normal in UVW space.\n\nMap channel: controls which map channel will be used to extract UVW coordinates.",
+      "params": [
+        "Use all/front/back map faces",
+        "Gizmo relative to mesh/UVWs",
+        "Map channel"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:04:56Z"
+}

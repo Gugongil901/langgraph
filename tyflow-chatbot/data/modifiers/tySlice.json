@@ -1,0 +1,154 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tySlice",
+  "title": "tySliceModifier",
+  "category": "Modifiers",
+  "operator": "tySliceModifier",
+  "sections": [
+    {
+      "heading": "tySliceModifier",
+      "level": "h2",
+      "anchor": "tyslice-modifier",
+      "content": "ThetySlicemodifier is an optimized alternative to 3ds Max’s built-in Slice modifier, that has options for capping slice holes, multi-object slice plane input, etc.",
+      "params": []
+    },
+    {
+      "heading": "Slice Operation Rollout",
+      "level": "h3",
+      "anchor": "slice-operation-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Slice operation",
+      "level": "h4",
+      "anchor": "slice-operation",
+      "content": "Split: the input mesh will be split in half along the slice plane(s).Refine: the input mesh will be split along each refinement slice plane.Remove top: the input mesh will be split along the slice plane(s) and any vertices above the slice plane will be removed.Remove bottom: the input mesh will be split along the slice plane(s) and any vertices below the slice plane will be removed.Recursive Subdivide: the input mesh will be recursively split vertically, and then either side of the vertical split will be split horizontally.Cross section: the input mesh will be split along each slice plane and the resulting edges of each slice will be converted into splines.Select slice edges: selects all border edges created by the slice operation.Preserve normals: when enabled, existing surface normals will be made explicit and preserved during the operation.\n\nSplit: the input mesh will be split in half along the slice plane(s).\n\nRefine: the input mesh will be split along each refinement slice plane.\n\nRemove top: the input mesh will be split along the slice plane(s) and any vertices above the slice plane will be removed.\n\nRemove bottom: the input mesh will be split along the slice plane(s) and any vertices below the slice plane will be removed.\n\nRecursive Subdivide: the input mesh will be recursively split vertically, and then either side of the vertical split will be split horizontally.\n\nCross section: the input mesh will be split along each slice plane and the resulting edges of each slice will be converted into splines.\n\nSelect slice edges: selects all border edges created by the slice operation.\n\nPreserve normals: when enabled, existing surface normals will be made explicit and preserved during the operation.",
+      "params": [
+        "Preserve normals",
+        "Remove top",
+        "Split",
+        "Select slice edges",
+        "Refine",
+        "Remove bottom",
+        "Recursive Subdivide",
+        "Cross section"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.",
+      "params": [
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Slice Plane Rollout",
+      "level": "h3",
+      "anchor": "slice-plane-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Slice Plane",
+      "level": "h4",
+      "anchor": "slice-plane",
+      "content": "Gizmo: the slice will be controlled by the modifier’s sub-object gizmo.Object: the slices will be controlled by the z-axis of input object transforms.Object list: the list of input objects to use as slice planes.\n\nGizmo: the slice will be controlled by the modifier’s sub-object gizmo.\n\nObject: the slices will be controlled by the z-axis of input object transforms.\n\nObject list: the list of input objects to use as slice planes.",
+      "params": [
+        "Gizmo",
+        "Object list",
+        "Object"
+      ]
+    },
+    {
+      "heading": "Split/Refine Rollout",
+      "level": "h3",
+      "anchor": "split-refine-rollout",
+      "content": "Slices: the number of refinement slices.Spread: the distance between refinement slices.Variation %: the per-particle percentage of variation to apply.Separation: increase this value to create gaps between sliced mesh elements.Above/Below: controls whether refinement slices will be created above/below the original slice plane(s).Weld seams: controls whether the edges between refinement slices will be welded.\n\nSlices: the number of refinement slices.\n\nSpread: the distance between refinement slices.\n\nSeparation: increase this value to create gaps between sliced mesh elements.\n\nAbove/Below: controls whether refinement slices will be created above/below the original slice plane(s).\n\nWeld seams: controls whether the edges between refinement slices will be welded.",
+      "params": [
+        "Weld seams",
+        "Separation",
+        "Slices",
+        "Above/Below",
+        "Spread"
+      ]
+    },
+    {
+      "heading": "Slices Rollout",
+      "level": "h3",
+      "anchor": "slices-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Holes",
+      "level": "h4",
+      "anchor": "holes",
+      "content": "Cap holes: controls whether slices will be capped with new faces.\n\nOverride cap MatID: controls whether cap faces will be given a material ID override.ID: the cap face material ID value.\n\nOverride cap MatID: controls whether cap faces will be given a material ID override.\n\nID: the cap face material ID value.\n\nGenerate cap UVs: controls whether UVW coordinates will be generated on new cap faces.Normalize: controls whether cap UVW coordinates will be normalized.Size: the size of the cap face UVW coordinates.\n\nGenerate cap UVs: controls whether UVW coordinates will be generated on new cap faces.\n\nNormalize: controls whether cap UVW coordinates will be normalized.\n\nSize: the size of the cap face UVW coordinates.\n\nSelect cap faces: controls whether new cap faces will be flagged for selection.",
+      "params": [
+        "Cap holes",
+        "ID",
+        "Override cap MatID",
+        "Normalize",
+        "Size",
+        "Generate cap UVs",
+        "Select cap faces"
+      ]
+    },
+    {
+      "heading": "Optimize",
+      "level": "h4",
+      "anchor": "optimize",
+      "content": "Optimize slice borders: controls whether slice borders will be optimized, removing things like extraneous vertices along parallel edges.",
+      "params": [
+        "Optimize slice borders"
+      ]
+    },
+    {
+      "heading": "Recursive Subdivide Rollout",
+      "level": "h3",
+      "anchor": "recursive-subdivide-rollout",
+      "content": "",
+      "params": []
+    },
+    {
+      "heading": "Recursive Subdivide",
+      "level": "h4",
+      "anchor": "recursive-subdivide",
+      "content": "Iterations: the number of recusive subdivision iterations to perform.",
+      "params": [
+        "Iterations"
+      ]
+    },
+    {
+      "heading": "Vertical/Horizontal Slice",
+      "level": "h4",
+      "anchor": "vertical-horizontal-slice",
+      "content": "X/Y offset: the offset, from the center of the bounding box of the mesh element, to shift the slice plane.Time offset: the temporal offset to apply to keyframes on the X/Y offset spinner, at each level of the recursive algorithm.Random flip: the slice plane offset will be randomly flipped during each slice operation. So, for example, a positive offset may be converted into a negative offset for a particular slice operation.\n\nX/Y offset: the offset, from the center of the bounding box of the mesh element, to shift the slice plane.\n\nTime offset: the temporal offset to apply to keyframes on the X/Y offset spinner, at each level of the recursive algorithm.\n\nRandom flip: the slice plane offset will be randomly flipped during each slice operation. So, for example, a positive offset may be converted into a negative offset for a particular slice operation.",
+      "params": [
+        "X/Y offset",
+        "Time offset",
+        "Random flip"
+      ]
+    },
+    {
+      "heading": "Cross Section Rollout",
+      "level": "h3",
+      "anchor": "cross-section-rollout",
+      "content": "Slices: the number of cross section slices.Spread: the distance between cross section slices.Above/Below: controls whether cross section slices will be created above/below the original slice plane(s).Close Loops: when enabled, resulting splines of each cross section will be closed.Linear/Smooth: controls what types of splin knots will be generated.Steps: the number of interpolation steps applied to the resulting splines.Optimize: when enabled, knots of the resulting splines will be reduced based on specified distance/angle thresholds.Angle thresh: two spline segments whose angle are less than this value will have their shared knot removed.Dist thresh: a knot whose distance to the next knot is below this threshold will be removed.\n\nSlices: the number of cross section slices.\n\nSpread: the distance between cross section slices.\n\nAbove/Below: controls whether cross section slices will be created above/below the original slice plane(s).\n\nClose Loops: when enabled, resulting splines of each cross section will be closed.\n\nLinear/Smooth: controls what types of splin knots will be generated.\n\nSteps: the number of interpolation steps applied to the resulting splines.\n\nOptimize: when enabled, knots of the resulting splines will be reduced based on specified distance/angle thresholds.\n\nAngle thresh: two spline segments whose angle are less than this value will have their shared knot removed.\n\nDist thresh: a knot whose distance to the next knot is below this threshold will be removed.",
+      "params": [
+        "Optimize",
+        "Angle thresh",
+        "Steps",
+        "Slices",
+        "Above/Below",
+        "Spread",
+        "Linear/Smooth",
+        "Close Loops",
+        "Dist thresh"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:06:27Z"
+}

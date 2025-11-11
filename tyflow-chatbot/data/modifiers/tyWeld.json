@@ -1,0 +1,62 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyWeld",
+  "title": "tyWeldModifier",
+  "category": "Modifiers",
+  "operator": "tyWeldModifier",
+  "sections": [
+    {
+      "heading": "tyWeldModifier",
+      "level": "h2",
+      "anchor": "tyweld-modifier",
+      "content": "ThetyWeldmodifier can be used to weld vertices and cull overlapping faces of a mesh. It is especially helpful for welding/culling the interior faces of a mesh converted to tets with atyMesher.",
+      "params": []
+    },
+    {
+      "heading": "Verts",
+      "level": "h4",
+      "anchor": "verts",
+      "content": "Weld vertices: controls whether vertices will be welded together by proximity.Weld threshold: the maximum distance threshold between vertices in order for them to be welded together.Remove isolated vertices: removes any vertices not connected to at least one face.Open edges only: only vertices on open edges (edges connected to a single face) will be welded.\n\nWeld vertices: controls whether vertices will be welded together by proximity.\n\nWeld threshold: the maximum distance threshold between vertices in order for them to be welded together.\n\nRemove isolated vertices: removes any vertices not connected to at least one face.\n\nOpen edges only: only vertices on open edges (edges connected to a single face) will be welded.",
+      "params": [
+        "Weld threshold",
+        "Remove isolated vertices",
+        "Weld vertices",
+        "Open edges only"
+      ]
+    },
+    {
+      "heading": "Elements",
+      "level": "h4",
+      "anchor": "elements",
+      "content": "Weld all elements: all vertices will be considered weld candidates for each other.Different elements only: vertices will only be welded together if they are parts of different elements.Same element only: vertices will only be welded together if they are part of the same element.\n\nWeld all elements: all vertices will be considered weld candidates for each other.\n\nDifferent elements only: vertices will only be welded together if they are parts of different elements.\n\nSame element only: vertices will only be welded together if they are part of the same element.",
+      "params": [
+        "Weld all elements",
+        "Different elements only",
+        "Same element only"
+      ]
+    },
+    {
+      "heading": "Faces",
+      "level": "h4",
+      "anchor": "faces",
+      "content": "Cull overlapping faces: controls whether overlapping faces (faces whose verts are all coincident) will be removed from the mesh.\n\nMatching Vertex Mode: in matching vertex mode, face pairs will be culled if all of their vertices are within the distance threshold of each other, and the angle of their normals are within the normal threshold of each other.Raycast Mode: in raycast mode, face pairs will be culled if a ray cast from the center of one of them hits the other within the distance threshold, and the angle of their normals are within the normal threshold of each other.Dist thresh: the maximum distance between candidate face pairs.Normal thresh: the maximum angle between the normals of candidate face pairs.\n\nMatching Vertex Mode: in matching vertex mode, face pairs will be culled if all of their vertices are within the distance threshold of each other, and the angle of their normals are within the normal threshold of each other.\n\nRaycast Mode: in raycast mode, face pairs will be culled if a ray cast from the center of one of them hits the other within the distance threshold, and the angle of their normals are within the normal threshold of each other.\n\nDist thresh: the maximum distance between candidate face pairs.\n\nNormal thresh: the maximum angle between the normals of candidate face pairs.",
+      "params": [
+        "Cull overlapping faces",
+        "Raycast Mode",
+        "Normal thresh",
+        "Matching Vertex Mode",
+        "Dist thresh"
+      ]
+    },
+    {
+      "heading": "Selection",
+      "level": "h4",
+      "anchor": "selection",
+      "content": "Use vertex selection: controls whether only selected vertices will be welded.Soft sel thresh: vertices that are softly-selected must have a soft selection value above this threshold in order to be welded.\n\nUse vertex selection: controls whether only selected vertices will be welded.\n\nSoft sel thresh: vertices that are softly-selected must have a soft selection value above this threshold in order to be welded.",
+      "params": [
+        "Soft sel thresh",
+        "Use vertex selection"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:13Z"
+}

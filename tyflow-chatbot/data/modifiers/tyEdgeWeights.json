@@ -1,0 +1,50 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyEdgeWeights",
+  "title": "tyEdgeWeightsModifier",
+  "category": "Modifiers",
+  "operator": "tyEdgeWeightsModifier",
+  "sections": [
+    {
+      "heading": "tyEdgeWeightsModifier",
+      "level": "h2",
+      "anchor": "tyedgeweights-modifier",
+      "content": "ThetyEdgeWeightsmodifier allows you to procedurally assign poly mesh edge weight/crease values (currently the only other way to assign these values is through manual entry in the Edit Poly modifier). These weights can be used to influence the results of other modifiers such as Meshsmooth, Quad Chamfer, etc.",
+      "params": []
+    },
+    {
+      "heading": "Initial Values",
+      "level": "h4",
+      "anchor": "initial-values",
+      "content": "Set initial values: controls whether initial values will be assigned to all edges in the mesh.Weight: the initial weight value.Crease: the initial crease value.\n\nSet initial values: controls whether initial values will be assigned to all edges in the mesh.\n\nWeight: the initial weight value.\n\nCrease: the initial crease value.",
+      "params": [
+        "Crease",
+        "Set initial values",
+        "Weight"
+      ]
+    },
+    {
+      "heading": "Values by selection",
+      "level": "h4",
+      "anchor": "values-by-selection",
+      "content": "Set by vertex selection: controls whether values will be assigned to edges (after initial values are potentially set) based on the mesh’s current vertex selection.\n\nThe assigned value will be the average selection value of each edge’s two vertices. Vertex selection values are between 0 and 1, depending on soft selection, where 1 means the vertex is fully selected.\n\nOnly if both verts selected: edge weights will only be assigned to edges whose vertices are both selected.Min/Max/Average: controls how the two selection values taken from each edge’s vertices will be combined, to create the resulting edge weight/crease multiplier.Weight: the initial weight value.Crease: the initial crease value.\n\nOnly if both verts selected: edge weights will only be assigned to edges whose vertices are both selected.\n\nMin/Max/Average: controls how the two selection values taken from each edge’s vertices will be combined, to create the resulting edge weight/crease multiplier.\n\nWeight: the initial weight value.\n\nCrease: the initial crease value.",
+      "params": [
+        "Set by vertex selection",
+        "Min/Max/Average",
+        "Crease",
+        "Only if both verts selected",
+        "Weight"
+      ]
+    },
+    {
+      "heading": "Crush values",
+      "level": "h4",
+      "anchor": "crush-values",
+      "content": "When using soft selections on a high resolution mesh, many edges can end up with tiny weight/crease values that will decrease the performance of certain modifiers that are dependent on edges with positive weight/crease values. Crushing small values to 0 will filter out those edges from other weight or crease-based algorithms, allowing them to run faster.\n\nSet to 0 when less than: enables edge weight/crease value crushing, based on a threshold value.Thresh: the crush threshold. If an edge’s final weight value is below this threshold, its weight/crease values will be set to 0.\n\nSet to 0 when less than: enables edge weight/crease value crushing, based on a threshold value.\n\nThresh: the crush threshold. If an edge’s final weight value is below this threshold, its weight/crease values will be set to 0.",
+      "params": [
+        "Set to 0 when less than",
+        "Thresh"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:01Z"
+}

@@ -1,0 +1,60 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_modifiers/tyMultifracture/fracture_edges",
+  "title": "Fracture edges (simple)Rollout",
+  "category": "Modifiers",
+  "operator": "Fracture edges (simple)Rollout",
+  "sections": [
+    {
+      "heading": "Fracture edges (simple)Rollout",
+      "level": "h2",
+      "anchor": "fracture-edges-simple-rollout",
+      "content": "The Fracture edges (simple) rollout contains parameters for the “fracture edges (simple)” fracture mode.\n\n“Fracture edges (simple)” computes a convex hull of the input mesh and then places fracture planes on qualifying edges of that hull. Unlike “Fracture edges (advanced)”, it will not fracture any edges in concave areas of the input mesh.\n\nFracture edges: when enabled, mesh edges will be fractured.",
+      "params": [
+        "Fracture edges"
+      ]
+    },
+    {
+      "heading": "Edge settings",
+      "level": "h3",
+      "anchor": "edge-settings",
+      "content": "Edge fractures are generated along edges of the input mesh’s convex hull, that meet the angle threshold criteria.\n\nAngle thresh: the minimum angle that must exist between the faces of an edge on the mesh’s convex hull in order for a fracture mesh to be assigned to the edge.Probability %: the random probability that a given edge (which meets the angle threshold) will be assigned a fracture mesh.Depth: fracture meshes will be placed at this depth along the negative surface normal of each qualified edge. Larger values will move fracture meshes inward towards the center of the mesh hull.Variation %: the per-particle percentage of variation to apply.\n\nAngle thresh: the minimum angle that must exist between the faces of an edge on the mesh’s convex hull in order for a fracture mesh to be assigned to the edge.\n\nProbability %: the random probability that a given edge (which meets the angle threshold) will be assigned a fracture mesh.\n\nDepth: fracture meshes will be placed at this depth along the negative surface normal of each qualified edge. Larger values will move fracture meshes inward towards the center of the mesh hull.",
+      "params": [
+        "Depth",
+        "Probability %",
+        "Angle thresh"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nFracture corners: when enabled, mesh corners will be fractured.",
+      "params": [
+        "Fracture corners",
+        "Seed"
+      ]
+    },
+    {
+      "heading": "Corner settings",
+      "level": "h3",
+      "anchor": "corner-settings",
+      "content": "Angle thresh: the minimum angle that must exist between the faces of a vertex on the mesh’s convex hull in order for a fracture mesh to be assigned to the edge.Probability %: the random probability that a given vertex (which meets the angle threshold) will be assigned a fracture mesh.Depth: fracture meshes will be placed at this depth along the negative surface normal of each qualified vertex. Larger values will move fracture meshes inward towards the center of the mesh hull.Variation %: the per-particle percentage of variation to apply.\n\nAngle thresh: the minimum angle that must exist between the faces of a vertex on the mesh’s convex hull in order for a fracture mesh to be assigned to the edge.\n\nProbability %: the random probability that a given vertex (which meets the angle threshold) will be assigned a fracture mesh.\n\nDepth: fracture meshes will be placed at this depth along the negative surface normal of each qualified vertex. Larger values will move fracture meshes inward towards the center of the mesh hull.",
+      "params": [
+        "Depth",
+        "Probability %",
+        "Angle thresh"
+      ]
+    },
+    {
+      "heading": "Uniqueness",
+      "level": "h4",
+      "anchor": "uniqueness",
+      "content": "Seed: the seed value for all varied parameters.\n\nCull fractured meshes: when enabled, fractured parts of the input mesh that lie above the fracture meshes will be culled. Disable this setting to retain all fracture meshes after the fracture operation is completed.",
+      "params": [
+        "Cull fractured meshes",
+        "Seed"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:05:33Z"
+}

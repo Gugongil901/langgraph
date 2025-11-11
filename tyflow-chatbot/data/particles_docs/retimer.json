@@ -1,0 +1,22 @@
+{
+  "url": "https://docs.tyflow.com/tyflow_particles/object/retimer",
+  "title": "Retimer Rollout",
+  "category": "Particles_Docs",
+  "operator": "Retimer Rollout",
+  "sections": [
+    {
+      "heading": "Retimer Rollout",
+      "level": "h2",
+      "anchor": "retimer-rollout",
+      "content": "ThetyFlowretimer can be used to retime an entire simulation. By animating the retimer playback frame value, you can choose what part of the simulation plays back over the course of the timeline. Subframe values will be correctly interpolated by the retimer, allowing for smooth slow-down or speed-up effects.\n\nEnable simulation retimer: controls whether simulation playback will be controlled by the retimer frame value.Retime type: controls whether the retimer affects playback frame or speed.\n\nEnable simulation retimer: controls whether simulation playback will be controlled by the retimer frame value.\n\nRetime type: controls whether the retimer affects playback frame or speed.\n\nFrame: the retimer frame value that controls simulation playback. Animate this value to control the current playback frame.\n\nSpeed %: the percent value that controls simulation playback speed.Ref Frame: the reference frame that the speed multiplier will be relative to.\n\nSpeed %: the percent value that controls simulation playback speed.\n\nRef Frame: the reference frame that the speed multiplier will be relative to.\n\nSetting a proper reference frame is important for the speed multiplier. The reference frame should typically be the start frame of your playback sequence, not necessarily the start frame of the simulation.The equation for the speed retimer is:playbackFrame = [referenceFrame + abs(time - referenceFrame) * speed * sign(time - referenceFrame)].",
+      "params": [
+        "Frame",
+        "Enable simulation retimer",
+        "Ref Frame",
+        "Retime type",
+        "Speed %"
+      ]
+    }
+  ],
+  "crawled_at": "2025-11-11T12:07:49Z"
+}
